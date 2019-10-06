@@ -1,11 +1,11 @@
-package com.gutotech.tcclogistica.adapter;
+package com.gutotech.tcclogistica.view.adapter;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.gutotech.tcclogistica.adm.ui.estoque.ProdutoNovoFragment;
-import com.gutotech.tcclogistica.adm.ui.estoque.ProdutosCadastradosFragment;
+import com.gutotech.tcclogistica.view.adm.ui.estoque.ProdutoNovoFragment;
+import com.gutotech.tcclogistica.view.adm.ui.estoque.ProdutosCadastradosFragment;
 
 public class PageAdapter extends FragmentPagerAdapter {
     private int numberOfTabs;

@@ -1,4 +1,4 @@
-package com.gutotech.tcclogistica;
+package com.gutotech.tcclogistica.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +10,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.gutotech.tcclogistica.adm.AdmMainActivity;
+import com.gutotech.tcclogistica.R;
+import com.gutotech.tcclogistica.view.adm.AdmMainActivity;
 
 public class LoginActivity extends AppCompatActivity {
     private Dialog dialog;

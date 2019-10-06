@@ -1,4 +1,4 @@
-package com.gutotech.tcclogistica.adm.ui.send;
+package com.gutotech.tcclogistica.view.adm.ui.send;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

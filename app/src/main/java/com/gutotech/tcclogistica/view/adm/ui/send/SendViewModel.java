@@ -1,16 +1,16 @@
-package com.gutotech.tcclogistica.adm.ui.share;
+package com.gutotech.tcclogistica.view.adm.ui.send;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ShareViewModel extends ViewModel {
+public class SendViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public ShareViewModel() {
+    public SendViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is share fragment");
+        mText.setValue("This is send fragment");
     }
 
     public LiveData<String> getText() {

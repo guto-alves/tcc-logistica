@@ -1,4 +1,4 @@
-package com.gutotech.tcclogistica.adm.ui.clientes;
+package com.gutotech.tcclogistica.view.adm.ui.motoristas;
 
 import android.os.Bundle;
 
@@ -10,15 +10,15 @@ import android.view.ViewGroup;
 
 import com.gutotech.tcclogistica.R;
 
-public class ClienteNovoFragment extends Fragment {
+public class MotoristasCadastradosFragment extends Fragment {
 
-    public ClienteNovoFragment() {
+    public MotoristasCadastradosFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_cliente_novo, container, false);
+        View root = inflater.inflate(R.layout.fragment_motoristas_lista, container, false);
 
         return root;
     }

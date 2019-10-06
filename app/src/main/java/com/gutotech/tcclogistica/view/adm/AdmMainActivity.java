@@ -1,4 +1,4 @@
-package com.gutotech.tcclogistica.adm;
+package com.gutotech.tcclogistica.view.adm;
 
 import android.os.Bundle;
 

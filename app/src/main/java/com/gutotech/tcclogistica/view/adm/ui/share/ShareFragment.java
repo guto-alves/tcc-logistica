@@ -1,4 +1,4 @@
-package com.gutotech.tcclogistica.adm.ui.share;
+package com.gutotech.tcclogistica.view.adm.ui.share;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

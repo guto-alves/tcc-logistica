@@ -1,4 +1,4 @@
-package com.gutotech.tcclogistica.adm.ui.motoristas;
+package com.gutotech.tcclogistica.view.adm.ui.motoristas;
 
 import android.os.Bundle;
 

@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp"
-        tools:context=".adm.ui.estoque.ProdutoNovoFragment">
+        tools:context=".view.adm.ui.estoque.ProdutoNovoFragment">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"

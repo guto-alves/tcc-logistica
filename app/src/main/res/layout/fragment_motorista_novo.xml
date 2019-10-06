@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="24dp"
-        tools:context=".adm.ui.motoristas.MotoristaNovoFragment">
+        tools:context=".view.adm.ui.motoristas.MotoristaNovoFragment">
 
         <GridLayout
             android:layout_width="match_parent"

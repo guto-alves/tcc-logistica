@@ -1,4 +1,4 @@
-package com.gutotech.tcclogistica.adm.ui.clientes;
+package com.gutotech.tcclogistica.view.adm.ui.estoque;
 
 import android.os.Bundle;
 
@@ -10,17 +10,17 @@ import android.view.ViewGroup;
 
 import com.gutotech.tcclogistica.R;
 
-public class ClientesListaFragment extends Fragment {
+public class ProdutoNovoFragment extends Fragment {
 
-    public ClientesListaFragment() {
+    public ProdutoNovoFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_clientes_lista, container, false);
+        View view = inflater.inflate(R.layout.fragment_produto_novo, container, false);
 
-        return root;
+
+        return view;
     }
-
 }

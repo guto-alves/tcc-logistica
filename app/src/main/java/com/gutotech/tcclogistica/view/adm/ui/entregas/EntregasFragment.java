@@ -1,4 +1,4 @@
-package com.gutotech.tcclogistica.adm.ui.entregas;
+package com.gutotech.tcclogistica.view.adm.ui.entregas;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +12,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.gutotech.tcclogistica.R;
-import com.gutotech.tcclogistica.adm.ui.motoristas.MotoristaNovoFragment;
 
 public class EntregasFragment extends Fragment {
 
