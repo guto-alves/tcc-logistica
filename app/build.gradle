@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.gutotech.tcclogistica"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -35,4 +35,10 @@ dependencies {
     implementation 'com.ogaclejapan.smarttablayout:library:1.7.0@aar'
     implementation 'com.ogaclejapan.smarttablayout:utils-v4:1.7.0@aar'
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
+
+    implementation 'com.google.firebase:firebase-core:17.0.0'
+    implementation 'com.google.firebase:firebase-auth:18.0.0'
+    implementation 'com.google.firebase:firebase-database:18.0.0'
 }
+
+apply plugin: 'com.google.gms.google-services'

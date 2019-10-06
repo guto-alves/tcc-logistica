@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "882381633565",
+    "firebase_url": "https://tcc-logistica-e4a6f.firebaseio.com",
+    "project_id": "tcc-logistica-e4a6f",
+    "storage_bucket": "tcc-logistica-e4a6f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882381633565:android:f7cc7ef3959d2d48d92ef4",
+        "android_client_info": {
+          "package_name": "com.gutotech.tcclogistica"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "882381633565-ij9brufn6qr5kmga91u8a9deq773t3s6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gutotech.tcclogistica",
+            "certificate_hash": "0ffec6a32a57fe337eb09237a8ebaa4e25a9e5fb"
+          }
+        },
+        {
+          "client_id": "882381633565-vn46ia2bkkjnnu050n60dmjmuao6ki2u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAQXhUhdR-Rx8L0_PtQzPnWLwbwhWyZYs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "882381633565-vn46ia2bkkjnnu050n60dmjmuao6ki2u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
