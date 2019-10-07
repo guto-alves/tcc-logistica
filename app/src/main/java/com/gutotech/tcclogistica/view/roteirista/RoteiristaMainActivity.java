@@ -1,4 +1,4 @@
-package com.gutotech.tcclogistica.view.adm;
+package com.gutotech.tcclogistica.view.roteirista;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,14 +26,14 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 
-public class AdmMainActivity extends AppCompatActivity {
+public class RoteiristaMainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_adm_main);
+        setContentView(R.layout.activity_roteirista_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -51,8 +51,7 @@ public class AdmMainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_entregas, R.id.nav_estoque,
-                R.id.nav_funcionarios, R.id.nav_suporte)
+                R.id.nav_entregas, R.id.nav_estoque, R.id.nav_suporte)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -70,7 +69,7 @@ public class AdmMainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_exit) {
             FuncionarioOn.funcionario = null;
-            startActivity(new Intent(AdmMainActivity.this, LoginActivity.class));
+            startActivity(new Intent(RoteiristaMainActivity.this, LoginActivity.class));
             finish();
         }
 

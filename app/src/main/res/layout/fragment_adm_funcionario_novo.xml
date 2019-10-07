@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        tools:context=".view.adm.ui.funcionarios.FuncionarioNovoFragment">
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_columnSpan="2"
+                android:gravity="center"
+                android:text="@string/funcionarios"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                app:fontFamily="monospace" />
+
+            <TextView
+                android:id="@+id/nomeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nome" />
+
+            <EditText
+                android:id="@+id/nomeEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/rgTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RG" />
+
+            <EditText
+                android:id="@+id/rgEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/cpfTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CPF" />
+
+            <EditText
+                android:id="@+id/cpfEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
+
+
+            <TextView
+                android:id="@+id/cnhTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CNH" />
+
+            <EditText
+                android:id="@+id/cnhEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/enderecoTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/endereco" />
+
+            <EditText
+                android:id="@+id/enderecoEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/celularTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/celular" />
+
+            <EditText
+                android:id="@+id/celularEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="phone" />
+
+            <TextView
+                android:id="@+id/emailTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/email" />
+
+            <EditText
+                android:id="@+id/emailEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textEmailAddress" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_columnSpan="2"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="SE FUNCIONÁRIO A SER CADASTRADO FOR MOTORISTA"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                app:fontFamily="monospace" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/veiculo" />
+
+            <EditText
+                android:id="@+id/veiculoEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/categoria" />
+
+            <EditText
+                android:id="@+id/categoriaEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ano" />
+
+            <EditText
+                android:id="@+id/anoEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberSigned" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/placa" />
+
+            <EditText
+                android:id="@+id/placaEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+        </GridLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|end"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/limparButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@color/colorRed"
+                android:text="@string/limpar"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/salvarButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorGreen"
+                android:text="@string/salvar"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

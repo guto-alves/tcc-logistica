@@ -10,10 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".view.motorista.MotoristaMainActivity"
+            android:label="@string/title_activity_motorista_main"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".view.roteirista.RoteiristaMainActivity"
+            android:label="@string/title_activity_roteirista_main"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".view.adm.AdmMainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".view.LoginActivity"
             android:configChanges="keyboardHidden|orientation|screenSize">

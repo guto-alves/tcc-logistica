@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 public class ProdutosAdapter extends RecyclerView.Adapter<ProdutosAdapter.MyViewHolder> {
 
     public ProdutosAdapter() {
-
     }
 
     @NonNull

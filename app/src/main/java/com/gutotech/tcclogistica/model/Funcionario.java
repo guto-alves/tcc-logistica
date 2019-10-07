@@ -1,7 +1,9 @@
 package com.gutotech.tcclogistica.model;
 
+import com.google.firebase.database.DatabaseReference;
+import com.gutotech.tcclogistica.config.ConfigFirebase;
+
 public class Funcionario {
-    private String id;
     private String nome;
     private int celular;
     private int email;
@@ -10,11 +12,12 @@ public class Funcionario {
     private int dataNascimento;
     private String cargo;
 
+    private Register register;
+
     public Funcionario() {
     }
 
-    public Funcionario(String id, String nome, int celular, int email, int rg, int cpf, int dataNascimento, String cargo) {
-        this.id = id;
+    public Funcionario(String nome, int celular, int email, int rg, int cpf, int dataNascimento, String cargo, Register register) {
         this.nome = nome;
         this.celular = celular;
         this.email = email;
@@ -22,14 +25,23 @@ public class Funcionario {
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
         this.cargo = cargo;
+        this.register = register;
     }
 
-    public String getId() {
-        return id;
+    public void salvar() {
+        DatabaseReference clienteReference = ConfigFirebase.getDatabase()
+                .child("funcionario")
+                .child(register.getUser());
+
+        clienteReference.setValue(this);
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public Register getRegister() {
+        return register;
+    }
+
+    public void setRegister(Register register) {
+        this.register = register;
     }
 
     public String getNome() {

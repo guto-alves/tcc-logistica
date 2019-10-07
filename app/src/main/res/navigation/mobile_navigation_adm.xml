@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation_adm"
+    app:startDestination="@+id/nav_entregas">
+
+    <fragment
+        android:id="@+id/nav_entregas"
+        android:name="com.gutotech.tcclogistica.view.adm.ui.entregas.AdmEntregasFragment"
+        android:label="@string/entregas"
+        tools:layout="@layout/fragment_adm_entregas" />
+
+    <fragment
+        android:id="@+id/nav_estoque"
+        android:name="com.gutotech.tcclogistica.view.adm.ui.estoque.AdmEstoqueFragment"
+        android:label="@string/estoque"
+        tools:layout="@layout/fragment_adm_estoque" />
+
+    <fragment
+        android:id="@+id/nav_funcionarios"
+        android:name="com.gutotech.tcclogistica.view.adm.ui.funcionarios.FuncionariosFragment"
+        android:label="@string/funcionarios"
+        tools:layout="@layout/fragment_adm_funcionarios" />
+
+    <fragment
+        android:id="@+id/nav_suporte"
+        android:name="com.gutotech.tcclogistica.view.adm.ui.suporte.SendFragment"
+        android:label="@string/suporte"
+        tools:layout="@layout/fragment_suporte" />
+</navigation>

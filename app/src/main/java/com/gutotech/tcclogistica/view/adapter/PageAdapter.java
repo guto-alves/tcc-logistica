@@ -4,8 +4,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.gutotech.tcclogistica.view.adm.ui.estoque.ProdutoNovoFragment;
-import com.gutotech.tcclogistica.view.adm.ui.estoque.ProdutosCadastradosFragment;
+import com.gutotech.tcclogistica.view.roteirista.ui.estoque.RoteiristaProdutoNovoFragment;
+import com.gutotech.tcclogistica.view.roteirista.ui.estoque.RoteiristaProdutosCadastradosFragment;
 
 public class PageAdapter extends FragmentPagerAdapter {
     private int numberOfTabs;
@@ -19,9 +19,9 @@ public class PageAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new ProdutoNovoFragment();
+                return new RoteiristaProdutoNovoFragment();
             case 1:
-                return new ProdutosCadastradosFragment();
+                return new RoteiristaProdutosCadastradosFragment();
         }
 
         return null;

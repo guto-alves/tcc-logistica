@@ -53,4 +53,9 @@
     <string name="complemento">Complemento</string>
     <string name="cidade">Cidade</string>
     <string name="estado">Estado</string>
+    <string name="title_activity_roteirista_main">RoteiristaMainActivity</string>
+    <string name="title_activity_motorista_main">MotoristaMainActivity</string>
+    <string name="sair">Sair</string>
+    <string name="suporte">Suporte</string>
+    <string name="funcionarios">Funcionários</string>
 </resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_entregas">
+
+    <fragment
+        android:id="@+id/nav_entregas"
+        android:name="com.gutotech.tcclogistica.view.motorista.ui.entregas.MotoristaEntregasFragment"
+        android:label="@string/entregas"
+        tools:layout="@layout/fragment_motorista_entregas" />
+
+    <fragment
+        android:id="@+id/nav_suporte"
+        android:name="com.gutotech.tcclogistica.view.motorista.ui.suporte.SuporteFragment"
+        android:label="@string/suporte"
+        tools:layout="@layout/fragment_suporte" />
+</navigation>
