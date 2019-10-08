@@ -16,29 +16,40 @@
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnCount="2">
+            android:columnCount="2"
+            android:padding="5dp">
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_columnSpan="2"
+                android:layout_margin="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/background_cabecalho"
                 android:gravity="center"
                 android:text="@string/funcionarios"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
                 app:fontFamily="monospace" />
 
             <TextView
                 android:id="@+id/nomeTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/nome" />
+                android:layout_margin="5dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/nome"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/nomeEditText"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_caixa_texto"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
@@ -46,12 +57,17 @@
                 android:id="@+id/rgTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="RG" />
+                android:layout_margin="5dp"
+                android:text="RG"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/rgEditText"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_caixa_texto"
                 android:ems="10"
                 android:inputType="number" />
 
@@ -59,39 +75,36 @@
                 android:id="@+id/cpfTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CPF" />
+                android:layout_margin="5dp"
+                android:text="CPF"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/cpfEditText"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_caixa_texto"
                 android:ems="10"
                 android:inputType="number" />
 
 
             <TextView
-                android:id="@+id/cnhTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="CNH" />
-
-            <EditText
-                android:id="@+id/cnhEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
-
-            <TextView
                 android:id="@+id/enderecoTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/endereco" />
+                android:layout_margin="5dp"
+                android:text="@string/endereco"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/enderecoEditText"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_caixa_texto"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
@@ -99,12 +112,17 @@
                 android:id="@+id/celularTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/celular" />
+                android:layout_margin="5dp"
+                android:text="@string/celular"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/celularEditText"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_caixa_texto"
                 android:ems="10"
                 android:inputType="phone" />
 
@@ -112,72 +130,106 @@
                 android:id="@+id/emailTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/email" />
+                android:layout_margin="5dp"
+                android:text="@string/email"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/emailEditText"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/background_caixa_texto"
                 android:ems="10"
                 android:inputType="textEmailAddress" />
 
             <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_columnSpan="2"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:text="SE FUNCIONÁRIO A SER CADASTRADO FOR MOTORISTA"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
-                app:fontFamily="monospace" />
-
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/veiculo" />
+                android:layout_margin="5dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/veiculo"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/veiculoEditText"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_caixa_texto"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/cnhTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="CNH"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cnhEditText"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_caixa_texto"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/categoria" />
+                android:layout_margin="5dp"
+                android:text="@string/categoria"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/categoriaEditText"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_caixa_texto"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/ano" />
+                android:layout_margin="5dp"
+                android:text="@string/ano"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/anoEditText"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_caixa_texto"
                 android:ems="10"
                 android:inputType="numberSigned" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/placa" />
+                android:layout_margin="5dp"
+                android:text="@string/placa"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/placaEditText"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_caixa_texto"
                 android:ems="10"
                 android:inputType="textPersonName" />
         </GridLayout>
@@ -186,22 +238,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|end"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingTop="15dp">
 
             <Button
                 android:id="@+id/limparButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="145dp"
+                android:layout_height="35dp"
                 android:layout_margin="10dp"
-                android:background="@color/colorRed"
+                android:background="@drawable/background_botao"
+                android:gravity="center"
                 android:text="@string/limpar"
                 android:textColor="@android:color/white" />
 
             <Button
                 android:id="@+id/salvarButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/colorGreen"
+                android:layout_width="145dp"
+                android:layout_height="35dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/background_botao"
+                android:gravity="center"
                 android:text="@string/salvar"
                 android:textColor="@android:color/white" />
         </LinearLayout>

@@ -34,48 +34,68 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/nome" />
+                        android:layout_margin="5dp"
+                        android:text="@string/nome"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18sp" />
 
                     <EditText
                         android:id="@+id/nomeProdutoEditText"
-                        android:layout_width="match_parent"
+                        android:layout_width="220dp"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/background_caixa_texto"
                         android:ems="10"
                         android:inputType="textPersonName" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/codigo" />
+                        android:layout_margin="5dp"
+                        android:text="@string/codigo"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18sp" />
 
                     <EditText
                         android:id="@+id/codEditText"
-                        android:layout_width="match_parent"
+                        android:layout_width="220dp"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/background_caixa_texto"
                         android:ems="10"
                         android:inputType="textPersonName" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/data_chegada" />
+                        android:layout_margin="5dp"
+                        android:text="@string/data_chegada"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18sp" />
 
                     <EditText
                         android:id="@+id/dataChegadaEditText"
-                        android:layout_width="100dp"
+                        android:layout_width="140dp"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/background_caixa_texto"
                         android:ems="10"
                         android:inputType="date" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/data_entrega" />
+                        android:layout_margin="5dp"
+                        android:text="@string/data_entrega"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18sp" />
 
                     <EditText
                         android:id="@+id/dataEntregaEditText"
-                        android:layout_width="100dp"
+                        android:layout_width="140dp"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/background_caixa_texto"
                         android:ems="10"
                         android:inputType="date" />
 
@@ -83,13 +103,18 @@
                         android:id="@+id/textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:layout_marginRight="15dp"
-                        android:text="@string/quantidade" />
+                        android:text="@string/quantidade"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18sp" />
 
                     <EditText
                         android:id="@+id/quantidadeEditText"
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/background_caixa_texto"
                         android:gravity="center"
                         android:inputType="numberSigned"
                         android:text="1" />
@@ -99,7 +124,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_columnSpan="2"
-                        android:text="@string/descricao" />
+                        android:layout_margin="5dp"
+                        android:text="@string/descricao"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -135,7 +163,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
-                android:background="@color/colorRed"
+                android:background="@drawable/background_botao"
                 android:text="@string/limpar"
                 android:textColor="@android:color/white" />
 
@@ -144,7 +172,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@color/colorGreen"
+                android:background="@drawable/background_botao"
                 android:text="@string/salvar"
                 android:textColor="@android:color/white" />
         </LinearLayout>

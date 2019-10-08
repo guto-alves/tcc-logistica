@@ -16,41 +16,59 @@
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnCount="2">
+            android:columnCount="2"
+            android:padding="5dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/pedido" />
+                android:layout_margin="5dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/nota_fiscal"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/pedidoEditText"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/background_caixa_texto"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cliente" />
+                android:layout_margin="5dp"
+                android:text="@string/cliente"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/clienteEditText"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_caixa_texto"
                 android:ems="10"
                 android:inputType="number" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/motorista" />
+                android:layout_margin="5dp"
+                android:text="@string/motorista"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/motoristaEditText"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_caixa_texto"
                 android:ems="10"
                 android:inputType="number" />
 
@@ -58,12 +76,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/produto" />
+                android:layout_margin="5dp"
+                android:text="@string/produto"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/produtoEditText"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_caixa_texto"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
@@ -71,7 +94,11 @@
                 android:id="@+id/enderecoTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/observacoes" />
+                android:layout_margin="5dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/observacoes"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -98,23 +125,27 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:gravity="center|end"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/limparButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="145dp"
+                android:layout_height="35dp"
                 android:layout_margin="10dp"
-                android:background="@color/colorRed"
+                android:background="@drawable/background_botao"
+                android:gravity="center"
                 android:text="@string/limpar"
                 android:textColor="@android:color/white" />
 
             <Button
                 android:id="@+id/salvarButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/colorGreen"
+                android:layout_width="145dp"
+                android:layout_height="35dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/background_botao"
+                android:gravity="center"
                 android:text="@string/salvar"
                 android:textColor="@android:color/white" />
         </LinearLayout>

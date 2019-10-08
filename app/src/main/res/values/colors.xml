@@ -5,6 +5,9 @@
     <color name="colorAccent">#3F51B5</color>
 
     <color name="colorBackground">#F0EEEB</color>
-    <color name="colorGreen">#26C92E</color>
-    <color name="colorRed">#EB1B0B</color>
+    <color name="colorGrey">#5D665D</color>
+    <color name="colorYellow">#B4F8E21A</color>
+    <color name="colorBlack">#141313</color>
+    <color name="colorStatus">#B45414</color>
+
 </resources>

@@ -27,9 +27,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="celular">Celular</string>
     <string name="email">Email</string>
-    <string name="endereco">Endereço</string>
     <string name="nome">Nome</string>
-    <string name="veiculo">VEÍCULO</string>
+    <string name="veiculo">Veículo</string>
     <string name="categoria">Categoria</string>
     <string name="salvar">Salvar</string>
     <string name="limpar">Limpar</string>
@@ -44,7 +43,6 @@
     <string name="data_entrega">Data Entrega</string>
     <string name="produto">Produto</string>
     <string name="cliente">Cliente</string>
-    <string name="pedido">Pedido</string>
     <string name="observacoes">Observações</string>
     <string name="nova">Nova</string>
     <string name="todas">Todas</string>
@@ -58,4 +56,10 @@
     <string name="sair">Sair</string>
     <string name="suporte">Suporte</string>
     <string name="funcionarios">Funcionários</string>
+    <string name="saida">Saída</string>
+    <string name="chegada">Chegada</string>
+    <string name="endereco">Endereço</string>
+    <string name="nota_fiscal">Nota Fiscal</string>
+    <string name="status">Status</string>
+    <string name="cnh">CNH</string>
 </resources>
