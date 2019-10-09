@@ -39,6 +39,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:17.0.0'
     implementation 'com.google.firebase:firebase-auth:18.0.0'
     implementation 'com.google.firebase:firebase-database:18.0.0'
+
+    implementation 'com.github.GrenderG:Toasty:1.4.2'
 }
 
 apply plugin: 'com.google.gms.google-services'

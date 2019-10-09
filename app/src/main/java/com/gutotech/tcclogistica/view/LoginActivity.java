@@ -9,11 +9,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,9 +20,12 @@ import com.google.firebase.database.ValueEventListener;
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.config.ConfigFirebase;
 import com.gutotech.tcclogistica.model.Funcionario;
+import com.gutotech.tcclogistica.model.FuncionarioOn;
 import com.gutotech.tcclogistica.view.adm.AdmMainActivity;
 import com.gutotech.tcclogistica.view.motorista.MotoristaMainActivity;
 import com.gutotech.tcclogistica.view.roteirista.RoteiristaMainActivity;
+
+import es.dmoral.toasty.Toasty;
 
 public class LoginActivity extends AppCompatActivity {
     private final int ADM = 1;
@@ -49,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
 
         processingDialog = new Dialog(this);
         processingDialog.setContentView(R.layout.dialog_carregando);
-        processingDialog.setCancelable(false);
+        //processingDialog.setCancelable(false);
         processingDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         funcionarioReference = ConfigFirebase.getDatabase().child("funcionario");
@@ -72,25 +73,28 @@ public class LoginActivity extends AppCompatActivity {
                     funcionarioQuery.removeEventListener(funcionarioValueEventListener);
 
                     if (funcionario != null) {
-                        if (funcionario.getRegister().getPassword().equals(password)) {
-                            switch (getTipoFuncionario(user)) {
-                                case ADM:
+                        FuncionarioOn.funcionario = funcionario;
+
+                        if (funcionario.getLogin().getPassword().equals(password)) {
+                            switch (funcionario.getCargo()) {
+                                case Funcionario.ADM:
                                     startActivity(new Intent(LoginActivity.this, AdmMainActivity.class));
                                     break;
-                                case ROTEIRISTA:
+                                case Funcionario.ROTEIRISTA:
                                     startActivity(new Intent(LoginActivity.this, RoteiristaMainActivity.class));
                                     break;
-                                case MOTORISTA:
+                                case Funcionario.MOTORISTA:
                                     startActivity(new Intent(LoginActivity.this, MotoristaMainActivity.class));
                                     break;
                             }
-                            processingDialog.dismiss();
 
                             finish();
                         } else
-                            Toast.makeText(LoginActivity.this, "Senha inválida", Toast.LENGTH_SHORT).show();
+                            Toasty.error(LoginActivity.this, "Senha inválida", Toast.LENGTH_SHORT, true).show();
                     } else
-                        Toast.makeText(LoginActivity.this, "Usuário inválido", Toast.LENGTH_SHORT).show();
+                        Toasty.error(LoginActivity.this, "Usuário inválido", Toast.LENGTH_SHORT, true).show();
+
+                    processingDialog.dismiss();
                 }
 
                 @Override
@@ -98,6 +102,8 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
         }
+
+        processingDialog.dismiss();
     }
 
     private boolean isValidField(String user, String password) {

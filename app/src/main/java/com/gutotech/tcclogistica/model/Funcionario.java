@@ -4,44 +4,43 @@ import com.google.firebase.database.DatabaseReference;
 import com.gutotech.tcclogistica.config.ConfigFirebase;
 
 public class Funcionario {
+    public static final String ADM = "Adm";
+    public static final String ROTEIRISTA = "Roteirista";
+    public static final String MOTORISTA = "Motorista";
+
     private String nome;
-    private int celular;
-    private int email;
-    private int rg;
-    private int cpf;
-    private int dataNascimento;
+    private String rg;
+    private String cpf;
+    private String endereco;
+    private String celular;
+    private String email;
     private String cargo;
 
-    private Register register;
+    private Login login;
+
+    private String cnh;
+    private Veiculo veiculo;
 
     public Funcionario() {
     }
 
-    public Funcionario(String nome, int celular, int email, int rg, int cpf, int dataNascimento, String cargo, Register register) {
+    public Funcionario(String nome, String rg, String cpf, String endereco, String celular, String email, String cargo, Login login) {
         this.nome = nome;
-        this.celular = celular;
-        this.email = email;
         this.rg = rg;
         this.cpf = cpf;
-        this.dataNascimento = dataNascimento;
+        this.endereco = endereco;
+        this.celular = celular;
+        this.email = email;
         this.cargo = cargo;
-        this.register = register;
+        this.login = login;
     }
 
     public void salvar() {
-        DatabaseReference clienteReference = ConfigFirebase.getDatabase()
+        DatabaseReference funcionarioReference = ConfigFirebase.getDatabase()
                 .child("funcionario")
-                .child(register.getUser());
+                .child(login.getUser());
 
-        clienteReference.setValue(this);
-    }
-
-    public Register getRegister() {
-        return register;
-    }
-
-    public void setRegister(Register register) {
-        this.register = register;
+        funcionarioReference.setValue(this);
     }
 
     public String getNome() {
@@ -52,36 +51,44 @@ public class Funcionario {
         this.nome = nome;
     }
 
-    public int getEmail() {
-        return email;
-    }
-
-    public void setEmail(int email) {
-        this.email = email;
-    }
-
-    public int getCelular() {
-        return celular;
-    }
-
-    public void setCelular(int celular) {
-        this.celular = celular;
-    }
-
-    public int getRg() {
+    public String getRg() {
         return rg;
     }
 
-    public void setRg(int rg) {
+    public void setRg(String rg) {
         this.rg = rg;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getCargo() {
@@ -92,11 +99,27 @@ public class Funcionario {
         this.cargo = cargo;
     }
 
-    public int getDataNascimento() {
-        return dataNascimento;
+    public Login getLogin() {
+        return login;
     }
 
-    public void setDataNascimento(int dataNascimento) {
-        this.dataNascimento = dataNascimento;
+    public void setLogin(Login login) {
+        this.login = login;
+    }
+
+    public String getCnh() {
+        return cnh;
+    }
+
+    public void setCnh(String cnh) {
+        this.cnh = cnh;
+    }
+
+    public Veiculo getVeiculo() {
+        return veiculo;
+    }
+
+    public void setVeiculo(Veiculo veiculo) {
+        this.veiculo = veiculo;
     }
 }

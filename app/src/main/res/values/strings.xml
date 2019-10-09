@@ -62,4 +62,11 @@
     <string name="nota_fiscal">Nota Fiscal</string>
     <string name="status">Status</string>
     <string name="cnh">CNH</string>
+    <string name="cargo">Cargo</string>
+
+    <string-array name="cargos_array">
+        <item>ADM</item>
+        <item>Roteirista</item>
+        <item>Motorista</item>
+    </string-array>
 </resources>

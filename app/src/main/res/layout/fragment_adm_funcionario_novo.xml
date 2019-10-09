@@ -146,23 +146,30 @@
                 android:inputType="textEmailAddress" />
 
             <TextView
+                android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/veiculo"
+                android:text="@string/cargo"
                 android:textColor="@color/colorBlack"
                 android:textSize="18sp" />
 
-            <EditText
-                android:id="@+id/veiculoEditText"
-                android:layout_width="250dp"
+            <Spinner
+                android:id="@+id/cargoSpinner"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/background_caixa_texto"
-                android:ems="10"
-                android:inputType="textPersonName" />
+                android:background="@drawable/background_caixa_texto" />
+
+        </GridLayout>
+
+        <GridLayout
+            android:id="@+id/motoristaGridLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:columnCount="2"
+            android:padding="5dp"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/cnhTextView"
@@ -178,6 +185,25 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:background="@drawable/background_caixa_texto"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/veiculo"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/veiculoEditText"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/background_caixa_texto"
                 android:ems="10"
                 android:inputType="textPersonName" />

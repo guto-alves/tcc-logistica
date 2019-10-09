@@ -3,13 +3,13 @@ package com.gutotech.tcclogistica.model;
 public class Veiculo {
     private String nome;
     private String categoria;
-    private int ano;
+    private String ano;
     private String placa;
 
     public Veiculo() {
     }
 
-    public Veiculo(String nome, String categoria, int ano, String placa) {
+    public Veiculo(String nome, String categoria, String ano, String placa) {
         this.nome = nome;
         this.categoria = categoria;
         this.ano = ano;
@@ -32,11 +32,11 @@ public class Veiculo {
         this.categoria = categoria;
     }
 
-    public int getAno() {
+    public String getAno() {
         return ano;
     }
 
-    public void setAno(int ano) {
+    public void setAno(String ano) {
         this.ano = ano;
     }
 

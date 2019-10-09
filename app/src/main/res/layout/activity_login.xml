@@ -77,6 +77,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:background="@drawable/background_botao"
+        android:onClick="entrar"
         android:text="@string/entrar"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,40 +1,22 @@
 package com.gutotech.tcclogistica.model;
 
 public class Coleta {
+    private Data dataEmissao;
+    private Data dataColetarAte;
+    private Hora horaColetarAte;
+    private Remetente remetente;
+    private Produto produto;
+    private Destinatario destinatario;
+
     private Motorista motorista;
-    private Nota produto;
-    private Endereco endereco;
+
+    private String observacoes;
+    private String intrucoes;
+
+    private Data dataEfetuada;
+    private Hora horaEfetuada;
 
     public Coleta() {
     }
 
-    public Coleta(Motorista motorista, Nota produto, Endereco endereco) {
-        this.motorista = motorista;
-        this.produto = produto;
-        this.endereco = endereco;
-    }
-
-    public Motorista getMotorista() {
-        return motorista;
-    }
-
-    public void setMotorista(Motorista motorista) {
-        this.motorista = motorista;
-    }
-
-    public Nota getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Nota produto) {
-        this.produto = produto;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
 }
