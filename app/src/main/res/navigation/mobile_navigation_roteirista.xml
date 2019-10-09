@@ -6,16 +6,22 @@
     app:startDestination="@+id/nav_entregas">
 
     <fragment
+        android:id="@+id/nav_estoque"
+        android:name="com.gutotech.tcclogistica.view.roteirista.ui.estoque.RoteiristaEstoqueFragment"
+        android:label="@string/estoque"
+        tools:layout="@layout/fragment_roteirista_estoque" />
+
+    <fragment
         android:id="@+id/nav_entregas"
         android:name="com.gutotech.tcclogistica.view.roteirista.ui.entregas.RoteiristaEntregasFragment"
         android:label="@string/entregas"
         tools:layout="@layout/fragment_roteirista_entregas" />
 
     <fragment
-        android:id="@+id/nav_estoque"
-        android:name="com.gutotech.tcclogistica.view.roteirista.ui.estoque.RoteiristaEstoqueFragment"
-        android:label="@string/estoque"
-        tools:layout="@layout/fragment_roteirista_estoque" />
+        android:id="@+id/nav_coletas"
+        android:name="com.gutotech.tcclogistica.view.roteirista.ui.coleta.RoteiristaColetasFragment"
+        android:label="@string/coletas"
+        tools:layout="@layout/fragment_roteirista_coletas" />
 
     <fragment
         android:id="@+id/nav_suporte"

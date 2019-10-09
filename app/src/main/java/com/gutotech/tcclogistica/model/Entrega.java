@@ -5,7 +5,6 @@ import com.gutotech.tcclogistica.config.ConfigFirebase;
 
 public class Entrega {
     private String id;
-    private Cliente cliente;
     private Nota produto;
     private Motorista motorista;
     private Endereco endereco;
@@ -17,8 +16,7 @@ public class Entrega {
     public Entrega() {
     }
 
-    public Entrega(Cliente cliente, Nota produto, Motorista motorista, Endereco endereco) {
-        this.cliente = cliente;
+    public Entrega(Nota produto, Motorista motorista, Endereco endereco) {
         this.produto = produto;
         this.motorista = motorista;
         this.endereco = endereco;
@@ -27,7 +25,7 @@ public class Entrega {
     public void salvar() {
         DatabaseReference entregaReference = ConfigFirebase.getDatabase()
                 .child("entrega")
-                .child(id);
+                .push();
         entregaReference.setValue(this);
     }
 
@@ -37,14 +35,6 @@ public class Entrega {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
     }
 
     public Nota getProduto() {

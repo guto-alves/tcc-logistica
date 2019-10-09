@@ -28,10 +28,6 @@ import com.gutotech.tcclogistica.view.roteirista.RoteiristaMainActivity;
 import es.dmoral.toasty.Toasty;
 
 public class LoginActivity extends AppCompatActivity {
-    private final int ADM = 1;
-    private final int ROTEIRISTA = 2;
-    private final int MOTORISTA = 3;
-
     private EditText userEditText, passwordEditText;
 
     private Dialog processingDialog;
@@ -50,19 +46,21 @@ public class LoginActivity extends AppCompatActivity {
 
         processingDialog = new Dialog(this);
         processingDialog.setContentView(R.layout.dialog_carregando);
-        //processingDialog.setCancelable(false);
+        processingDialog.setCancelable(false);
         processingDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         funcionarioReference = ConfigFirebase.getDatabase().child("funcionario");
+
+        startActivity(new Intent(LoginActivity.this, RoteiristaMainActivity.class));
     }
 
     public void entrar(View view) {
-        processingDialog.show();
-
         final String user = userEditText.getText().toString();
         final String password = passwordEditText.getText().toString();
 
         if (isValidField(user, password)) {
+            processingDialog.show();
+
             funcionarioQuery = funcionarioReference.orderByKey().equalTo(user);
 
             funcionarioValueEventListener = funcionarioQuery.addValueEventListener(new ValueEventListener() {
@@ -92,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
                         } else
                             Toasty.error(LoginActivity.this, "Senha inválida", Toast.LENGTH_SHORT, true).show();
                     } else
-                        Toasty.error(LoginActivity.this, "Usuário inválido", Toast.LENGTH_SHORT, true).show();
+                        Toasty.error(LoginActivity.this, "Usuário não encontrado", Toast.LENGTH_SHORT, true).show();
 
                     processingDialog.dismiss();
                 }
@@ -102,8 +100,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
         }
-
-        processingDialog.dismiss();
     }
 
     private boolean isValidField(String user, String password) {
@@ -120,9 +116,5 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         return valid;
-    }
-
-    private int getTipoFuncionario(String user) {
-        return Integer.parseInt(user.split("-")[1]);
     }
 }

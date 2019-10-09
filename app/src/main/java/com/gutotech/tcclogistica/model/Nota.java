@@ -17,8 +17,7 @@ public class Nota {
     public Nota() {
     }
 
-
-    private void salvar() {
+    public void salvar() {
         DatabaseReference clienteReference = ConfigFirebase.getDatabase()
                 .child("produto")
                 .child(nome);

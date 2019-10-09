@@ -63,6 +63,7 @@
     <string name="status">Status</string>
     <string name="cnh">CNH</string>
     <string name="cargo">Cargo</string>
+    <string name="coletas">Coletas</string>
 
     <string-array name="cargos_array">
         <item>ADM</item>
