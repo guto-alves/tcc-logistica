@@ -1,14 +1,691 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.adm.ui.coleta.AdmColetasFragment">
+    android:fillViewport="true">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.gridlayout.widget.GridLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:padding="5dp">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="15dp"
+            android:text="Remetente"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="2" />
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_caixa_texto"
+            android:ems="10"
+            android:hint="Metalurgica Schio"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_column="1"
+            app:layout_row="2" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="15dp"
+            android:text="Endereço"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="3" />
+
+        <EditText
+            android:id="@+id/editText5"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_caixa_texto"
+            android:ems="10"
+            android:hint="Rua alvaro do Vale, 284"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_column="1"
+            app:layout_row="3" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="15dp"
+            android:text="Referência"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="4" />
+
+        <EditText
+            android:id="@+id/editText6"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_caixa_texto"
+            android:ems="10"
+            android:hint="Praça..."
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_column="1"
+            app:layout_row="4" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="15dp"
+            android:text="Bairro"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="5" />
+
+        <EditText
+            android:id="@+id/editText7"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_caixa_texto"
+            android:ems="10"
+            android:hint="Ipiranga"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_column="1"
+            app:layout_row="5" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="15dp"
+            android:text="@string/cidade"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="6" />
+
+        <EditText
+            android:id="@+id/editText8"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_caixa_texto"
+            android:ems="10"
+            android:hint="São Miguel Arcanjo / SP"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_column="1"
+            app:layout_row="6" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginTop="20dp"
+            android:text="Emissão"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="0"
+            android:layout_marginLeft="15dp" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="15dp"
+            android:text="Coletar "
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="1" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_caixa_texto"
+            android:ems="10"
+            android:hint="07/10/2019"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_column="1"
+            app:layout_row="1" />
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/background_caixa_texto"
+            android:ems="10"
+            android:hint="04/10/2019 20:42"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_column="1"
+            app:layout_row="0" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="15dp"
+            android:text="Contato"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="7" />
+
+        <EditText
+            android:id="@+id/editText9"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_caixa_texto"
+            android:ems="10"
+            android:hint="Edson"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_column="1"
+            app:layout_row="7" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="15dp"
+            android:text="Telefone"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="8" />
+
+        <EditText
+            android:id="@+id/editText10"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_caixa_texto"
+            android:ems="10"
+            android:hint="(11) 2065-5226"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_column="1"
+            app:layout_row="8" />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="15dp"
+            android:text="Especie"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="9" />
+
+        <EditText
+            android:id="@+id/editText11"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_caixa_texto"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_column="1"
+            app:layout_row="9" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="15dp"
+            android:text="N° Pedido"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="10" />
+
+        <EditText
+            android:id="@+id/editText12"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_caixa_texto"
+            android:ems="10"
+            android:hint="4505660481/OUT"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_column="1"
+            app:layout_row="10" />
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="15dp"
+            android:text="@string/veiculo"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="11" />
+
+        <EditText
+            android:id="@+id/editText13"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_caixa_texto"
+            android:ems="10"
+            android:hint="Pick-Up aberta"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_column="1"
+            app:layout_row="11" />
+
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="15dp"
+            android:text="@string/produto"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="12" />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="15dp"
+            android:text="Peso"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="13" />
+
+        <EditText
+            android:id="@+id/editText14"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_caixa_texto"
+            android:ems="10"
+            android:hint="Rodizio Fix"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_column="1"
+            app:layout_row="12" />
+
+        <EditText
+            android:id="@+id/editText15"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_caixa_texto"
+            android:ems="10"
+            android:hint="3"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_column="1"
+            app:layout_row="13" />
+
+        <TextView
+            android:id="@+id/textView29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="15dp"
+            android:text="Dimensões"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="14" />
+
+        <EditText
+            android:id="@+id/editText16"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_caixa_texto"
+            android:ems="10"
+            android:hint="36x36x30x cm"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_column="1"
+            app:layout_row="14" />
+
+        <TextView
+            android:id="@+id/textView30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="15dp"
+            android:text="N° ONU"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="15" />
+
+        <EditText
+            android:id="@+id/editText17"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_caixa_texto"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_column="1"
+            app:layout_row="15" />
+
+        <TextView
+            android:id="@+id/textView31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="15dp"
+            android:text="Destinatário"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="16" />
+
+        <EditText
+            android:id="@+id/editText18"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_caixa_texto"
+            android:ems="10"
+            android:hint="Clariant PeC"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_column="1"
+            app:layout_row="16" />
+
+        <TextView
+            android:id="@+id/textView32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="15dp"
+            android:text="@string/endereco"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="17" />
+
+        <EditText
+            android:id="@+id/editText19"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_caixa_texto"
+            android:ems="10"
+            android:hint="Av Jorge Bay Maluf, 2163"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_column="1"
+            app:layout_row="17" />
+
+        <TextView
+            android:id="@+id/textView33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="15dp"
+            android:text="Destino"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="18" />
+
+        <EditText
+            android:id="@+id/editText20"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_caixa_texto"
+            android:ems="10"
+            android:hint="Susano /SP - Brasil"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_column="1"
+            app:layout_row="18" />
+
+        <TextView
+            android:id="@+id/textView34"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="15dp"
+            android:text="Site"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="19" />
+
+        <EditText
+            android:id="@+id/editText21"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_caixa_texto"
+            android:ems="10"
+            android:hint="Suzano"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_column="1"
+            app:layout_row="19" />
+
+        <TextView
+            android:id="@+id/placaTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="15dp"
+            android:text="@string/placa"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="20" />
+
+        <EditText
+            android:id="@+id/placaEditText"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_caixa_texto"
+            android:ems="10"
+            android:hint="FED-3390"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_column="1"
+            app:layout_row="20" />
+
+        <TextView
+            android:id="@+id/textView35"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="15dp"
+            android:text="Semi-reboque"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="21" />
+
+        <EditText
+            android:id="@+id/semiReboqueEditText"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_caixa_texto"
+            android:ems="10"
+            android:hint=""
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_column="1"
+            app:layout_row="21" />
+
+        <TextView
+            android:id="@+id/textView36"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="15dp"
+            android:text="@string/motorista"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="22" />
+
+        <EditText
+            android:id="@+id/motoristaEditText"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_caixa_texto"
+            android:ems="10"
+            android:hint="Valdecir Matioli"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_column="1"
+            app:layout_row="22" />
+
+        <TextView
+            android:id="@+id/textView37"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="15dp"
+            android:text="RG"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="23" />
+
+        <EditText
+            android:id="@+id/rgEditText"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_caixa_texto"
+            android:ems="10"
+            android:hint=""
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_column="1"
+            app:layout_row="23" />
+
+        <TextView
+            android:id="@+id/textView38"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="15dp"
+            android:text="Coleta efetuada em"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="24" />
+
+        <EditText
+            android:id="@+id/coletaEfetuadaEditText"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_caixa_texto"
+            android:ems="10"
+            android:hint="             /            /"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_column="1"
+            app:layout_row="24" />
+
+        <TextView
+            android:id="@+id/textView39"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="15dp"
+            android:text="Hora"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="25" />
+
+        <EditText
+            android:id="@+id/coletaHoraEditText"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_caixa_texto"
+            android:ems="10"
+            android:hint="                  :      "
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_column="1"
+            app:layout_row="25" />
+
+        <Button
+            android:id="@+id/limparButton"
+            android:layout_width="145dp"
+            android:layout_height="35dp"
+            android:layout_margin="10dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/background_botao"
+            android:gravity="center"
+            android:text="@string/limpar"
+            android:textColor="@android:color/white"
+            app:layout_column="0"
+            app:layout_row="26" />
+
+        <Button
+            android:id="@+id/salvarButton"
+            android:layout_width="145dp"
+            android:layout_height="35dp"
+            android:layout_margin="10dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/background_botao"
+            android:gravity="center"
+            android:text="@string/salvar"
+            android:textColor="@android:color/white"
+            app:layout_column="1"
+            app:layout_row="26" />
+
+    </androidx.gridlayout.widget.GridLayout>
+</ScrollView>

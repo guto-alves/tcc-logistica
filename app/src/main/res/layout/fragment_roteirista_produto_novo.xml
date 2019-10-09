@@ -42,7 +42,7 @@
                     <EditText
                         android:id="@+id/nomeProdutoEditText"
                         android:layout_width="220dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="35dp"
                         android:layout_margin="5dp"
                         android:background="@drawable/background_caixa_texto"
                         android:ems="10"
@@ -59,7 +59,7 @@
                     <EditText
                         android:id="@+id/codEditText"
                         android:layout_width="220dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="35dp"
                         android:layout_margin="5dp"
                         android:background="@drawable/background_caixa_texto"
                         android:ems="10"
@@ -76,7 +76,7 @@
                     <EditText
                         android:id="@+id/dataChegadaEditText"
                         android:layout_width="140dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="35dp"
                         android:layout_margin="5dp"
                         android:background="@drawable/background_caixa_texto"
                         android:ems="10"
@@ -93,7 +93,7 @@
                     <EditText
                         android:id="@+id/dataEntregaEditText"
                         android:layout_width="140dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="35dp"
                         android:layout_margin="5dp"
                         android:background="@drawable/background_caixa_texto"
                         android:ems="10"
@@ -112,7 +112,7 @@
                     <EditText
                         android:id="@+id/quantidadeEditText"
                         android:layout_width="80dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="35dp"
                         android:layout_margin="5dp"
                         android:background="@drawable/background_caixa_texto"
                         android:gravity="center"

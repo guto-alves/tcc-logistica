@@ -31,6 +31,7 @@
                 android:text="@string/funcionarios"
                 android:textColor="@android:color/white"
                 android:textSize="24sp"
+                android:textStyle="bold"
                 app:fontFamily="monospace" />
 
             <TextView
@@ -46,7 +47,7 @@
             <EditText
                 android:id="@+id/nomeEditText"
                 android:layout_width="250dp"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_margin="5dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/background_caixa_texto"
@@ -65,7 +66,7 @@
             <EditText
                 android:id="@+id/rgEditText"
                 android:layout_width="250dp"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_margin="5dp"
                 android:background="@drawable/background_caixa_texto"
                 android:ems="10"
@@ -83,7 +84,7 @@
             <EditText
                 android:id="@+id/cpfEditText"
                 android:layout_width="250dp"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_margin="5dp"
                 android:background="@drawable/background_caixa_texto"
                 android:ems="10"
@@ -102,7 +103,7 @@
             <EditText
                 android:id="@+id/enderecoEditText"
                 android:layout_width="250dp"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_margin="5dp"
                 android:background="@drawable/background_caixa_texto"
                 android:ems="10"
@@ -120,7 +121,7 @@
             <EditText
                 android:id="@+id/celularEditText"
                 android:layout_width="250dp"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_margin="5dp"
                 android:background="@drawable/background_caixa_texto"
                 android:ems="10"
@@ -138,7 +139,7 @@
             <EditText
                 android:id="@+id/emailEditText"
                 android:layout_width="250dp"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_margin="5dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/background_caixa_texto"
@@ -275,7 +276,8 @@
                 android:background="@drawable/background_botao"
                 android:gravity="center"
                 android:text="@string/limpar"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/salvarButton"
@@ -285,7 +287,8 @@
                 android:background="@drawable/background_botao"
                 android:gravity="center"
                 android:text="@string/salvar"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
