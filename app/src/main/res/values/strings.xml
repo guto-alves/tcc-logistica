@@ -67,6 +67,22 @@
     <string name="dados_adicionais">Dados adicionais</string>
     <string name="rg">RG</string>
     <string name="cpf">CPF</string>
+    <string name="emissao">Emissão</string>
+    <string name="coletar">Coletar</string>
+    <string name="referencia">Referência</string>
+    <string name="bairro">Bairro</string>
+    <string name="contato">Contato</string>
+    <string name="telefone">Telefone</string>
+    <string name="especie">Especie</string>
+    <string name="n_pedido">N° Pedido</string>
+    <string name="peso">Peso</string>
+    <string name="dimensoes">Dimensões</string>
+    <string name="n_onu">N° ONU</string>
+    <string name="destino">Destino</string>
+    <string name="site">Site</string>
+    <string name="semi_reboque">Semi-reboque</string>
+    <string name="coleta_efetuada_em">Coleta efetuada em</string>
+    <string name="hora">Hora</string>
 
     <string-array name="cargos_array">
         <item>ADM</item>
