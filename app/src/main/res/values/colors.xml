@@ -4,10 +4,11 @@
     <color name="colorPrimaryDark">#2196F3</color>
     <color name="colorAccent">#3F51B5</color>
 
-    <color name="colorBackground">#F0EEEB</color>
-    <color name="colorGrey">#5D665D</color>
-    <color name="colorYellow">#B4F8E21A</color>
+    <color name="colorBackground">@color/colorGray</color>
+    <color name="colorGray">#A999A099</color>
+    <color name="colorYellow">#05399E</color>
     <color name="colorBlack">#141313</color>
     <color name="colorStatus">#B45414</color>
+    <color name="colorBack">#F0EEEB</color>
 
 </resources>

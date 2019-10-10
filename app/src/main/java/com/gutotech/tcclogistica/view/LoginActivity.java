@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
 
         funcionarioReference = ConfigFirebase.getDatabase().child("funcionario");
 
-        startActivity(new Intent(LoginActivity.this, RoteiristaMainActivity.class));
+        startActivity(new Intent(LoginActivity.this, AdmMainActivity.class));
     }
 
     public void entrar(View view) {

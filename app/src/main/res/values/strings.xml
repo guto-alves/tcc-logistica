@@ -64,6 +64,9 @@
     <string name="cnh">CNH</string>
     <string name="cargo">Cargo</string>
     <string name="coletas">Coletas</string>
+    <string name="dados_adicionais">Dados adicionais</string>
+    <string name="rg">RG</string>
+    <string name="cpf">CPF</string>
 
     <string-array name="cargos_array">
         <item>ADM</item>
