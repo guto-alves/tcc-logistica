@@ -50,13 +50,26 @@ public class LoginActivity extends AppCompatActivity {
         processingDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         funcionarioReference = ConfigFirebase.getDatabase().child("funcionario");
-
-        startActivity(new Intent(LoginActivity.this, AdmMainActivity.class));
     }
 
     public void entrar(View view) {
         final String user = userEditText.getText().toString();
         final String password = passwordEditText.getText().toString();
+
+        if (!user.isEmpty()) {
+            switch (Integer.parseInt(user)) {
+                case 1:
+                    startActivity(new Intent(LoginActivity.this, AdmMainActivity.class));
+                    break;
+                case 2:
+                    startActivity(new Intent(LoginActivity.this, RoteiristaMainActivity.class));
+                    break;
+                case 3:
+                    startActivity(new Intent(LoginActivity.this, MotoristaMainActivity.class));
+                    break;
+            }
+            finish();
+        }
 
         if (isValidField(user, password)) {
             processingDialog.show();
@@ -86,7 +99,7 @@ public class LoginActivity extends AppCompatActivity {
                                     break;
                             }
 
-                            finish();
+
                         } else
                             Toasty.error(LoginActivity.this, "Senha inválida", Toast.LENGTH_SHORT, true).show();
                     } else

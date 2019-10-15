@@ -76,12 +76,6 @@ public class FuncionarioNovoFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 funcionario.setCargo(cargoSpinner.getSelectedItem().toString());
 
-                GridLayout motoristaGridLayout = root.findViewById(R.id.motoristaGridLayout);
-
-                if (funcionario.getCargo().equals(Funcionario.MOTORISTA))
-                    motoristaGridLayout.setVisibility(View.VISIBLE);
-                else
-                    motoristaGridLayout.setVisibility(View.GONE);
             }
 
             @Override

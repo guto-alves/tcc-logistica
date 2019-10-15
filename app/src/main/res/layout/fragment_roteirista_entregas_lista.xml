@@ -5,11 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".view.roteirista.ui.entregas.RoteiristaEntregasListaFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewEntregasLista"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="LISTA DE ENTREGAS DO ROTEIRISTA" />
-
+        android:layout_height="match_parent" />
 </FrameLayout>
