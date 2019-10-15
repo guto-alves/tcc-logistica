@@ -185,7 +185,7 @@
             android:layout_marginRight="16dp"
             android:background="@drawable/background_caixa_texto"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline5"
             app:layout_constraintTop_toBottomOf="@+id/celularEditText" />
@@ -195,7 +195,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.34" />
+            app:layout_constraintGuide_percent="0.28" />
 
         <TextView
             android:id="@+id/textView59"
@@ -211,7 +211,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView52" />
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/cargoSpinner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -290,7 +290,7 @@
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline5"
-            app:layout_constraintTop_toBottomOf="@+id/spinner" />
+            app:layout_constraintTop_toBottomOf="@+id/cargoSpinner" />
 
         <TextView
             android:id="@+id/textView58"
@@ -363,8 +363,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintGuide_begin="797dp" />
+            app:layout_constraintBottom_toBottomOf="parent" />
 
 
         <Button
@@ -378,12 +377,12 @@
             android:text="@string/limpar"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/salvarButtonButton"
+            app:layout_constraintEnd_toStartOf="@+id/salvarButton"
             app:layout_constraintTop_toTopOf="@+id/guideline6"
             app:layout_constraintVertical_bias="1.0" />
 
         <Button
-            android:id="@+id/salvarButtonButton"
+            android:id="@+id/salvarButton"
             android:layout_width="145dp"
             android:layout_height="35dp"
             android:layout_marginEnd="40dp"

@@ -4,8 +4,8 @@
     <color name="colorPrimaryDark">#2196F3</color>
     <color name="colorAccent">#3F51B5</color>
 
-    <color name="colorBackground">@color/colorGray</color>
-    <color name="colorGray">#A999A099</color>
+    <color name="colorBackground">#e6dcd8</color>
+    <color name="colorGray">#A9CCD1CC</color>
     <color name="colorYellow">#05399E</color>
     <color name="colorBlack">#141313</color>
     <color name="colorStatus">#B45414</color>

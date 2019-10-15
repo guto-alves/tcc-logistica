@@ -7,13 +7,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.material.tabs.TabItem;
-import com.google.android.material.tabs.TabLayout;
 import com.gutotech.tcclogistica.R;
-import com.gutotech.tcclogistica.view.adapter.PageAdapter;
 
 public class AdmEstoqueFragment extends Fragment {
 
