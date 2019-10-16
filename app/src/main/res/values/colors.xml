@@ -4,15 +4,11 @@
     <color name="colorPrimaryDark">@color/colorBlue</color>
     <color name="colorAccent">#3F51B5</color>
 
-<<<<<<< HEAD
     <color name="colorBackground">@color/colorGray</color>
     <color name="colorGray">#A999A099</color>
     <color name="colorBlue">#05399E</color>
-=======
-    <color name="colorBackground">#e6dcd8</color>
-    <color name="colorGray">#A9CCD1CC</color>
     <color name="colorYellow">#05399E</color>
->>>>>>> 95579c6193a355073fdd85a650eac718eded12ad
+
     <color name="colorBlack">#141313</color>
     <color name="colorStatus">#B45414</color>
     <color name="colorBack">#F0EEEB</color>

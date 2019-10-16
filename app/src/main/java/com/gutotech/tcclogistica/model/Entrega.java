@@ -8,6 +8,8 @@ public class Entrega {
     private Nota produto;
     private Motorista motorista;
     private Endereco endereco;
+    private Hora horarioSaida;
+    private Hora horarioChegada;
 
     private enum Status {ENTREGUE, DEVOLUCAO, PEDENTE}
 
