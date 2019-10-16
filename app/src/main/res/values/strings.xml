@@ -83,6 +83,8 @@
     <string name="semi_reboque">Semi-reboque</string>
     <string name="coleta_efetuada_em">Coleta efetuada em</string>
     <string name="hora">Hora</string>
+    <string name="horario">Horário</string>
+    <string name="coletado_em">Coletado em</string>
 
     <string-array name="cargos_array">
         <item>ADM</item>
