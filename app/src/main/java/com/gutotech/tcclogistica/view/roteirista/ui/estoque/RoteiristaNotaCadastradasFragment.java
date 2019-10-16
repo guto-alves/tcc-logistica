@@ -10,17 +10,17 @@ import android.view.ViewGroup;
 
 import com.gutotech.tcclogistica.R;
 
-public class RoteiristaProdutoNovoFragment extends Fragment {
+public class RoteiristaNotaCadastradasFragment extends Fragment {
 
-    public RoteiristaProdutoNovoFragment() {
+    public RoteiristaNotaCadastradasFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_roteirista_produto_novo, container, false);
+        View root = inflater.inflate(R.layout.fragment_roteirista_notas_cadastradas, container, false);
 
-
-        return view;
+        return root;
     }
+
 }

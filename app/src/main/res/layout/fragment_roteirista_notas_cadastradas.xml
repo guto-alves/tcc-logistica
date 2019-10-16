@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.roteirista.ui.estoque.RoteiristaProdutosCadastradosFragment">
+    tools:context=".view.roteirista.ui.estoque.RoteiristaNotaCadastradasFragment">
 
     <TextView
         android:layout_width="match_parent"

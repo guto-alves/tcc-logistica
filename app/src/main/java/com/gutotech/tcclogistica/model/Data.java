@@ -4,6 +4,7 @@ public class Data {
     private int dia;
     private int mes;
     private int ano;
+    private String data;
 
     public Data() {
     }
@@ -12,6 +13,14 @@ public class Data {
         this.dia = dia;
         this.mes = mes;
         this.ano = ano;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 
     public int getDia() {

@@ -1,4 +1,4 @@
-package com.gutotech.tcclogistica.view.roteirista.ui.coleta;
+package com.gutotech.tcclogistica.view.roteirista.ui.estoque;
 
 import android.os.Bundle;
 
@@ -9,38 +9,40 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 
 import com.gutotech.tcclogistica.R;
 
 import java.util.UUID;
 
-public class RoteiristaColetaNovaFragment extends Fragment {
+public class RoteiristaNotaNovaFragment extends Fragment {
+    private EditText dataEmissaoEditText;
+    private EditText naturezaOperacaoEditText;
+
     // campos remetente
     private EditText nomeRemetenteEditText, enderecoRemetenteEditText, referenciaEditText,
-            bairroEditText, cidadeEditText, cepEditText, contatoEditText, telefoneEditText, especieEditText, nPedidoEditText, veiculoEditText;
+            bairroEditText, cidadeEditText, cepEditText, contatoEditText, telefoneEditText, nPedidoEditText, veiculoEditText;
 
     // campos produto
     private EditText produtoEditText, pesoEditText, dimensoesEditText, nONUEditText;
 
-    // campos destinatario
-    private EditText nomeDestinatarioEditText, enderecoDestinatarioEditText, destinoEditText,
-            siteEditText, placaEditText, semiRoboqueEditText;
+    // campos transportador
+    private EditText nomeTransportadorEditText, fretePorContaEditText, codANTTEditText, placaVeiculoEditText, cnpjEditText,
+            enderecoTransportadorEditText, municipioTransportadorEditText, ufEditText, ieEditText,
+            quantidadeTransportadorEditText, especieEditText, marcaEditText, numeroTransportadorEditText, pesoBrutoEdiText, pesoLiquidoEdiText;
 
     private EditText motoristaEditText, rgEditText;
 
-    private EditText observacoesEditText, instrucoesEditText;
+    private EditText dadosAdicionaisEditText;
 
     private EditText dataEfetuada, horaEfetuada;
 
-    public RoteiristaColetaNovaFragment() {
+    public RoteiristaNotaNovaFragment() {
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_roteirista_coletas_nova, container, false);
+        View root = inflater.inflate(R.layout.fragment_roteirista_nota_nova, container, false);
 
 
         Button salvarButton = root.findViewById(R.id.salvarButton);
@@ -58,8 +60,6 @@ public class RoteiristaColetaNovaFragment extends Fragment {
 
             }
         });
-
         return root;
     }
-
 }
