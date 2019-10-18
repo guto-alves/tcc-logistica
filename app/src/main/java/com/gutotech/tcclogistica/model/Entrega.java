@@ -5,18 +5,10 @@ import com.gutotech.tcclogistica.config.ConfigFirebase;
 
 public class Entrega {
     private String id;
-<<<<<<< HEAD
     private Nota nota;
     private Funcionario motorista;
     private String data;
     private String hora;
-=======
-    private Nota produto;
-    private Motorista motorista;
-    private Endereco endereco;
-    private Hora horarioSaida;
-    private Hora horarioChegada;
->>>>>>> 259a14608e5ffa6225fbb0fef545d89535731aae
 
     private enum Status {ENTREGUE, PEDENTE, DEVOLUCAO}
 

@@ -32,7 +32,7 @@ public class ColetaRealizadaAdapter extends RecyclerView.Adapter<ColetaRealizada
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Coleta coleta = coletas.get(position);
 
-        holder.emissao.setText("");
+        holder.emissao.setText(coleta.getDataEmissao());
         holder.coletar.setText("");
         holder.remetente.setText("");
         holder.produto.setText("");

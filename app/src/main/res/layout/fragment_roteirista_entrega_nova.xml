@@ -9,110 +9,28 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-<<<<<<< HEAD
-        android:layout_height="wrap_content">
-=======
         android:layout_height="wrap_content"
         app:cardElevation="20dp">
->>>>>>> 259a14608e5ffa6225fbb0fef545d89535731aae
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textViewCodigo"
+                android:id="@+id/textViewDataEmissao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="32dp"
-                android:text="@string/codigo"
+                android:text="Nota"
                 android:textColor="@color/colorBlack"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
             <TextView
-                android:id="@+id/textViewNome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="24dp"
-                android:text="@string/nome"
-                android:textColor="@color/colorBlack"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/codigoEditText" />
-
-            <TextView
-                android:id="@+id/textViewDescricao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="24dp"
-                android:text="@string/descricao"
-                android:textColor="@color/colorBlack"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nomeEditText" />
-
-            <TextView
                 android:id="@+id/textViewNaturezaOperacao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="24dp"
-                android:text="Natureza da Operação"
-                android:textColor="@color/colorBlack"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descricaoEditText" />
-
-            <TextView
-                android:id="@+id/textViewValorTotalNotas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="24dp"
-                android:text="Valor total das notas"
-                android:textColor="@color/colorBlack"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/naturezaOperacaoEditText" />
-
-            <TextView
-                android:id="@+id/textViewValorTotalProdutos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="24dp"
-                android:text="Valor total dos produtos"
-                android:textColor="@color/colorBlack"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/valorNotaEditText" />
-
-            <TextView
-                android:id="@+id/textViewQuantidade"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="24dp"
-                android:text="@string/quantidade"
-                android:textColor="@color/colorBlack"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/valorProdutoEditText" />
-
-            <TextView
-                android:id="@+id/textViewMotorista"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -122,23 +40,10 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/quantidadeEditText" />
+                app:layout_constraintTop_toBottomOf="@+id/dataEmissaoEditText" />
 
-            <TextView
-                android:id="@+id/textViewDadosAdicionais"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="24dp"
-                android:text="@string/dados_adicionais"
-                android:textColor="@color/colorBlack"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/motoristaEditText" />
-
-            <EditText
-                android:id="@+id/codigoEditText"
+            <Spinner
+                android:id="@+id/dataEmissaoEditText"
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="16dp"
@@ -147,48 +52,11 @@
                 android:layout_marginEnd="24dp"
                 android:layout_marginRight="24dp"
                 android:background="@drawable/background_caixa_texto"
-                android:ems="10"
-                android:inputType="numberSigned"
-                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewCodigo" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewDataEmissao" />
 
-            <EditText
-                android:id="@+id/nomeEditText"
-                android:layout_width="0dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginRight="24dp"
-                android:background="@drawable/background_caixa_texto"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewNome" />
-
-            <EditText
-                android:id="@+id/descricaoEditText"
-                android:layout_width="0dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginRight="24dp"
-                android:background="@drawable/background_caixa_texto"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewDescricao" />
-
-            <EditText
+            <Spinner
                 android:id="@+id/naturezaOperacaoEditText"
                 android:layout_width="0dp"
                 android:layout_height="35dp"
@@ -199,129 +67,12 @@
                 android:layout_marginRight="24dp"
                 android:background="@drawable/background_caixa_texto"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewNaturezaOperacao" />
 
-            <EditText
-                android:id="@+id/valorNotaEditText"
-                android:layout_width="0dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginRight="24dp"
-                android:background="@drawable/background_caixa_texto"
-                android:ems="10"
-                android:inputType="number|numberDecimal"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewValorTotalNotas" />
 
-            <EditText
-                android:id="@+id/valorProdutoEditText"
-                android:layout_width="0dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginRight="24dp"
-                android:background="@drawable/background_caixa_texto"
-                android:ems="10"
-                android:inputType="number|numberDecimal"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewValorTotalProdutos" />
-
-            <EditText
-                android:id="@+id/motoristaEditText"
-                android:layout_width="0dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginRight="24dp"
-                android:background="@drawable/background_caixa_texto"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewMotorista" />
-
-            <EditText
-                android:id="@+id/quantidadeEditText"
-                android:layout_width="0dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginRight="24dp"
-                android:background="@drawable/background_caixa_texto"
-                android:ems="10"
-                android:inputType="number"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewQuantidade" />
-
-            <EditText
-                android:id="@+id/dadosAdicionaisEditText"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginRight="24dp"
-                android:background="@drawable/background_caixa_texto"
-                android:ems="10"
-                android:gravity="start|top"
-                android:inputType="textMultiLine"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewDadosAdicionais" />
-
-
-<<<<<<< HEAD
-        <Button
-            android:id="@+id/limparButton"
-            android:layout_width="145dp"
-            android:layout_height="35dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_marginBottom="32dp"
-            android:background="@drawable/background_botao"
-            android:text="@string/limpar"
-            android:textColor="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/salvarButton"
-            app:layout_constraintTop_toTopOf="@+id/guideline2"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <Button
-            android:id="@+id/salvarButton"
-            android:layout_width="145dp"
-            android:layout_height="35dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginBottom="32dp"
-            android:background="@drawable/background_botao"
-            android:text="@string/salvar"
-            android:textColor="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline2"
-            app:layout_constraintVertical_bias="1.0" />
-=======
             <Button
                 android:id="@+id/limparButton"
                 android:layout_width="145dp"
@@ -336,14 +87,13 @@
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/salvarButtonButton"
+                app:layout_constraintEnd_toStartOf="@+id/salvarButton"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <Button
-                android:id="@+id/salvarButtonButton"
+                android:id="@+id/salvarButton"
                 android:layout_width="145dp"
                 android:layout_height="35dp"
-                android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="24dp"
@@ -352,9 +102,7 @@
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dadosAdicionaisEditText" />
->>>>>>> 259a14608e5ffa6225fbb0fef545d89535731aae
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:id="@+id/textView28"
@@ -367,7 +115,7 @@
                 android:layout_marginRight="160dp"
                 android:background="@drawable/background_cabecalho"
                 android:gravity="center"
-                android:text="@string/entregas"
+                android:text="Entrega"
                 android:textColor="@android:color/white"
                 android:textSize="24sp"
                 android:textStyle="bold"

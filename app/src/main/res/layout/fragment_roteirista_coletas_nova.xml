@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:padding="16dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -439,7 +440,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
             <EditText
-                android:id="@+id/pesoEditText"
+                android:id="@+id/nomeRemetenteEditText"
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="16dp"
@@ -466,7 +467,7 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pesoEditText" />
+                app:layout_constraintTop_toBottomOf="@+id/nomeRemetenteEditText" />
 
             <EditText
                 android:id="@+id/dimensoesEditText"

@@ -13,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridLayout;
 import android.widget.Spinner;
 
 import com.google.firebase.database.DataSnapshot;
@@ -23,13 +22,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.config.ConfigFirebase;
 import com.gutotech.tcclogistica.model.Funcionario;
-import com.gutotech.tcclogistica.model.GeradorLogin;
 import com.gutotech.tcclogistica.model.Login;
 import com.gutotech.tcclogistica.model.Veiculo;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 import es.dmoral.toasty.Toasty;
 
@@ -50,7 +44,7 @@ public class FuncionarioNovoFragment extends Fragment {
                              Bundle savedInstanceState) {
         final View root = inflater.inflate(R.layout.fragment_adm_funcionario_novo, container, false);
 
-        nomeEditText = root.findViewById(R.id.nomeEditText);
+        nomeEditText = root.findViewById(R.id.naturezaOperacaoEditText);
         rgEditText = root.findViewById(R.id.rgEditText);
         cpfEditText = root.findViewById(R.id.cpfEditText);
         enderecoEditText = root.findViewById(R.id.enderecoEditText);

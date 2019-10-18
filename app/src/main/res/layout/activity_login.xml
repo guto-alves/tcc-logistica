@@ -7,6 +7,7 @@
     android:padding="32dp"
     tools:context=".view.LoginActivity">
 
+
     <ImageView
         android:id="@+id/logoImageView"
         android:layout_width="wrap_content"
