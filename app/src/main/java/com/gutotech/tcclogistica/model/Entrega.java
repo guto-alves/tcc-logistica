@@ -5,29 +5,40 @@ import com.gutotech.tcclogistica.config.ConfigFirebase;
 
 public class Entrega {
     private String id;
+<<<<<<< HEAD
+    private Nota nota;
+    private Funcionario motorista;
+    private String data;
+    private String hora;
+=======
     private Nota produto;
     private Motorista motorista;
     private Endereco endereco;
     private Hora horarioSaida;
     private Hora horarioChegada;
+>>>>>>> 259a14608e5ffa6225fbb0fef545d89535731aae
 
-    private enum Status {ENTREGUE, DEVOLUCAO, PEDENTE}
+    private enum Status {ENTREGUE, PEDENTE, DEVOLUCAO}
 
     private Status status;
 
     public Entrega() {
     }
 
-    public Entrega(Nota produto, Motorista motorista, Endereco endereco) {
-        this.produto = produto;
+    public Entrega(String id, Nota nota, Funcionario motorista, String data, String hora, Status status) {
+        this.id = id;
+        this.nota = nota;
         this.motorista = motorista;
-        this.endereco = endereco;
+        this.data = data;
+        this.hora = hora;
+        this.status = status;
     }
 
     public void salvar() {
         DatabaseReference entregaReference = ConfigFirebase.getDatabase()
-                .child("entrega")
-                .push();
+                .child("entregas")
+                .child(id);
+
         entregaReference.setValue(this);
     }
 
@@ -39,28 +50,36 @@ public class Entrega {
         this.id = id;
     }
 
-    public Nota getProduto() {
-        return produto;
+    public Nota getNota() {
+        return nota;
     }
 
-    public void setProduto(Nota produto) {
-        this.produto = produto;
+    public void setNota(Nota nota) {
+        this.nota = nota;
     }
 
-    public Motorista getMotorista() {
+    public Funcionario getMotorista() {
         return motorista;
     }
 
-    public void setMotorista(Motorista motorista) {
+    public void setMotorista(Funcionario motorista) {
         this.motorista = motorista;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public String getData() {
+        return data;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
     }
 
     public Status getStatus() {

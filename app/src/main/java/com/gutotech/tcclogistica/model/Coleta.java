@@ -1,9 +1,9 @@
 package com.gutotech.tcclogistica.model;
 
 public class Coleta {
-    private Data dataEmissao;
-    private Data dataColetarAte;
+    private String dataColetarAte;
     private Hora horaColetarAte;
+    private String dataEmissao;
     private Remetente remetente;
     private Produto produto;
     private Destinatario destinatario;

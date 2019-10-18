@@ -12,7 +12,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.gutotech.tcclogistica.R;
-import com.gutotech.tcclogistica.view.roteirista.ui.entregas.RoteiristaEntregaNovaFragment;
 
 public class RoteiristaEstoqueFragment extends Fragment {
 
@@ -26,10 +25,10 @@ public class RoteiristaEstoqueFragment extends Fragment {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.action_novo:
-                        changeToFragment(new RoteiristaProdutoNovoFragment());
+                        changeToFragment(new RoteiristaNotaNovaFragment());
                         break;
                     case R.id.action_cadastrados:
-                        changeToFragment(new RoteiristaProdutosCadastradosFragment());
+                        changeToFragment(new RoteiristaNotaCadastradasFragment());
                         break;
                 }
 
@@ -37,7 +36,7 @@ public class RoteiristaEstoqueFragment extends Fragment {
             }
         });
 
-        changeToFragment(new RoteiristaProdutoNovoFragment());
+        changeToFragment(new RoteiristaNotaNovaFragment());
 
         return root;
     }

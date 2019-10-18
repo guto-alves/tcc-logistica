@@ -19,9 +19,9 @@ import com.gutotech.tcclogistica.view.adapter.ProdutoEstoqueAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoteiristaProdutosCadastradosFragment extends Fragment {
+public class RoteiristaNotaCadastradasFragment extends Fragment {
 
-    public RoteiristaProdutosCadastradosFragment() {
+    public RoteiristaNotaCadastradasFragment() {
     }
 
     private RecyclerView produtosRecyclerView;
@@ -30,7 +30,7 @@ public class RoteiristaProdutosCadastradosFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_roteirista_produtos_cadastrados, container, false);
+        View root = inflater.inflate(R.layout.fragment_roteirista_notas_cadastradas, container, false);
 
         produtosRecyclerView = root.findViewById(R.id.produtosRecyclerView);
 
