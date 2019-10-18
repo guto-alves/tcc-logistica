@@ -23,7 +23,6 @@ public class RoteiristaEntregasListaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_roteirista_entregas_lista, container, false);
-        // aqui n tinha q usar o find tbm ? uhum
 
         recyclerView = root.findViewById(R.id.entregasRecyclerView);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());

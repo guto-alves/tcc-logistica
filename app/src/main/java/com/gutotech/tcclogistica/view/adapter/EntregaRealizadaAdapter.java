@@ -23,6 +23,7 @@ public class EntregaRealizadaAdapter extends RecyclerView.Adapter<EntregaRealiza
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         return null;
     }
 
@@ -31,8 +32,7 @@ public class EntregaRealizadaAdapter extends RecyclerView.Adapter<EntregaRealiza
         Entrega entrega = entregas.get(position);
 
         holder.notaFiscal.setText(entrega.getId());
-
-        holder.motoristaTextView.setText(entrega.getMotorista().getNome());
+        holder.motorista.setText(entrega.getMotorista().getNome());
 
     }
 
@@ -44,13 +44,13 @@ public class EntregaRealizadaAdapter extends RecyclerView.Adapter<EntregaRealiza
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         private TextView notaFiscal;
-        private TextView motoristaTextView;
+        private TextView motorista;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            notaFiscal = itemView.findViewById(R.id.notaFiscalTextView);
-            motoristaTextView = itemView.findViewById(R.id.motoristaTextView);
+            notaFiscal = itemView.findViewById(R.id.codigoTextView);
+            motorista = itemView.findViewById(R.id.motoristaTextView);
 
         }
     }

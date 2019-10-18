@@ -6,11 +6,38 @@
     android:padding="15dp">
 
     <TextView
-        android:id="@+id/motoristaTextView"
+        android:id="@+id/nomeTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:text="@string/motorista"
+        android:text="@string/nome"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/rgTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="@string/rg"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/cpfTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="@string/cpf"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/enderecoTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="@string/endereco"
         android:textColor="@color/colorBlack"
         android:textSize="18sp" />
 
@@ -24,11 +51,11 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/cnhTextView"
+        android:id="@+id/emailTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:text="@string/cnh"
+        android:text="@string/email"
         android:textColor="@color/colorBlack"
         android:textSize="18sp" />
 
@@ -38,22 +65,14 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/veiculoTextView"
+            android:id="@+id/cargoTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/veiculo"
+            android:text="@string/cargo"
             android:textColor="@color/colorBlack"
             android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/categoriaTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/categoria"
-            android:textColor="@color/colorBlack"
-            android:textSize="18sp" />
     </LinearLayout>
 
 </LinearLayout>

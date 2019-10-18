@@ -13,8 +13,8 @@ public class Coleta {
     private String observacoes;
     private String intrucoes;
 
-    private Data dataEfetuada;
-    private Hora horaEfetuada;
+    private Data dataColetada;
+    private Hora horaColetada;
 
     public Coleta() {
     }

@@ -6,9 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".view.roteirista.ui.estoque.RoteiristaProdutosCadastradosFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/produtosRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="LISTA DE PRODUTOS CADASTRADOS" />
+        android:layout_height="match_parent" />
 </FrameLayout>

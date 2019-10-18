@@ -26,7 +26,7 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nomeEditText" />
+                app:layout_constraintTop_toBottomOf="@+id/textView46" />
 
             <TextView
                 android:id="@+id/textViewNome"
@@ -39,20 +39,20 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView46" />
+                app:layout_constraintTop_toBottomOf="@+id/codigoEditText" />
 
             <TextView
-                android:id="@+id/textViewDataEntrega"
+                android:id="@+id/textViewPrecoUnitario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="24dp"
-                android:text="@string/data_entrega"
+                android:text="Preço unitário"
                 android:textColor="@color/colorBlack"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dataChegadaEditText" />
+                app:layout_constraintTop_toBottomOf="@+id/quantidadeEditText" />
 
             <TextView
                 android:id="@+id/textViewQuantidade"
@@ -65,7 +65,7 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dataEntregaEditText" />
+                app:layout_constraintTop_toBottomOf="@+id/pesoEditText" />
 
             <TextView
                 android:id="@+id/textViewDescricao"
@@ -78,20 +78,20 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/quantidadeEditText" />
+                app:layout_constraintTop_toBottomOf="@+id/valorTotalEditText" />
 
             <TextView
-                android:id="@+id/textViewDataChegada"
+                android:id="@+id/textViewPeso"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="24dp"
-                android:text="@string/data_chegada"
+                android:text="@string/peso"
                 android:textColor="@color/colorBlack"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/codigoEditText" />
+                app:layout_constraintTop_toBottomOf="@+id/nomeEditText" />
 
             <TextView
                 android:id="@+id/textView46"
@@ -138,13 +138,13 @@
                 android:layout_marginRight="24dp"
                 android:background="@drawable/background_caixa_texto"
                 android:ems="10"
-                android:inputType="numberSigned|number"
+                android:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewCodigo" />
 
             <EditText
-                android:id="@+id/dataChegadaEditText"
+                android:id="@+id/pesoEditText"
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="16dp"
@@ -154,13 +154,13 @@
                 android:layout_marginRight="24dp"
                 android:background="@drawable/background_caixa_texto"
                 android:ems="10"
-                android:inputType="date"
+                android:inputType="number|numberDecimal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewDataChegada" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewPeso" />
 
             <EditText
-                android:id="@+id/dataEntregaEditText"
+                android:id="@+id/precoUnitarioEditText"
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="16dp"
@@ -170,10 +170,10 @@
                 android:layout_marginRight="24dp"
                 android:background="@drawable/background_caixa_texto"
                 android:ems="10"
-                android:inputType="date"
+                android:inputType="number|numberDecimal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewDataEntrega" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewPrecoUnitario" />
 
             <EditText
                 android:id="@+id/quantidadeEditText"
@@ -186,7 +186,7 @@
                 android:layout_marginRight="24dp"
                 android:background="@drawable/background_caixa_texto"
                 android:ems="10"
-                android:inputType="numberSigned"
+                android:inputType="numberDecimal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewQuantidade" />
@@ -239,6 +239,35 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/descricaoEditText" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="24dp"
+                android:text="Valor total"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/precoUnitarioEditText" />
+
+            <EditText
+                android:id="@+id/valorTotalEditText"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
+                android:background="@drawable/background_caixa_texto"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
