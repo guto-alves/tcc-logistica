@@ -17,6 +17,7 @@ import android.widget.Spinner;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.config.ConfigFirebase;
@@ -31,7 +32,7 @@ import java.util.UUID;
 
 public class RoteiristaEntregaNovaFragment extends Fragment {
     private Spinner motoristaSpinner, notaSpinner;
-    private ArrayAdapter arrayAdapterMotoristas, arrayAdapterNotas;
+    private ArrayAdapter motoristasArrayAdapter, notasArrayAdapter;
 
     private EditText dataEditText, horaEditText;
 
@@ -43,11 +44,12 @@ public class RoteiristaEntregaNovaFragment extends Fragment {
     private List<Nota> notaList = new ArrayList<>();
     private List<String> nomesNotasList = new ArrayList<>();
 
-
     private DatabaseReference notasReference;
     private ValueEventListener notasListener;
+    private Query notasQuery;
 
     private DatabaseReference motoristasReference;
+    private Query motoristasQuery;
     private ValueEventListener motoristasListener;
 
     public RoteiristaEntregaNovaFragment() {
@@ -58,17 +60,17 @@ public class RoteiristaEntregaNovaFragment extends Fragment {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_roteirista_entrega_nova, container, false);
 
-        //notaSpinner = root.findViewById(R.id.notaSpinner);
-        //motoristaSpinner = root.findViewById(R.id.motoristaSpinner);
-        //dataEditText = root.findViewById(R.id.dataEditText);
-        //horaEditText = root.findViewById(R.id.horaEditText);
+        notaSpinner = root.findViewById(R.id.notaSpinner);
+        motoristaSpinner = root.findViewById(R.id.motoristaSpinner);
+        dataEditText = root.findViewById(R.id.dataEditText);
+        horaEditText = root.findViewById(R.id.horaEditText);
 
-        motoristasReference = ConfigFirebase.getDatabase().child("funcionario");
         notasReference = ConfigFirebase.getDatabase().child("nota");
+        motoristasReference = ConfigFirebase.getDatabase().child("funcionario");
 
-        arrayAdapterMotoristas = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, nomesMotoristasList);
-        arrayAdapterMotoristas.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        motoristaSpinner.setAdapter(arrayAdapterMotoristas);
+        motoristasArrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, nomesMotoristasList);
+        motoristasArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        motoristaSpinner.setAdapter(motoristasArrayAdapter);
         motoristaSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -80,9 +82,9 @@ public class RoteiristaEntregaNovaFragment extends Fragment {
             }
         });
 
-        arrayAdapterNotas = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, nomesNotasList);
-        arrayAdapterNotas.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        notaSpinner.setAdapter(arrayAdapterNotas);
+        notasArrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, nomesNotasList);
+        notasArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        notaSpinner.setAdapter(notasArrayAdapter);
         notaSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -140,13 +142,18 @@ public class RoteiristaEntregaNovaFragment extends Fragment {
     }
 
     private void getNotas() {
-        notasListener = notasReference.addValueEventListener(new ValueEventListener() {
+        notasQuery = notasReference.orderByChild("estoque").equalTo(true);
+
+        notasListener = notasQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Nota nota = dataSnapshot.getValue(Nota.class);
+                notaList.clear();
 
-                notaList.add(nota);
-                arrayAdapterNotas.notifyDataSetChanged();
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                    notaList.add(data.getValue(Nota.class));
+                }
+
+                notasArrayAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -156,16 +163,21 @@ public class RoteiristaEntregaNovaFragment extends Fragment {
     }
 
     private void getMotoristas() {
-        motoristasListener = motoristasReference.addValueEventListener(new ValueEventListener() {
+        motoristasQuery = motoristasReference.orderByChild("cargo").equalTo(Funcionario.MOTORISTA);
+
+        motoristasListener = motoristasQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Funcionario funcionario = dataSnapshot.getValue(Funcionario.class);
+                motoristasList.clear();
+                nomesMotoristasList.clear();
 
-                if (funcionario.getCargo().equals(Funcionario.MOTORISTA)) {
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                    Funcionario funcionario = data.getValue(Funcionario.class);
                     motoristasList.add(funcionario);
                     nomesMotoristasList.add(funcionario.getNome());
-                    arrayAdapterMotoristas.notifyDataSetChanged();
                 }
+
+                motoristasArrayAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -186,7 +198,7 @@ public class RoteiristaEntregaNovaFragment extends Fragment {
     public void onStop() {
         super.onStop();
 
-        motoristasReference.removeEventListener(motoristasListener);
-        notasReference.removeEventListener(notasListener);
+        motoristasQuery.removeEventListener(motoristasListener);
+        notasQuery.removeEventListener(notasListener);
     }
 }

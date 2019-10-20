@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/perfilImageView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:background="@color/colorPrimary"
+        android:contentDescription="@string/nav_header_desc"
+        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        app:srcCompat="@drawable/perfil_sem_foto" />
+
+    <TextView
+        android:id="@+id/nomeTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:gravity="center"
+        android:text="@string/nome"
+        android:textColor="@color/colorBlack"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/cargoTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cargo"
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/celularTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/celular"
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/emailTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/email"
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/rgTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/rg"
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/cpfTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/cpf"
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/enderecoTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/endereco"
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/dataNascimentoTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/data_nascimento"
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/ultimoLoginTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/ultimo_login"
+            android:textColor="@color/colorBlack" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/motoristaTextViewsLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/cnhTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/cnh"
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/categoriaTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/categoria"
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/veiculoTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/veiculo"
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/placaTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/placa"
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/anoTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ano"
+            android:textColor="@color/colorBlack" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/excluirButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/background_button_delete"
+            android:text="Excluir"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/fecharButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_button"
+            android:text="@string/fechar"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+</LinearLayout>

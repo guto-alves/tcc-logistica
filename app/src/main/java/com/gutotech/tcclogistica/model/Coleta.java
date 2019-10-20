@@ -1,6 +1,10 @@
 package com.gutotech.tcclogistica.model;
 
+import com.google.firebase.database.DatabaseReference;
+import com.gutotech.tcclogistica.config.ConfigFirebase;
+
 public class Coleta {
+    private String id;
     private String dataColetarAte;
     private Hora horaColetarAte;
     private String dataEmissao;
@@ -17,6 +21,22 @@ public class Coleta {
     private Hora horaColetada;
 
     public Coleta() {
+    }
+
+    public void salvar() {
+        DatabaseReference coletaReference = ConfigFirebase.getDatabase()
+                .child("coleta")
+                .child(id);
+
+        coletaReference.setValue(this);
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getDataColetarAte() {

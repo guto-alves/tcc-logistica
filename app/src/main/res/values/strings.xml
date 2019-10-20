@@ -87,8 +87,20 @@
     <string name="coletado_em">Coletado em</string>
 
     <string-array name="cargos_array">
-        <item>ADM</item>
-        <item>Roteirista</item>
         <item>Motorista</item>
+        <item>Roteirista</item>
+        <item>ADM</item>
     </string-array>
+
+    <string name="welcome_user">Olá, </string>
+    <string name="nota">Nota</string>
+    <string name="hora_entrega">Hora Entrega</string>
+    <string name="entrega">Entrega</string>
+    <string name="fechar">Fechar</string>
+    <string name="data_nascimento">Data de Nascimento</string>
+    <string name="ultimo_login">Último login</string>
+    <string name="ordem_de_coleta">Ordem de Coleta</string>
+    <string name="destinatario">Destinatário</string>
+    <string name="remetente">Remetente</string>
+    <string name="dia">Dia</string>
 </resources>

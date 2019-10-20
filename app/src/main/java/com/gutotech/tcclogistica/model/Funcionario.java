@@ -8,6 +8,7 @@ public class Funcionario {
     public static final String ROTEIRISTA = "Roteirista";
     public static final String MOTORISTA = "Motorista";
 
+    private int id;
     private String nome;
     private String rg;
     private String cpf;
@@ -15,8 +16,11 @@ public class Funcionario {
     private String celular;
     private String email;
     private String cargo;
+    private String dataNascimento;
 
     private Login login;
+    private String ultimoLogin;
+    private boolean online;
 
     private String cnh;
     private Veiculo veiculo;
@@ -24,7 +28,8 @@ public class Funcionario {
     public Funcionario() {
     }
 
-    public Funcionario(String nome, String rg, String cpf, String endereco, String celular, String email, String cargo, Login login) {
+    public Funcionario(int id, String nome, String rg, String cpf, String endereco, String celular, String email, String cargo, String dataNascimento, Login login, String ultimoLogin, boolean online, String cnh, Veiculo veiculo) {
+        this.id = id;
         this.nome = nome;
         this.rg = rg;
         this.cpf = cpf;
@@ -32,7 +37,12 @@ public class Funcionario {
         this.celular = celular;
         this.email = email;
         this.cargo = cargo;
+        this.dataNascimento = dataNascimento;
         this.login = login;
+        this.ultimoLogin = ultimoLogin;
+        this.online = online;
+        this.cnh = cnh;
+        this.veiculo = veiculo;
     }
 
     public void salvar() {
@@ -41,6 +51,27 @@ public class Funcionario {
                 .child(login.getUser());
 
         funcionarioReference.setValue(this);
+    }
+
+    public void excluir() {
+        DatabaseReference funcionarioReference = ConfigFirebase.getDatabase()
+                .child("funcionario")
+                .child(getLogin().getUser());
+
+        funcionarioReference.removeValue();
+    }
+
+    public void deslogar() {
+        online = false;
+        salvar();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -99,12 +130,36 @@ public class Funcionario {
         this.cargo = cargo;
     }
 
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
     public Login getLogin() {
         return login;
     }
 
     public void setLogin(Login login) {
         this.login = login;
+    }
+
+    public String getUltimoLogin() {
+        return ultimoLogin;
+    }
+
+    public void setUltimoLogin(String ultimoLogin) {
+        this.ultimoLogin = ultimoLogin;
+    }
+
+    public boolean isOnline() {
+        return online;
+    }
+
+    public void setOnline(boolean online) {
+        this.online = online;
     }
 
     public String getCnh() {

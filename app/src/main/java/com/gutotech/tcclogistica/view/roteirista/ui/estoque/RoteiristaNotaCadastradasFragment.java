@@ -11,9 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gutotech.tcclogistica.R;
-import com.gutotech.tcclogistica.model.Funcionario;
 import com.gutotech.tcclogistica.model.Produto;
-import com.gutotech.tcclogistica.view.adapter.FuncionarioCadastradoAdapter;
 import com.gutotech.tcclogistica.view.adapter.ProdutoEstoqueAdapter;
 
 import java.util.ArrayList;

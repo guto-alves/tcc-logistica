@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.google.firebase.database.DataSnapshot;
@@ -28,8 +29,9 @@ import com.gutotech.tcclogistica.model.Veiculo;
 import es.dmoral.toasty.Toasty;
 
 public class FuncionarioNovoFragment extends Fragment {
-    private EditText nomeEditText, rgEditText, cpfEditText, enderecoEditText, celularEditText, emailEditText;
+    private EditText nomeEditText, rgEditText, cpfEditText, dataNascimentoEditText, enderecoEditText, celularEditText, emailEditText;
 
+    private LinearLayout motoristaLinearLayout;
     private EditText cnhEditText, categoriaEditText, veiculoEditText, anoEditText, placaEditText;
 
     private Funcionario funcionario = new Funcionario();
@@ -44,14 +46,16 @@ public class FuncionarioNovoFragment extends Fragment {
                              Bundle savedInstanceState) {
         final View root = inflater.inflate(R.layout.fragment_adm_funcionario_novo, container, false);
 
-        nomeEditText = root.findViewById(R.id.naturezaOperacaoEditText);
+        nomeEditText = root.findViewById(R.id.nomeEditText);
         rgEditText = root.findViewById(R.id.rgEditText);
         cpfEditText = root.findViewById(R.id.cpfEditText);
+        dataNascimentoEditText = root.findViewById(R.id.dataNascimentoEditText);
         enderecoEditText = root.findViewById(R.id.enderecoEditText);
         celularEditText = root.findViewById(R.id.celularEditText);
         emailEditText = root.findViewById(R.id.emailEditText);
         final Spinner cargoSpinner = root.findViewById(R.id.cargoSpinner);
 
+        motoristaLinearLayout = root.findViewById(R.id.motoristaLinearLayout);
         veiculoEditText = root.findViewById(R.id.veiculoEditText);
         cnhEditText = root.findViewById(R.id.cnhEditText);
         categoriaEditText = root.findViewById(R.id.categoriaEditText);
@@ -62,6 +66,8 @@ public class FuncionarioNovoFragment extends Fragment {
         processingDialog.setContentView(R.layout.dialog_carregando);
         processingDialog.setCancelable(false);
 
+        funcionario.setCargo(Funcionario.MOTORISTA);
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.cargos_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         cargoSpinner.setAdapter(adapter);
@@ -70,6 +76,10 @@ public class FuncionarioNovoFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 funcionario.setCargo(cargoSpinner.getSelectedItem().toString());
 
+                if (funcionario.getCargo().equals(Funcionario.MOTORISTA))
+                    motoristaLinearLayout.setVisibility(View.VISIBLE);
+                else
+                    motoristaLinearLayout.setVisibility(View.GONE);
             }
 
             @Override
@@ -78,29 +88,7 @@ public class FuncionarioNovoFragment extends Fragment {
         });
 
         Button salvarButton = root.findViewById(R.id.salvarButton);
-        salvarButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (nomeEditText.getText().toString().isEmpty()) {
-                    nomeEditText.setError("Campo obrigatório");
-                    return;
-                }
-
-                processingDialog.show();
-
-                funcionario.setNome(nomeEditText.getText().toString());
-                funcionario.setRg(rgEditText.getText().toString());
-                funcionario.setCpf(cpfEditText.getText().toString());
-                funcionario.setEndereco(enderecoEditText.getText().toString());
-                funcionario.setCelular(celularEditText.getText().toString());
-                funcionario.setEmail(emailEditText.getText().toString());
-
-                funcionario.setCnh(cnhEditText.getText().toString());
-                funcionario.setVeiculo(new Veiculo(veiculoEditText.getText().toString(), categoriaEditText.getText().toString(), anoEditText.getText().toString(), placaEditText.getText().toString()));
-
-                gerarLogin();
-            }
-        });
+        salvarButton.setOnClickListener(salvarButtonListener);
 
         Button limparButton = root.findViewById(R.id.limparButton);
         limparButton.setOnClickListener(new View.OnClickListener() {
@@ -113,6 +101,31 @@ public class FuncionarioNovoFragment extends Fragment {
         return root;
     }
 
+    private final View.OnClickListener salvarButtonListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (nomeEditText.getText().toString().isEmpty()) {
+                nomeEditText.setError("Campo obrigatório");
+                return;
+            }
+
+            processingDialog.show();
+
+            funcionario.setNome(nomeEditText.getText().toString());
+            funcionario.setRg(rgEditText.getText().toString());
+            funcionario.setCpf(cpfEditText.getText().toString());
+            funcionario.setEndereco(enderecoEditText.getText().toString());
+            funcionario.setCelular(celularEditText.getText().toString());
+            funcionario.setEmail(emailEditText.getText().toString());
+            funcionario.setDataNascimento(dataNascimentoEditText.getText().toString());
+
+            funcionario.setCnh(cnhEditText.getText().toString());
+            funcionario.setVeiculo(new Veiculo(veiculoEditText.getText().toString(), categoriaEditText.getText().toString(), anoEditText.getText().toString(), placaEditText.getText().toString()));
+
+            gerarLogin();
+        }
+    };
+
     private void limparCampos() {
         nomeEditText.setText("");
         rgEditText.setText("");
@@ -120,6 +133,7 @@ public class FuncionarioNovoFragment extends Fragment {
         enderecoEditText.setText("");
         celularEditText.setText("");
         emailEditText.setText("");
+        dataNascimentoEditText.setText("");
 
         veiculoEditText.setText("");
         cnhEditText.setText("");
@@ -145,11 +159,11 @@ public class FuncionarioNovoFragment extends Fragment {
 
                 String user = funcionario.getNome().split(" ")[0] + totalDeFuncionarios;
                 funcionario.setLogin(new Login(user, user));
+                funcionario.setId(totalDeFuncionarios);
 
                 funcionario.salvar();
 
                 limparCampos();
-
                 processingDialog.dismiss();
                 Toasty.success(getActivity(), "Funcionário cadastrado com sucesso", Toasty.LENGTH_SHORT, true).show();
             }

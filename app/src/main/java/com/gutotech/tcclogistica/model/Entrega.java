@@ -28,7 +28,7 @@ public class Entrega {
 
     public void salvar() {
         DatabaseReference entregaReference = ConfigFirebase.getDatabase()
-                .child("entregas")
+                .child("entrega")
                 .child(id);
 
         entregaReference.setValue(this);

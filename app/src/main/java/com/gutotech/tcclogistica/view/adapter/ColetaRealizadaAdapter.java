@@ -67,7 +67,7 @@ public class ColetaRealizadaAdapter extends RecyclerView.Adapter<ColetaRealizada
             remetente = itemView.findViewById(R.id.remetenteTextView);
             produto = itemView.findViewById(R.id.produtoTextView);
             destinatario = itemView.findViewById(R.id.destinatarioTextView);
-            motorista = itemView.findViewById(R.id.motoristaTextView);
+            motorista = itemView.findViewById(R.id.nomeTextView);
             dataColetada = itemView.findViewById(R.id.dataColetadaTextView);
             horaColetada = itemView.findViewById(R.id.horaColetadaTextView);
 

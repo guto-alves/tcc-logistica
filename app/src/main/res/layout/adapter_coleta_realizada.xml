@@ -51,7 +51,7 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/motoristaTextView"
+        android:id="@+id/nomeTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"

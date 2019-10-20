@@ -50,7 +50,7 @@ public class EntregaRealizadaAdapter extends RecyclerView.Adapter<EntregaRealiza
             super(itemView);
 
             notaFiscal = itemView.findViewById(R.id.codigoTextView);
-            motorista = itemView.findViewById(R.id.motoristaTextView);
+            motorista = itemView.findViewById(R.id.nomeTextView);
 
         }
     }

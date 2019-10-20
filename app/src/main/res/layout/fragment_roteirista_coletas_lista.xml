@@ -6,7 +6,7 @@
     tools:context=".view.roteirista.ui.coleta.RoteiristaColetasListaFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/coletaRecyclerView"
+        android:id="@+id/coletasRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </FrameLayout>

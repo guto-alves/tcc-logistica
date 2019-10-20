@@ -5,6 +5,10 @@ import java.util.Locale;
 
 public class DateCustom {
 
+    public static String getDataEHora() {
+        return String.format(Locale.getDefault(), "%s às %s", getData(), getHorario());
+    }
+
     public static String getData() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         return dateFormat.format(System.currentTimeMillis());

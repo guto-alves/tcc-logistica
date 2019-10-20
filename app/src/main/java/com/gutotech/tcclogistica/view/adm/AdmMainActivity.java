@@ -25,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.TextView;
 
 public class AdmMainActivity extends AppCompatActivity {
 
@@ -47,9 +48,14 @@ public class AdmMainActivity extends AppCompatActivity {
         });
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
+
         NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+        View headerView = navigationView.getHeaderView(0);
+
+        TextView userTextView = headerView.findViewById(R.id.userTextView);
+
+        userTextView.setText(getResources().getText(R.string.welcome_user) + " GUSTAVO");
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_entregas, R.id.nav_estoque,
                 R.id.nav_funcionarios, R.id.nav_suporte)
@@ -82,5 +88,11 @@ public class AdmMainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        FuncionarioOn.funcionario.deslogar();
     }
 }
