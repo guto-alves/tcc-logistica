@@ -141,30 +141,4 @@ public class LoginActivity extends AppCompatActivity {
 
         return valid;
     }
-
-    private void isManutencao() {
-        DatabaseReference manutencaoReference = ConfigFirebase.getDatabase().child("manutencao");
-
-        manutencaoReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                boolean manutencao = (boolean) dataSnapshot.getValue();
-
-                if (manutencao) {
-                    Toasty.warning(getApplicationContext(), "Estamos em manutençao!", Toasty.LENGTH_SHORT, true).show();
-                } else
-                    Toasty.success(getApplicationContext(), "Não estamos em manutençao!", Toasty.LENGTH_SHORT, true).show();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        isManutencao();
-    }
 }
