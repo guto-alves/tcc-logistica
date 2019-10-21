@@ -16,6 +16,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 
+import com.github.rtoshiro.util.format.SimpleMaskFormatter;
+import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -61,6 +63,8 @@ public class FuncionarioNovoFragment extends Fragment {
         categoriaEditText = root.findViewById(R.id.categoriaEditText);
         anoEditText = root.findViewById(R.id.anoEditText);
         placaEditText = root.findViewById(R.id.placaEditText);
+
+        adicionarMascaras();
 
         processingDialog = new Dialog(getActivity());
         processingDialog.setContentView(R.layout.dialog_carregando);
@@ -130,16 +134,28 @@ public class FuncionarioNovoFragment extends Fragment {
         nomeEditText.setText("");
         rgEditText.setText("");
         cpfEditText.setText("");
+        dataNascimentoEditText.setText("");
         enderecoEditText.setText("");
         celularEditText.setText("");
         emailEditText.setText("");
-        dataNascimentoEditText.setText("");
 
         veiculoEditText.setText("");
         cnhEditText.setText("");
         categoriaEditText.setText("");
         anoEditText.setText("");
         placaEditText.setText("");
+    }
+
+    private void adicionarMascaras() {
+        rgEditText.addTextChangedListener(new MaskTextWatcher(rgEditText, new SimpleMaskFormatter("NN.NNN.NNN-N")));
+        cpfEditText.addTextChangedListener(new MaskTextWatcher(cpfEditText, new SimpleMaskFormatter("NNN.NNN.NNN-NN")));
+        celularEditText.addTextChangedListener(new MaskTextWatcher(celularEditText, new SimpleMaskFormatter("(NN) NNNNN-NNNN")));
+        dataNascimentoEditText.addTextChangedListener(new MaskTextWatcher(dataNascimentoEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
+
+        anoEditText.addTextChangedListener(new MaskTextWatcher(anoEditText, new SimpleMaskFormatter("NNNN")));
+        cnhEditText.addTextChangedListener(new MaskTextWatcher(cnhEditText, new SimpleMaskFormatter("NNNNNNNN")));
+        categoriaEditText.addTextChangedListener(new MaskTextWatcher(categoriaEditText, new SimpleMaskFormatter("UU")));
+        placaEditText.addTextChangedListener(new MaskTextWatcher(placaEditText, new SimpleMaskFormatter("LLL-NNNN")));
     }
 
     private int totalDeFuncionarios;

@@ -1,5 +1,6 @@
 package com.gutotech.tcclogistica.view.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +14,13 @@ import com.gutotech.tcclogistica.model.Coleta;
 
 import java.util.List;
 
-public class ColetaRealizadaAdapter extends RecyclerView.Adapter<ColetaRealizadaAdapter.MyViewHolder> {
-    private List<Coleta> coletas;
+public class ColetasAdapter extends RecyclerView.Adapter<ColetasAdapter.MyViewHolder> {
+    private Context context;
+    private List<Coleta> coletasList;
 
-    public ColetaRealizadaAdapter(List<Coleta> coletas) {
-        this.coletas = coletas;
+    public ColetasAdapter(Context context, List<Coleta> coletasList) {
+        this.context = context;
+        this.coletasList = coletasList;
     }
 
     @NonNull
@@ -30,34 +33,26 @@ public class ColetaRealizadaAdapter extends RecyclerView.Adapter<ColetaRealizada
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Coleta coleta = coletas.get(position);
+        Coleta coleta = coletasList.get(position);
 
         holder.emissao.setText(coleta.getDataEmissao());
-        holder.coletar.setText("");
-        holder.remetente.setText("");
-        holder.produto.setText("");
-        holder.destinatario.setText("");
-        holder.motorista.setText("");
-        holder.dataColetada.setText("");
-        holder.horaColetada.setText("");
-
+        holder.coletar.setText(coleta.getColetarEm());
+        holder.remetente.setText(coleta.getNomeRemetente());
+        holder.destinatario.setText(coleta.getNomeDestinatario());
+        holder.motorista.setText(coleta.getMotorista().getNome());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return coletasList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView emissao;
         private TextView coletar;
         private TextView remetente;
-        private TextView produto;
         private TextView destinatario;
         private TextView motorista;
-        private TextView dataColetada;
-        private TextView horaColetada;
-
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -65,12 +60,8 @@ public class ColetaRealizadaAdapter extends RecyclerView.Adapter<ColetaRealizada
             emissao = itemView.findViewById(R.id.emissaoTextView);
             coletar = itemView.findViewById(R.id.coletarTextView);
             remetente = itemView.findViewById(R.id.remetenteTextView);
-            produto = itemView.findViewById(R.id.produtoTextView);
             destinatario = itemView.findViewById(R.id.destinatarioTextView);
-            motorista = itemView.findViewById(R.id.nomeTextView);
-            dataColetada = itemView.findViewById(R.id.dataColetadaTextView);
-            horaColetada = itemView.findViewById(R.id.horaColetadaTextView);
-
+            motorista = itemView.findViewById(R.id.motoristaTextView);
         }
     }
 }

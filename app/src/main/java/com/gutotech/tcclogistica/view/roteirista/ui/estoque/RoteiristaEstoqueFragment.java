@@ -28,7 +28,7 @@ public class RoteiristaEstoqueFragment extends Fragment {
                         changeToFragment(new RoteiristaNotaNovaFragment());
                         break;
                     case R.id.action_cadastrados:
-                        changeToFragment(new RoteiristaNotaCadastradasFragment());
+                        changeToFragment(new RoteiristaNotasCadastradasFragment());
                         break;
                 }
 

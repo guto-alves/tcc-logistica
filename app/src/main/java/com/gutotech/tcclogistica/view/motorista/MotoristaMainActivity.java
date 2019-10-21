@@ -68,7 +68,6 @@ public class MotoristaMainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_exit) {
-            FuncionarioOn.funcionario.deslogar();
             startActivity(new Intent(MotoristaMainActivity.this, LoginActivity.class));
             finish();
         }

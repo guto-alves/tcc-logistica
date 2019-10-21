@@ -45,31 +45,7 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/background_caixa_texto"
                     android:ems="10"
-                    android:inputType="textPersonName" />
-
-                <TextView
-                    android:id="@+id/emailTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/email"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp" />
-
-                <EditText
-                    android:id="@+id/emailEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:background="@drawable/background_caixa_texto"
-                    android:ems="10"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="text" />
 
                 <TextView
                     android:id="@+id/rgTextView"
@@ -93,7 +69,7 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/background_caixa_texto"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="numberSigned" />
 
                 <TextView
                     android:id="@+id/cpfTextView"
@@ -117,7 +93,7 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/background_caixa_texto"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="numberSigned" />
 
                 <TextView
                     android:id="@+id/dataNascimentoTextView"
@@ -168,6 +144,30 @@
                     android:inputType="textPersonName" />
 
                 <TextView
+                    android:id="@+id/emailTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/email"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/emailEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/background_caixa_texto"
+                    android:ems="10"
+                    android:inputType="textEmailAddress" />
+
+                <TextView
                     android:id="@+id/celularTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -191,7 +191,7 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/background_caixa_texto"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="numberSigned" />
 
                 <TextView
                     android:id="@+id/cargoTextView"
@@ -248,8 +248,7 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/background_caixa_texto"
                     android:ems="10"
-                    android:inputType="textPersonName" />
-
+                    android:inputType="numberSigned" />
 
                 <TextView
                     android:id="@+id/categoriaTextView"
@@ -273,7 +272,7 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/background_caixa_texto"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textCapCharacters" />
 
                 <TextView
                     android:id="@+id/textViewVeiculo"
@@ -321,7 +320,7 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/background_caixa_texto"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="numberSigned" />
 
                 <TextView
                     android:id="@+id/placaTextView"
@@ -345,7 +344,7 @@
                     android:layout_marginRight="24dp"
                     android:background="@drawable/background_caixa_texto"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textCapCharacters" />
             </LinearLayout>
 
             <LinearLayout

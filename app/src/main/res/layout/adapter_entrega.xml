@@ -2,6 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:background="@android:color/white"
     android:orientation="horizontal"
     android:padding="15dp">
 
@@ -12,11 +14,11 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/codigoTextView"
+            android:id="@+id/numeroNotaTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:text="@string/nota_fiscal"
+            android:text="@string/nota"
             android:textColor="@color/colorBlack"
             android:textSize="18sp" />
 
@@ -30,7 +32,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/nomeTextView"
+            android:id="@+id/nomeMotoristaTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -73,7 +75,7 @@
 
         <TextView
             android:id="@+id/statusFuncionariosTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/status"

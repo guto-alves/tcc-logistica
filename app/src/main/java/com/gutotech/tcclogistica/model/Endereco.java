@@ -4,7 +4,7 @@ public class Endereco {
     private String endereco;
     private int numero;
     private String complemento;
-    private int cep;
+    private String cep;
     private String bairro;
     private String cidade;
     private String municipio;
@@ -15,11 +15,29 @@ public class Endereco {
     public Endereco() {
     }
 
-    public Endereco(String endereco, int numero, String complemento, String cidade, String estado) {
+    public Endereco(String endereco, String municipio, String uf) {
+        this.endereco = endereco;
+        this.municipio = municipio;
+        this.uf = uf;
+    }
+
+    public Endereco(String endereco, String cep, String bairro, String municipio, String uf) {
+        this.endereco = endereco;
+        this.cep = cep;
+        this.bairro = bairro;
+        this.municipio = municipio;
+        this.uf = uf;
+    }
+
+    public Endereco(String endereco, int numero, String complemento, String cep, String bairro, String cidade, String municipio, String uf, String estado) {
         this.endereco = endereco;
         this.numero = numero;
         this.complemento = complemento;
+        this.cep = cep;
+        this.bairro = bairro;
         this.cidade = cidade;
+        this.municipio = municipio;
+        this.uf = uf;
         this.estado = estado;
     }
 
@@ -29,14 +47,6 @@ public class Endereco {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
-    }
-
-    public int getCep() {
-        return cep;
-    }
-
-    public void setCep(int cep) {
-        this.cep = cep;
     }
 
     public int getNumero() {
@@ -55,20 +65,12 @@ public class Endereco {
         this.complemento = complemento;
     }
 
-    public String getCidade() {
-        return cidade;
+    public String getCep() {
+        return cep;
     }
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 
     public String getBairro() {
@@ -77,6 +79,14 @@ public class Endereco {
 
     public void setBairro(String bairro) {
         this.bairro = bairro;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
     public String getMunicipio() {
@@ -93,5 +103,13 @@ public class Endereco {
 
     public void setUf(String uf) {
         this.uf = uf;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

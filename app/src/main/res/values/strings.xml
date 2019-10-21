@@ -13,11 +13,6 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
     <string name="entregas">Entregas</string>
     <string name="estoque">Estoque</string>
     <string name="clientes">Clientes</string>
@@ -36,7 +31,7 @@
     <string name="ano">Ano</string>
     <string name="motorista_maiusculo">MOTORISTA</string>
     <string name="motorista">Motorista</string>
-    <string name="quantidade">Quantidade</string>
+    <string name="quantidade">QUANTIDADE</string>
     <string name="descricao">Descrição</string>
     <string name="codigo">Código</string>
     <string name="data_chegada">Data Chegada</string>
@@ -64,7 +59,6 @@
     <string name="cnh">CNH</string>
     <string name="cargo">Cargo</string>
     <string name="coletas">Coletas</string>
-    <string name="dados_adicionais">Dados adicionais</string>
     <string name="rg">RG</string>
     <string name="cpf">CPF</string>
     <string name="emissao">Emissão</string>
@@ -73,7 +67,7 @@
     <string name="bairro">Bairro</string>
     <string name="contato">Contato</string>
     <string name="telefone">Telefone</string>
-    <string name="especie">Especie</string>
+    <string name="especie">Espécie</string>
     <string name="n_pedido">N° Pedido</string>
     <string name="peso">Peso</string>
     <string name="dimensoes">Dimensões</string>
@@ -99,8 +93,32 @@
     <string name="fechar">Fechar</string>
     <string name="data_nascimento">Data de Nascimento</string>
     <string name="ultimo_login">Último login</string>
-    <string name="ordem_de_coleta">Ordem de Coleta</string>
+    <string name="ordem_de_coleta">ORDEM DE COLETA</string>
     <string name="destinatario">Destinatário</string>
     <string name="remetente">Remetente</string>
     <string name="dia">Dia</string>
+    <string name="uf">UF</string>
+    <string name="municipio">Municipio</string>
+    <string name="cnpj">CNPJ</string>
+    <string name="codigo_antt">Codigo ANTT</string>
+    <string name="frete_por_conta">Frete por Conta</string>
+    <string name="transportador">Transportador</string>
+    <string name="cep">CEP</string>
+    <string name="data_de_emissao">Data de Emissão</string>
+    <string name="data_do_recebimento">Data do Recebimento</string>
+    <string name="natureza_da_operacao">Natureza da Operação</string>
+    <string name="marca">Marca</string>
+    <string name="peso_bruto">Peso bruto</string>
+    <string name="peso_liquido">Peso Líquido</string>
+    <string name="dados_adicionais">Dados adicionais</string>
+    <string name="inscricao_estadual">Inscrição Estadual</string>
+    <string name="valor_total_da_nota">VALOR TOTAL DA NOTA</string>
+    <string name="valor_total_dos_produtos">VALOR TOTAL DOS PRODUTOS</string>
+    <string name="valor_do_frete">VALOR DO FRETE</string>
+    <string name="placa_do_veiculo">PLACA DO VEÍCULO</string>
+    <string name="numero">NÚMERO</string>
+    <string name="v_total">V. TOTAL</string>
+    <string name="p_unitario">P. UNITÁRIO</string>
+    <string name="codigo_produto">CÓDIGO PRODUTO</string>
+    <string name="instrucoes">Instruções</string>
 </resources>

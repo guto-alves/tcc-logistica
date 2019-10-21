@@ -2,24 +2,28 @@ package com.gutotech.tcclogistica.model;
 
 public class Destinatario {
     private String nome;
-    private Endereco endereco;
     private String cnpj;
-    private int inscricaoEstadual;
-    private Data dataEmissao;
-    private Data dataEntrega;
-    private String placa;
+
+    private Endereco endereco;
+
+    private String foneFax;
+
+    private String inscricaoEstadual;
+
+    private String dataEmissao, dataEntradaSaida, horaEntradaSaida;
 
     public Destinatario() {
     }
 
-    public Destinatario(String nome, Endereco endereco, String cnpj, int inscricaoEstadual, Data dataEmissao, Data dataEntrega, String placa) {
+    public Destinatario(String nome, String cnpj, Endereco endereco, String foneFax, String inscricaoEstadual, String dataEmissao, String dataEntradaSaida, String horaEntradaSaida) {
         this.nome = nome;
-        this.endereco = endereco;
         this.cnpj = cnpj;
+        this.endereco = endereco;
+        this.foneFax = foneFax;
         this.inscricaoEstadual = inscricaoEstadual;
         this.dataEmissao = dataEmissao;
-        this.dataEntrega = dataEntrega;
-        this.placa = placa;
+        this.dataEntradaSaida = dataEntradaSaida;
+        this.horaEntradaSaida = horaEntradaSaida;
     }
 
     public String getNome() {
@@ -30,14 +34,6 @@ public class Destinatario {
         this.nome = nome;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
     public String getCnpj() {
         return cnpj;
     }
@@ -46,35 +42,52 @@ public class Destinatario {
         this.cnpj = cnpj;
     }
 
-    public int getInscricaoEstadual() {
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getFoneFax() {
+        return foneFax;
+    }
+
+    public void setFoneFax(String foneFax) {
+        this.foneFax = foneFax;
+    }
+
+    public String getInscricaoEstadual() {
         return inscricaoEstadual;
     }
 
-    public void setInscricaoEstadual(int inscricaoEstadual) {
+    public void setInscricaoEstadual(String inscricaoEstadual) {
         this.inscricaoEstadual = inscricaoEstadual;
     }
 
-    public Data getDataEmissao() {
+
+    public String getDataEmissao() {
         return dataEmissao;
     }
 
-    public void setDataEmissao(Data dataEmissao) {
+    public void setDataEmissao(String dataEmissao) {
         this.dataEmissao = dataEmissao;
     }
 
-    public Data getDataEntrega() {
-        return dataEntrega;
+    public String getDataEntradaSaida() {
+        return dataEntradaSaida;
     }
 
-    public void setDataEntrega(Data dataEntrega) {
-        this.dataEntrega = dataEntrega;
+    public void setDataEntradaSaida(String dataEntradaSaida) {
+        this.dataEntradaSaida = dataEntradaSaida;
     }
 
-    public String getPlaca() {
-        return placa;
+    public String getHoraEntradaSaida() {
+        return horaEntradaSaida;
     }
 
-    public void setPlaca(String placa) {
-        this.placa = placa;
+    public void setHoraEntradaSaida(String horaEntradaSaida) {
+        this.horaEntradaSaida = horaEntradaSaida;
     }
 }

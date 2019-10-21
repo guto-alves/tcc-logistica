@@ -10,7 +10,7 @@ public class Entrega {
     private String data;
     private String hora;
 
-    private enum Status {ENTREGUE, PEDENTE, DEVOLUCAO}
+    public enum Status {ENTREGUE, PEDENTE, DEVOLUCAO}
 
     private Status status;
 

@@ -13,9 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="6dp"
         android:background="@drawable/background_search"
-        android:queryHint="Digite o nome do funcionário">
-
-    </SearchView>
+        android:queryHint="Digite o nome do funcionário" />
 
     <TextView
         android:id="@+id/statusFuncionariosTextView"

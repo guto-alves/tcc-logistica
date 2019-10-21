@@ -75,7 +75,6 @@ public class AdmMainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_exit) {
-            FuncionarioOn.funcionario = null;
             startActivity(new Intent(AdmMainActivity.this, LoginActivity.class));
             finish();
         }

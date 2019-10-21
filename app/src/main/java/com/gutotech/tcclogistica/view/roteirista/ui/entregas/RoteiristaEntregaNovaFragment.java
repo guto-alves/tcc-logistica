@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.github.rtoshiro.util.format.SimpleMaskFormatter;
+import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,26 +25,26 @@ import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.config.ConfigFirebase;
 import com.gutotech.tcclogistica.model.Entrega;
 import com.gutotech.tcclogistica.model.Funcionario;
-import com.gutotech.tcclogistica.model.Motorista;
 import com.gutotech.tcclogistica.model.Nota;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import es.dmoral.toasty.Toasty;
+
 public class RoteiristaEntregaNovaFragment extends Fragment {
-    private Spinner motoristaSpinner, notaSpinner;
-    private ArrayAdapter motoristasArrayAdapter, notasArrayAdapter;
+    private Entrega entrega = new Entrega();
 
     private EditText dataEditText, horaEditText;
 
-    private Entrega entrega = new Entrega();
+    private ArrayAdapter motoristasArrayAdapter, notasArrayAdapter;
 
     private List<Funcionario> motoristasList = new ArrayList<>();
     private List<String> nomesMotoristasList = new ArrayList<>();
 
     private List<Nota> notaList = new ArrayList<>();
-    private List<String> nomesNotasList = new ArrayList<>();
+    private List<String> numerosNotasList = new ArrayList<>();
 
     private DatabaseReference notasReference;
     private ValueEventListener notasListener;
@@ -60,10 +62,12 @@ public class RoteiristaEntregaNovaFragment extends Fragment {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_roteirista_entrega_nova, container, false);
 
-        notaSpinner = root.findViewById(R.id.notaSpinner);
-        motoristaSpinner = root.findViewById(R.id.motoristaSpinner);
+        Spinner notaSpinner = root.findViewById(R.id.notaSpinner);
+        Spinner motoristaSpinner = root.findViewById(R.id.motoristaSpinner);
         dataEditText = root.findViewById(R.id.dataEditText);
         horaEditText = root.findViewById(R.id.horaEditText);
+
+        adicionarMascaras();
 
         notasReference = ConfigFirebase.getDatabase().child("nota");
         motoristasReference = ConfigFirebase.getDatabase().child("funcionario");
@@ -82,7 +86,7 @@ public class RoteiristaEntregaNovaFragment extends Fragment {
             }
         });
 
-        notasArrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, nomesNotasList);
+        notasArrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, numerosNotasList);
         notasArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         notaSpinner.setAdapter(notasArrayAdapter);
         notaSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -97,32 +101,47 @@ public class RoteiristaEntregaNovaFragment extends Fragment {
         });
 
         Button salvarButton = root.findViewById(R.id.salvarButton);
-        salvarButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String data = dataEditText.getText().toString();
-                String hora = horaEditText.getText().toString();
-
-                if (isValidFields(data, hora)) {
-                    entrega.setData(data);
-                    entrega.setHora(hora);
-
-                    entrega.setId(UUID.randomUUID().toString());
-                    entrega.salvar();
-                }
-            }
-        });
+        salvarButton.setOnClickListener(salvarButtonListener);
 
         Button limparButton = root.findViewById(R.id.limparButton);
         limparButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dataEditText.setText("");
-                horaEditText.setText("");
+                limparCampos();
             }
         });
 
         return root;
+    }
+
+    private final View.OnClickListener salvarButtonListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            String data = dataEditText.getText().toString();
+            String hora = horaEditText.getText().toString();
+
+            if (isValidFields(data, hora)) {
+                entrega.setData(data);
+                entrega.setHora(hora);
+
+                entrega.setId(UUID.randomUUID().toString());
+                entrega.setStatus(Entrega.Status.PEDENTE);
+                entrega.salvar();
+
+                limparCampos();
+                Toasty.success(getActivity(), "Entrega cadastrada com sucesso!", Toasty.LENGTH_SHORT, true).show();
+            }
+        }
+    };
+
+    private void limparCampos() {
+        dataEditText.setText("");
+        horaEditText.setText("");
+    }
+
+    private void adicionarMascaras() {
+        dataEditText.addTextChangedListener(new MaskTextWatcher(dataEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
+        horaEditText.addTextChangedListener(new MaskTextWatcher(horaEditText, new SimpleMaskFormatter("NN:NN:NN")));
     }
 
     private boolean isValidFields(String data, String hora) {
@@ -148,9 +167,12 @@ public class RoteiristaEntregaNovaFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 notaList.clear();
+                numerosNotasList.clear();
 
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
-                    notaList.add(data.getValue(Nota.class));
+                    Nota nota = data.getValue(Nota.class);
+                    notaList.add(nota);
+                    numerosNotasList.add(nota.getNumero());
                 }
 
                 notasArrayAdapter.notifyDataSetChanged();

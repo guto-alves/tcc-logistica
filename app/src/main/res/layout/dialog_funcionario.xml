@@ -40,22 +40,6 @@
             android:textColor="@color/colorBlack" />
 
         <TextView
-            android:id="@+id/celularTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="@string/celular"
-            android:textColor="@color/colorBlack" />
-
-        <TextView
-            android:id="@+id/emailTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="@string/email"
-            android:textColor="@color/colorBlack" />
-
-        <TextView
             android:id="@+id/rgTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,6 +56,14 @@
             android:textColor="@color/colorBlack" />
 
         <TextView
+            android:id="@+id/dataNascimentoTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/data_nascimento"
+            android:textColor="@color/colorBlack" />
+
+        <TextView
             android:id="@+id/enderecoTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -80,11 +72,19 @@
             android:textColor="@color/colorBlack" />
 
         <TextView
-            android:id="@+id/dataNascimentoTextView"
+            android:id="@+id/celularTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:text="@string/data_nascimento"
+            android:text="@string/celular"
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/emailTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/email"
             android:textColor="@color/colorBlack" />
 
         <TextView

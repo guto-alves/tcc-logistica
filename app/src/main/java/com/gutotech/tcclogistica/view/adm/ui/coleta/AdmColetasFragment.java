@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gutotech.tcclogistica.R;
-import com.gutotech.tcclogistica.view.adapter.ColetaRealizadaAdapter;
 
 public class AdmColetasFragment extends Fragment {
 

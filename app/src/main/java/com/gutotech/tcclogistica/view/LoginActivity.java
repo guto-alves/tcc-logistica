@@ -28,6 +28,9 @@ import com.gutotech.tcclogistica.view.adm.AdmMainActivity;
 import com.gutotech.tcclogistica.view.motorista.MotoristaMainActivity;
 import com.gutotech.tcclogistica.view.roteirista.RoteiristaMainActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import es.dmoral.toasty.Toasty;
 
 public class LoginActivity extends AppCompatActivity {
@@ -36,8 +39,9 @@ public class LoginActivity extends AppCompatActivity {
     private Dialog processingDialog;
 
     private DatabaseReference funcionarioReference;
-    private Query funcionarioQuery;
     private ValueEventListener funcionarioListener;
+
+    private List<Funcionario> funcionariosList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,64 +68,25 @@ public class LoginActivity extends AppCompatActivity {
             final String user = userEditText.getText().toString().trim();
             final String password = passwordEditText.getText().toString();
 
-            switch (Integer.parseInt(user)) {
-                case 1:
-                    startActivity(new Intent(LoginActivity.this, AdmMainActivity.class));
-                    break;
-                case 2:
-                    startActivity(new Intent(LoginActivity.this, RoteiristaMainActivity.class));
-                    break;
-                case 3:
-                    startActivity(new Intent(LoginActivity.this, MotoristaMainActivity.class));
-                    break;
-            }
-
             if (isValidField(user, password)) {
-                processingDialog.show();
+                if (signInWith(user, password)) {
+                    FuncionarioOn.funcionario.setOnline(true);
+                    FuncionarioOn.funcionario.setUltimoLogin(DateCustom.getDataEHora());
+                    FuncionarioOn.funcionario.salvar();
 
-                funcionarioQuery = funcionarioReference.orderByKey().equalTo(user);
-
-                funcionarioListener = funcionarioQuery.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Funcionario funcionario = dataSnapshot.getValue(Funcionario.class);
-
-                        funcionarioQuery.removeEventListener(funcionarioListener);
-
-                        if (funcionario != null) {
-                            if (funcionario.getLogin() != null) {
-                                if (funcionario.getLogin().getPassword().equals(password)) {
-                                    funcionario.setOnline(true);
-                                    funcionario.setUltimoLogin(DateCustom.getDataEHora());
-                                    FuncionarioOn.funcionario = funcionario;
-
-                                    switch (funcionario.getCargo()) {
-                                        case Funcionario.ADM:
-                                            startActivity(new Intent(LoginActivity.this, AdmMainActivity.class));
-                                            break;
-                                        case Funcionario.ROTEIRISTA:
-                                            startActivity(new Intent(LoginActivity.this, RoteiristaMainActivity.class));
-                                            break;
-                                        case Funcionario.MOTORISTA:
-                                            startActivity(new Intent(LoginActivity.this, MotoristaMainActivity.class));
-                                            break;
-                                    }
-
-                                } else
-                                    Toasty.error(LoginActivity.this, "Senha inválida", Toast.LENGTH_SHORT, true).show();
-                            } else
-                                Toasty.error(LoginActivity.this, "Vai tomar no cu " + funcionario.getNome(), Toast.LENGTH_SHORT, true).show();
-
-                        } else
-                            Toasty.error(LoginActivity.this, "Usuário não encontrado", Toast.LENGTH_SHORT, true).show();
-
-                        processingDialog.dismiss();
+                    switch (FuncionarioOn.funcionario.getCargo()) {
+                        case Funcionario.ADM:
+                            startActivity(new Intent(LoginActivity.this, AdmMainActivity.class));
+                            break;
+                        case Funcionario.ROTEIRISTA:
+                            startActivity(new Intent(LoginActivity.this, RoteiristaMainActivity.class));
+                            break;
+                        case Funcionario.MOTORISTA:
+                            startActivity(new Intent(LoginActivity.this, MotoristaMainActivity.class));
+                            break;
                     }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                    }
-                });
+                } else
+                    Toasty.error(LoginActivity.this, "Usuário ou Senha inválidos", Toast.LENGTH_SHORT, true).show();
             }
         }
     };
@@ -140,5 +105,49 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         return valid;
+    }
+
+    private boolean signInWith(String user, String password) {
+        for (Funcionario funcionario : funcionariosList) {
+            if (funcionario.getLogin().getUser().equals(user)) {
+                if (funcionario.getLogin().getPassword().equals(password)) {
+                    FuncionarioOn.funcionario = funcionario;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private void carregarFuncionarios() {
+        processingDialog.show();
+
+        funcionarioListener = funcionarioReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                funcionariosList.clear();
+
+                for (DataSnapshot data : dataSnapshot.getChildren())
+                    funcionariosList.add(data.getValue(Funcionario.class));
+
+                processingDialog.dismiss();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        carregarFuncionarios();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        funcionarioReference.removeEventListener(funcionarioListener);
     }
 }

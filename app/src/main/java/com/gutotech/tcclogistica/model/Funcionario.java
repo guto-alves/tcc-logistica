@@ -4,7 +4,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.gutotech.tcclogistica.config.ConfigFirebase;
 
 public class Funcionario {
-    public static final String ADM = "Adm";
+    public static final String ADM = "ADM";
     public static final String ROTEIRISTA = "Roteirista";
     public static final String MOTORISTA = "Motorista";
 

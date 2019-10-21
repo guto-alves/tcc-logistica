@@ -110,6 +110,7 @@ public class FuncionariosCadastradosFragment extends Fragment {
             TextView cnhTextView = funcionarioDialog.findViewById(R.id.cnhTextView);
             TextView placaTextView = funcionarioDialog.findViewById(R.id.placaTextView);
             TextView categoriaTextView = funcionarioDialog.findViewById(R.id.categoriaTextView);
+            TextView anoTextView = funcionarioDialog.findViewById(R.id.anoTextView);
 
             nomeTextView.setText(funcionario.getNome());
             cargoTextView.setText(funcionario.getCargo());
@@ -122,13 +123,14 @@ public class FuncionariosCadastradosFragment extends Fragment {
             ultimoLoginTextView.setText(funcionario.getUltimoLogin());
 
             if (funcionario.getCargo().equals(Funcionario.MOTORISTA)) {
-                LinearLayout motoristaTextViews = funcionarioDialog.findViewById(R.id.motoristaTextViewsLinear);
-                motoristaTextViews.setVisibility(View.VISIBLE);
-
+                cnhTextView.setText(funcionario.getCnh());
                 categoriaTextView.setText(funcionario.getVeiculo().getCategoria());
                 veiculoTextView.setText(funcionario.getVeiculo().getNome());
                 placaTextView.setText(funcionario.getVeiculo().getPlaca());
-                cnhTextView.setText(funcionario.getCnh());
+                anoTextView.setText(funcionario.getVeiculo().getAno());
+
+                LinearLayout motoristaTextViews = funcionarioDialog.findViewById(R.id.motoristaTextViewsLinear);
+                motoristaTextViews.setVisibility(View.VISIBLE);
             }
 
             funcionarioDialog.show();
