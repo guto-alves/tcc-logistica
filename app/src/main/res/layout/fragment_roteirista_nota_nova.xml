@@ -880,24 +880,30 @@
 
                 <Button
                     android:id="@+id/limparButton"
-                    android:layout_width="145dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:layout_marginRight="16dp"
                     android:background="@drawable/background_button"
                     android:text="@string/limpar"
                     android:textColor="@android:color/white" />
 
+                <ImageButton
+                    android:id="@+id/textRecognizerImageButton"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    app:srcCompat="@drawable/recognizer_icon1" />
+
                 <Button
                     android:id="@+id/salvarButton"
-                    android:layout_width="145dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:background="@drawable/background_button"
                     android:text="@string/salvar"
                     android:textColor="@android:color/white" />
+
             </LinearLayout>
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
-
 
 </ScrollView>

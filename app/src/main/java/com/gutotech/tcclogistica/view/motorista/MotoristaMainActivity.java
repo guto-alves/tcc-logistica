@@ -9,6 +9,8 @@ import com.google.android.material.snackbar.Snackbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -16,8 +18,11 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
 import com.gutotech.tcclogistica.R;
+import com.gutotech.tcclogistica.config.Storage;
 import com.gutotech.tcclogistica.model.FuncionarioOn;
+import com.gutotech.tcclogistica.view.FuncionarioPerfilFragment;
 import com.gutotech.tcclogistica.view.LoginActivity;
+import com.gutotech.tcclogistica.view.adm.AdmMainActivity;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -25,6 +30,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.Locale;
 
 public class MotoristaMainActivity extends AppCompatActivity {
 
@@ -48,8 +57,22 @@ public class MotoristaMainActivity extends AppCompatActivity {
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+        View headerView = navigationView.getHeaderView(0);
+
+        TextView userTextView = headerView.findViewById(R.id.userTextView);
+
+        userTextView.setText(String.format(Locale.getDefault(), "%s, %s", getResources().getText(R.string.welcome_user), FuncionarioOn.funcionario.getNome().toUpperCase()));
+
+        ImageView profileImageView = headerView.findViewById(R.id.profileImageView);
+        profileImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeToFragment(new FuncionarioPerfilFragment());
+            }
+        });
+        if (FuncionarioOn.funcionario.isProfileImage())
+            Storage.downloadProfile(MotoristaMainActivity.this, profileImageView);
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_entregas, R.id.nav_estoque, R.id.nav_suporte)
                 .setDrawerLayout(drawer)
@@ -57,6 +80,12 @@ public class MotoristaMainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+    }
+
+    private void changeToFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frameConteiner, fragment);
+        transaction.commit();
     }
 
     @Override

@@ -29,4 +29,13 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="TextError" parent="TextAppearance.Design.Error">
+        <item name="android:textColor">@android:color/holo_red_light</item>
+    </style>
+
+    <style name="ButtonTheme">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/background_button</item>
+    </style>
+
 </resources>

@@ -3,20 +3,28 @@ package com.gutotech.tcclogistica.view.adm;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.core.view.GravityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.storage.StorageReference;
 import com.gutotech.tcclogistica.R;
+import com.gutotech.tcclogistica.config.ConfigFirebase;
+import com.gutotech.tcclogistica.config.Storage;
 import com.gutotech.tcclogistica.model.FuncionarioOn;
+import com.gutotech.tcclogistica.view.FuncionarioPerfilFragment;
 import com.gutotech.tcclogistica.view.LoginActivity;
 
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -25,7 +33,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.Locale;
 
 public class AdmMainActivity extends AppCompatActivity {
 
@@ -35,7 +46,7 @@ public class AdmMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adm_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -47,14 +58,26 @@ public class AdmMainActivity extends AppCompatActivity {
             }
         });
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        final DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
 
         TextView userTextView = headerView.findViewById(R.id.userTextView);
+        userTextView.setText(String.format(Locale.getDefault(), "%s, %s", getResources().getText(R.string.welcome_user), FuncionarioOn.funcionario.getNome().toUpperCase()));
 
-        userTextView.setText(getResources().getText(R.string.welcome_user) + " GUSTAVO");
+        ImageView profileImageView = headerView.findViewById(R.id.profileImageView);
+        profileImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeToFragment(new FuncionarioPerfilFragment());
+                toolbar.setTitle("Perfil");
+                drawer.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        if (FuncionarioOn.funcionario.isProfileImage())
+            Storage.downloadProfile(AdmMainActivity.this, profileImageView);
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_entregas, R.id.nav_estoque,
@@ -64,6 +87,12 @@ public class AdmMainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+    }
+
+    private void changeToFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frameConteiner, fragment);
+        transaction.commit();
     }
 
     @Override

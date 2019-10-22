@@ -9,11 +9,14 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,75 +37,89 @@ import java.util.List;
 import es.dmoral.toasty.Toasty;
 
 public class LoginActivity extends AppCompatActivity {
-    private EditText userEditText, passwordEditText;
+    private TextInputLayout userTextInput, passwordTextInput;
 
     private Dialog processingDialog;
 
+    private List<Funcionario> funcionariosList = new ArrayList<>();
+
     private DatabaseReference funcionarioReference;
     private ValueEventListener funcionarioListener;
-
-    private List<Funcionario> funcionariosList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        userEditText = findViewById(R.id.userEditText);
-        passwordEditText = findViewById(R.id.passwordEditText);
+        userTextInput = findViewById(R.id.userTextInput);
+        passwordTextInput = findViewById(R.id.passwordTextInput);
 
         processingDialog = new Dialog(this);
         processingDialog.setContentView(R.layout.dialog_carregando);
         processingDialog.setCancelable(false);
         processingDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
+        EditText passwordEditText = findViewById(R.id.passwordEditText);
+        passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                login();
+                return false;
+            }
+        });
+
         Button loginButton = findViewById(R.id.loginButton);
-        loginButton.setOnClickListener(loginButtonListener);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                login();
+            }
+        });
 
         funcionarioReference = ConfigFirebase.getDatabase().child("funcionario");
     }
 
-    private final View.OnClickListener loginButtonListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            final String user = userEditText.getText().toString().trim();
-            final String password = passwordEditText.getText().toString();
+    private void login() {
+        final String user = userTextInput.getEditText().getText().toString().trim();
+        final String password = passwordTextInput.getEditText().getText().toString().trim();
 
-            if (isValidField(user, password)) {
-                if (signInWith(user, password)) {
-                    FuncionarioOn.funcionario.setOnline(true);
-                    FuncionarioOn.funcionario.setUltimoLogin(DateCustom.getDataEHora());
-                    FuncionarioOn.funcionario.salvar();
+        if (isValidField(user, password)) {
+            if (signInWith(user, password)) {
+                FuncionarioOn.funcionario.setOnline(true);
+                FuncionarioOn.funcionario.getLogin().setUltimoLogin(DateCustom.getDataEHora());
+                FuncionarioOn.funcionario.salvar();
 
-                    switch (FuncionarioOn.funcionario.getCargo()) {
-                        case Funcionario.ADM:
-                            startActivity(new Intent(LoginActivity.this, AdmMainActivity.class));
-                            break;
-                        case Funcionario.ROTEIRISTA:
-                            startActivity(new Intent(LoginActivity.this, RoteiristaMainActivity.class));
-                            break;
-                        case Funcionario.MOTORISTA:
-                            startActivity(new Intent(LoginActivity.this, MotoristaMainActivity.class));
-                            break;
-                    }
-                } else
-                    Toasty.error(LoginActivity.this, "Usuário ou Senha inválidos", Toast.LENGTH_SHORT, true).show();
+                switch (FuncionarioOn.funcionario.getCargo()) {
+                    case Funcionario.ADM:
+                        startActivity(new Intent(LoginActivity.this, AdmMainActivity.class));
+                        break;
+                    case Funcionario.ROTEIRISTA:
+                        startActivity(new Intent(LoginActivity.this, RoteiristaMainActivity.class));
+                        break;
+                    case Funcionario.MOTORISTA:
+                        startActivity(new Intent(LoginActivity.this, MotoristaMainActivity.class));
+                        break;
+                }
+
+                finish();
             }
         }
-    };
+    }
 
     private boolean isValidField(String user, String password) {
         boolean valid = true;
 
         if (user.isEmpty()) {
-            userEditText.setError("É necessário um usuário válido.");
+            userTextInput.setError("Usuário requerido.");
             valid = false;
-        }
+        } else
+            userTextInput.setError(null);
 
         if (password.isEmpty()) {
-            passwordEditText.setError("Senha requerida.");
+            passwordTextInput.setError("Senha requerida.");
             valid = false;
-        }
+        } else
+            passwordTextInput.setError(null);
 
         return valid;
     }
@@ -113,9 +130,15 @@ public class LoginActivity extends AppCompatActivity {
                 if (funcionario.getLogin().getPassword().equals(password)) {
                     FuncionarioOn.funcionario = funcionario;
                     return true;
+                } else {
+                    passwordTextInput.setError("Senha não corresponde.");
+                    return false;
                 }
             }
         }
+
+        userTextInput.setError("Usuário inválido, por favor tente novamente.");
+
         return false;
     }
 

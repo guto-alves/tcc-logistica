@@ -8,6 +8,7 @@ public class Funcionario {
     public static final String ROTEIRISTA = "Roteirista";
     public static final String MOTORISTA = "Motorista";
 
+
     private int id;
     private String nome;
     private String rg;
@@ -17,9 +18,9 @@ public class Funcionario {
     private String email;
     private String cargo;
     private String dataNascimento;
+    private boolean profileImage;
 
     private Login login;
-    private String ultimoLogin;
     private boolean online;
 
     private String cnh;
@@ -28,7 +29,7 @@ public class Funcionario {
     public Funcionario() {
     }
 
-    public Funcionario(int id, String nome, String rg, String cpf, String endereco, String celular, String email, String cargo, String dataNascimento, Login login, String ultimoLogin, boolean online, String cnh, Veiculo veiculo) {
+    public Funcionario(int id, String nome, String rg, String cpf, String endereco, String celular, String email, String cargo, String dataNascimento, boolean profileImage, Login login, boolean online, String cnh, Veiculo veiculo) {
         this.id = id;
         this.nome = nome;
         this.rg = rg;
@@ -38,8 +39,8 @@ public class Funcionario {
         this.email = email;
         this.cargo = cargo;
         this.dataNascimento = dataNascimento;
+        this.profileImage = profileImage;
         this.login = login;
-        this.ultimoLogin = ultimoLogin;
         this.online = online;
         this.cnh = cnh;
         this.veiculo = veiculo;
@@ -64,6 +65,18 @@ public class Funcionario {
     public void deslogar() {
         online = false;
         salvar();
+    }
+
+    public static String getADM() {
+        return ADM;
+    }
+
+    public static String getROTEIRISTA() {
+        return ROTEIRISTA;
+    }
+
+    public static String getMOTORISTA() {
+        return MOTORISTA;
     }
 
     public int getId() {
@@ -138,20 +151,20 @@ public class Funcionario {
         this.dataNascimento = dataNascimento;
     }
 
+    public boolean isProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(boolean profileImage) {
+        this.profileImage = profileImage;
+    }
+
     public Login getLogin() {
         return login;
     }
 
     public void setLogin(Login login) {
         this.login = login;
-    }
-
-    public String getUltimoLogin() {
-        return ultimoLogin;
-    }
-
-    public void setUltimoLogin(String ultimoLogin) {
-        this.ultimoLogin = ultimoLogin;
     }
 
     public boolean isOnline() {

@@ -1,27 +1,36 @@
 package com.gutotech.tcclogistica.view.roteirista.ui.estoque;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.gutotech.tcclogistica.R;
+import com.gutotech.tcclogistica.TextRecognizer;
 import com.gutotech.tcclogistica.model.CalculoImposto;
 import com.gutotech.tcclogistica.model.Destinatario;
 import com.gutotech.tcclogistica.model.Endereco;
 import com.gutotech.tcclogistica.model.Nota;
 import com.gutotech.tcclogistica.model.Transportador;
 
+import java.io.IOException;
 import java.util.UUID;
 
 import es.dmoral.toasty.Toasty;
+
+import static android.app.Activity.RESULT_OK;
 
 public class RoteiristaNotaNovaFragment extends Fragment {
     private Nota nota = new Nota();
@@ -50,6 +59,8 @@ public class RoteiristaNotaNovaFragment extends Fragment {
     private EditText codProdutoEditText, descricaoProdutoEditText, quantidadeProdutoEditText, precoUnitarioEditText, valorTotalEditText;
 
     private EditText dadosAdicionaisEditText;
+
+    private TextRecognizer textRecognizer;
 
     public RoteiristaNotaNovaFragment() {
     }
@@ -108,6 +119,15 @@ public class RoteiristaNotaNovaFragment extends Fragment {
         dadosAdicionaisEditText = root.findViewById(R.id.dadosAdicionaisEditText);
 
         adicionarMascaras();
+
+        ImageButton textRecognizerImageButton = root.findViewById(R.id.textRecognizerImageButton);
+        textRecognizerImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent, 1);
+            }
+        });
 
         Button salvarButton = root.findViewById(R.id.salvarButton);
         salvarButton.setOnClickListener(salvarButtonListener);
@@ -266,5 +286,26 @@ public class RoteiristaNotaNovaFragment extends Fragment {
         }
 
         return valid;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+            Bitmap bitmap = null;
+            try {
+                if (requestCode == 1) {
+                    bitmap = (Bitmap) data.getExtras().get("data");
+                } else if (requestCode == 2) {
+                    Uri uri = data.getData();
+                    bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
+                }
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

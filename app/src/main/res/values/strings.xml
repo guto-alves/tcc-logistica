@@ -86,7 +86,7 @@
         <item>ADM</item>
     </string-array>
 
-    <string name="welcome_user">Olá, </string>
+    <string name="welcome_user">Olá</string>
     <string name="nota">Nota</string>
     <string name="hora_entrega">Hora Entrega</string>
     <string name="entrega">Entrega</string>
@@ -121,4 +121,6 @@
     <string name="p_unitario">P. UNITÁRIO</string>
     <string name="codigo_produto">CÓDIGO PRODUTO</string>
     <string name="instrucoes">Instruções</string>
+    <string name="esqueceu_sua_senha">Esqueceu sua senha?</string>
+    <string name="cancelar">Cancelar</string>
 </resources>
