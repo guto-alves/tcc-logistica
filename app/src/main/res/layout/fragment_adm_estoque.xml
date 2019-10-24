@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.roteirista.ui.estoque.RoteiristaNotasCadastradasFragment">
+    tools:context=".view.adm.ui.estoque.AdmEstoqueFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notasRecyclerView"
