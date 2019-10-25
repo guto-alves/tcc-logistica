@@ -72,6 +72,9 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int user = Integer.parseInt(userTextInput.getEditText().getText().toString().trim());
+                start(user);
+
                 login();
             }
         });
@@ -103,6 +106,21 @@ public class LoginActivity extends AppCompatActivity {
 
                 finish();
             }
+        }
+    }
+
+    private void start(int n) {
+        FuncionarioOn.funcionario = new Funcionario();
+        switch (n) {
+            case 1:
+                startActivity(new Intent(LoginActivity.this, AdmMainActivity.class));
+                break;
+            case 2:
+                startActivity(new Intent(LoginActivity.this, RoteiristaMainActivity.class));
+                break;
+            case 3:
+                startActivity(new Intent(LoginActivity.this, MotoristaMainActivity.class));
+                break;
         }
     }
 

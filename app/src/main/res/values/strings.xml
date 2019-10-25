@@ -15,6 +15,7 @@
     <string name="menu_home">Home</string>
     <string name="entregas">Entregas</string>
     <string name="estoque">Estoque</string>
+    <string name="notas">Notas</string>
     <string name="clientes">Clientes</string>
     <string name="motoristas">Motoristas</string>
 
@@ -123,4 +124,5 @@
     <string name="instrucoes">Instruções</string>
     <string name="esqueceu_sua_senha">Esqueceu sua senha?</string>
     <string name="cancelar">Cancelar</string>
+    <string name="enviar">Enviar</string>
 </resources>

@@ -43,7 +43,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
-                    android:background="@drawable/background_caixa_texto"
+                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="text" />
 
@@ -67,7 +67,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
-                    android:background="@drawable/background_caixa_texto"
+                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="numberSigned" />
 
@@ -91,7 +91,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
-                    android:background="@drawable/background_caixa_texto"
+                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="numberSigned" />
 
@@ -115,7 +115,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
-                    android:background="@drawable/background_caixa_texto"
+                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="date" />
 
@@ -139,7 +139,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
-                    android:background="@drawable/background_caixa_texto"
+                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textPersonName" />
 
@@ -163,7 +163,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
-                    android:background="@drawable/background_caixa_texto"
+                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textEmailAddress" />
 
@@ -189,7 +189,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
-                    android:background="@drawable/background_caixa_texto"
+                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="numberSigned" />
 
@@ -246,7 +246,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
-                    android:background="@drawable/background_caixa_texto"
+                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="numberSigned" />
 
@@ -270,7 +270,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
-                    android:background="@drawable/background_caixa_texto"
+                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textCapCharacters" />
 
@@ -294,7 +294,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
-                    android:background="@drawable/background_caixa_texto"
+                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textPersonName" />
 
@@ -318,7 +318,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
-                    android:background="@drawable/background_caixa_texto"
+                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="numberSigned" />
 
@@ -342,7 +342,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
-                    android:background="@drawable/background_caixa_texto"
+                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textCapCharacters" />
             </LinearLayout>

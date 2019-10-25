@@ -36,7 +36,7 @@ public class FuncionariosFragment extends Fragment {
             }
         });
 
-        changeToFragment(new FuncionarioNovoFragment());
+        changeToFragment(new FuncionariosCadastradosFragment());
 
         return root;
     }

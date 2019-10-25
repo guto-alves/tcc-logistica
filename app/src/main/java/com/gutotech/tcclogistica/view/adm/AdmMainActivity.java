@@ -49,22 +49,13 @@ public class AdmMainActivity extends AppCompatActivity {
         final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         final DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
 
         TextView userTextView = headerView.findViewById(R.id.userTextView);
-        userTextView.setText(String.format(Locale.getDefault(), "%s, %s", getResources().getText(R.string.welcome_user), FuncionarioOn.funcionario.getNome().toUpperCase()));
+        //userTextView.setText(String.format(Locale.getDefault(), "%s, %s", getResources().getText(R.string.welcome_user), FuncionarioOn.funcionario.getNome().toUpperCase()));
 
         ImageView profileImageView = headerView.findViewById(R.id.profileImageView);
         profileImageView.setOnClickListener(new View.OnClickListener() {
@@ -76,8 +67,8 @@ public class AdmMainActivity extends AppCompatActivity {
             }
         });
 
-        if (FuncionarioOn.funcionario.isProfileImage())
-            Storage.downloadProfile(AdmMainActivity.this, profileImageView);
+//        if (FuncionarioOn.funcionario.isProfileImage())
+//            Storage.downloadProfile(AdmMainActivity.this, profileImageView);
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_entregas, R.id.nav_estoque,

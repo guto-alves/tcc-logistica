@@ -7,6 +7,20 @@
     android:orientation="vertical"
     tools:context=".view.adm.ui.estoque.AdmEstoqueFragment">
 
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/background_search"
+        android:queryHint="Pesquise pelo número da nota" />
+
+    <TextView
+        android:id="@+id/statusNotasTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notasRecyclerView"
         android:layout_width="match_parent"

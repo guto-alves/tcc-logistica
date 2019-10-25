@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/nav_estoque"
         android:name="com.gutotech.tcclogistica.view.roteirista.ui.estoque.RoteiristaEstoqueFragment"
-        android:label="@string/estoque"
+        android:label="@string/notas"
         tools:layout="@layout/fragment_roteirista_estoque" />
 
     <fragment
