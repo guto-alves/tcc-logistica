@@ -3,7 +3,7 @@ package com.gutotech.tcclogistica.model;
 public class Login {
     private String user;
     private String password;
-    private String ultimoLogin;
+    private String lastLogin;
 
     public Login() {
     }
@@ -13,10 +13,10 @@ public class Login {
         this.password = password;
     }
 
-    public Login(String user, String password, String ultimoLogin) {
+    public Login(String user, String password, String lastLogin) {
         this.user = user;
         this.password = password;
-        this.ultimoLogin = ultimoLogin;
+        this.lastLogin = lastLogin;
     }
 
     public String getUser() {
@@ -35,11 +35,11 @@ public class Login {
         this.password = password;
     }
 
-    public String getUltimoLogin() {
-        return ultimoLogin;
+    public String getLastLogin() {
+        return lastLogin;
     }
 
-    public void setUltimoLogin(String ultimoLogin) {
-        this.ultimoLogin = ultimoLogin;
+    public void setLastLogin(String lastLogin) {
+        this.lastLogin = lastLogin;
     }
 }

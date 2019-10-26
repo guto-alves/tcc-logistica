@@ -31,7 +31,8 @@ import com.gutotech.tcclogistica.model.Veiculo;
 import es.dmoral.toasty.Toasty;
 
 public class FuncionarioNovoFragment extends Fragment {
-    private EditText nomeEditText, rgEditText, cpfEditText, dataNascimentoEditText, enderecoEditText, celularEditText, emailEditText;
+    private EditText nomeEditText, rgEditText, cpfEditText, dataNascimentoEditText,
+            enderecoEditText, telefoneEditText, celularEditText, emailEditText;
 
     private LinearLayout motoristaLinearLayout;
     private EditText cnhEditText, categoriaEditText, veiculoEditText, anoEditText, placaEditText;
@@ -53,6 +54,7 @@ public class FuncionarioNovoFragment extends Fragment {
         cpfEditText = root.findViewById(R.id.cpfEditText);
         dataNascimentoEditText = root.findViewById(R.id.dataNascimentoEditText);
         enderecoEditText = root.findViewById(R.id.enderecoEditText);
+        telefoneEditText = root.findViewById(R.id.telefoneEditText);
         celularEditText = root.findViewById(R.id.celularEditText);
         emailEditText = root.findViewById(R.id.emailEditText);
         final Spinner cargoSpinner = root.findViewById(R.id.cargoSpinner);
@@ -120,6 +122,7 @@ public class FuncionarioNovoFragment extends Fragment {
             funcionario.setCpf(cpfEditText.getText().toString());
             funcionario.setEndereco(enderecoEditText.getText().toString());
             funcionario.setCelular(celularEditText.getText().toString());
+            funcionario.setTelefone(telefoneEditText.getText().toString());
             funcionario.setEmail(emailEditText.getText().toString());
             funcionario.setDataNascimento(dataNascimentoEditText.getText().toString());
 
@@ -137,6 +140,7 @@ public class FuncionarioNovoFragment extends Fragment {
         dataNascimentoEditText.setText("");
         enderecoEditText.setText("");
         celularEditText.setText("");
+        telefoneEditText.setText("");
         emailEditText.setText("");
 
         veiculoEditText.setText("");
@@ -150,6 +154,7 @@ public class FuncionarioNovoFragment extends Fragment {
         rgEditText.addTextChangedListener(new MaskTextWatcher(rgEditText, new SimpleMaskFormatter("NN.NNN.NNN-N")));
         cpfEditText.addTextChangedListener(new MaskTextWatcher(cpfEditText, new SimpleMaskFormatter("NNN.NNN.NNN-NN")));
         celularEditText.addTextChangedListener(new MaskTextWatcher(celularEditText, new SimpleMaskFormatter("(NN) NNNNN-NNNN")));
+        telefoneEditText.addTextChangedListener(new MaskTextWatcher(telefoneEditText, new SimpleMaskFormatter("(NN) NNNN-NNNN")));
         dataNascimentoEditText.addTextChangedListener(new MaskTextWatcher(dataNascimentoEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
 
         anoEditText.addTextChangedListener(new MaskTextWatcher(anoEditText, new SimpleMaskFormatter("NNNN")));
@@ -175,7 +180,6 @@ public class FuncionarioNovoFragment extends Fragment {
 
                 String user = funcionario.getNome().split(" ")[0] + totalDeFuncionarios;
                 funcionario.setLogin(new Login(user, user));
-                funcionario.setId(totalDeFuncionarios);
 
                 funcionario.salvar();
 

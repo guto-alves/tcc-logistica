@@ -125,4 +125,10 @@
     <string name="esqueceu_sua_senha">Esqueceu sua senha?</string>
     <string name="cancelar">Cancelar</string>
     <string name="enviar">Enviar</string>
+    <string name="traco">-</string>
+    <string name="nova_senha">Nova senha</string>
+    <string name="senha_atual">Senha atual</string>
+    <string name="repita_a_nova_senha">Repita a nova senha</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="alterar_senha">Alterar senha</string>
 </resources>

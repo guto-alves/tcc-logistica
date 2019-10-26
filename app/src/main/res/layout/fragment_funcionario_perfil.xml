@@ -1,188 +1,308 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".view.FuncionarioPerfilFragment">
+    android:fillViewport="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".view.FuncionarioPerfilFragment">
 
-        <ImageView
-            android:id="@+id/profileImageView"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/profileImageView"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:background="@color/colorPrimary"
+                android:contentDescription="@string/nav_header_desc"
+                android:paddingTop="@dimen/nav_header_vertical_spacing"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/perfil_sem_foto" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <ImageButton
+                    android:id="@+id/deleteImageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_delete_24dp" />
+
+                <ImageButton
+                    android:id="@+id/cameraImageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_photo_camera_24dp" />
+
+                <ImageButton
+                    android:id="@+id/galleryImageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_photo_library_24dp" />
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/nomeTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:background="@color/colorPrimary"
-            android:contentDescription="@string/nav_header_desc"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/perfil_sem_foto" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            android:paddingTop="5dp"
+            android:paddingBottom="2dp"
+            android:text="@string/nome"
+            android:textColor="@android:color/white"
+            android:textSize="24sp" />
 
-            <ImageButton
-                android:id="@+id/deleteImageButton"
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:padding="16dp"
+            android:visibility="visible">
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_delete_24dp" />
+                android:text="Cargo: "
+                android:textColor="@android:color/black" />
 
-            <ImageButton
-                android:id="@+id/cameraImageButton"
+            <TextView
+                android:id="@+id/cargoTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_photo_camera_24dp" />
+                android:layout_gravity="fill_horizontal"
+                android:text="@string/traco"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-            <ImageButton
-                android:id="@+id/galleryImageButton"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_photo_library_24dp" />
+                android:layout_marginBottom="5dp"
+                android:text="RG: "
+                android:textColor="@android:color/black" />
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/rgTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/traco"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="CPF: "
+                android:textColor="@android:color/black" />
 
+            <TextView
+                android:id="@+id/cpfTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/traco"
+                android:textColor="@android:color/black" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Data de nascimento: "
+                android:textColor="@android:color/black" />
 
-    <TextView
-        android:id="@+id/nomeTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:gravity="center"
-        android:text="@string/nome"
-        android:textColor="@color/colorBlack"
-        android:textSize="24sp" />
+            <TextView
+                android:id="@+id/dataNascimentoTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/traco"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Endereço: "
+                android:textColor="@android:color/black" />
 
-        <TextView
-            android:id="@+id/cargoTextView"
+            <TextView
+                android:id="@+id/enderecoTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/traco"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Celular: "
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/celularTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/traco"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Telefone: "
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/telefoneTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/traco"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Email: "
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/emailTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/traco"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Último login: "
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/ultimoLoginTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/traco"
+                android:textColor="@android:color/black" />
+        </GridLayout>
+
+        <GridLayout
+            android:id="@+id/motoristaGridLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/cargo"
-            android:textColor="@color/colorBlack" />
+            android:columnCount="2"
+            android:padding="16dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="CNH: "
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/cnhTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/traco"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Categoria: "
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/categoriaTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/traco"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Veículo: "
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/veiculoTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/traco"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Placa: "
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/placaTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/traco"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ano: "
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/anoTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/traco"
+                android:textColor="@android:color/black" />
+        </GridLayout>
 
         <TextView
-            android:id="@+id/rgTextView"
+            android:id="@+id/alterarSenhaTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="@string/rg"
-            android:textColor="@color/colorBlack" />
-
-        <TextView
-            android:id="@+id/cpfTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="@string/cpf"
-            android:textColor="@color/colorBlack" />
-
-        <TextView
-            android:id="@+id/dataNascimentoTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="@string/data_nascimento"
-            android:textColor="@color/colorBlack" />
-
-        <TextView
-            android:id="@+id/enderecoTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="@string/endereco"
-            android:textColor="@color/colorBlack" />
-
-        <TextView
-            android:id="@+id/celularTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="@string/celular"
-            android:textColor="@color/colorBlack" />
-
-        <TextView
-            android:id="@+id/emailTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="@string/email"
-            android:textColor="@color/colorBlack" />
-
-        <TextView
-            android:id="@+id/ultimoLoginTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="@string/ultimo_login"
-            android:textColor="@color/colorBlack" />
-
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:drawableEnd="@drawable/ic_chevron_right_24dp"
+            android:drawableRight="@drawable/ic_chevron_right_24dp"
+            android:text="@string/alterar_senha"
+            android:textColor="@android:color/black" />
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/motoristaTextViewsLinear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:visibility="gone">
-
-        <TextView
-            android:id="@+id/cnhTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="@string/cnh"
-            android:textColor="@color/colorBlack" />
-
-        <TextView
-            android:id="@+id/categoriaTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="@string/categoria"
-            android:textColor="@color/colorBlack" />
-
-        <TextView
-            android:id="@+id/veiculoTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="@string/veiculo"
-            android:textColor="@color/colorBlack" />
-
-        <TextView
-            android:id="@+id/placaTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/placa"
-            android:textColor="@color/colorBlack" />
-
-        <TextView
-            android:id="@+id/anoTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/ano"
-            android:textColor="@color/colorBlack" />
-    </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

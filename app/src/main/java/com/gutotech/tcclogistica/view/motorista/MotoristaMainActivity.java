@@ -62,7 +62,7 @@ public class MotoristaMainActivity extends AppCompatActivity {
             }
         });
         if (FuncionarioOn.funcionario.isProfileImage())
-            Storage.downloadProfile(MotoristaMainActivity.this, profileImageView);
+            Storage.downloadProfile(MotoristaMainActivity.this, profileImageView, FuncionarioOn.funcionario.getLogin().getUser());
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_entregas, R.id.nav_estoque, R.id.nav_suporte)

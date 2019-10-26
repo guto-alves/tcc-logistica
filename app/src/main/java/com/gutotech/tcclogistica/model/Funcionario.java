@@ -8,38 +8,37 @@ public class Funcionario {
     public static final String ROTEIRISTA = "Roteirista";
     public static final String MOTORISTA = "Motorista";
 
-
-    private int id;
     private String nome;
     private String rg;
     private String cpf;
+    private String dataNascimento;
     private String endereco;
     private String celular;
+    private String telefone;
     private String email;
-    private String cargo;
-    private String dataNascimento;
     private boolean profileImage;
-
-    private Login login;
-    private boolean online;
+    private String cargo;
 
     private String cnh;
     private Veiculo veiculo;
 
+    private Login login;
+    private boolean online;
+
     public Funcionario() {
     }
 
-    public Funcionario(int id, String nome, String rg, String cpf, String endereco, String celular, String email, String cargo, String dataNascimento, boolean profileImage, Login login, boolean online, String cnh, Veiculo veiculo) {
-        this.id = id;
+    public Funcionario(String nome, String rg, String cpf, String dataNascimento, String endereco, String celular, String telefone, String email, boolean profileImage, String cargo, Login login, boolean online, String cnh, Veiculo veiculo) {
         this.nome = nome;
         this.rg = rg;
         this.cpf = cpf;
+        this.dataNascimento = dataNascimento;
         this.endereco = endereco;
         this.celular = celular;
+        this.telefone = telefone;
         this.email = email;
-        this.cargo = cargo;
-        this.dataNascimento = dataNascimento;
         this.profileImage = profileImage;
+        this.cargo = cargo;
         this.login = login;
         this.online = online;
         this.cnh = cnh;
@@ -67,26 +66,6 @@ public class Funcionario {
         salvar();
     }
 
-    public static String getADM() {
-        return ADM;
-    }
-
-    public static String getROTEIRISTA() {
-        return ROTEIRISTA;
-    }
-
-    public static String getMOTORISTA() {
-        return MOTORISTA;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getNome() {
         return nome;
     }
@@ -111,6 +90,14 @@ public class Funcionario {
         this.cpf = cpf;
     }
 
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
     public String getEndereco() {
         return endereco;
     }
@@ -127,6 +114,14 @@ public class Funcionario {
         this.celular = celular;
     }
 
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -135,28 +130,20 @@ public class Funcionario {
         this.email = email;
     }
 
-    public String getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
-    }
-
-    public String getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-
     public boolean isProfileImage() {
         return profileImage;
     }
 
     public void setProfileImage(boolean profileImage) {
         this.profileImage = profileImage;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
     public Login getLogin() {

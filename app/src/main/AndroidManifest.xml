@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.SupportActivity"></activity>
+        <activity android:name=".view.TrocaSenhaActivity"></activity>
+        <activity android:name=".view.SupportActivity" />
         <activity
             android:name=".view.SplashActivity"
             android:theme="@style/Splash">

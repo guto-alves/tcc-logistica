@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="Número Coleta -c"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -58,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="Coletar em"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -78,7 +78,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="@string/emissao"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -108,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
                     android:text="@string/nome"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -128,7 +128,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="@string/endereco"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -148,7 +148,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="@string/referencia"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -168,7 +168,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="@string/bairro"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -188,7 +188,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="@string/cidade"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -208,7 +208,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
                     android:text="@string/cep"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -228,7 +228,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
                     android:text="@string/contato"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -248,7 +248,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="@string/telefone"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -268,7 +268,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="@string/especie"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -288,7 +288,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="@string/n_pedido"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -309,7 +309,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="@string/veiculo"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -338,7 +338,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="@string/nome"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -358,7 +358,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="@string/peso"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -378,7 +378,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="@string/dimensoes"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -398,7 +398,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="@string/n_onu"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -427,7 +427,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
                     android:text="@string/nome"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -447,7 +447,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="@string/endereco"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -468,7 +468,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="@string/destino"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -488,7 +488,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="@string/site"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -508,7 +508,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
                     android:text="@string/placa"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -529,7 +529,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="@string/semi_reboque"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -558,7 +558,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="@string/nome"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <Spinner
@@ -573,7 +573,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="@string/rg"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -594,7 +594,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="@string/observacoes"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -615,7 +615,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="@string/instrucoes"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -637,7 +637,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
                     android:text="Coleta efetuada em:"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
@@ -658,7 +658,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="@string/hora"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText

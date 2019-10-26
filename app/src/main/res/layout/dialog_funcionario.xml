@@ -23,7 +23,7 @@
         android:layout_marginBottom="5dp"
         android:gravity="center"
         android:text="@string/nome"
-        android:textColor="@color/colorBlack"
+        android:textColor="@android:color/black"
         android:textSize="24sp" />
 
     <LinearLayout
@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/cargo"
-            android:textColor="@color/colorBlack" />
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/rgTextView"
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:text="@string/rg"
-            android:textColor="@color/colorBlack" />
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/cpfTextView"
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:text="@string/cpf"
-            android:textColor="@color/colorBlack" />
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/dataNascimentoTextView"
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:text="@string/data_nascimento"
-            android:textColor="@color/colorBlack" />
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/enderecoTextView"
@@ -69,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:text="@string/endereco"
-            android:textColor="@color/colorBlack" />
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/celularTextView"
@@ -77,7 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:text="@string/celular"
-            android:textColor="@color/colorBlack" />
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/emailTextView"
@@ -85,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:text="@string/email"
-            android:textColor="@color/colorBlack" />
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/ultimoLoginTextView"
@@ -93,7 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:text="@string/ultimo_login"
-            android:textColor="@color/colorBlack" />
+            android:textColor="@android:color/black" />
 
         <ExpandableListView
             android:id="@+id/loginFuncionarioExpandable"
@@ -116,7 +116,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:text="@string/cnh"
-            android:textColor="@color/colorBlack" />
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/categoriaTextView"
@@ -124,7 +124,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:text="@string/categoria"
-            android:textColor="@color/colorBlack" />
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/veiculoTextView"
@@ -132,21 +132,21 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:text="@string/veiculo"
-            android:textColor="@color/colorBlack" />
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/placaTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/placa"
-            android:textColor="@color/colorBlack" />
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/anoTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ano"
-            android:textColor="@color/colorBlack" />
+            android:textColor="@android:color/black" />
     </LinearLayout>
 
     <LinearLayout

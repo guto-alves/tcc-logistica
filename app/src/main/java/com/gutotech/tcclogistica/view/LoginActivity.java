@@ -72,8 +72,8 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int user = Integer.parseInt(userTextInput.getEditText().getText().toString().trim());
-                start(user);
+//                int user = Integer.parseInt(userTextInput.getEditText().getText().toString().trim());
+//                start(user);
 
                 login();
             }
@@ -89,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
         if (isValidField(user, password)) {
             if (signInWith(user, password)) {
                 FuncionarioOn.funcionario.setOnline(true);
-                FuncionarioOn.funcionario.getLogin().setUltimoLogin(DateCustom.getDataEHora());
+                FuncionarioOn.funcionario.getLogin().setLastLogin(DateCustom.getDataEHora());
                 FuncionarioOn.funcionario.salvar();
 
                 switch (FuncionarioOn.funcionario.getCargo()) {

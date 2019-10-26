@@ -23,6 +23,7 @@ import com.gutotech.tcclogistica.model.FuncionarioOn;
 import com.gutotech.tcclogistica.view.FuncionarioPerfilFragment;
 import com.gutotech.tcclogistica.view.LoginActivity;
 import com.gutotech.tcclogistica.view.adm.AdmMainActivity;
+import com.gutotech.tcclogistica.view.motorista.MotoristaMainActivity;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -61,7 +62,7 @@ public class RoteiristaMainActivity extends AppCompatActivity {
             }
         });
         if (FuncionarioOn.funcionario.isProfileImage())
-            Storage.downloadProfile(RoteiristaMainActivity.this, profileImageView);
+            Storage.downloadProfile(RoteiristaMainActivity.this, profileImageView, FuncionarioOn.funcionario.getLogin().getUser());
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_entregas, R.id.nav_estoque, R.id.nav_suporte)

@@ -24,7 +24,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/nomeTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -48,7 +47,6 @@
                     android:inputType="text" />
 
                 <TextView
-                    android:id="@+id/rgTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -72,7 +70,6 @@
                     android:inputType="numberSigned" />
 
                 <TextView
-                    android:id="@+id/cpfTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -182,6 +179,32 @@
 
                 <EditText
                     android:id="@+id/celularEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/background_edit_text"
+                    android:ems="10"
+                    android:inputType="numberSigned" />
+
+                <TextView
+                    android:id="@+id/telefoneTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/telefone"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/enderecoEditText" />
+
+                <EditText
+                    android:id="@+id/telefoneEditText"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginStart="16dp"

@@ -1,4 +1,4 @@
-package com.gutotech.tcclogistica.view.adm.ui.funcionarios;
+package com.gutotech.tcclogistica.view;
 
 import android.app.Dialog;
 import android.content.Context;

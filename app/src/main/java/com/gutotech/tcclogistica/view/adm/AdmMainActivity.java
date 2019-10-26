@@ -55,7 +55,7 @@ public class AdmMainActivity extends AppCompatActivity {
         View headerView = navigationView.getHeaderView(0);
 
         TextView userTextView = headerView.findViewById(R.id.userTextView);
-        //userTextView.setText(String.format(Locale.getDefault(), "%s, %s", getResources().getText(R.string.welcome_user), FuncionarioOn.funcionario.getNome().toUpperCase()));
+        userTextView.setText(String.format(Locale.getDefault(), "%s, %s", getResources().getText(R.string.welcome_user), FuncionarioOn.funcionario.getNome().toUpperCase()));
 
         ImageView profileImageView = headerView.findViewById(R.id.profileImageView);
         profileImageView.setOnClickListener(new View.OnClickListener() {
@@ -67,8 +67,8 @@ public class AdmMainActivity extends AppCompatActivity {
             }
         });
 
-//        if (FuncionarioOn.funcionario.isProfileImage())
-//            Storage.downloadProfile(AdmMainActivity.this, profileImageView);
+        if (FuncionarioOn.funcionario.isProfileImage())
+            Storage.downloadProfile(AdmMainActivity.this, profileImageView, FuncionarioOn.funcionario.getLogin().getUser());
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_entregas, R.id.nav_estoque,

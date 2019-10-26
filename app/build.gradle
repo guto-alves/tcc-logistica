@@ -42,6 +42,7 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-storage:4.3.1'
 
     implementation 'com.github.GrenderG:Toasty:1.4.2'
+    implementation 'com.tapadoo.android:alerter:1.0.6'
 
     implementation 'com.github.rtoshiro.mflibrary:mflibrary:1.0.0'
 

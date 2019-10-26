@@ -32,7 +32,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="N°"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -51,7 +51,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/data_de_emissao"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -70,7 +70,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/data_do_recebimento"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -90,7 +90,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="32dp"
                         android:text="@string/natureza_da_operacao"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -110,7 +110,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/inscricao_estadual"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -129,7 +129,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/cnpj"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -157,7 +157,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="Nome / Razão Social"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -176,7 +176,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/cnpj"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -195,7 +195,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/endereco"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -214,7 +214,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="Bairro / Distrito"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -233,7 +233,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/cep"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -252,7 +252,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/municipio"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -271,7 +271,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="FONE / FAX"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -291,7 +291,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="UF"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -310,7 +310,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/inscricao_estadual"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -329,7 +329,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/data_de_emissao"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -348,7 +348,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="Data de Entrada/Saída"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -367,7 +367,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="Hora de Entrada/Saída"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -395,7 +395,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/valor_do_frete"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -414,7 +414,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/valor_total_dos_produtos"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -433,7 +433,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/valor_total_da_nota"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -462,7 +462,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="NOME / RAZÃO SOCIAL"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -482,7 +482,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/frete_por_conta"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -501,7 +501,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/codigo_antt"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -521,7 +521,7 @@
                         android:layout_marginTop="24dp"
                         android:inputType="textCapCharacters"
                         android:text="@string/placa_do_veiculo"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -539,7 +539,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/cnpj"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -558,7 +558,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/endereco"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -577,7 +577,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/municipio"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -596,7 +596,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/uf"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -615,7 +615,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/inscricao_estadual"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -634,7 +634,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/quantidade"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -653,7 +653,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/especie"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -672,7 +672,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/marca"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -691,7 +691,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/numero"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -710,7 +710,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/peso_bruto"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -728,7 +728,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/peso_liquido"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -756,7 +756,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/codigo_produto"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -775,7 +775,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="DESCRIÇÃO DO PRODUTO/SERVIÇOS"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -795,7 +795,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/quantidade"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -814,7 +814,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/p_unitario"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -833,7 +833,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/v_total"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
@@ -853,7 +853,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/dados_adicionais"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText

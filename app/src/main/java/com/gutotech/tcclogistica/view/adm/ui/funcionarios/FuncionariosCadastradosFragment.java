@@ -129,7 +129,7 @@ public class FuncionariosCadastradosFragment extends Fragment {
             rgTextView.setText(funcionario.getRg());
             cpfTextView.setText(funcionario.getCpf());
             dataNascimentoTextView.setText(funcionario.getDataNascimento());
-            ultimoLoginTextView.setText(funcionario.getLogin().getUltimoLogin());
+            ultimoLoginTextView.setText(funcionario.getLogin().getLastLogin());
 
             if (funcionario.getCargo().equals(Funcionario.MOTORISTA)) {
                 cnhTextView.setText(funcionario.getCnh());
