@@ -33,7 +33,7 @@ import es.dmoral.toasty.Toasty;
 
 import static android.app.Activity.RESULT_OK;
 
-public class FuncionarioPerfilFragment extends Fragment {
+public class PerfilFragment extends Fragment {
     private TextView nomeTextView, cargoTextView, rgTextView, cpfTextView, dataNascimentoTextView,
             enderecoTextView, telefoneTextView, celularTextView, emailTextView, ultimoLoginTextView;
 
@@ -44,13 +44,13 @@ public class FuncionarioPerfilFragment extends Fragment {
     private final int CAMERA_CODE = 1;
     private final int GALLERY_CODE = 2;
 
-    public FuncionarioPerfilFragment() {
+    public PerfilFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_funcionario_perfil, container, false);
+        View root = inflater.inflate(R.layout.fragment_perfil, container, false);
 
         profileImageView = root.findViewById(R.id.profileImageView);
         ImageButton cameraImageButton = root.findViewById(R.id.cameraImageButton);

@@ -3,9 +3,6 @@ package com.gutotech.tcclogistica.view.roteirista;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import android.view.MenuItem;
 import android.view.View;
 
@@ -20,10 +17,8 @@ import com.google.android.material.navigation.NavigationView;
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.config.Storage;
 import com.gutotech.tcclogistica.model.FuncionarioOn;
-import com.gutotech.tcclogistica.view.FuncionarioPerfilFragment;
+import com.gutotech.tcclogistica.view.PerfilFragment;
 import com.gutotech.tcclogistica.view.LoginActivity;
-import com.gutotech.tcclogistica.view.adm.AdmMainActivity;
-import com.gutotech.tcclogistica.view.motorista.MotoristaMainActivity;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -58,14 +53,14 @@ public class RoteiristaMainActivity extends AppCompatActivity {
         profileImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeToFragment(new FuncionarioPerfilFragment());
+                changeToFragment(new PerfilFragment());
             }
         });
         if (FuncionarioOn.funcionario.isProfileImage())
             Storage.downloadProfile(RoteiristaMainActivity.this, profileImageView, FuncionarioOn.funcionario.getLogin().getUser());
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_entregas, R.id.nav_estoque, R.id.nav_suporte)
+                R.id.nav_estoque, R.id.nav_entregas, R.id.nav_coletas, R.id.nav_suporte)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

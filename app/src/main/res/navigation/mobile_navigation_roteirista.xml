@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/nav_suporte"
-        android:name="com.gutotech.tcclogistica.view.roteirista.ui.suporte.SuporteFragment"
+        android:name="com.gutotech.tcclogistica.view.suporte.SupportFragment"
         android:label="@string/suporte"
         tools:layout="@layout/fragment_suporte" />
 </navigation>

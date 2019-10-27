@@ -14,7 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view.TrocaSenhaActivity"></activity>
-        <activity android:name=".view.SupportActivity" />
         <activity
             android:name=".view.SplashActivity"
             android:theme="@style/Splash">

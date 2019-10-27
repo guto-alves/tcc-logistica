@@ -3,6 +3,7 @@ package com.gutotech.tcclogistica.view;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -59,6 +60,20 @@ public class LoginActivity extends AppCompatActivity {
         processingDialog.setCancelable(false);
         processingDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
+        TextView esqueceuSenhaTextView = findViewById(R.id.esqueceuSenhaTextView);
+        esqueceuSenhaTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                builder.setTitle("Esqueci a senha");
+                builder.setMessage("Entre em contato mais rápido possível com o seu supervisor e solicite uma nova senha.");
+                builder.setCancelable(false);
+                builder.setPositiveButton("OK", null);
+                builder.create();
+                builder.show();
+            }
+        });
+
         EditText passwordEditText = findViewById(R.id.passwordEditText);
         passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -72,9 +87,6 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                int user = Integer.parseInt(userTextInput.getEditText().getText().toString().trim());
-//                start(user);
-
                 login();
             }
         });
@@ -106,21 +118,6 @@ public class LoginActivity extends AppCompatActivity {
 
                 finish();
             }
-        }
-    }
-
-    private void start(int n) {
-        FuncionarioOn.funcionario = new Funcionario();
-        switch (n) {
-            case 1:
-                startActivity(new Intent(LoginActivity.this, AdmMainActivity.class));
-                break;
-            case 2:
-                startActivity(new Intent(LoginActivity.this, RoteiristaMainActivity.class));
-                break;
-            case 3:
-                startActivity(new Intent(LoginActivity.this, MotoristaMainActivity.class));
-                break;
         }
     }
 

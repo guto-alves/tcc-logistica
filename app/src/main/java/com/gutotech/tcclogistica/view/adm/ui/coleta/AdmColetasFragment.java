@@ -72,7 +72,6 @@ public class AdmColetasFragment extends Fragment {
 
         coletasReference = ConfigFirebase.getDatabase().child("coleta");
 
-
         return root;
     }
 

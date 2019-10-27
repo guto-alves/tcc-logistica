@@ -131,4 +131,6 @@
     <string name="repita_a_nova_senha">Repita a nova senha</string>
     <string name="confirmar">Confirmar</string>
     <string name="alterar_senha">Alterar senha</string>
+    <string name="excluir">Excluir</string>
+    <string name="login">Login</string>
 </resources>
