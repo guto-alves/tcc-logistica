@@ -47,21 +47,15 @@ public class MotoristaMainActivity extends AppCompatActivity {
         View headerView = navigationView.getHeaderView(0);
 
         TextView userTextView = headerView.findViewById(R.id.userTextView);
-
-        userTextView.setText(String.format(Locale.getDefault(), "%s, %s", getResources().getText(R.string.welcome_user), FuncionarioOn.funcionario.getNome().toUpperCase()));
+        userTextView.setText(FuncionarioOn.funcionario.getNome().toUpperCase().split(" ")[0]);
 
         ImageView profileImageView = headerView.findViewById(R.id.profileImageView);
-        profileImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                changeToFragment(new PerfilFragment());
-            }
-        });
+
         if (FuncionarioOn.funcionario.isProfileImage())
             Storage.downloadProfile(MotoristaMainActivity.this, profileImageView, FuncionarioOn.funcionario.getLogin().getUser());
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_entregas, R.id.nav_suporte)
+                R.id.nav_entregas, R.id.nav_meus_dados, R.id.nav_suporte)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -103,4 +97,5 @@ public class MotoristaMainActivity extends AppCompatActivity {
         super.onDestroy();
         FuncionarioOn.funcionario.deslogar();
     }
+
 }

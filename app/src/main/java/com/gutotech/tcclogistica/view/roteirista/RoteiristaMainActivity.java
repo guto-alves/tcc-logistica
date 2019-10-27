@@ -29,8 +29,6 @@ import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.Locale;
-
 public class RoteiristaMainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -47,20 +45,15 @@ public class RoteiristaMainActivity extends AppCompatActivity {
         View headerView = navigationView.getHeaderView(0);
 
         TextView userTextView = headerView.findViewById(R.id.userTextView);
-        userTextView.setText(String.format(Locale.getDefault(), "%s, %s", getResources().getText(R.string.welcome_user), FuncionarioOn.funcionario.getNome().toUpperCase()));
+        userTextView.setText(FuncionarioOn.funcionario.getNome().toUpperCase().split(" ")[0]);
 
         ImageView profileImageView = headerView.findViewById(R.id.profileImageView);
-        profileImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                changeToFragment(new PerfilFragment());
-            }
-        });
+
         if (FuncionarioOn.funcionario.isProfileImage())
             Storage.downloadProfile(RoteiristaMainActivity.this, profileImageView, FuncionarioOn.funcionario.getLogin().getUser());
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_estoque, R.id.nav_entregas, R.id.nav_coletas, R.id.nav_suporte)
+                R.id.nav_notas, R.id.nav_entregas, R.id.nav_coletas, R.id.nav_meus_dados, R.id.nav_suporte)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

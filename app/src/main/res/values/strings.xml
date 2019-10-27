@@ -133,4 +133,10 @@
     <string name="alterar_senha">Alterar senha</string>
     <string name="excluir">Excluir</string>
     <string name="login">Login</string>
+    <string name="estamos_em_manutencao">Estamos em manutenção!</string>
+    <string name="enviar_feedback">Enviar feedback</string>
+    <string name="contate_nos">Contate-nos</string>
+    <string name="meus_dados">Meus dados</string>
+    <string name="ajuda_e_feedback">Ajuda e feedback</string>
+    <string name="ajuda">Ajuda</string>
 </resources>

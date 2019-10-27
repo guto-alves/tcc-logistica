@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.adm.ui.coleta.AdmColetasFragment">
+    tools:context=".view.adm.ui.coletas.AdmColetasFragment">
 
     <SearchView
         android:id="@+id/searchView"

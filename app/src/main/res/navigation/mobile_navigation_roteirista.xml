@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_estoque">
+    app:startDestination="@+id/nav_notas">
 
     <fragment
-        android:id="@+id/nav_estoque"
-        android:name="com.gutotech.tcclogistica.view.roteirista.ui.estoque.RoteiristaEstoqueFragment"
+        android:id="@+id/nav_notas"
+        android:name="com.gutotech.tcclogistica.view.roteirista.ui.notas.RoteiristaEstoqueFragment"
         android:label="@string/notas"
         tools:layout="@layout/fragment_roteirista_estoque" />
 
@@ -24,8 +24,14 @@
         tools:layout="@layout/fragment_roteirista_coletas" />
 
     <fragment
+        android:id="@+id/nav_meus_dados"
+        android:name="com.gutotech.tcclogistica.view.PerfilFragment"
+        android:label="@string/meus_dados"
+        tools:layout="@layout/fragment_perfil" />
+
+    <fragment
         android:id="@+id/nav_suporte"
-        android:name="com.gutotech.tcclogistica.view.suporte.SupportFragment"
-        android:label="@string/suporte"
+        android:name="com.gutotech.tcclogistica.view.SupportFragment"
+        android:label="@string/ajuda"
         tools:layout="@layout/fragment_suporte" />
 </navigation>

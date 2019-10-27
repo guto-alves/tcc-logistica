@@ -30,8 +30,6 @@ import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.Locale;
-
 public class AdmMainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -43,30 +41,22 @@ public class AdmMainActivity extends AppCompatActivity {
         final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        final DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
 
         TextView userTextView = headerView.findViewById(R.id.userTextView);
-        userTextView.setText(String.format(Locale.getDefault(), "%s, %s", getResources().getText(R.string.welcome_user), FuncionarioOn.funcionario.getNome().toUpperCase()));
+        userTextView.setText(FuncionarioOn.funcionario.getNome().toUpperCase().split(" ")[0]);
 
         ImageView profileImageView = headerView.findViewById(R.id.profileImageView);
-        profileImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                changeToFragment(new PerfilFragment());
-                toolbar.setTitle("Perfil");
-                drawer.closeDrawer(GravityCompat.START);
-            }
-        });
 
         if (FuncionarioOn.funcionario.isProfileImage())
             Storage.downloadProfile(AdmMainActivity.this, profileImageView, FuncionarioOn.funcionario.getLogin().getUser());
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_entregas, R.id.nav_estoque,
-                R.id.nav_coletas, R.id.nav_funcionarios, R.id.nav_suporte)
+                R.id.nav_entregas, R.id.nav_notas,
+                R.id.nav_coletas, R.id.nav_funcionarios, R.id.nav_meus_dados, R.id.nav_suporte)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

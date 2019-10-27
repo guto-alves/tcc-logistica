@@ -1,4 +1,4 @@
-package com.gutotech.tcclogistica.view.roteirista.ui.estoque;
+package com.gutotech.tcclogistica.view.roteirista.ui.notas;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

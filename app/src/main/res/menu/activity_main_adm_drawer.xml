@@ -10,9 +10,9 @@
             android:title="@string/entregas" />
 
         <item
-            android:id="@+id/nav_estoque"
+            android:id="@+id/nav_notas"
             android:icon="@drawable/ic_shopping_cart_24dp"
-            android:title="@string/estoque" />
+            android:title="@string/notas" />
 
         <item
             android:id="@+id/nav_coletas"
@@ -25,13 +25,22 @@
             android:title="@string/funcionarios" />
     </group>
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_suporte"
-                android:icon="@drawable/ic_help_24dp"
-                android:title="@string/suporte" />
-        </menu>
-    </item>
+    <group
+        android:id="@+id/menu2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_meus_dados"
+            android:icon="@drawable/ic_account_box_24dp"
+            android:title="@string/meus_dados" />
+    </group>
+
+    <group
+        android:id="@+id/menu3"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_suporte"
+            android:icon="@drawable/ic_help_24dp"
+            android:title="@string/ajuda_e_feedback" />
+    </group>
 
 </menu>

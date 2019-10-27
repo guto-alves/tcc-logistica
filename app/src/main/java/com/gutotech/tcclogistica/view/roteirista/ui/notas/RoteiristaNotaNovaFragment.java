@@ -1,4 +1,4 @@
-package com.gutotech.tcclogistica.view.roteirista.ui.estoque;
+package com.gutotech.tcclogistica.view.roteirista.ui.notas;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -19,7 +19,6 @@ import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.TextRecognizer;
-import com.gutotech.tcclogistica.model.CalculoImposto;
 import com.gutotech.tcclogistica.model.Destinatario;
 import com.gutotech.tcclogistica.model.Endereco;
 import com.gutotech.tcclogistica.model.Nota;

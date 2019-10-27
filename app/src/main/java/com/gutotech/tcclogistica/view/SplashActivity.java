@@ -31,21 +31,21 @@ public class SplashActivity extends AppCompatActivity {
         processingDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         processingDialog.show();
 
-        isManutencao();
+        checkForMaintenace();
     }
 
-    private void isManutencao() {
-        DatabaseReference manutencaoReference = ConfigFirebase.getDatabase().child("manutencao");
+    private void checkForMaintenace() {
+        DatabaseReference maintenanceReference = ConfigFirebase.getDatabase().child("maintenance");
 
-        manutencaoReference.addValueEventListener(new ValueEventListener() {
+        maintenanceReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                boolean manutencao = (boolean) dataSnapshot.getValue();
+                boolean maintenance = (boolean) dataSnapshot.getValue();
 
                 processingDialog.dismiss();
 
-                if (manutencao) {
-                    Toasty.warning(getApplicationContext(), "Estamos em manutençao!", Toasty.LENGTH_SHORT, true).show();
+                if (maintenance) {
+                    Toasty.warning(getApplicationContext(), getResources().getString(R.string.estamos_em_manutencao), Toasty.LENGTH_LONG, true).show();
                 } else {
                     startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                     finish();

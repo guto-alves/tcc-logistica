@@ -44,9 +44,6 @@ public class PerfilFragment extends Fragment {
     private final int CAMERA_CODE = 1;
     private final int GALLERY_CODE = 2;
 
-    public PerfilFragment() {
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -73,7 +70,6 @@ public class PerfilFragment extends Fragment {
         categoriaTextView = root.findViewById(R.id.categoriaTextView);
         anoTextView = root.findViewById(R.id.anoTextView);
         placaTextView = root.findViewById(R.id.placaTextView);
-
 
         TextView alterarSenhaTextView = root.findViewById(R.id.alterarSenhaTextView);
         alterarSenhaTextView.setOnClickListener(new View.OnClickListener() {

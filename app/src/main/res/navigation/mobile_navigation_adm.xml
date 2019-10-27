@@ -12,14 +12,14 @@
         tools:layout="@layout/fragment_adm_entregas" />
 
     <fragment
-        android:id="@+id/nav_estoque"
-        android:name="com.gutotech.tcclogistica.view.adm.ui.estoque.AdmEstoqueFragment"
+        android:id="@+id/nav_notas"
+        android:name="com.gutotech.tcclogistica.view.adm.ui.notas.AdmEstoqueFragment"
         android:label="@string/notas"
         tools:layout="@layout/fragment_adm_estoque" />
 
     <fragment
         android:id="@+id/nav_coletas"
-        android:name="com.gutotech.tcclogistica.view.adm.ui.coleta.AdmColetasFragment"
+        android:name="com.gutotech.tcclogistica.view.adm.ui.coletas.AdmColetasFragment"
         android:label="@string/coletas"
         tools:layout="@layout/fragment_adm_coletas" />
 
@@ -30,8 +30,14 @@
         tools:layout="@layout/fragment_adm_funcionarios" />
 
     <fragment
+        android:id="@+id/nav_meus_dados"
+        android:name="com.gutotech.tcclogistica.view.PerfilFragment"
+        android:label="Meus Dados"
+        tools:layout="@layout/fragment_perfil" />
+
+    <fragment
         android:id="@+id/nav_suporte"
-        android:name="com.gutotech.tcclogistica.view.suporte.SupportFragment"
-        android:label="@string/suporte"
+        android:name="com.gutotech.tcclogistica.view.SupportFragment"
+        android:label="@string/ajuda"
         tools:layout="@layout/fragment_suporte" />
 </navigation>

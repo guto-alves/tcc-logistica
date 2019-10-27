@@ -1,4 +1,4 @@
-package com.gutotech.tcclogistica.view.adm.ui.estoque;
+package com.gutotech.tcclogistica.view.adm.ui.notas;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

@@ -1,4 +1,5 @@
-package com.gutotech.tcclogistica.view.roteirista.ui.estoque;
+package com.gutotech.tcclogistica.view.adm.ui.coletas;
+
 
 import android.os.Bundle;
 
@@ -20,39 +21,40 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.config.ConfigFirebase;
-import com.gutotech.tcclogistica.model.Nota;
-import com.gutotech.tcclogistica.view.adapter.NotasAdapter;
+import com.gutotech.tcclogistica.model.Coleta;
+import com.gutotech.tcclogistica.view.adapter.ColetasAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoteiristaNotasCadastradasFragment extends Fragment {
-    private NotasAdapter notasAdapter;
-    private List<Nota> notasList = new ArrayList<>();
+public class AdmColetasFragment extends Fragment {
+    private List<Coleta> coletasList = new ArrayList<>();
 
-    private DatabaseReference notasReference;
-    private Query notaQuery;
-    private ValueEventListener notasListener;
+    private ColetasAdapter coletasAdapter;
 
-    private TextView statusNotasTextView;
+    private DatabaseReference coletasReference;
+    private Query coletasQuery;
+    private ValueEventListener coletasListener;
 
-    public RoteiristaNotasCadastradasFragment() {
+    private TextView statusColetasTextView;
+
+    public AdmColetasFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_roteirista_notas_cadastradas, container, false);
+        View root = inflater.inflate(R.layout.fragment_adm_coletas, container, false);
 
-        RecyclerView notasRecyclerView = root.findViewById(R.id.notasRecyclerView);
-        statusNotasTextView = root.findViewById(R.id.statusNotasTextView);
+        statusColetasTextView = root.findViewById(R.id.statusColetasTextView);
+        RecyclerView coletasRecyclerView = root.findViewById(R.id.coletasRecyclerView);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        notasRecyclerView.setLayoutManager(layoutManager);
-        notasRecyclerView.setHasFixedSize(true);
+        coletasRecyclerView.setLayoutManager(layoutManager);
+        coletasRecyclerView.setHasFixedSize(true);
 
-        notasAdapter = new NotasAdapter(getActivity(), notasList);
-        notasRecyclerView.setAdapter(notasAdapter);
+        coletasAdapter = new ColetasAdapter(getActivity(), coletasList);
+        coletasRecyclerView.setAdapter(coletasAdapter);
 
         SearchView searchView = root.findViewById(R.id.searchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -63,33 +65,33 @@ public class RoteiristaNotasCadastradasFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                buscarNotas(newText);
+                buscarColetas(newText);
                 return true;
             }
         });
 
-        notasReference = ConfigFirebase.getDatabase().child("nota");
+        coletasReference = ConfigFirebase.getDatabase().child("coleta");
 
         return root;
     }
 
-    private void buscarNotas(String query) {
-        notaQuery = notasReference.orderByChild("numero").startAt(query).endAt(query + "\uf8ff");
+    private void buscarColetas(String query) {
+        coletasQuery = coletasReference.orderByChild("numero").startAt(query).endAt(query + "\uf8ff");
 
-        notasListener = notaQuery.addValueEventListener(new ValueEventListener() {
+        coletasListener = coletasQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                notasList.clear();
+                coletasList.clear();
 
                 for (DataSnapshot data : dataSnapshot.getChildren())
-                    notasList.add(data.getValue(Nota.class));
+                    coletasList.add(data.getValue(Coleta.class));
 
-                if (notasList.size() == 0)
-                    statusNotasTextView.setText("Nenhuma nota encontrada.");
+                if (coletasList.size() == 0)
+                    statusColetasTextView.setText("Nenhuma coleta encontrada.");
                 else
-                    statusNotasTextView.setVisibility(View.GONE);
+                    statusColetasTextView.setVisibility(View.GONE);
 
-                notasAdapter.notifyDataSetChanged();
+                coletasAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -101,13 +103,14 @@ public class RoteiristaNotasCadastradasFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        buscarNotas("");
+        buscarColetas("");
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        notaQuery.removeEventListener(notasListener);
+        coletasQuery.removeEventListener(coletasListener);
     }
+
 
 }

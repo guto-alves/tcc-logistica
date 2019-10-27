@@ -891,7 +891,7 @@
                     android:id="@+id/textRecognizerImageButton"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    app:srcCompat="@drawable/recognizer_icon1" />
+                    app:srcCompat="@drawable/recognizer_icon" />
 
                 <Button
                     android:id="@+id/salvarButton"
