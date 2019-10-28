@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
@@ -14,8 +15,14 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.gutotech.tcclogistica.R;
+import com.gutotech.tcclogistica.config.ConfigFirebase;
 import com.gutotech.tcclogistica.config.Storage;
+import com.gutotech.tcclogistica.model.Funcionario;
 import com.gutotech.tcclogistica.model.FuncionarioOn;
 import com.gutotech.tcclogistica.view.PerfilFragment;
 import com.gutotech.tcclogistica.view.LoginActivity;
@@ -35,6 +42,11 @@ public class MotoristaMainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
 
+    private ImageView profileImageView;
+
+    private DatabaseReference funcionarioReference;
+    private ValueEventListener funcionarioListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,9 +63,8 @@ public class MotoristaMainActivity extends AppCompatActivity {
 
         ImageView profileImageView = headerView.findViewById(R.id.profileImageView);
 
-        if (FuncionarioOn.funcionario.isProfileImage())
-            Storage.downloadProfile(MotoristaMainActivity.this, profileImageView, FuncionarioOn.funcionario.getLogin().getUser());
-
+        atualizarFoto();
+        
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_entregas, R.id.nav_meus_dados, R.id.nav_suporte)
                 .setDrawerLayout(drawer)
@@ -61,12 +72,6 @@ public class MotoristaMainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-    }
-
-    private void changeToFragment(Fragment fragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frameConteiner, fragment);
-        transaction.commit();
     }
 
     @Override
@@ -92,10 +97,42 @@ public class MotoristaMainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        FuncionarioOn.funcionario.deslogar();
+    private void getFuncionario() {
+        funcionarioReference = ConfigFirebase.getDatabase()
+                .child("funcionario")
+                .child(FuncionarioOn.funcionario.getLogin().getUser());
+
+        funcionarioListener = funcionarioReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                FuncionarioOn.funcionario = dataSnapshot.getValue(Funcionario.class);
+                atualizarFoto();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
     }
 
+    private void atualizarFoto() {
+        if (FuncionarioOn.funcionario.isProfileImage())
+            Storage.downloadProfile(getApplicationContext(), profileImageView, FuncionarioOn.funcionario.getLogin().getUser());
+        else
+            profileImageView.setImageResource(R.drawable.perfil_sem_foto);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getFuncionario();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        funcionarioReference.removeEventListener(funcionarioListener);
+        FuncionarioOn.funcionario.deslogar();
+    }
 }

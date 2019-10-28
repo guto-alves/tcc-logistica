@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,56 +15,63 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary">
 
             <ImageView
                 android:id="@+id/profileImageView"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_gravity="center"
-                android:background="@color/colorPrimary"
-                android:contentDescription="@string/nav_header_desc"
-                android:paddingTop="@dimen/nav_header_vertical_spacing"
+                android:layout_width="224dp"
+                android:layout_height="200dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/perfil_sem_foto" />
 
-            <LinearLayout
+            <com.github.clans.fab.FloatingActionMenu
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:menu_colorNormal="@color/colorPrimaryDark"
+                app:menu_colorPressed="@color/colorAccent"
+                fab:menu_icon="@drawable/ic_mode_edit_24dp">
 
-                <ImageButton
-                    android:id="@+id/deleteImageButton"
+                <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/deleteButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_delete_24dp" />
+                    android:src="@drawable/ic_delete_24dp"
+                    fab:fab_colorNormal="@android:color/holo_red_light"
+                    fab:fab_label="Remover foto"
+                    fab:fab_size="mini" />
 
-                <ImageButton
-                    android:id="@+id/cameraImageButton"
+                <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/cameraButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_photo_camera_24dp" />
+                    android:src="@drawable/ic_photo_camera_24dp"
+                    fab:fab_colorNormal="@color/colorPrimary"
+                    fab:fab_label="Câmera"
+                    fab:fab_size="mini" />
 
-                <ImageButton
-                    android:id="@+id/galleryImageButton"
+                <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/galleryButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_photo_library_24dp" />
+                    android:src="@drawable/ic_menu_gallery"
+                    fab:fab_colorNormal="@color/colorAccent"
+                    fab:fab_label="Galeria"
+                    fab:fab_size="mini" />
+            </com.github.clans.fab.FloatingActionMenu>
 
-            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/nomeTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="8dp"
             android:background="@color/colorPrimary"
             android:gravity="center"
             android:paddingTop="5dp"
@@ -75,15 +83,17 @@
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@android:color/white"
             android:columnCount="2"
-            android:padding="16dp"
-            android:visibility="visible">
+            android:padding="16dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cargo: "
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/cargoTextView"
@@ -91,125 +101,124 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill_horizontal"
                 android:text="@string/traco"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="8dp"
                 android:text="RG: "
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/rgTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/traco"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="8dp"
                 android:text="CPF: "
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/cpfTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/traco"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@android:color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="Data de nascimento: "
-                android:textColor="@android:color/black" />
+                android:layout_marginBottom="8dp"
+                android:text="Nascimento: "
+                android:textColor="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/dataNascimentoTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/traco"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="8dp"
                 android:text="Endereço: "
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/enderecoTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/traco"
                 android:textColor="@android:color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="8dp"
                 android:text="Celular: "
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/celularTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/traco"
                 android:textColor="@android:color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="8dp"
                 android:text="Telefone: "
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/telefoneTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/traco"
                 android:textColor="@android:color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="8dp"
                 android:text="Email: "
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/emailTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/traco"
                 android:textColor="@android:color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
                 android:text="Último login: "
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/ultimoLoginTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
                 android:text="@string/traco"
                 android:textColor="@android:color/black" />
         </GridLayout>
@@ -218,6 +227,9 @@
             android:id="@+id/motoristaGridLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@android:color/white"
             android:columnCount="2"
             android:padding="16dp"
             android:visibility="gone">
@@ -225,45 +237,45 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="8dp"
                 android:text="CNH: "
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/cnhTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/traco"
                 android:textColor="@android:color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="8dp"
                 android:text="Categoria: "
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/categoriaTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/traco"
                 android:textColor="@android:color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="8dp"
                 android:text="Veículo: "
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/veiculoTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/traco"
                 android:textColor="@android:color/black" />
 
@@ -271,7 +283,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Placa: "
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/placaTextView"
@@ -284,7 +296,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ano: "
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/anoTextView"
@@ -298,11 +310,19 @@
             android:id="@+id/alterarSenhaTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/selector_textview"
             android:drawableEnd="@drawable/ic_chevron_right_24dp"
             android:drawableRight="@drawable/ic_chevron_right_24dp"
+            android:paddingLeft="16dp"
+            android:paddingTop="8dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="8dp"
             android:text="@string/alterar_senha"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
     </LinearLayout>
 </ScrollView>

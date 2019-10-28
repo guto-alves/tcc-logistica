@@ -28,7 +28,6 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="USUÁRIO"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
 </LinearLayout>

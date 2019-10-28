@@ -2,6 +2,7 @@ package com.gutotech.tcclogistica.view;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -9,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,16 +20,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.clans.fab.FloatingActionButton;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.config.ConfigFirebase;
+import com.gutotech.tcclogistica.config.Storage;
 import com.gutotech.tcclogistica.model.Funcionario;
 import com.gutotech.tcclogistica.model.FuncionarioOn;
+import com.gutotech.tcclogistica.view.adm.AdmMainActivity;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 
 import es.dmoral.toasty.Toasty;
 
@@ -40,7 +46,7 @@ public class PerfilFragment extends Fragment {
     private TextView cnhTextView, categoriaTextView, veiculoTextView, anoTextView, placaTextView;
 
     private ImageView profileImageView;
-    private Bitmap bitmap;
+
     private final int CAMERA_CODE = 1;
     private final int GALLERY_CODE = 2;
 
@@ -50,10 +56,6 @@ public class PerfilFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_perfil, container, false);
 
         profileImageView = root.findViewById(R.id.profileImageView);
-        ImageButton cameraImageButton = root.findViewById(R.id.cameraImageButton);
-        ImageButton galleryImageButton = root.findViewById(R.id.galleryImageButton);
-        ImageButton deleteImageButton = root.findViewById(R.id.deleteImageButton);
-
         nomeTextView = root.findViewById(R.id.nomeTextView);
         cargoTextView = root.findViewById(R.id.cargoTextView);
         rgTextView = root.findViewById(R.id.rgTextView);
@@ -71,14 +73,6 @@ public class PerfilFragment extends Fragment {
         anoTextView = root.findViewById(R.id.anoTextView);
         placaTextView = root.findViewById(R.id.placaTextView);
 
-        TextView alterarSenhaTextView = root.findViewById(R.id.alterarSenhaTextView);
-        alterarSenhaTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), TrocaSenhaActivity.class));
-            }
-        });
-
         setInformacaoes();
 
         if (FuncionarioOn.funcionario.getCargo().equals(Funcionario.MOTORISTA)) {
@@ -86,15 +80,10 @@ public class PerfilFragment extends Fragment {
             motorista.setVisibility(View.VISIBLE);
         }
 
-        deleteImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                profileImageView.setImageResource(R.drawable.perfil_sem_foto);
-                FuncionarioOn.funcionario.setProfileImage(false);
-                FuncionarioOn.funcionario.salvar();
-            }
-        });
+        if (FuncionarioOn.funcionario.isProfileImage())
+            Storage.downloadProfile(getActivity(), profileImageView, FuncionarioOn.funcionario.getLogin().getUser());
 
+        FloatingActionButton cameraImageButton = root.findViewById(R.id.cameraButton);
         cameraImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,6 +91,7 @@ public class PerfilFragment extends Fragment {
             }
         });
 
+        FloatingActionButton galleryImageButton = root.findViewById(R.id.galleryButton);
         galleryImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,10 +99,35 @@ public class PerfilFragment extends Fragment {
                 intent1.setType("image/*");
                 intent1.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(intent1, "Selecione uma imagem"), GALLERY_CODE);
-//                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//                if (intent.resolveActivity(getActivity().getPackageManager()) != null)
-//                    startActivityForResult(intent, GALLERY_CODE);
-//                startActivityForResult(new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI), GALLERY_CODE);
+            }
+        });
+
+        FloatingActionButton deleteImageButton = root.findViewById(R.id.deleteButton);
+        deleteImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StorageReference profileReference = ConfigFirebase.getStorage()
+                        .child("images")
+                        .child("funcionarios")
+                        .child(FuncionarioOn.funcionario.getLogin().getUser() + ".jpg");
+
+                profileReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toasty.success(getActivity(), "Sucesso ao remover foto de perfil", Toasty.LENGTH_SHORT, true).show();
+                        profileImageView.setImageResource(R.drawable.perfil_sem_foto);
+                        FuncionarioOn.funcionario.setProfileImage(false);
+                        FuncionarioOn.funcionario.salvar();
+                    }
+                });
+            }
+        });
+
+        TextView alterarSenhaTextView = root.findViewById(R.id.alterarSenhaTextView);
+        alterarSenhaTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), TrocaSenhaActivity.class));
             }
         });
 
@@ -143,40 +158,31 @@ public class PerfilFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK) {
-            bitmap = null;
+            Uri imagemSelecionada = data.getData();
 
-            try {
-                if (requestCode == CAMERA_CODE) {
-                    bitmap = (Bitmap) data.getExtras().get("data");
-                } else if (requestCode == GALLERY_CODE) {
-                    Uri uri = data.getData();
-                    bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
-                }
+            profileImageView.setImageURI(imagemSelecionada);
 
-                if (bitmap != null) {
-                    profileImageView.setImageBitmap(bitmap);
-                    uploadImage();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            uploadImage();
         }
     }
 
     private void uploadImage() {
+        profileImageView.setDrawingCacheEnabled(true);
+        profileImageView.buildDrawingCache();
+        Bitmap bitmap = ((BitmapDrawable) profileImageView.getDrawable()).getBitmap();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] dataByte = baos.toByteArray();
+
         StorageReference imagemRef = ConfigFirebase.getStorage()
                 .child("images")
                 .child("funcionarios")
-                .child("fasdfasdf.jpg");
+                .child(FuncionarioOn.funcionario.getLogin().getUser() + ".jpg");
 
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 70, baos);
-        byte[] dadosImagem = baos.toByteArray();
-
-        UploadTask uploadTask = imagemRef.putBytes(dadosImagem);
+        UploadTask uploadTask = imagemRef.putBytes(dataByte);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
-            public void onFailure(@NonNull Exception e) {
+            public void onFailure(@NonNull Exception exception) {
                 Toast.makeText(getActivity(), "Erro ao fazer upload da imagem", Toast.LENGTH_SHORT).show();
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

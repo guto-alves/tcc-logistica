@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
+    android:orientation="vertical"
     android:padding="16dp">
 
-    <androidx.cardview.widget.CardView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardElevation="20dp">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            app:cardElevation="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -24,14 +26,15 @@
                 android:padding="16dp">
 
                 <TextView
-                    android:layout_width="250dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@drawable/background_title"
                     android:gravity="center"
+                    android:padding="5dp"
                     android:text="@string/ordem_de_coleta"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -39,16 +42,14 @@
                     android:layout_marginTop="24dp"
                     android:text="Número Coleta -c"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/numeroColetaEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="numberSigned"
                     android:textSize="14sp" />
@@ -59,16 +60,14 @@
                     android:layout_marginTop="24dp"
                     android:text="Coletar em"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/coletarEmEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="date|time"
                     android:textSize="14sp" />
@@ -79,16 +78,16 @@
                     android:layout_marginTop="24dp"
                     android:text="@string/emissao"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/dataEmissaoEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
+
+
                     android:ems="10"
                     android:inputType="date|time"
                     android:textSize="14sp" />
@@ -99,9 +98,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
                     android:background="@drawable/background_title"
+                    android:padding="5dp"
                     android:text="@string/remetente"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -109,16 +109,14 @@
                     android:layout_marginTop="32dp"
                     android:text="@string/nome"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/nomeRemetenteEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:textSize="14sp" />
@@ -129,16 +127,14 @@
                     android:layout_marginTop="24dp"
                     android:text="@string/endereco"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/enderecoRemetenteEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:textSize="14sp" />
@@ -149,15 +145,13 @@
                     android:layout_marginTop="24dp"
                     android:text="@string/referencia"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/referenciaRemetenteEditText"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
                     android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textPersonName"
@@ -169,16 +163,14 @@
                     android:layout_marginTop="24dp"
                     android:text="@string/bairro"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/bairroRemetenteEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:textSize="14sp" />
@@ -189,16 +181,14 @@
                     android:layout_marginTop="24dp"
                     android:text="@string/cidade"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/cidadeRemetenteEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:textSize="14sp" />
@@ -209,16 +199,14 @@
                     android:layout_marginTop="32dp"
                     android:text="@string/cep"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/cepRemetenteEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="numberSigned"
                     android:textSize="14sp" />
@@ -229,16 +217,14 @@
                     android:layout_marginTop="32dp"
                     android:text="@string/contato"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/contatoRemetenteEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:textSize="14sp" />
@@ -249,16 +235,14 @@
                     android:layout_marginTop="24dp"
                     android:text="@string/telefone"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/telefoneRemetenteEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="phone"
                     android:textSize="14sp" />
@@ -269,16 +253,14 @@
                     android:layout_marginTop="24dp"
                     android:text="@string/especie"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/especieRemetenteEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:textSize="14sp" />
@@ -289,16 +271,14 @@
                     android:layout_marginTop="24dp"
                     android:text="@string/n_pedido"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/numeroPedidoEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="text"
                     android:textSize="14sp" />
@@ -310,16 +290,14 @@
                     android:layout_marginTop="24dp"
                     android:text="@string/veiculo"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/veiculoRemetenteEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:textSize="14sp" />
@@ -331,7 +309,7 @@
                     android:background="@drawable/background_title"
                     android:text="@string/produto"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -339,16 +317,14 @@
                     android:layout_marginTop="24dp"
                     android:text="@string/nome"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/nomeProdutoEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:textSize="14sp" />
@@ -359,16 +335,14 @@
                     android:layout_marginTop="24dp"
                     android:text="@string/peso"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/pesoEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:textSize="14sp" />
@@ -379,16 +353,14 @@
                     android:layout_marginTop="24dp"
                     android:text="@string/dimensoes"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/dimensoesEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:textSize="14sp" />
@@ -399,16 +371,14 @@
                     android:layout_marginTop="24dp"
                     android:text="@string/n_onu"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/nONUEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:textSize="14sp" />
@@ -418,9 +388,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
                     android:background="@drawable/background_title"
+                    android:padding="5dp"
                     android:text="@string/destinatario"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -428,16 +399,14 @@
                     android:layout_marginTop="32dp"
                     android:text="@string/nome"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/nomeDestinatarioEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:textSize="14sp" />
@@ -448,16 +417,14 @@
                     android:layout_marginTop="24dp"
                     android:text="@string/endereco"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/enderecoDestinatarioEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:textSize="14sp" />
@@ -469,16 +436,14 @@
                     android:layout_marginTop="24dp"
                     android:text="@string/destino"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/destinoDestinatarioEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:textSize="14sp" />
@@ -489,16 +454,14 @@
                     android:layout_marginTop="24dp"
                     android:text="@string/site"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/siteDestinatarioEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:textSize="14sp" />
@@ -509,16 +472,14 @@
                     android:layout_marginTop="32dp"
                     android:text="@string/placa"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/placaDestinatarioEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:textSize="14sp" />
@@ -530,16 +491,14 @@
                     android:layout_marginTop="24dp"
                     android:text="@string/semi_reboque"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/semiReboqueDestinatarioEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:textSize="14sp" />
@@ -549,9 +508,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
                     android:background="@drawable/background_title"
+                    android:padding="5dp"
                     android:text="@string/motorista"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -559,7 +519,7 @@
                     android:layout_marginTop="24dp"
                     android:text="@string/nome"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <Spinner
                     android:id="@+id/motoristaSpinner"
@@ -574,16 +534,14 @@
                     android:layout_marginTop="24dp"
                     android:text="@string/rg"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/rgMotoristaEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:enabled="false"
                     android:inputType="textPersonName"
@@ -595,16 +553,14 @@
                     android:layout_marginTop="24dp"
                     android:text="@string/observacoes"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/observacoesEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:gravity="start"
                     android:inputType="textMultiLine"
@@ -616,16 +572,14 @@
                     android:layout_marginTop="24dp"
                     android:text="@string/instrucoes"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/instrucoesEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:gravity="start"
                     android:inputType="textMultiLine"
@@ -638,16 +592,14 @@
                     android:layout_marginTop="32dp"
                     android:text="Coleta efetuada em:"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/dataColetaEfetuadaEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="date"
                     android:textSize="14sp" />
@@ -659,48 +611,51 @@
                     android:layout_marginTop="24dp"
                     android:text="@string/hora"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/horaColetaEfetuadaEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="time"
                     android:textSize="14sp" />
 
             </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:gravity="center"
-                android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="5dp">
 
-                <Button
-                    android:id="@+id/limparButton"
-                    android:layout_width="145dp"
-                    android:layout_height="35dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_button"
-                    android:text="@string/limpar"
-                    android:textColor="@android:color/white" />
+        <ImageButton
+            android:id="@+id/textRecognizerImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            app:srcCompat="@drawable/recognizer_icon" />
 
-                <Button
-                    android:id="@+id/salvarButton"
-                    android:layout_width="145dp"
-                    android:layout_height="35dp"
-                    android:background="@drawable/background_button"
-                    android:text="@string/salvar"
-                    android:textColor="@android:color/white" />
-            </LinearLayout>
-        </LinearLayout>
+        <Button
+            android:id="@+id/limparButton"
+            style="@style/ButtonTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/limpar" />
 
-    </androidx.cardview.widget.CardView>
+        <Button
+            android:id="@+id/salvarButton"
+            style="@style/ButtonTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="@string/salvar" />
 
-</ScrollView>
+    </LinearLayout>
+
+</LinearLayout>

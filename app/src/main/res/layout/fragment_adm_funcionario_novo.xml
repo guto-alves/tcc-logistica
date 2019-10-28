@@ -10,12 +10,14 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardElevation="20dp">
+        app:cardElevation="20dp"
+        app:cardMaxElevation="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="16dp">
 
             <!-- Informações - funcionário normal -->
             <LinearLayout
@@ -26,31 +28,24 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="32dp"
                     android:text="@string/nome"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/nomeEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="text" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="24dp"
                     android:text="@string/rg"
                     android:textColor="@android:color/black"
@@ -58,22 +53,18 @@
 
                 <EditText
                     android:id="@+id/rgEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="numberSigned" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="24dp"
                     android:text="@string/cpf"
                     android:textColor="@android:color/black"
@@ -81,14 +72,12 @@
 
                 <EditText
                     android:id="@+id/cpfEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="numberSigned" />
 
@@ -96,8 +85,8 @@
                     android:id="@+id/dataNascimentoTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
+
+
                     android:layout_marginTop="24dp"
                     android:text="@string/data_nascimento"
                     android:textColor="@android:color/black"
@@ -105,14 +94,12 @@
 
                 <EditText
                     android:id="@+id/dataNascimentoEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
-                    android:background="@drawable/background_edit_text"
                     android:digits="0123456789"
                     android:ems="10"
                     android:inputType="date" />
@@ -121,8 +108,6 @@
                     android:id="@+id/enderecoTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="24dp"
                     android:text="@string/endereco"
                     android:textColor="@android:color/black"
@@ -130,14 +115,12 @@
 
                 <EditText
                     android:id="@+id/enderecoEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textPersonName" />
 
@@ -145,8 +128,6 @@
                     android:id="@+id/emailTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="24dp"
                     android:text="@string/email"
                     android:textColor="@android:color/black"
@@ -154,14 +135,12 @@
 
                 <EditText
                     android:id="@+id/emailEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textEmailAddress" />
 
@@ -169,8 +148,6 @@
                     android:id="@+id/celularTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="24dp"
                     android:text="@string/celular"
                     android:textColor="@android:color/black"
@@ -180,14 +157,12 @@
 
                 <EditText
                     android:id="@+id/celularEditText"
-                    android:layout_width="match_parent"
+                    style="@style/EditTextTheme"
+                    android:layout_width="wrap_content"
                     android:layout_height="35dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="numberSigned" />
 
@@ -195,8 +170,6 @@
                     android:id="@+id/telefoneTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="24dp"
                     android:text="@string/telefone"
                     android:textColor="@android:color/black"
@@ -206,14 +179,12 @@
 
                 <EditText
                     android:id="@+id/telefoneEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="numberSigned" />
 
@@ -221,8 +192,6 @@
                     android:id="@+id/cargoTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="24dp"
                     android:text="@string/cargo"
                     android:textColor="@android:color/black"
@@ -232,13 +201,10 @@
                     android:id="@+id/cargoSpinner"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
                     android:visibility="visible" />
-
 
             </LinearLayout>
 
@@ -248,14 +214,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <TextView
                     android:id="@+id/textViewCNH"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="24dp"
                     android:text="@string/cnh"
                     android:textColor="@android:color/black"
@@ -263,14 +227,10 @@
 
                 <EditText
                     android:id="@+id/cnhEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="numberSigned" />
 
@@ -278,8 +238,6 @@
                     android:id="@+id/categoriaTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="24dp"
                     android:text="@string/categoria"
                     android:textColor="@android:color/black"
@@ -287,14 +245,10 @@
 
                 <EditText
                     android:id="@+id/categoriaEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textCapCharacters" />
 
@@ -302,8 +256,6 @@
                     android:id="@+id/textViewVeiculo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="24dp"
                     android:text="@string/veiculo"
                     android:textColor="@android:color/black"
@@ -311,22 +263,16 @@
 
                 <EditText
                     android:id="@+id/veiculoEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textPersonName" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="24dp"
                     android:text="@string/ano"
                     android:textColor="@android:color/black"
@@ -334,22 +280,16 @@
 
                 <EditText
                     android:id="@+id/anoEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="numberSigned" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="24dp"
                     android:text="@string/placa"
                     android:textColor="@android:color/black"
@@ -357,14 +297,10 @@
 
                 <EditText
                     android:id="@+id/placaEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textCapCharacters" />
             </LinearLayout>
@@ -379,22 +315,21 @@
 
                 <Button
                     android:id="@+id/limparButton"
+                    style="@style/ButtonTheme"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:layout_marginRight="16dp"
-                    android:background="@drawable/background_button"
-                    android:text="@string/limpar"
-                    android:textColor="@android:color/white" />
+                    android:text="@string/limpar" />
 
                 <Button
                     android:id="@+id/salvarButton"
+                    style="@style/ButtonTheme"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
-                    android:background="@drawable/background_button"
-                    android:text="@string/salvar"
-                    android:textColor="@android:color/white" />
+                    android:text="@string/salvar" />
 
             </LinearLayout>
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

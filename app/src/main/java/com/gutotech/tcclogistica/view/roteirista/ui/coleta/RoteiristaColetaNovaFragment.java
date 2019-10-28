@@ -1,10 +1,16 @@
 package com.gutotech.tcclogistica.view.roteirista.ui.coleta;
 
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +18,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
@@ -22,7 +30,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.gutotech.tcclogistica.R;
+import com.gutotech.tcclogistica.TextRecognizer;
 import com.gutotech.tcclogistica.config.ConfigFirebase;
+import com.gutotech.tcclogistica.helper.Listener;
 import com.gutotech.tcclogistica.model.Coleta;
 import com.gutotech.tcclogistica.model.Destinatario;
 import com.gutotech.tcclogistica.model.Funcionario;
@@ -30,6 +40,7 @@ import com.gutotech.tcclogistica.model.Produto;
 import com.gutotech.tcclogistica.model.Remetente;
 import com.gutotech.tcclogistica.model.Veiculo;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -69,6 +80,11 @@ public class RoteiristaColetaNovaFragment extends Fragment {
     private DatabaseReference motoristasReference;
     private Query motoristasQuery;
     private ValueEventListener motoristasListener;
+
+    private TextRecognizer textRecognizer;
+    private final int REQUEST_IMAGE_CAPTURE = 7;
+
+    private Dialog processingDialog;
 
     public RoteiristaColetaNovaFragment() {
     }
@@ -135,6 +151,43 @@ public class RoteiristaColetaNovaFragment extends Fragment {
             }
         });
 
+        ImageButton textRecognizerImageButton = root.findViewById(R.id.textRecognizerImageButton);
+        textRecognizerImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog dialog = new Dialog(getActivity());
+                dialog.setContentView(R.layout.dialog_chooser);
+                dialog.show();
+
+                LinearLayout cameraLayout = dialog.findViewById(R.id.cameraLinear);
+                cameraLayout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                        startActivityForResult(new Intent(MediaStore.ACTION_IMAGE_CAPTURE), 1);
+                    }
+                });
+
+                LinearLayout galeraLayout = dialog.findViewById(R.id.galeriaLinear);
+                galeraLayout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                        Intent intent1 = new Intent();
+                        intent1.setType("image/*");
+                        intent1.setAction(Intent.ACTION_GET_CONTENT);
+                        startActivityForResult(Intent.createChooser(intent1, "Selecione uma imagem"), 2);
+                    }
+                });
+            }
+        });
+
+        textRecognizer = new TextRecognizer(listener);
+
+        processingDialog = new Dialog(getActivity());
+        processingDialog.setContentView(R.layout.dialog_carregando);
+        processingDialog.setCancelable(false);
+
         Button salvarButton = root.findViewById(R.id.salvarButton);
         salvarButton.setOnClickListener(salvarButtonListener);
 
@@ -148,6 +201,15 @@ public class RoteiristaColetaNovaFragment extends Fragment {
 
         return root;
     }
+
+    private final Listener listener = new Listener() {
+        @Override
+        public void callback(String text) {
+            instrucoesEditText.setText(text);
+
+            processingDialog.dismiss();
+        }
+    };
 
     private final View.OnClickListener salvarButtonListener = new View.OnClickListener() {
         @Override
@@ -281,6 +343,29 @@ public class RoteiristaColetaNovaFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == Activity.RESULT_OK) {
+            Bitmap bitmap = null;
+
+            try {
+                if (requestCode == 1)
+                    bitmap = (Bitmap) data.getExtras().get("data");
+                else if (requestCode == 2) {
+                    Uri uri = data.getData();
+                    bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            processingDialog.show();
+            textRecognizer.detect(bitmap);
+        }
     }
 
     @Override

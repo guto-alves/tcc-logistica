@@ -87,6 +87,13 @@
         <item>ADM</item>
     </string-array>
 
+    <string-array name="cargos_array_search">
+        <item>Todos</item>
+        <item>Motorista</item>
+        <item>Roteirista</item>
+        <item>ADM</item>
+    </string-array>
+
     <string name="welcome_user">Olá</string>
     <string name="nota">Nota</string>
     <string name="hora_entrega">Hora Entrega</string>
