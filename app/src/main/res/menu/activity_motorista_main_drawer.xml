@@ -8,6 +8,11 @@
             android:id="@+id/nav_entregas"
             android:icon="@drawable/ic_place_24dp"
             android:title="@string/entregas" />
+
+        <item
+            android:id="@+id/nav_coletas"
+            android:icon="@drawable/ic_near_me_24dp"
+            android:title="@string/coletas" />
     </group>
 
     <group

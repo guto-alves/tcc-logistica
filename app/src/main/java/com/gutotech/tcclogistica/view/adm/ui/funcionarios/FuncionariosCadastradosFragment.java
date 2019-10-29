@@ -54,7 +54,6 @@ public class FuncionariosCadastradosFragment extends Fragment {
     private FuncionariosAdapter funcionariosAdapter;
     private List<Funcionario> funcionariosList = new ArrayList<>();
 
-    private DatabaseReference funcionariosReference;
     private Query funcionarioQuery;
     private ValueEventListener funcionariosListener;
 
@@ -115,12 +114,12 @@ public class FuncionariosCadastradosFragment extends Fragment {
             }
         });
 
-        funcionariosReference = ConfigFirebase.getDatabase().child("funcionario");
-
         return root;
     }
 
     private void buscarFuncionario(String query) {
+        DatabaseReference funcionariosReference = ConfigFirebase.getDatabase().child("funcionario");
+
         funcionarioQuery = funcionariosReference.orderByChild("nome").startAt(query).endAt(query + "\uf8ff");
 
         funcionariosListener = funcionarioQuery.addValueEventListener(new ValueEventListener() {

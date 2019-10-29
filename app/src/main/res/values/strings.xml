@@ -94,6 +94,12 @@
         <item>ADM</item>
     </string-array>
 
+    <string-array name="status_array">
+        <item>Todas</item>
+        <item>PENDENTE</item>
+        <item>REALIZADA</item>
+    </string-array>
+
     <string name="welcome_user">Olá</string>
     <string name="nota">Nota</string>
     <string name="hora_entrega">Hora Entrega</string>
@@ -146,4 +152,7 @@
     <string name="meus_dados">Meus dados</string>
     <string name="ajuda_e_feedback">Ajuda e feedback</string>
     <string name="ajuda">Ajuda</string>
+    <string name="pedentes">Pedentes</string>
+    <string name="realizadas">Realizadas</string>
+    <string name="finalizar">Finalizar</string>
 </resources>

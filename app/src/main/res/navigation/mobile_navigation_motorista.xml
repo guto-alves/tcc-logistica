@@ -12,6 +12,12 @@
         tools:layout="@layout/fragment_motorista_entregas" />
 
     <fragment
+        android:id="@+id/nav_coletas"
+        android:name="com.gutotech.tcclogistica.view.motorista.ui.coletas.MotoristaColetasFragment"
+        android:label="@string/coletas"
+        tools:layout="@layout/fragment_motorista_coletas" />
+
+    <fragment
         android:id="@+id/nav_meus_dados"
         android:name="com.gutotech.tcclogistica.view.PerfilFragment"
         android:label="@string/meus_dados"
@@ -22,4 +28,5 @@
         android:name="com.gutotech.tcclogistica.view.SupportFragment"
         android:label="@string/ajuda"
         tools:layout="@layout/fragment_suporte" />
+
 </navigation>

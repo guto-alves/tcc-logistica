@@ -1,7 +1,5 @@
-package com.gutotech.tcclogistica;
+package com.gutotech.tcclogistica.helper;
 
-import android.app.Dialog;
-import android.content.Context;
 import android.graphics.Bitmap;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -9,7 +7,6 @@ import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import com.google.firebase.ml.vision.text.FirebaseVisionText;
 import com.google.firebase.ml.vision.text.FirebaseVisionTextRecognizer;
-import com.gutotech.tcclogistica.helper.Listener;
 
 public class TextRecognizer {
     private Listener listener;

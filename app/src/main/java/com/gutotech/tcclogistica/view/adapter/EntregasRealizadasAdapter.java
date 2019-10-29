@@ -14,11 +14,11 @@ import com.gutotech.tcclogistica.model.Entrega;
 
 import java.util.List;
 
-public class EntregasAdapter extends RecyclerView.Adapter<EntregasAdapter.MyViewHolder> {
+public class EntregasRealizadasAdapter extends RecyclerView.Adapter<EntregasRealizadasAdapter.MyViewHolder> {
     private Context context;
     private List<Entrega> entregasList;
 
-    public EntregasAdapter(Context context, List<Entrega> entregasList) {
+    public EntregasRealizadasAdapter(Context context, List<Entrega> entregasList) {
         this.entregasList = entregasList;
         this.context = context;
     }

@@ -30,15 +30,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.gutotech.tcclogistica.R;
-import com.gutotech.tcclogistica.TextRecognizer;
+import com.gutotech.tcclogistica.helper.TextRecognizer;
 import com.gutotech.tcclogistica.config.ConfigFirebase;
 import com.gutotech.tcclogistica.helper.Listener;
 import com.gutotech.tcclogistica.model.Coleta;
-import com.gutotech.tcclogistica.model.Destinatario;
 import com.gutotech.tcclogistica.model.Funcionario;
-import com.gutotech.tcclogistica.model.Produto;
-import com.gutotech.tcclogistica.model.Remetente;
-import com.gutotech.tcclogistica.model.Veiculo;
 
 import java.io.IOException;
 import java.util.ArrayList;

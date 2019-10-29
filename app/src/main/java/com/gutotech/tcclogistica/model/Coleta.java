@@ -27,10 +27,14 @@ public class Coleta {
 
     private String dataColetaEfetuada, horaColetaEfetuada;
 
+    public enum Status {REALIZADA, PENDENTE}
+
+    public Status status;
+
     public Coleta() {
     }
 
-    public Coleta(String id, String numero, String coletarEm, String dataEmissao, String nomeRemetente, String enderecoRemetente, String referenciaRemetente, String bairroRemetente, String cidadeRemetente, String cepRemetente, String contatoRemetente, String telefoneRemetente, String especieRemetente, String nPedido, String veiculoRemetente, String nomeProduto, String peso, String dimensoes, String nONU, String nomeDestinatario, String enderecoDestinatario, String destinoDestinatario, String site, String placaDestinatario, String semiReboqueDestinatario, Funcionario motorista, String observacoes, String instrucoes, String dataColetaEfetuada, String horaColetaEfetuada) {
+    public Coleta(String id, String numero, String coletarEm, String dataEmissao, String nomeRemetente, String enderecoRemetente, String referenciaRemetente, String bairroRemetente, String cidadeRemetente, String cepRemetente, String contatoRemetente, String telefoneRemetente, String especieRemetente, String nPedido, String veiculoRemetente, String nomeProduto, String peso, String dimensoes, String nONU, String nomeDestinatario, String enderecoDestinatario, String destinoDestinatario, String site, String placaDestinatario, String semiReboqueDestinatario, Funcionario motorista, String observacoes, String instrucoes, String dataColetaEfetuada, String horaColetaEfetuada, Status status) {
         this.id = id;
         this.numero = numero;
         this.coletarEm = coletarEm;
@@ -61,6 +65,7 @@ public class Coleta {
         this.instrucoes = instrucoes;
         this.dataColetaEfetuada = dataColetaEfetuada;
         this.horaColetaEfetuada = horaColetaEfetuada;
+        this.status = status;
     }
 
     public void salvar() {
@@ -311,5 +316,11 @@ public class Coleta {
         this.horaColetaEfetuada = horaColetaEfetuada;
     }
 
+    public Status getStatus() {
+        return status;
+    }
 
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 }

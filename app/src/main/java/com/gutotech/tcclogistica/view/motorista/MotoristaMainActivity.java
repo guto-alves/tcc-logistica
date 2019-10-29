@@ -58,15 +58,14 @@ public class MotoristaMainActivity extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
 
+        profileImageView = headerView.findViewById(R.id.profileImageView);
+        atualizarFoto();
+
         TextView userTextView = headerView.findViewById(R.id.userTextView);
         userTextView.setText(FuncionarioOn.funcionario.getNome().toUpperCase().split(" ")[0]);
 
-        ImageView profileImageView = headerView.findViewById(R.id.profileImageView);
-
-        atualizarFoto();
-        
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_entregas, R.id.nav_meus_dados, R.id.nav_suporte)
+                R.id.nav_entregas, R.id.nav_coletas, R.id.nav_meus_dados, R.id.nav_suporte)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

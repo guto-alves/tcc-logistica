@@ -125,7 +125,7 @@ public class RoteiristaEntregaNovaFragment extends Fragment {
                 entrega.setHora(hora);
 
                 entrega.setId(UUID.randomUUID().toString());
-                entrega.setStatus(Entrega.Status.PEDENTE);
+                entrega.setStatus(Entrega.Status.PENDENTE);
                 entrega.salvar();
 
                 limparCampos();

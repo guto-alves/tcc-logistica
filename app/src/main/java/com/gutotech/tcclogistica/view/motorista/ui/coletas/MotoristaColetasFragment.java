@@ -1,23 +1,30 @@
-package com.gutotech.tcclogistica.view.motorista.ui.entregas;
+package com.gutotech.tcclogistica.view.motorista.ui.coletas;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.gutotech.tcclogistica.R;
+import com.gutotech.tcclogistica.view.adm.ui.funcionarios.FuncionarioNovoFragment;
+import com.gutotech.tcclogistica.view.adm.ui.funcionarios.FuncionariosCadastradosFragment;
 
-public class MotoristaEntregasFragment extends Fragment {
+public class MotoristaColetasFragment extends Fragment {
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_motorista_entregas, container, false);
+    public MotoristaColetasFragment() {
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.fragment_motorista_coletas, container, false);
 
         BottomNavigationView bottomNavigationView = root.findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -25,10 +32,10 @@ public class MotoristaEntregasFragment extends Fragment {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.action_novo:
-                        changeToFragment(new MotoristaEntregasPendentesFragment());
+                        changeToFragment(new MotoristaColetasPendentesFragment());
                         break;
                     case R.id.action_cadastrados:
-                        changeToFragment(new MotoristaEntregasRealizadasFragment());
+                        changeToFragment(new MotoristaColetasRealizadasFragment());
                         break;
                 }
 
@@ -36,7 +43,7 @@ public class MotoristaEntregasFragment extends Fragment {
             }
         });
 
-        changeToFragment(new MotoristaEntregasPendentesFragment());
+        changeToFragment(new MotoristaColetasPendentesFragment());
 
         return root;
     }
@@ -46,4 +53,5 @@ public class MotoristaEntregasFragment extends Fragment {
         transaction.replace(R.id.frameConteiner, fragment);
         transaction.commit();
     }
+
 }

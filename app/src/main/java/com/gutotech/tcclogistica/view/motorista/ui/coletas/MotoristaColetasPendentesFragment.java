@@ -1,5 +1,4 @@
-package com.gutotech.tcclogistica.view.adm.ui.coletas;
-
+package com.gutotech.tcclogistica.view.motorista.ui.coletas;
 
 import android.os.Bundle;
 
@@ -11,10 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.SearchView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -29,36 +25,33 @@ import com.gutotech.tcclogistica.view.adapter.ColetasAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
-public class AdmColetasFragment extends Fragment {
+public class MotoristaColetasPendentesFragment extends Fragment {
     private List<Coleta> coletasList = new ArrayList<>();
+
     private ColetasAdapter coletasAdapter;
 
+    private DatabaseReference coletasReference;
     private Query coletasQuery;
     private ValueEventListener coletasListener;
 
-    private String numeroColetaPesquisado = "";
-
-    private TextView totalTextView;
-    private String statusColeta = "Todas";
     private TextView statusColetasTextView;
 
-    public AdmColetasFragment() {
+    public MotoristaColetasPendentesFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_adm_coletas, container, false);
+        View root = inflater.inflate(R.layout.fragment_motorista_coletas_pendentes, container, false);
 
-        totalTextView = root.findViewById(R.id.totalTextView);
-        statusColetasTextView = root.findViewById(R.id.statusPesquisaTextView);
-
+        statusColetasTextView = root.findViewById(R.id.statusTextView);
         RecyclerView coletasRecyclerView = root.findViewById(R.id.coletasRecyclerView);
+
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         coletasRecyclerView.setLayoutManager(layoutManager);
         coletasRecyclerView.setHasFixedSize(true);
+
         coletasAdapter = new ColetasAdapter(getActivity(), coletasList);
         coletasRecyclerView.setAdapter(coletasAdapter);
 
@@ -71,34 +64,17 @@ public class AdmColetasFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                numeroColetaPesquisado = newText;
-                buscarColetas(numeroColetaPesquisado);
+                buscarColetas(newText);
                 return true;
             }
         });
 
-        final Spinner statusSpinner = root.findViewById(R.id.statusSpinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.status_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        statusSpinner.setAdapter(adapter);
-        statusSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                statusColeta = statusSpinner.getSelectedItem().toString();
-                buscarColetas(numeroColetaPesquisado);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
+        coletasReference = ConfigFirebase.getDatabase().child("coleta");
 
         return root;
     }
 
     private void buscarColetas(String query) {
-        DatabaseReference coletasReference = ConfigFirebase.getDatabase().child("coleta");
-
         coletasQuery = coletasReference.orderByChild("numero").startAt(query).endAt(query + "\uf8ff");
 
         coletasListener = coletasQuery.addValueEventListener(new ValueEventListener() {
@@ -106,22 +82,12 @@ public class AdmColetasFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 coletasList.clear();
 
-                for (DataSnapshot data : dataSnapshot.getChildren()) {
-                    Coleta coleta = data.getValue(Coleta.class);
+                for (DataSnapshot data : dataSnapshot.getChildren())
+                    coletasList.add(data.getValue(Coleta.class));
 
-                    if (statusColeta.equals("Todas"))
-                        coletasList.add(coleta);
-                    else if (coleta.getStatus().toString().equals(statusColeta))
-                        coletasList.add(coleta);
-                }
-
-                int totalColetas = coletasList.size();
-                totalTextView.setText(String.format(Locale.getDefault(), "Total: %d", totalColetas));
-
-                if (totalColetas == 0) {
+                if (coletasList.size() == 0)
                     statusColetasTextView.setText("Nenhuma coleta encontrada.");
-                    statusColetasTextView.setVisibility(View.VISIBLE);
-                } else
+                else
                     statusColetasTextView.setVisibility(View.GONE);
 
                 coletasAdapter.notifyDataSetChanged();
@@ -136,7 +102,7 @@ public class AdmColetasFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        buscarColetas(numeroColetaPesquisado);
+        buscarColetas("");
     }
 
     @Override
@@ -144,6 +110,5 @@ public class AdmColetasFragment extends Fragment {
         super.onStop();
         coletasQuery.removeEventListener(coletasListener);
     }
-
 
 }

@@ -3,12 +3,10 @@ package com.gutotech.tcclogistica.view.roteirista.ui.notas;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
@@ -19,12 +17,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.gutotech.tcclogistica.R;
-import com.gutotech.tcclogistica.TextRecognizer;
+import com.gutotech.tcclogistica.helper.TextRecognizer;
 import com.gutotech.tcclogistica.helper.Listener;
 import com.gutotech.tcclogistica.model.Destinatario;
 import com.gutotech.tcclogistica.model.Endereco;
@@ -35,8 +32,6 @@ import java.io.IOException;
 import java.util.UUID;
 
 import es.dmoral.toasty.Toasty;
-
-import static android.app.Activity.RESULT_OK;
 
 public class RoteiristaNotaNovaFragment extends Fragment {
     private Nota nota = new Nota();

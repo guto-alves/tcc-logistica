@@ -5,7 +5,7 @@
     android:layout_margin="16dp"
     android:background="@android:color/white"
     android:orientation="horizontal"
-    android:padding="15dp">
+    android:padding="16dp">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -19,15 +19,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:text="@string/nota"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/clienteTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="@string/cliente"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
 
@@ -74,7 +65,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/statusFuncionariosTextView"
+            android:id="@+id/statusTextView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
