@@ -1,6 +1,5 @@
 package com.gutotech.tcclogistica.view.adm.ui.coletas;
 
-
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -144,6 +143,5 @@ public class AdmColetasFragment extends Fragment {
         super.onStop();
         coletasQuery.removeEventListener(coletasListener);
     }
-
 
 }

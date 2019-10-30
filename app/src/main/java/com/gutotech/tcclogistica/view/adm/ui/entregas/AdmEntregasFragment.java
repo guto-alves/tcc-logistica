@@ -51,12 +51,12 @@ public class AdmEntregasFragment extends Fragment {
         totalTextView = root.findViewById(R.id.totalTextView);
         statusTextView = root.findViewById(R.id.statusPesquisaTextView);
 
-        RecyclerView coletasRecyclerView = root.findViewById(R.id.entregasRecyclerView);
+        RecyclerView entregasRecyclerView = root.findViewById(R.id.entregasRecyclerView);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        coletasRecyclerView.setLayoutManager(layoutManager);
-        coletasRecyclerView.setHasFixedSize(true);
+        entregasRecyclerView.setLayoutManager(layoutManager);
+        entregasRecyclerView.setHasFixedSize(true);
         entregasAdapter = new EntregasAdapter(getActivity(), entregasList);
-        coletasRecyclerView.setAdapter(entregasAdapter);
+        entregasRecyclerView.setAdapter(entregasAdapter);
 
         SearchView searchView = root.findViewById(R.id.searchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -93,9 +93,9 @@ public class AdmEntregasFragment extends Fragment {
     }
 
     private void buscarEntregas(String query) {
-        DatabaseReference entregasReference = ConfigFirebase.getDatabase().child("entrega").child("motorista");
+        DatabaseReference entregasReference = ConfigFirebase.getDatabase().child("entrega");
 
-        entregasQuery = entregasReference.orderByChild("nome").startAt(query).endAt(query + "\uf8ff");
+        entregasQuery = entregasReference.orderByChild("nomeMotorista").startAt(query).endAt(query + "\uf8ff");
 
         listener = entregasQuery.addValueEventListener(new ValueEventListener() {
             @Override
@@ -104,8 +104,6 @@ public class AdmEntregasFragment extends Fragment {
 
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     Entrega entrega = data.getValue(Entrega.class);
-
-                    entregasList.add(entrega);
 
                     if (statusPesquisado.equals("Todas"))
                         entregasList.add(entrega);

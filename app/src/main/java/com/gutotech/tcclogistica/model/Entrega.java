@@ -7,6 +7,7 @@ public class Entrega {
     private String id;
     private Nota nota;
     private Funcionario motorista;
+    private String nomeMotorista;
     private String data;
     private String hora;
 
@@ -17,10 +18,11 @@ public class Entrega {
     public Entrega() {
     }
 
-    public Entrega(String id, Nota nota, Funcionario motorista, String data, String hora, Status status) {
+    public Entrega(String id, Nota nota, Funcionario motorista, String nomeMotorista, String data, String hora, Status status) {
         this.id = id;
         this.nota = nota;
         this.motorista = motorista;
+        this.nomeMotorista = nomeMotorista;
         this.data = data;
         this.hora = hora;
         this.status = status;
@@ -56,6 +58,14 @@ public class Entrega {
 
     public void setMotorista(Funcionario motorista) {
         this.motorista = motorista;
+    }
+
+    public String getNomeMotorista() {
+        return nomeMotorista;
+    }
+
+    public void setNomeMotorista(String nomeMotorista) {
+        this.nomeMotorista = nomeMotorista;
     }
 
     public String getData() {

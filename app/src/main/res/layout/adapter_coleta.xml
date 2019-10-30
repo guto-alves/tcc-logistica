@@ -5,7 +5,7 @@
     android:layout_marginBottom="8dp"
     android:background="@android:color/white"
     android:orientation="horizontal"
-    android:padding="16dp">
+    android:padding="@dimen/activity_horizontal_margin">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -14,19 +14,38 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/numeroNotaTextView"
+            android:id="@+id/numeroTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:text="@string/numero"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/dataEmissaoTextView"
+            android:id="@+id/emissaoTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/data_de_emissao"
             android:layout_marginBottom="5dp"
+            android:text="@string/data_de_emissao"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/remetenteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/remetente"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/enderecoRemetenteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/endereco"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
 
@@ -37,14 +56,32 @@
             android:layout_marginBottom="5dp"
             android:text="@string/destinatario"
             android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/enderecoTextView"
+            android:id="@+id/enderecoDestinatarioTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:text="@string/endereco"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/motoristaTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/motorista"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/coletarAteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/coletar"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
     </LinearLayout>

@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/background_search"
-        android:queryHint="Pesquise pelo número da nota" />
+        android:queryHint="Pesquise pelo número da coleta" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,13 +41,14 @@
         android:id="@+id/totalTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="5dp"
         android:gravity="end" />
 
     <TextView
         android:id="@+id/statusPesquisaTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="Carregando coletas..." />
 

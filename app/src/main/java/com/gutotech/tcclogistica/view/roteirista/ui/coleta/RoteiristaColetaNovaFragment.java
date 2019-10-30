@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,7 +79,6 @@ public class RoteiristaColetaNovaFragment extends Fragment {
     private ValueEventListener motoristasListener;
 
     private TextRecognizer textRecognizer;
-    private final int REQUEST_IMAGE_CAPTURE = 7;
 
     private Dialog processingDialog;
 
@@ -201,7 +201,20 @@ public class RoteiristaColetaNovaFragment extends Fragment {
     private final Listener listener = new Listener() {
         @Override
         public void callback(String text) {
-            instrucoesEditText.setText(text);
+            String[] tokens = text.split("\\s+");
+
+            for (int i = 0; i < tokens.length; i++)
+                Log.i("teste", String.format("%dº = %s", i, tokens[i]));
+
+            numeroColetaEditText.setText(tokens[5]);
+            coletarEmEditText.setText(String.format("%s até %s", tokens[7].replace("Coletar:", ""), tokens[9]));
+            dataEmissaoEditText.setText(tokens[13] + " " + tokens[14] + " hr");
+
+            nomeRemetenteEditText.setText(text.substring(text.indexOf("Remetente"), text.indexOf("Endereço")));
+            enderecoRemetenteEditText.setText(text.substring(text.indexOf("Endereço"), text.indexOf("Referência")));
+            contatoRemetenteEditText.setText(text.substring(text.indexOf("Contato"), text.indexOf("Telefone:")));
+            telefoneRemetenteEditText.setText(text.substring(text.indexOf("Telefone: "), text.indexOf("Especie:")));
+            nomeDestinatarioEditText.setText(tokens[0]);
 
             processingDialog.dismiss();
         }
@@ -245,7 +258,7 @@ public class RoteiristaColetaNovaFragment extends Fragment {
 
                 coleta.setDataColetaEfetuada(dataColetaEfetuadaEditText.getText().toString());
                 coleta.setHoraColetaEfetuada(horaColetaEfetuadaEditText.getText().toString());
-
+                coleta.setStatus(Coleta.Status.PENDENTE);
                 coleta.salvar();
 
                 limparCampos();
@@ -255,17 +268,17 @@ public class RoteiristaColetaNovaFragment extends Fragment {
     };
 
     private void adicionarMascaras() {
-        coletarEmEditText.addTextChangedListener(new MaskTextWatcher(coletarEmEditText, new SimpleMaskFormatter("NN/NN/NN até NN:NN:NN hr")));
-        dataEmissaoEditText.addTextChangedListener(new MaskTextWatcher(dataEmissaoEditText, new SimpleMaskFormatter("NN/NN/NN NN:NN:NN")));
+        coletarEmEditText.addTextChangedListener(new MaskTextWatcher(coletarEmEditText, new SimpleMaskFormatter("NN/NN/NNNN até NN:NN hr")));
+        dataEmissaoEditText.addTextChangedListener(new MaskTextWatcher(dataEmissaoEditText, new SimpleMaskFormatter("NN/NN/NNNN NN:NN")));
 
-        cepRemetenteEditText.addTextChangedListener(new MaskTextWatcher(cepRemetenteEditText, new SimpleMaskFormatter("(NNNNN-NNN")));
+        cepRemetenteEditText.addTextChangedListener(new MaskTextWatcher(cepRemetenteEditText, new SimpleMaskFormatter("NN.NNN-NNN")));
         telefoneRemetenteEditText.addTextChangedListener(new MaskTextWatcher(telefoneRemetenteEditText, new SimpleMaskFormatter("(NN) NNNN-NNNN")));
 
         placaDestinatarioEditText.addTextChangedListener(new MaskTextWatcher(placaDestinatarioEditText, new SimpleMaskFormatter("UUU-NNNN")));
 
         rgMotoristaEditText.addTextChangedListener(new MaskTextWatcher(rgMotoristaEditText, new SimpleMaskFormatter("NN.NNN.NNN-N")));
 
-        dataColetaEfetuadaEditText.addTextChangedListener(new MaskTextWatcher(dataColetaEfetuadaEditText, new SimpleMaskFormatter("NN/NN/NN")));
+        dataColetaEfetuadaEditText.addTextChangedListener(new MaskTextWatcher(dataColetaEfetuadaEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
         horaColetaEfetuadaEditText.addTextChangedListener(new MaskTextWatcher(horaColetaEfetuadaEditText, new SimpleMaskFormatter("NN:NN:NN")));
     }
 

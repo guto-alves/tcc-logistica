@@ -251,7 +251,7 @@
                     android:id="@+id/loginFuncionarioExpandable"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:layout_marginTop="5dp" />
+                    android:layout_marginTop="8dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -259,14 +259,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="24dp"
+                android:padding="16dp"
                 android:visibility="gone">
 
                 <TextView
                     android:id="@+id/textViewCNH"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
                     android:text="@string/cnh"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
@@ -347,51 +346,53 @@
                     android:ems="10"
                     android:inputType="textCapCharacters" />
             </LinearLayout>
-
-
         </LinearLayout>
-
     </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:layout_marginTop="16dp"
         android:gravity="center"
         android:orientation="horizontal">
 
-        <Button
+        <ImageButton
             android:id="@+id/excluirButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="24dp"
-            android:background="@drawable/background_button_delete"
-            android:text="@string/excluir"
-            android:textColor="@android:color/white" />
+            android:background="@android:color/holo_red_light"
+            android:padding="8dp"
+            app:srcCompat="@drawable/ic_delete_white_24dp" />
 
         <ImageButton
             android:id="@+id/doneEditImageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="16dp"
+            android:background="@color/colorGreen"
+            android:padding="5dp"
             android:visibility="gone"
-            app:srcCompat="@drawable/ic_done_black_24dp" />
+            app:srcCompat="@drawable/ic_done_white_24dp" />
 
         <ImageButton
             android:id="@+id/modoEditImageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="16dp"
-            app:srcCompat="@drawable/ic_mode_edit_24dp" />
+            android:background="@drawable/background_button"
+            android:padding="5dp"
+            app:srcCompat="@drawable/ic_mode_edit_white_24dp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/fecharButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/background_button"
+            android:padding="5dp"
             android:text="@string/fechar"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            app:srcCompat="@drawable/ic_clear_white_24dp" />
     </LinearLayout>
 
 </LinearLayout>

@@ -59,7 +59,6 @@ public class AdmMainActivity extends AppCompatActivity {
         View headerView = navigationView.getHeaderView(0);
 
         profileImageView = headerView.findViewById(R.id.profileImageView);
-
         atualizarFoto();
 
         TextView userTextView = headerView.findViewById(R.id.userTextView);
@@ -107,7 +106,6 @@ public class AdmMainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 FuncionarioOn.funcionario = dataSnapshot.getValue(Funcionario.class);
-                atualizarFoto();
             }
 
             @Override

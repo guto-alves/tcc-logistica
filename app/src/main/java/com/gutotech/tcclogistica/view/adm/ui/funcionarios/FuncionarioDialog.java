@@ -185,7 +185,7 @@ public class FuncionarioDialog {
             }
         });
 
-        Button fecharButton = fDialog.findViewById(R.id.fecharButton);
+        ImageButton fecharButton = fDialog.findViewById(R.id.fecharButton);
         fecharButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -193,7 +193,7 @@ public class FuncionarioDialog {
             }
         });
 
-        Button excluirButton = fDialog.findViewById(R.id.excluirButton);
+        ImageButton excluirButton = fDialog.findViewById(R.id.excluirButton);
         excluirButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -34,8 +34,11 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.MyViewHolder
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Nota nota = notasList.get(position);
 
-        holder.numeroNotaTextView.setText(String.valueOf(nota.getNumero()));
+        holder.numeroNotaTextView.setText(nota.getNumero());
         holder.dataEmissaoTextView.setText(nota.getDataEmissao());
+        holder.destinatarioTextView.setText(nota.getDestinatario().getNome());
+        holder.enderecoTextView.setText(nota.getDestinatario().getEndereco().getEndereco());
+        holder.statusTextView.setText(nota.isEstoque() ? "Em estoque" : "Já entregue\n ou \nsendo entregue");
     }
 
     @Override
@@ -46,12 +49,18 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.MyViewHolder
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView numeroNotaTextView;
         private TextView dataEmissaoTextView;
+        private TextView enderecoTextView;
+        private TextView destinatarioTextView;
+        private TextView statusTextView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             numeroNotaTextView = itemView.findViewById(R.id.numeroNotaTextView);
             dataEmissaoTextView = itemView.findViewById(R.id.dataEmissaoTextView);
+            enderecoTextView = itemView.findViewById(R.id.enderecoTextView);
+            destinatarioTextView = itemView.findViewById(R.id.destinatarioTextView);
+            statusTextView = itemView.findViewById(R.id.statusTextView);
         }
     }
 }

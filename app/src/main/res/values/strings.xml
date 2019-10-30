@@ -155,4 +155,7 @@
     <string name="pedentes">Pedentes</string>
     <string name="realizadas">Realizadas</string>
     <string name="finalizar">Finalizar</string>
+    <string name="galeria">Galeria</string>
+    <string name="camera">Câmera</string>
+    <string name="abrir">Abrir</string>
 </resources>

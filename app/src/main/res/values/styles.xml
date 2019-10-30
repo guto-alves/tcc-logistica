@@ -35,7 +35,7 @@
 
     <style name="ButtonTheme">
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:background">@drawable/background_button</item>
+        <item name="android:background">@drawable/selector_button</item>
     </style>
 
     <style name="EditTextTheme">

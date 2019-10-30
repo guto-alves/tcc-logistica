@@ -10,6 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.SearchView;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,14 +28,20 @@ import com.gutotech.tcclogistica.view.adapter.EntregasAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class RoteiristaEntregasListaFragment extends Fragment {
     private List<Entrega> entregasList = new ArrayList<>();
-
     private EntregasAdapter entregasAdapter;
 
-    private DatabaseReference entregasReference;
-    private ValueEventListener entregasListener;
+    private Query entregasQuery;
+    private ValueEventListener listener;
+
+    private String motoristaPesquisado = "";
+    private String statusPesquisado = "Todas";
+
+    private TextView totalTextView;
+    private TextView statusTextView;
 
     public RoteiristaEntregasListaFragment() {
     }
@@ -40,6 +51,9 @@ public class RoteiristaEntregasListaFragment extends Fragment {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_roteirista_entregas_lista, container, false);
 
+        totalTextView = root.findViewById(R.id.totalTextView);
+        statusTextView = root.findViewById(R.id.statusPesquisaTextView);
+
         RecyclerView entregasRecyclerView = root.findViewById(R.id.entregasRecyclerView);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         entregasRecyclerView.setLayoutManager(layoutManager);
@@ -47,19 +61,67 @@ public class RoteiristaEntregasListaFragment extends Fragment {
         entregasAdapter = new EntregasAdapter(getActivity(), entregasList);
         entregasRecyclerView.setAdapter(entregasAdapter);
 
-        entregasReference = ConfigFirebase.getDatabase().child("entrega");
+        SearchView searchView = root.findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                motoristaPesquisado = newText;
+                buscarEntregas(motoristaPesquisado);
+                return true;
+            }
+        });
+
+        final Spinner statusSpinner = root.findViewById(R.id.statusSpinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.status_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        statusSpinner.setAdapter(adapter);
+        statusSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                statusPesquisado = statusSpinner.getSelectedItem().toString();
+                buscarEntregas(motoristaPesquisado);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
 
         return root;
     }
 
-    private void carregarEntregas(String query) {
-        entregasListener = entregasReference.addValueEventListener(new ValueEventListener() {
+    private void buscarEntregas(String query) {
+        DatabaseReference entregasReference = ConfigFirebase.getDatabase().child("entrega");
+
+        entregasQuery = entregasReference.orderByChild("nomeMotorista").startAt(query).endAt(query + "\uf8ff");
+
+        listener = entregasQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 entregasList.clear();
 
-                for (DataSnapshot data : dataSnapshot.getChildren())
-                    entregasList.add(data.getValue(Entrega.class));
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                    Entrega entrega = data.getValue(Entrega.class);
+
+                    if (statusPesquisado.equals("Todas"))
+                        entregasList.add(entrega);
+                    else if (entrega.getStatus().toString().equals(statusPesquisado))
+                        entregasList.add(entrega);
+                }
+
+                int totalColetas = entregasList.size();
+                totalTextView.setText(String.format(Locale.getDefault(), "Total: %d", totalColetas));
+
+                if (totalColetas == 0) {
+                    statusTextView.setText("Nenhuma entrega encontrada.");
+                    statusTextView.setVisibility(View.VISIBLE);
+                } else
+                    statusTextView.setVisibility(View.GONE);
 
                 entregasAdapter.notifyDataSetChanged();
             }
@@ -73,12 +135,12 @@ public class RoteiristaEntregasListaFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        carregarEntregas("");
+        buscarEntregas(motoristaPesquisado);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        entregasReference.removeEventListener(entregasListener);
+        entregasQuery.removeEventListener(listener);
     }
 }

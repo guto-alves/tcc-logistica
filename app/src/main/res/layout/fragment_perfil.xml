@@ -35,7 +35,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:menu_colorNormal="@color/colorPrimaryDark"
                 app:menu_colorPressed="@color/colorAccent"
-                fab:menu_icon="@drawable/ic_mode_edit_24dp">
+                fab:menu_icon="@drawable/ic_add_a_photo_24dp">
 
                 <com.github.clans.fab.FloatingActionButton
                     android:id="@+id/deleteButton"

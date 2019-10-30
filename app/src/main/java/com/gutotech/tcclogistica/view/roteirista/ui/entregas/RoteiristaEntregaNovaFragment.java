@@ -23,6 +23,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.config.ConfigFirebase;
+import com.gutotech.tcclogistica.helper.DateCustom;
 import com.gutotech.tcclogistica.model.Entrega;
 import com.gutotech.tcclogistica.model.Funcionario;
 import com.gutotech.tcclogistica.model.Nota;
@@ -65,7 +66,9 @@ public class RoteiristaEntregaNovaFragment extends Fragment {
         Spinner notaSpinner = root.findViewById(R.id.notaSpinner);
         Spinner motoristaSpinner = root.findViewById(R.id.motoristaSpinner);
         dataEditText = root.findViewById(R.id.dataEditText);
+        dataEditText.setText(DateCustom.getData());
         horaEditText = root.findViewById(R.id.horaEditText);
+        horaEditText.setText(DateCustom.getHorario());
 
         adicionarMascaras();
 
@@ -78,7 +81,9 @@ public class RoteiristaEntregaNovaFragment extends Fragment {
         motoristaSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                entrega.setMotorista(motoristasList.get(position));
+                Funcionario motorista = motoristasList.get(position);
+                entrega.setMotorista(motorista);
+                entrega.setNomeMotorista(motorista.getNome());
             }
 
             @Override
@@ -120,17 +125,21 @@ public class RoteiristaEntregaNovaFragment extends Fragment {
             String data = dataEditText.getText().toString();
             String hora = horaEditText.getText().toString();
 
-            if (isValidFields(data, hora)) {
-                entrega.setData(data);
-                entrega.setHora(hora);
+            if (entrega.getNota() != null) {
+                if (isValidFields(data, hora)) {
+                    entrega.setData(data);
+                    entrega.setHora(hora);
+                    entrega.setId(UUID.randomUUID().toString());
+                    entrega.setStatus(Entrega.Status.PENDENTE);
+                    entrega.salvar();
+                    entrega.getNota().setEstoque(false);
+                    entrega.getNota().salvar();
 
-                entrega.setId(UUID.randomUUID().toString());
-                entrega.setStatus(Entrega.Status.PENDENTE);
-                entrega.salvar();
-
-                limparCampos();
-                Toasty.success(getActivity(), "Entrega cadastrada com sucesso!", Toasty.LENGTH_SHORT, true).show();
-            }
+                    limparCampos();
+                    Toasty.success(getActivity(), "Entrega cadastrada com sucesso!", Toasty.LENGTH_SHORT, true).show();
+                }
+            } else
+                Toasty.error(getActivity(), "Nenhuma nota associada a essa entrega!", Toasty.LENGTH_SHORT, true).show();
         }
     };
 

@@ -24,8 +24,9 @@ import com.gutotech.tcclogistica.view.adapter.NotasAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
-public class AdmEstoqueFragment extends Fragment {
+public class AdmNotasFragment extends Fragment {
     private NotasAdapter notasAdapter;
     private List<Nota> notasList = new ArrayList<>();
 
@@ -34,13 +35,15 @@ public class AdmEstoqueFragment extends Fragment {
     private ValueEventListener notasListener;
 
     private TextView statusNotasTextView;
+    private TextView totalTextView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_adm_estoque, container, false);
+        View root = inflater.inflate(R.layout.fragment_adm_notas, container, false);
 
         RecyclerView notasRecyclerView = root.findViewById(R.id.notasRecyclerView);
         statusNotasTextView = root.findViewById(R.id.statusNotasTextView);
+        totalTextView = root.findViewById(R.id.totalTextView);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         notasRecyclerView.setLayoutManager(layoutManager);
@@ -79,9 +82,13 @@ public class AdmEstoqueFragment extends Fragment {
                 for (DataSnapshot data : dataSnapshot.getChildren())
                     notasList.add(data.getValue(Nota.class));
 
-                if (notasList.size() == 0)
+                int totalNotas = notasList.size();
+                totalTextView.setText(String.format(Locale.getDefault(), "Total: %d", totalNotas));
+
+                if (totalNotas == 0) {
                     statusNotasTextView.setText("Nenhuma nota encontrada.");
-                else
+                    statusNotasTextView.setVisibility(View.VISIBLE);
+                } else
                     statusNotasTextView.setVisibility(View.GONE);
 
                 notasAdapter.notifyDataSetChanged();

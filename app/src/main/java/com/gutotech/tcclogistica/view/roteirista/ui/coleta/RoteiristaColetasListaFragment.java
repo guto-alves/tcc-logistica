@@ -41,10 +41,10 @@ public class RoteiristaColetasListaFragment extends Fragment {
     private ValueEventListener coletasListener;
 
     private String numeroColetaPesquisado = "";
+    private String statusColetaPesquisada = "Todas";
 
     private TextView totalTextView;
-    private TextView statusColetasTextView;
-    private String statusColeta = "Todas";
+    private TextView statusColetaPesquisadasTextView;
 
     public RoteiristaColetasListaFragment() {
     }
@@ -55,7 +55,7 @@ public class RoteiristaColetasListaFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_roteirista_coletas_lista, container, false);
 
         totalTextView = root.findViewById(R.id.totalTextView);
-        statusColetasTextView = root.findViewById(R.id.statusPesquisaTextView);
+        statusColetaPesquisadasTextView = root.findViewById(R.id.statusPesquisaTextView);
 
         RecyclerView coletasRecyclerView = root.findViewById(R.id.coletasRecyclerView);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -86,7 +86,7 @@ public class RoteiristaColetasListaFragment extends Fragment {
         statusSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                statusColeta = statusSpinner.getSelectedItem().toString();
+                statusColetaPesquisada = statusSpinner.getSelectedItem().toString();
                 buscarColetas(numeroColetaPesquisado);
             }
 
@@ -111,9 +111,9 @@ public class RoteiristaColetasListaFragment extends Fragment {
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     Coleta coleta = data.getValue(Coleta.class);
 
-                    if (statusColeta.equals("Todas"))
+                    if (statusColetaPesquisada.equals("Todas"))
                         coletasList.add(coleta);
-                    else if (coleta.getStatus().toString().equals(statusColeta))
+                    else if (coleta.getStatus().toString().equals(statusColetaPesquisada))
                         coletasList.add(coleta);
                 }
 
@@ -121,10 +121,10 @@ public class RoteiristaColetasListaFragment extends Fragment {
                 totalTextView.setText(String.format(Locale.getDefault(), "Total: %d", totalColetas));
 
                 if (totalColetas == 0) {
-                    statusColetasTextView.setText("Nenhuma coleta encontrada.");
-                    statusColetasTextView.setVisibility(View.VISIBLE);
+                    statusColetaPesquisadasTextView.setText("Nenhuma coleta encontrada.");
+                    statusColetaPesquisadasTextView.setVisibility(View.VISIBLE);
                 } else
-                    statusColetasTextView.setVisibility(View.GONE);
+                    statusColetaPesquisadasTextView.setVisibility(View.GONE);
 
                 coletasAdapter.notifyDataSetChanged();
             }

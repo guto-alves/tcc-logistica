@@ -26,20 +26,23 @@ public class ColetasAdapter extends RecyclerView.Adapter<ColetasAdapter.MyViewHo
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View coletaLista = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.adapter_coleta_realizada, parent, false);
-        return new MyViewHolder(coletaLista);
+        View itemView = LayoutInflater.from(context).inflate(R.layout.adapter_coleta, parent, false);
+        return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Coleta coleta = coletasList.get(position);
 
+        holder.numero.setText(coleta.getNumero());
         holder.emissao.setText(coleta.getDataEmissao());
         holder.coletar.setText(coleta.getColetarEm());
         holder.remetente.setText(coleta.getNomeRemetente());
+        holder.enderecoRemetente.setText(coleta.getEnderecoRemetente());
         holder.destinatario.setText(coleta.getNomeDestinatario());
+        holder.enderecoDestinatario.setText(coleta.getEnderecoDestinatario());
         holder.motorista.setText(coleta.getMotorista().getNome());
+        holder.status.setText(coleta.getStatus().toString());
     }
 
     @Override
@@ -48,20 +51,28 @@ public class ColetasAdapter extends RecyclerView.Adapter<ColetasAdapter.MyViewHo
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+        private TextView numero;
         private TextView emissao;
         private TextView coletar;
         private TextView remetente;
+        private TextView enderecoRemetente;
         private TextView destinatario;
+        private TextView enderecoDestinatario;
         private TextView motorista;
+        private TextView status;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            numero = itemView.findViewById(R.id.numeroTextView);
             emissao = itemView.findViewById(R.id.emissaoTextView);
-            coletar = itemView.findViewById(R.id.coletarTextView);
+            coletar = itemView.findViewById(R.id.coletarAteTextView);
             remetente = itemView.findViewById(R.id.remetenteTextView);
+            enderecoRemetente = itemView.findViewById(R.id.enderecoRemetenteTextView);
             destinatario = itemView.findViewById(R.id.destinatarioTextView);
+            enderecoDestinatario = itemView.findViewById(R.id.enderecoDestinatarioTextView);
             motorista = itemView.findViewById(R.id.motoristaTextView);
+            status = itemView.findViewById(R.id.statusTextView);
         }
     }
 }

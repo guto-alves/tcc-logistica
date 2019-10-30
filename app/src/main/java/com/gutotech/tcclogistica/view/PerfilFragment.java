@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.github.clans.fab.FloatingActionButton;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.gutotech.tcclogistica.R;
@@ -114,10 +115,17 @@ public class PerfilFragment extends Fragment {
                 profileReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toasty.success(getActivity(), "Sucesso ao remover foto de perfil", Toasty.LENGTH_SHORT, true).show();
                         profileImageView.setImageResource(R.drawable.perfil_sem_foto);
+
+                        NavigationView navigationView = getActivity().findViewById(R.id.nav_view);
+                        View headerView = navigationView.getHeaderView(0);
+                        ImageView profileImageView = headerView.findViewById(R.id.profileImageView);
+                        profileImageView.setImageResource(R.drawable.perfil_sem_foto);
+
                         FuncionarioOn.funcionario.setProfileImage(false);
                         FuncionarioOn.funcionario.salvar();
+
+                        Toasty.success(getActivity(), "Sucesso ao remover foto de perfil", Toasty.LENGTH_SHORT, true).show();
                     }
                 });
             }
@@ -188,10 +196,17 @@ public class PerfilFragment extends Fragment {
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toasty.success(getActivity(), "Sucesso ao fazer upload da imagem", Toasty.LENGTH_SHORT, true).show();
+
+                NavigationView navigationView = getActivity().findViewById(R.id.nav_view);
+                View headerView = navigationView.getHeaderView(0);
+                ImageView profileImageView = headerView.findViewById(R.id.profileImageView);
+                profileImageView.setImageResource(R.drawable.perfil_sem_foto);
+                Storage.downloadProfile(getActivity(), profileImageView, FuncionarioOn.funcionario.getLogin().getUser());
 
                 FuncionarioOn.funcionario.setProfileImage(true);
                 FuncionarioOn.funcionario.salvar();
+
+                Toasty.success(getActivity(), "Sucesso ao fazer upload da imagem", Toasty.LENGTH_SHORT, true).show();
             }
         });
     }

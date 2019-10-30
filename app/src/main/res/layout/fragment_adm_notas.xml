@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.adm.ui.notas.AdmEstoqueFragment">
+    android:padding="@dimen/activity_horizontal_margin"
+    tools:context=".view.adm.ui.notas.AdmNotasFragment">
 
     <SearchView
         android:id="@+id/searchView"
@@ -14,6 +15,12 @@
         android:layout_margin="8dp"
         android:background="@drawable/background_search"
         android:queryHint="Pesquise pelo número da nota" />
+
+    <TextView
+        android:id="@+id/totalTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end" />
 
     <TextView
         android:id="@+id/statusNotasTextView"

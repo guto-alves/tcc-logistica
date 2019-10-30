@@ -4,12 +4,14 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.storage.StorageReference;
 
 public class Storage {
 
     private static void downloadImage(Context context, StorageReference storageReference, ImageView imageView) {
         Glide.with(context)
+                .using(new FirebaseImageLoader())
                 .load(storageReference)
                 .into(imageView);
     }

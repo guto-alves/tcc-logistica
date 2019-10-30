@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/nav_notas"
-        android:name="com.gutotech.tcclogistica.view.adm.ui.notas.AdmEstoqueFragment"
+        android:name="com.gutotech.tcclogistica.view.adm.ui.notas.AdmNotasFragment"
         android:label="@string/notas"
-        tools:layout="@layout/fragment_adm_estoque" />
+        tools:layout="@layout/fragment_adm_notas" />
 
     <fragment
         android:id="@+id/nav_coletas"

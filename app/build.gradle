@@ -38,7 +38,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:19.2.0'
     implementation 'com.google.firebase:firebase-ml-vision:24.0.0'
     implementation 'com.google.firebase:firebase-storage:19.1.0'
-    implementation 'com.firebaseui:firebase-ui-storage:4.3.1'
+    implementation 'com.firebaseui:firebase-ui-storage:0.6.0'
 
     implementation 'com.github.GrenderG:Toasty:1.4.2'
     implementation 'com.tapadoo.android:alerter:1.0.6'

@@ -35,7 +35,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void checkForMaintenace() {
-        DatabaseReference maintenanceReference = ConfigFirebase.getDatabase().child("maintenance");
+        DatabaseReference maintenanceReference = ConfigFirebase.getDatabase().child("manutencao");
 
         maintenanceReference.addValueEventListener(new ValueEventListener() {
             @Override
