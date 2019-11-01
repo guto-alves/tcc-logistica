@@ -36,6 +36,7 @@ import com.gutotech.tcclogistica.config.ConfigFirebase;
 import com.gutotech.tcclogistica.helper.Listener;
 import com.gutotech.tcclogistica.model.Coleta;
 import com.gutotech.tcclogistica.model.Funcionario;
+import com.gutotech.tcclogistica.view.OpenCameraOrGalleryDialogFragment;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -151,6 +152,7 @@ public class RoteiristaColetaNovaFragment extends Fragment {
         textRecognizerImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                OpenCameraOrGalleryDialogFragment.newInstance(30).show(getActivity().getSupportFragmentManager(), "dialog");
                 final Dialog dialog = new Dialog(getActivity());
                 dialog.setContentView(R.layout.dialog_chooser);
                 dialog.show();
