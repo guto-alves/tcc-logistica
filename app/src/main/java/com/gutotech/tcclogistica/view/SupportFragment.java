@@ -1,19 +1,17 @@
 package com.gutotech.tcclogistica.view;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.gutotech.tcclogistica.R;
+import com.gutotech.tcclogistica.helper.Actions;
 import com.gutotech.tcclogistica.model.FuncionarioOn;
 
 import java.util.Locale;
@@ -36,18 +34,12 @@ public class SupportFragment extends Fragment {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendEmail();
+                Actions.sendEmail(getActivity(), EMAIL_SUPORTE);
             }
         });
 
         return root;
     }
 
-    private void sendEmail() {
-        Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("mailto:"));
-        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{EMAIL_SUPORTE});
-        startActivity(intent);
-    }
 
 }

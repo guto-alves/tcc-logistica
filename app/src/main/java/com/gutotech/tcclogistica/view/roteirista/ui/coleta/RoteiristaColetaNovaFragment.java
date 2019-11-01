@@ -1,16 +1,11 @@
 package com.gutotech.tcclogistica.view.roteirista.ui.coleta;
 
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +15,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
@@ -33,12 +27,11 @@ import com.google.firebase.database.ValueEventListener;
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.helper.TextRecognizer;
 import com.gutotech.tcclogistica.config.ConfigFirebase;
-import com.gutotech.tcclogistica.helper.Listener;
 import com.gutotech.tcclogistica.model.Coleta;
 import com.gutotech.tcclogistica.model.Funcionario;
 import com.gutotech.tcclogistica.view.OpenCameraOrGalleryDialogFragment;
+import com.gutotech.tcclogistica.view.ProcessingDialog;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -46,6 +39,8 @@ import java.util.UUID;
 import es.dmoral.toasty.Toasty;
 
 public class RoteiristaColetaNovaFragment extends Fragment {
+    private Coleta coleta = new Coleta();
+
     private EditText numeroColetaEditText;
     private EditText coletarEmEditText;
     private EditText dataEmissaoEditText;
@@ -68,11 +63,8 @@ public class RoteiristaColetaNovaFragment extends Fragment {
 
     private EditText dataColetaEfetuadaEditText, horaColetaEfetuadaEditText;
 
-    private Coleta coleta = new Coleta();
-
-    private ArrayAdapter motoristasArrayAdapter;
-
     private List<Funcionario> motoristasList = new ArrayList<>();
+    private ArrayAdapter motoristasArrayAdapter;
     private List<String> nomesMotoristasList = new ArrayList<>();
 
     private DatabaseReference motoristasReference;
@@ -81,7 +73,7 @@ public class RoteiristaColetaNovaFragment extends Fragment {
 
     private TextRecognizer textRecognizer;
 
-    private Dialog processingDialog;
+    private ProcessingDialog processingDialog;
 
     public RoteiristaColetaNovaFragment() {
     }
@@ -131,8 +123,6 @@ public class RoteiristaColetaNovaFragment extends Fragment {
 
         adicionarMascaras();
 
-        motoristasReference = ConfigFirebase.getDatabase().child("funcionario");
-
         motoristasArrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, nomesMotoristasList);
         motoristasArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         motoristaSpinner.setAdapter(motoristasArrayAdapter);
@@ -148,44 +138,6 @@ public class RoteiristaColetaNovaFragment extends Fragment {
             }
         });
 
-        ImageButton textRecognizerImageButton = root.findViewById(R.id.textRecognizerImageButton);
-        textRecognizerImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                OpenCameraOrGalleryDialogFragment.newInstance(30).show(getActivity().getSupportFragmentManager(), "dialog");
-                final Dialog dialog = new Dialog(getActivity());
-                dialog.setContentView(R.layout.dialog_chooser);
-                dialog.show();
-
-                LinearLayout cameraLayout = dialog.findViewById(R.id.cameraLinear);
-                cameraLayout.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                        startActivityForResult(new Intent(MediaStore.ACTION_IMAGE_CAPTURE), 1);
-                    }
-                });
-
-                LinearLayout galeraLayout = dialog.findViewById(R.id.galeriaLinear);
-                galeraLayout.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                        Intent intent1 = new Intent();
-                        intent1.setType("image/*");
-                        intent1.setAction(Intent.ACTION_GET_CONTENT);
-                        startActivityForResult(Intent.createChooser(intent1, "Selecione uma imagem"), 2);
-                    }
-                });
-            }
-        });
-
-        textRecognizer = new TextRecognizer(listener);
-
-        processingDialog = new Dialog(getActivity());
-        processingDialog.setContentView(R.layout.dialog_carregando);
-        processingDialog.setCancelable(false);
-
         Button salvarButton = root.findViewById(R.id.salvarButton);
         salvarButton.setOnClickListener(salvarButtonListener);
 
@@ -197,12 +149,37 @@ public class RoteiristaColetaNovaFragment extends Fragment {
             }
         });
 
+        ImageButton textRecognizerImageButton = root.findViewById(R.id.textRecognizerImageButton);
+        textRecognizerImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenCameraOrGalleryDialogFragment openCameraOrGalleryDialogFragment = new OpenCameraOrGalleryDialogFragment();
+                openCameraOrGalleryDialogFragment.setListener(openCameraOrGalleryListener);
+                openCameraOrGalleryDialogFragment.show(getActivity().getSupportFragmentManager(), "dialog");
+            }
+        });
+
+        motoristasReference = ConfigFirebase.getDatabase().child("funcionario");
+
+        textRecognizer = new TextRecognizer(textRecognizerListener);
+
+        processingDialog = new ProcessingDialog(getActivity());
+
         return root;
     }
 
-    private final Listener listener = new Listener() {
+    private final OpenCameraOrGalleryDialogFragment.Listener openCameraOrGalleryListener = new OpenCameraOrGalleryDialogFragment.Listener() {
+
         @Override
-        public void callback(String text) {
+        public void onBitmapResult(Bitmap bitmap) {
+            processingDialog.show();
+            textRecognizer.detect(bitmap);
+        }
+    };
+
+    private final TextRecognizer.Listener textRecognizerListener = new TextRecognizer.Listener() {
+        @Override
+        public void onTextResult(String text) {
             String[] tokens = text.split("\\s+");
 
             for (int i = 0; i < tokens.length; i++)
@@ -264,7 +241,7 @@ public class RoteiristaColetaNovaFragment extends Fragment {
                 coleta.salvar();
 
                 limparCampos();
-                Toasty.success(getActivity(), "Coleta cadastrada com sucesso!", Toasty.LENGTH_SHORT, true).show();
+                Toasty.success(getActivity(), "Coleta salva com sucesso!", Toasty.LENGTH_SHORT, true).show();
             }
         }
     };
@@ -354,29 +331,6 @@ public class RoteiristaColetaNovaFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (resultCode == Activity.RESULT_OK) {
-            Bitmap bitmap = null;
-
-            try {
-                if (requestCode == 1)
-                    bitmap = (Bitmap) data.getExtras().get("data");
-                else if (requestCode == 2) {
-                    Uri uri = data.getData();
-                    bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            processingDialog.show();
-            textRecognizer.detect(bitmap);
-        }
     }
 
     @Override

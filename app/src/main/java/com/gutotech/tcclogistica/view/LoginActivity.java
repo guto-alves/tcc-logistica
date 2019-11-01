@@ -9,19 +9,16 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.config.ConfigFirebase;
@@ -35,17 +32,15 @@ import com.gutotech.tcclogistica.view.roteirista.RoteiristaMainActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-import es.dmoral.toasty.Toasty;
-
 public class LoginActivity extends AppCompatActivity {
     private TextInputLayout userTextInput, passwordTextInput;
-
-    private Dialog processingDialog;
 
     private List<Funcionario> funcionariosList = new ArrayList<>();
 
     private DatabaseReference funcionarioReference;
     private ValueEventListener funcionarioListener;
+
+    private ProcessingDialog processingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +50,14 @@ public class LoginActivity extends AppCompatActivity {
         userTextInput = findViewById(R.id.userTextInput);
         passwordTextInput = findViewById(R.id.passwordTextInput);
 
-        processingDialog = new Dialog(this);
-        processingDialog.setContentView(R.layout.dialog_carregando);
-        processingDialog.setCancelable(false);
-        processingDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        EditText passwordEditText = findViewById(R.id.passwordEditText);
+        passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                login();
+                return false;
+            }
+        });
 
         TextView esqueceuSenhaTextView = findViewById(R.id.esqueceuSenhaTextView);
         esqueceuSenhaTextView.setOnClickListener(new View.OnClickListener() {
@@ -74,14 +73,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        EditText passwordEditText = findViewById(R.id.passwordEditText);
-        passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                login();
-                return false;
-            }
-        });
 
         Button loginButton = findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -90,6 +81,8 @@ public class LoginActivity extends AppCompatActivity {
                 login();
             }
         });
+
+        processingDialog = new ProcessingDialog(this);
 
         funcionarioReference = ConfigFirebase.getDatabase().child("funcionario");
     }

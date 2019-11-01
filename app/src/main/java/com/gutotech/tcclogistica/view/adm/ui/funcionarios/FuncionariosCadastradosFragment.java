@@ -158,7 +158,8 @@ public class FuncionariosCadastradosFragment extends Fragment {
         public void onItemClick(View view, int position) {
             Funcionario funcionario = funcionariosList.get(position);
 
-            FuncionarioDialog funcionarioDialog = new FuncionarioDialog(getActivity(), funcionario);
+            FuncionarioDialog funcionarioDialog = new FuncionarioDialog(getActivity());
+            funcionarioDialog.setFuncionario(funcionario);
             funcionarioDialog.show();
         }
 

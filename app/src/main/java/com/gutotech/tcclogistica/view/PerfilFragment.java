@@ -10,12 +10,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,12 +27,12 @@ import com.google.firebase.storage.UploadTask;
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.config.ConfigFirebase;
 import com.gutotech.tcclogistica.config.Storage;
+import com.gutotech.tcclogistica.helper.Actions;
 import com.gutotech.tcclogistica.model.Funcionario;
 import com.gutotech.tcclogistica.model.FuncionarioOn;
-import com.gutotech.tcclogistica.view.adm.AdmMainActivity;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
+import java.io.IOException;
 
 import es.dmoral.toasty.Toasty;
 
@@ -47,9 +45,6 @@ public class PerfilFragment extends Fragment {
     private TextView cnhTextView, categoriaTextView, veiculoTextView, anoTextView, placaTextView;
 
     private ImageView profileImageView;
-
-    private final int CAMERA_CODE = 1;
-    private final int GALLERY_CODE = 2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -81,14 +76,11 @@ public class PerfilFragment extends Fragment {
             motorista.setVisibility(View.VISIBLE);
         }
 
-        if (FuncionarioOn.funcionario.isProfileImage())
-            Storage.downloadProfile(getActivity(), profileImageView, FuncionarioOn.funcionario.getLogin().getUser());
-
         FloatingActionButton cameraImageButton = root.findViewById(R.id.cameraButton);
         cameraImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivityForResult(new Intent(MediaStore.ACTION_IMAGE_CAPTURE), CAMERA_CODE);
+                Actions.openCamera(PerfilFragment.this, 1);
             }
         });
 
@@ -96,10 +88,7 @@ public class PerfilFragment extends Fragment {
         galleryImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent();
-                intent1.setType("image/*");
-                intent1.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent1, "Selecione uma imagem"), GALLERY_CODE);
+                Actions.openGallery(PerfilFragment.this, 2);
             }
         });
 
@@ -143,6 +132,8 @@ public class PerfilFragment extends Fragment {
     }
 
     private void setInformacaoes() {
+        if (FuncionarioOn.funcionario.isProfileImage())
+            Storage.downloadProfile(getActivity(), profileImageView, FuncionarioOn.funcionario.getLogin().getUser());
         nomeTextView.setText(FuncionarioOn.funcionario.getNome());
         cargoTextView.setText(FuncionarioOn.funcionario.getCargo());
         rgTextView.setText(FuncionarioOn.funcionario.getRg());
@@ -166,11 +157,23 @@ public class PerfilFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK) {
-            Uri imagemSelecionada = data.getData();
+            Bitmap bitmap = null;
 
-            profileImageView.setImageURI(imagemSelecionada);
+            try {
+                if (requestCode == 1)
+                    bitmap = (Bitmap) data.getExtras().get("data");
+                else if (requestCode == 2) {
+                    Uri uri = data.getData();
+                    bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
-            uploadImage();
+            if (bitmap != null) {
+                profileImageView.setImageBitmap(bitmap);
+                uploadImage();
+            }
         }
     }
 
@@ -196,11 +199,9 @@ public class PerfilFragment extends Fragment {
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
                 NavigationView navigationView = getActivity().findViewById(R.id.nav_view);
                 View headerView = navigationView.getHeaderView(0);
                 ImageView profileImageView = headerView.findViewById(R.id.profileImageView);
-                profileImageView.setImageResource(R.drawable.perfil_sem_foto);
                 Storage.downloadProfile(getActivity(), profileImageView, FuncionarioOn.funcionario.getLogin().getUser());
 
                 FuncionarioOn.funcionario.setProfileImage(true);

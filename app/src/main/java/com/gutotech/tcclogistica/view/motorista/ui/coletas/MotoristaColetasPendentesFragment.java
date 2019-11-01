@@ -84,14 +84,11 @@ public class MotoristaColetasPendentesFragment extends Fragment {
 
         dataEditText.setText(DateCustom.getData());
         dataEditText.addTextChangedListener(new MaskTextWatcher(dataEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
-        dataEditText.setEnabled(false);
-        dataEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        dataEditText.setFocusable(false);
+        dataEditText.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
-                    calendarView.setVisibility(View.VISIBLE);
-                } else
-                    calendarView.setVisibility(View.GONE);
+            public void onClick(View v) {
+                calendarView.setVisibility(View.VISIBLE);
             }
         });
 

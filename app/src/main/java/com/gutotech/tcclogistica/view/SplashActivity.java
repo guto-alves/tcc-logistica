@@ -19,16 +19,13 @@ import com.gutotech.tcclogistica.config.ConfigFirebase;
 import es.dmoral.toasty.Toasty;
 
 public class SplashActivity extends AppCompatActivity {
-    private Dialog processingDialog;
+    private ProcessingDialog processingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        processingDialog = new Dialog(this);
-        processingDialog.setContentView(R.layout.dialog_carregando);
-        processingDialog.setCancelable(false);
-        processingDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        processingDialog = new ProcessingDialog(this);
         processingDialog.show();
 
         checkForMaintenace();

@@ -69,7 +69,7 @@ public class FuncionarioNovoFragment extends Fragment {
         adicionarMascaras();
 
         processingDialog = new Dialog(getActivity());
-        processingDialog.setContentView(R.layout.dialog_carregando);
+        processingDialog.setContentView(R.layout.dialog_processing);
         processingDialog.setCancelable(false);
 
         funcionario.setCargo(Funcionario.MOTORISTA);

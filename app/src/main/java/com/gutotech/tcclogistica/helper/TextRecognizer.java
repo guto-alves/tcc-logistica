@@ -38,6 +38,10 @@ public class TextRecognizer {
             lines.append("\n");
         }
 
-        listener.callback(lines.toString());
+        listener.onTextResult(lines.toString());
+    }
+
+    public interface Listener {
+        void onTextResult(String text);
     }
 }

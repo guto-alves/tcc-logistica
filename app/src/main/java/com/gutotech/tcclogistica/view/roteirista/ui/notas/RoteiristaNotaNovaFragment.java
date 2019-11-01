@@ -16,17 +16,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.helper.TextRecognizer;
-import com.gutotech.tcclogistica.helper.Listener;
 import com.gutotech.tcclogistica.model.Destinatario;
 import com.gutotech.tcclogistica.model.Endereco;
 import com.gutotech.tcclogistica.model.Nota;
 import com.gutotech.tcclogistica.model.Transportador;
+import com.gutotech.tcclogistica.view.OpenCameraOrGalleryDialogFragment;
+import com.gutotech.tcclogistica.view.ProcessingDialog;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -63,7 +63,7 @@ public class RoteiristaNotaNovaFragment extends Fragment {
 
     private TextRecognizer textRecognizer;
 
-    private Dialog processingDialog;
+    private ProcessingDialog processingDialog;
 
     public RoteiristaNotaNovaFragment() {
     }
@@ -127,30 +127,9 @@ public class RoteiristaNotaNovaFragment extends Fragment {
         textRecognizerImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Dialog dialog = new Dialog(getActivity());
-                dialog.setContentView(R.layout.dialog_chooser);
-                dialog.show();
-
-                LinearLayout cameraLayout = dialog.findViewById(R.id.cameraLinear);
-                cameraLayout.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                        startActivityForResult(new Intent(MediaStore.ACTION_IMAGE_CAPTURE), 1);
-                    }
-                });
-
-                LinearLayout galeraLayout = dialog.findViewById(R.id.galeriaLinear);
-                galeraLayout.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                        Intent intent1 = new Intent();
-                        intent1.setType("image/*");
-                        intent1.setAction(Intent.ACTION_GET_CONTENT);
-                        startActivityForResult(Intent.createChooser(intent1, "Selecione uma imagem"), 2);
-                    }
-                });
+                OpenCameraOrGalleryDialogFragment openCameraOrGalleryDialogFragment = new OpenCameraOrGalleryDialogFragment();
+                openCameraOrGalleryDialogFragment.setListener(openCameraOrGalleryListener);
+                openCameraOrGalleryDialogFragment.show(getActivity().getSupportFragmentManager(), "dialog");
             }
         });
 
@@ -165,18 +144,25 @@ public class RoteiristaNotaNovaFragment extends Fragment {
             }
         });
 
-        textRecognizer = new TextRecognizer(listener);
+        textRecognizer = new TextRecognizer(textRecognizerListener);
 
-        processingDialog = new Dialog(getActivity());
-        processingDialog.setContentView(R.layout.dialog_carregando);
-        processingDialog.setCancelable(false);
+        processingDialog = new ProcessingDialog(getActivity());
 
         return root;
     }
 
-    private final Listener listener = new Listener() {
+    private final OpenCameraOrGalleryDialogFragment.Listener openCameraOrGalleryListener = new OpenCameraOrGalleryDialogFragment.Listener() {
+
         @Override
-        public void callback(String text) {
+        public void onBitmapResult(Bitmap bitmap) {
+            processingDialog.show();
+            textRecognizer.detect(bitmap);
+        }
+    };
+
+    private final TextRecognizer.Listener textRecognizerListener = new TextRecognizer.Listener() {
+        @Override
+        public void onTextResult(String text) {
             dadosAdicionaisEditText.setText(text);
 
             processingDialog.dismiss();

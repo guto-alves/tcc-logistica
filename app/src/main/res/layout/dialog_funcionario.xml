@@ -17,15 +17,19 @@
             android:background="@android:color/white"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/profileImageView"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
-                android:layout_gravity="center"
+                android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
-                android:contentDescription="@string/nav_header_desc"
-                android:paddingTop="@dimen/nav_header_vertical_spacing"
-                app:srcCompat="@drawable/perfil_sem_foto" />
+                android:gravity="center"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/profileImageView"
+                    android:layout_width="221dp"
+                    android:layout_height="200dp"
+                    app:srcCompat="@drawable/perfil_sem_foto" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/nomeTextView"
@@ -42,192 +46,289 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="24dp">
+                android:padding="16dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cargo: "
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/cargoTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="fill_horizontal"
+                            android:text="@string/traco"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp" />
+                    </LinearLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cargo: "
+                        android:layout_marginTop="5dp"
+                        android:text="@string/rg"
                         android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
-                    <TextView
-                        android:id="@+id/cargoTextView"
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/rgEditText"
+                        style="@style/EditTextTheme"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="fill_horizontal"
-                        android:text="@string/traco"
+                        android:inputType="numberSigned" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/cpf"
                         android:textColor="@android:color/black"
                         android:textSize="18sp" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="RG: "
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp" />
-
-                <EditText
-                    android:id="@+id/rgEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="fill_horizontal"
-                    android:inputType="numberSigned" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="CPF: "
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp" />
-
-                <EditText
-                    android:id="@+id/cpfEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:layout_gravity="fill_horizontal"
-                    android:ems="10"
-                    android:inputType="numberSigned" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Data de nascimento: "
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp" />
-
-                <EditText
-                    android:id="@+id/dataNascimentoEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:layout_gravity="fill_horizontal"
-                    android:ems="10"
-                    android:inputType="date" />
-
-                <TextView
-                    android:id="@+id/enderecoTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Endereço: "
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp" />
-
-                <EditText
-                    android:id="@+id/enderecoEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_gravity="fill_horizontal"
-                    android:inputType="textPersonName" />
-
-                <TextView
-                    android:id="@+id/emailTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Email:"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/emailEditText"
+                        android:id="@+id/cpfEditText"
                         style="@style/EditTextTheme"
-                        android:layout_width="0dp"
-                        android:layout_height="35dp"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:inputType="textEmailAddress" />
-
-                    <ImageButton
-                        android:id="@+id/sendEmailmageButton"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_mail_24dp" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/celularTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Celular: "
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/celularEditText"
-                        style="@style/EditTextTheme"
-                        android:layout_width="0dp"
                         android:layout_height="35dp"
-                        android:layout_weight="1"
+                        android:layout_gravity="fill_horizontal"
                         android:ems="10"
                         android:inputType="numberSigned" />
 
-                    <ImageButton
-                        android:id="@+id/callImageButton"
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_phone_24dp" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Telefone: "
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                        android:layout_marginTop="5dp"
+                        android:text="@string/data_nascimento"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
 
                     <EditText
-                        android:id="@+id/telefoneEditText"
+                        android:id="@+id/dataNascimentoEditText"
                         style="@style/EditTextTheme"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:layout_gravity="fill_horizontal"
+                        android:ems="10"
+                        android:inputType="date" />
+
+                    <TextView
+                        android:id="@+id/enderecoTextView"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/endereco"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/enderecoEditText"
+                        style="@style/EditTextTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_gravity="fill_horizontal"
+                        android:inputType="textPersonName" />
+
+                    <TextView
+                        android:id="@+id/emailTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/email"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/emailEditText"
+                            style="@style/EditTextTheme"
+                            android:layout_width="0dp"
+                            android:layout_height="35dp"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:inputType="textEmailAddress" />
+
+                        <ImageButton
+                            android:id="@+id/sendEmailmageButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/ic_mail_24dp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/celularTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/celular"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/celularEditText"
+                            style="@style/EditTextTheme"
+                            android:layout_width="0dp"
+                            android:layout_height="35dp"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:inputType="numberSigned" />
+
+                        <ImageButton
+                            android:id="@+id/dialCelularImageButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/ic_phone_24dp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/telefone"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/telefoneEditText"
+                            style="@style/EditTextTheme"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:inputType="numberSigned" />
+
+                        <ImageButton
+                            android:id="@+id/dialTelefoneImageButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/ic_phone_24dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/motoristaLinearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/cnh"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/cnhEditText"
+                        style="@style/EditTextTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
                         android:ems="10"
                         android:inputType="numberSigned" />
 
-                    <ImageButton
-                        android:id="@+id/callTelmageButton"
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_phone_24dp" />
+                        android:layout_marginTop="5dp"
+                        android:text="@string/categoria"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/categoriaEditText"
+                        style="@style/EditTextTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:ems="10"
+                        android:inputType="textCapCharacters" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/veiculo"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/veiculoEditText"
+                        style="@style/EditTextTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="5dp"
+                        android:ems="10"
+                        android:inputType="textPersonName" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/ano"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/anoEditText"
+                        style="@style/EditTextTheme"
+                        android:layout_width="100dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="5dp"
+                        android:ems="10"
+                        android:inputType="numberSigned" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/placa"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/placaEditText"
+                        style="@style/EditTextTheme"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:ems="10"
+                        android:inputType="textCapCharacters" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -251,100 +352,7 @@
                     android:id="@+id/loginFuncionarioExpandable"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:layout_marginTop="8dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/motoristaLinearLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp"
-                android:visibility="gone">
-
-                <TextView
-                    android:id="@+id/textViewCNH"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/cnh"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp" />
-
-                <EditText
-                    android:id="@+id/cnhEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:ems="10"
-                    android:inputType="numberSigned" />
-
-                <TextView
-                    android:id="@+id/categoriaTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="@string/categoria"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp" />
-
-                <EditText
-                    android:id="@+id/categoriaEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:ems="10"
-                    android:inputType="textCapCharacters" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="@string/veiculo"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp" />
-
-                <EditText
-                    android:id="@+id/veiculoEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="textPersonName" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="@string/ano"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp" />
-
-                <EditText
-                    android:id="@+id/anoEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="100dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="numberSigned" />
-
-                <TextView
-                    android:id="@+id/placaTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="@string/placa"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp" />
-
-                <EditText
-                    android:id="@+id/placaEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:ems="10"
-                    android:inputType="textCapCharacters" />
+                    android:layout_marginTop="5dp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
@@ -360,18 +368,20 @@
             android:id="@+id/excluirButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
             android:layout_marginRight="24dp"
             android:background="@android:color/holo_red_light"
             android:padding="8dp"
             app:srcCompat="@drawable/ic_delete_white_24dp" />
 
         <ImageButton
-            android:id="@+id/doneEditImageButton"
+            android:id="@+id/updateImageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="16dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
             android:background="@color/colorGreen"
-            android:padding="5dp"
+            android:padding="8dp"
             android:visibility="gone"
             app:srcCompat="@drawable/ic_done_white_24dp" />
 
@@ -379,9 +389,10 @@
             android:id="@+id/modoEditImageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="16dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
             android:background="@drawable/background_button"
-            android:padding="5dp"
+            android:padding="8dp"
             app:srcCompat="@drawable/ic_mode_edit_white_24dp" />
 
         <ImageButton
@@ -389,7 +400,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/background_button"
-            android:padding="5dp"
+            android:padding="8dp"
             android:text="@string/fechar"
             android:textColor="@android:color/white"
             app:srcCompat="@drawable/ic_clear_white_24dp" />
