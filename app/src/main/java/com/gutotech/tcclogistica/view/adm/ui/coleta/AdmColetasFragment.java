@@ -1,4 +1,4 @@
-package com.gutotech.tcclogistica.view.roteirista.ui.coleta;
+package com.gutotech.tcclogistica.view.adm.ui.coleta;
 
 import android.os.Bundle;
 
@@ -24,16 +24,13 @@ import com.google.firebase.database.ValueEventListener;
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.config.ConfigFirebase;
 import com.gutotech.tcclogistica.model.Coleta;
-import com.gutotech.tcclogistica.model.Nota;
 import com.gutotech.tcclogistica.view.adapter.ColetasAdapter;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class RoteiristaColetasListaFragment extends Fragment {
+public class AdmColetasFragment extends Fragment {
     private List<Coleta> coletasList = new ArrayList<>();
     private ColetasAdapter coletasAdapter;
 
@@ -41,21 +38,21 @@ public class RoteiristaColetasListaFragment extends Fragment {
     private ValueEventListener coletasListener;
 
     private String numeroColetaPesquisado = "";
-    private String statusColetaPesquisada = "Todas";
 
-    private TextView totalEncontradoTextView;
-    private TextView statusPesquisaTextView;
+    private TextView totalTextView;
+    private String statusColeta = "Todas";
+    private TextView statusColetasTextView;
 
-    public RoteiristaColetasListaFragment() {
+    public AdmColetasFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_roteirista_coletas_lista, container, false);
+        View root = inflater.inflate(R.layout.fragment_adm_coletas, container, false);
 
-        totalEncontradoTextView = root.findViewById(R.id.totalEncontradoTextView);
-        statusPesquisaTextView = root.findViewById(R.id.statusPesquisaTextView);
+        totalTextView = root.findViewById(R.id.totalTextView);
+        statusColetasTextView = root.findViewById(R.id.statusPesquisaTextView);
 
         RecyclerView coletasRecyclerView = root.findViewById(R.id.coletasRecyclerView);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -86,7 +83,7 @@ public class RoteiristaColetasListaFragment extends Fragment {
         statusSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                statusColetaPesquisada = statusSpinner.getSelectedItem().toString();
+                statusColeta = statusSpinner.getSelectedItem().toString();
                 buscarColetas(numeroColetaPesquisado);
             }
 
@@ -111,20 +108,20 @@ public class RoteiristaColetasListaFragment extends Fragment {
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     Coleta coleta = data.getValue(Coleta.class);
 
-                    if (statusColetaPesquisada.equals("Todas"))
+                    if (statusColeta.equals("Todas"))
                         coletasList.add(coleta);
-                    else if (coleta.getStatus().toString().equals(statusColetaPesquisada))
+                    else if (coleta.getStatus().toString().equals(statusColeta))
                         coletasList.add(coleta);
                 }
 
                 int totalColetas = coletasList.size();
-                totalEncontradoTextView.setText(String.format(Locale.getDefault(), "Total: %d", totalColetas));
+                totalTextView.setText(String.format(Locale.getDefault(), "Total: %d", totalColetas));
 
                 if (totalColetas == 0) {
-                    statusPesquisaTextView.setText("Nenhuma coleta encontrada.");
-                    statusPesquisaTextView.setVisibility(View.VISIBLE);
+                    statusColetasTextView.setText("Nenhuma coleta encontrada.");
+                    statusColetasTextView.setVisibility(View.VISIBLE);
                 } else
-                    statusPesquisaTextView.setVisibility(View.GONE);
+                    statusColetasTextView.setVisibility(View.GONE);
 
                 coletasAdapter.notifyDataSetChanged();
             }

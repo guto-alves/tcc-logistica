@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="@dimen/activity_horizontal_margin"
-    tools:context=".view.adm.ui.notas.AdmNotasFragment">
+    tools:context=".view.adm.ui.nota.AdmNotasFragment">
 
     <SearchView
         android:id="@+id/searchView"

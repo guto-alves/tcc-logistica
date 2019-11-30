@@ -158,4 +158,8 @@
     <string name="galeria">Galeria</string>
     <string name="camera">Câmera</string>
     <string name="abrir">Abrir</string>
+    <string name="veiculos">Veículos</string>
+    <string name="modelo">Modelo</string>
+    <string name="cor">Cor</string>
+    <string name="data_de_validade">Data de validade</string>
 </resources>

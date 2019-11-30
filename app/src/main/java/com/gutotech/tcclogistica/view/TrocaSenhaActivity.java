@@ -65,21 +65,20 @@ public class TrocaSenhaActivity extends AppCompatActivity {
             if (newPassword.equals(confirmNewPassword))
                 return true;
             else
-                Alerter.create(TrocaSenhaActivity.this)
-                        .setTitle("Erro")
-                        .setText("Senhas não conferem!")
-                        .setBackgroundColor(android.R.color.holo_red_light)
-                        .setIcon(R.drawable.ic_info_24dp)
-                        .show();
+                displayErrorMessage("Senhas não conferem!");
         } else
-            Alerter.create(TrocaSenhaActivity.this)
-                    .setTitle("Erro")
-                    .setText("Senha atual inválida!")
-                    .setBackgroundColor(android.R.color.holo_red_light)
-                    .setIcon(R.drawable.ic_info_24dp)
-                    .show();
+            displayErrorMessage("Senha atual inválida!");
 
         return false;
+    }
+
+    private void displayErrorMessage(String message) {
+        Alerter.create(TrocaSenhaActivity.this)
+                .setTitle("Erro")
+                .setText(message)
+                .setBackgroundColor(android.R.color.holo_red_light)
+                .setIcon(R.drawable.ic_info_24dp)
+                .show();
     }
 
     private boolean isValidField(String password, String newPassword, String confirmNewPassword) {

@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/nav_notas"
-        android:name="com.gutotech.tcclogistica.view.roteirista.ui.notas.RoteiristaNotasFragment"
+        android:name="com.gutotech.tcclogistica.view.roteirista.ui.nota.RoteiristaNotasFragment"
         android:label="@string/notas"
         tools:layout="@layout/fragment_roteirista_estoque" />
 
     <fragment
         android:id="@+id/nav_entregas"
-        android:name="com.gutotech.tcclogistica.view.roteirista.ui.entregas.RoteiristaEntregasFragment"
+        android:name="com.gutotech.tcclogistica.view.roteirista.ui.entrega.RoteiristaEntregasFragment"
         android:label="@string/entregas"
         tools:layout="@layout/fragment_roteirista_entregas" />
 

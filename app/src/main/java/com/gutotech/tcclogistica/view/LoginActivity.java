@@ -4,10 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -29,13 +26,13 @@ import com.gutotech.tcclogistica.view.adm.AdmMainActivity;
 import com.gutotech.tcclogistica.view.motorista.MotoristaMainActivity;
 import com.gutotech.tcclogistica.view.roteirista.RoteiristaMainActivity;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
     private TextInputLayout userTextInput, passwordTextInput;
 
-    private List<Funcionario> funcionariosList = new ArrayList<>();
+    private List<Funcionario> funcionariosList = new LinkedList<>();
 
     private DatabaseReference funcionarioReference;
     private ValueEventListener funcionarioListener;
@@ -72,7 +69,6 @@ public class LoginActivity extends AppCompatActivity {
                 builder.show();
             }
         });
-
 
         Button loginButton = findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new View.OnClickListener() {

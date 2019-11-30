@@ -1,4 +1,4 @@
-package com.gutotech.tcclogistica.view.roteirista.ui.coleta;
+package com.gutotech.tcclogistica.view.roteirista.ui.entrega;
 
 import android.os.Bundle;
 
@@ -23,46 +23,43 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.config.ConfigFirebase;
-import com.gutotech.tcclogistica.model.Coleta;
-import com.gutotech.tcclogistica.model.Nota;
-import com.gutotech.tcclogistica.view.adapter.ColetasAdapter;
-
-import org.w3c.dom.Text;
+import com.gutotech.tcclogistica.model.Entrega;
+import com.gutotech.tcclogistica.view.adapter.EntregasAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class RoteiristaColetasListaFragment extends Fragment {
-    private List<Coleta> coletasList = new ArrayList<>();
-    private ColetasAdapter coletasAdapter;
+public class RoteiristaEntregasListaFragment extends Fragment {
+    private List<Entrega> entregasList = new ArrayList<>();
+    private EntregasAdapter entregasAdapter;
 
-    private Query coletasQuery;
-    private ValueEventListener coletasListener;
+    private Query entregasQuery;
+    private ValueEventListener listener;
 
-    private String numeroColetaPesquisado = "";
-    private String statusColetaPesquisada = "Todas";
+    private String motoristaPesquisado = "";
+    private String statusPesquisado = "Todas";
 
-    private TextView totalEncontradoTextView;
-    private TextView statusPesquisaTextView;
+    private TextView totalTextView;
+    private TextView statusTextView;
 
-    public RoteiristaColetasListaFragment() {
+    public RoteiristaEntregasListaFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_roteirista_coletas_lista, container, false);
+        View root = inflater.inflate(R.layout.fragment_roteirista_entregas_lista, container, false);
 
-        totalEncontradoTextView = root.findViewById(R.id.totalEncontradoTextView);
-        statusPesquisaTextView = root.findViewById(R.id.statusPesquisaTextView);
+        totalTextView = root.findViewById(R.id.totalTextView);
+        statusTextView = root.findViewById(R.id.statusPesquisaTextView);
 
-        RecyclerView coletasRecyclerView = root.findViewById(R.id.coletasRecyclerView);
+        RecyclerView entregasRecyclerView = root.findViewById(R.id.entregasRecyclerView);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        coletasRecyclerView.setLayoutManager(layoutManager);
-        coletasRecyclerView.setHasFixedSize(true);
-        coletasAdapter = new ColetasAdapter(getActivity(), coletasList);
-        coletasRecyclerView.setAdapter(coletasAdapter);
+        entregasRecyclerView.setLayoutManager(layoutManager);
+        entregasRecyclerView.setHasFixedSize(true);
+        entregasAdapter = new EntregasAdapter(getActivity(), entregasList);
+        entregasRecyclerView.setAdapter(entregasAdapter);
 
         SearchView searchView = root.findViewById(R.id.searchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -73,8 +70,8 @@ public class RoteiristaColetasListaFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                numeroColetaPesquisado = newText;
-                buscarColetas(numeroColetaPesquisado);
+                motoristaPesquisado = newText;
+                buscarEntregas(motoristaPesquisado);
                 return true;
             }
         });
@@ -86,8 +83,8 @@ public class RoteiristaColetasListaFragment extends Fragment {
         statusSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                statusColetaPesquisada = statusSpinner.getSelectedItem().toString();
-                buscarColetas(numeroColetaPesquisado);
+                statusPesquisado = statusSpinner.getSelectedItem().toString();
+                buscarEntregas(motoristaPesquisado);
             }
 
             @Override
@@ -98,35 +95,35 @@ public class RoteiristaColetasListaFragment extends Fragment {
         return root;
     }
 
-    private void buscarColetas(String query) {
-        DatabaseReference coletasReference = ConfigFirebase.getDatabase().child("coleta");
+    private void buscarEntregas(String query) {
+        DatabaseReference entregasReference = ConfigFirebase.getDatabase().child("entrega");
 
-        coletasQuery = coletasReference.orderByChild("numero").startAt(query).endAt(query + "\uf8ff");
+        entregasQuery = entregasReference.orderByChild("nomeMotorista").startAt(query).endAt(query + "\uf8ff");
 
-        coletasListener = coletasQuery.addValueEventListener(new ValueEventListener() {
+        listener = entregasQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                coletasList.clear();
+                entregasList.clear();
 
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
-                    Coleta coleta = data.getValue(Coleta.class);
+                    Entrega entrega = data.getValue(Entrega.class);
 
-                    if (statusColetaPesquisada.equals("Todas"))
-                        coletasList.add(coleta);
-                    else if (coleta.getStatus().toString().equals(statusColetaPesquisada))
-                        coletasList.add(coleta);
+                    if (statusPesquisado.equals("Todas"))
+                        entregasList.add(entrega);
+                    else if (entrega.getStatus().toString().equals(statusPesquisado))
+                        entregasList.add(entrega);
                 }
 
-                int totalColetas = coletasList.size();
-                totalEncontradoTextView.setText(String.format(Locale.getDefault(), "Total: %d", totalColetas));
+                int totalColetas = entregasList.size();
+                totalTextView.setText(String.format(Locale.getDefault(), "Total: %d", totalColetas));
 
                 if (totalColetas == 0) {
-                    statusPesquisaTextView.setText("Nenhuma coleta encontrada.");
-                    statusPesquisaTextView.setVisibility(View.VISIBLE);
+                    statusTextView.setText("Nenhuma entrega encontrada.");
+                    statusTextView.setVisibility(View.VISIBLE);
                 } else
-                    statusPesquisaTextView.setVisibility(View.GONE);
+                    statusTextView.setVisibility(View.GONE);
 
-                coletasAdapter.notifyDataSetChanged();
+                entregasAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -138,13 +135,12 @@ public class RoteiristaColetasListaFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        buscarColetas(numeroColetaPesquisado);
+        buscarEntregas(motoristaPesquisado);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        coletasQuery.removeEventListener(coletasListener);
+        entregasQuery.removeEventListener(listener);
     }
-
 }

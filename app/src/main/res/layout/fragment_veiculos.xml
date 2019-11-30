@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.roteirista.ui.coleta.RoteiristaColetasFragment">
+    tools:context=".view.adm.ui.veiculo.VeiculosFragment">
 
     <FrameLayout
         android:id="@+id/frameConteiner"
@@ -20,7 +20,7 @@
         android:background="@drawable/background_button"
         app:itemIconTint="@drawable/nav_item_color_state"
         app:itemTextColor="@drawable/nav_item_color_state"
-        app:menu="@menu/bottom_navigation_entregas"
+        app:menu="@menu/bottom_navigation_veiculos"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="36dp" />
 

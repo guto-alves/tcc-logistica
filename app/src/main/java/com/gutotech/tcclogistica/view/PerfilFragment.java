@@ -42,7 +42,7 @@ public class PerfilFragment extends Fragment {
     private TextView nomeTextView, cargoTextView, rgTextView, cpfTextView, dataNascimentoTextView,
             enderecoTextView, telefoneTextView, celularTextView, emailTextView, ultimoLoginTextView;
 
-    private TextView cnhTextView, categoriaTextView, veiculoTextView, anoTextView, placaTextView;
+    private TextView cnhTextView, categoriaTextView, nRegistroTextView, dataValidadeTextView, dataEmissaoTextView;
 
     private ImageView profileImageView;
 
@@ -63,11 +63,11 @@ public class PerfilFragment extends Fragment {
         emailTextView = root.findViewById(R.id.emailTextView);
         ultimoLoginTextView = root.findViewById(R.id.ultimoLoginTextView);
 
-        veiculoTextView = root.findViewById(R.id.veiculoTextView);
+        nRegistroTextView = root.findViewById(R.id.veiculoTextView);
         cnhTextView = root.findViewById(R.id.cnhTextView);
         categoriaTextView = root.findViewById(R.id.categoriaTextView);
-        anoTextView = root.findViewById(R.id.anoTextView);
-        placaTextView = root.findViewById(R.id.placaTextView);
+        dataValidadeTextView = root.findViewById(R.id.anoTextView);
+        dataEmissaoTextView = root.findViewById(R.id.placaTextView);
 
         setInformacaoes();
 
@@ -134,6 +134,7 @@ public class PerfilFragment extends Fragment {
     private void setInformacaoes() {
         if (FuncionarioOn.funcionario.isProfileImage())
             Storage.downloadProfile(getActivity(), profileImageView, FuncionarioOn.funcionario.getLogin().getUser());
+
         nomeTextView.setText(FuncionarioOn.funcionario.getNome());
         cargoTextView.setText(FuncionarioOn.funcionario.getCargo());
         rgTextView.setText(FuncionarioOn.funcionario.getRg());
@@ -145,11 +146,11 @@ public class PerfilFragment extends Fragment {
         emailTextView.setText(FuncionarioOn.funcionario.getEmail());
         ultimoLoginTextView.setText(FuncionarioOn.funcionario.getLogin().getLastLogin());
 
-        cnhTextView.setText(FuncionarioOn.funcionario.getCnh());
-        veiculoTextView.setText(FuncionarioOn.funcionario.getVeiculo().getNome());
-        categoriaTextView.setText(FuncionarioOn.funcionario.getVeiculo().getCategoria());
-        anoTextView.setText(FuncionarioOn.funcionario.getVeiculo().getAno());
-        placaTextView.setText(FuncionarioOn.funcionario.getVeiculo().getPlaca());
+        cnhTextView.setText(FuncionarioOn.funcionario.getCnh().getCnh());
+        categoriaTextView.setText(FuncionarioOn.funcionario.getCnh().getCategoria());
+        nRegistroTextView.setText(FuncionarioOn.funcionario.getCnh().getNumeroRegistro());
+        dataValidadeTextView.setText(FuncionarioOn.funcionario.getCnh().getDataValidade());
+        dataEmissaoTextView.setText(FuncionarioOn.funcionario.getCnh().getDataEmissao());
     }
 
     @Override

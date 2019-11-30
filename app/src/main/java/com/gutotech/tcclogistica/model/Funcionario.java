@@ -16,33 +16,16 @@ public class Funcionario {
     private String celular;
     private String telefone;
     private String email;
-    private boolean profileImage;
     private String cargo;
+    private boolean profileImage;
 
-    private String cnh;
+    private CNH cnh;
     private Veiculo veiculo;
 
     private Login login;
     private boolean online;
 
     public Funcionario() {
-    }
-
-    public Funcionario(String nome, String rg, String cpf, String dataNascimento, String endereco, String celular, String telefone, String email, boolean profileImage, String cargo, Login login, boolean online, String cnh, Veiculo veiculo) {
-        this.nome = nome;
-        this.rg = rg;
-        this.cpf = cpf;
-        this.dataNascimento = dataNascimento;
-        this.endereco = endereco;
-        this.celular = celular;
-        this.telefone = telefone;
-        this.email = email;
-        this.profileImage = profileImage;
-        this.cargo = cargo;
-        this.login = login;
-        this.online = online;
-        this.cnh = cnh;
-        this.veiculo = veiculo;
     }
 
     public void salvar() {
@@ -130,6 +113,14 @@ public class Funcionario {
         this.email = email;
     }
 
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
     public boolean isProfileImage() {
         return profileImage;
     }
@@ -138,12 +129,20 @@ public class Funcionario {
         this.profileImage = profileImage;
     }
 
-    public String getCargo() {
-        return cargo;
+    public CNH getCnh() {
+        return cnh;
     }
 
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
+    public void setCnh(CNH cnh) {
+        this.cnh = cnh;
+    }
+
+    public Veiculo getVeiculo() {
+        return veiculo;
+    }
+
+    public void setVeiculo(Veiculo veiculo) {
+        this.veiculo = veiculo;
     }
 
     public Login getLogin() {
@@ -160,21 +159,5 @@ public class Funcionario {
 
     public void setOnline(boolean online) {
         this.online = online;
-    }
-
-    public String getCnh() {
-        return cnh;
-    }
-
-    public void setCnh(String cnh) {
-        this.cnh = cnh;
-    }
-
-    public Veiculo getVeiculo() {
-        return veiculo;
-    }
-
-    public void setVeiculo(Veiculo veiculo) {
-        this.veiculo = veiculo;
     }
 }

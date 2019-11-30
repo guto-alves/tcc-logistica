@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="@dimen/activity_horizontal_margin"
-    tools:context=".view.roteirista.ui.notas.RoteiristaNotasCadastradasFragment">
+    tools:context=".view.roteirista.ui.nota.RoteiristaNotasCadastradasFragment">
 
     <SearchView
         android:id="@+id/searchView"

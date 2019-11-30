@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp"
-        tools:context=".view.motorista.ui.coletas.MotoristaColetasPendentesFragment">
+        tools:context=".view.motorista.ui.coleta.MotoristaColetasPendentesFragment">
 
         <SearchView
             android:id="@+id/searchView"
