@@ -1,37 +1,24 @@
 package com.gutotech.tcclogistica.model;
 
 public class CNH {
-    private String cnh;
-    private String numeroRegistro;
     private String categoria;
+    private String numeroRegistro;
+    private String validade;
+    private String primeiraHabilitacao;
+
+    private String local;
     private String dataEmissao;
-    private String dataValidade;
 
     public CNH() {
     }
 
-    public CNH(String cnh, String numeroRegistro, String categoria, String dataEmissao, String dataValidade) {
-        this.cnh = cnh;
-        this.numeroRegistro = numeroRegistro;
+    public CNH(String categoria, String numeroRegistro, String validade, String primeiraHabilitacao, String local, String dataEmissao) {
         this.categoria = categoria;
-        this.dataEmissao = dataEmissao;
-        this.dataValidade = dataValidade;
-    }
-
-    public String getCnh() {
-        return cnh;
-    }
-
-    public void setCnh(String cnh) {
-        this.cnh = cnh;
-    }
-
-    public String getNumeroRegistro() {
-        return numeroRegistro;
-    }
-
-    public void setNumeroRegistro(String numeroRegistro) {
         this.numeroRegistro = numeroRegistro;
+        this.validade = validade;
+        this.primeiraHabilitacao = primeiraHabilitacao;
+        this.local = local;
+        this.dataEmissao = dataEmissao;
     }
 
     public String getCategoria() {
@@ -42,19 +29,43 @@ public class CNH {
         this.categoria = categoria;
     }
 
+    public String getNumeroRegistro() {
+        return numeroRegistro;
+    }
+
+    public void setNumeroRegistro(String numeroRegistro) {
+        this.numeroRegistro = numeroRegistro;
+    }
+
+    public String getValidade() {
+        return validade;
+    }
+
+    public void setValidade(String validade) {
+        this.validade = validade;
+    }
+
+    public String getPrimeiraHabilitacao() {
+        return primeiraHabilitacao;
+    }
+
+    public void setPrimeiraHabilitacao(String primeiraHabilitacao) {
+        this.primeiraHabilitacao = primeiraHabilitacao;
+    }
+
+    public String getLocal() {
+        return local;
+    }
+
+    public void setLocal(String local) {
+        this.local = local;
+    }
+
     public String getDataEmissao() {
         return dataEmissao;
     }
 
     public void setDataEmissao(String dataEmissao) {
         this.dataEmissao = dataEmissao;
-    }
-
-    public String getDataValidade() {
-        return dataValidade;
-    }
-
-    public void setDataValidade(String dataValidade) {
-        this.dataValidade = dataValidade;
     }
 }

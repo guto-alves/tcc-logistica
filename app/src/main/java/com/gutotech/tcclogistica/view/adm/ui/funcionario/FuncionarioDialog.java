@@ -19,6 +19,7 @@ import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.config.Storage;
 import com.gutotech.tcclogistica.helper.Actions;
+import com.gutotech.tcclogistica.model.CNH;
 import com.gutotech.tcclogistica.model.Funcionario;
 import com.gutotech.tcclogistica.model.FuncionarioOn;
 import com.gutotech.tcclogistica.view.PasswordConfirmationDialog;
@@ -41,11 +42,8 @@ public class FuncionarioDialog extends Dialog {
     private EditText emailEditText;
     private TextView ultimoLoginTextView;
     private ExpandableListView loginExpandableListView;
-    private EditText veiculoEditText;
-    private EditText cnhEditText;
-    private EditText categoriaEditText;
-    private EditText anoEditText;
-    private EditText placaEditText;
+
+    private EditText categoriaEditText, nRegistroEditText, validadeEditText, primeiraHabilitacaoEditText, localEditText, dataEmissaoEditText;
 
     private boolean passwordConfirmed;
 
@@ -65,44 +63,14 @@ public class FuncionarioDialog extends Dialog {
         emailEditText = findViewById(R.id.emailEditText);
         ultimoLoginTextView = findViewById(R.id.ultimoLoginTextView);
         loginExpandableListView = findViewById(R.id.loginFuncionarioExpandable);
-        veiculoEditText = findViewById(R.id.veiculoEditText);
-        cnhEditText = findViewById(R.id.cnhEditText);
         categoriaEditText = findViewById(R.id.categoriaEditText);
-        anoEditText = findViewById(R.id.anoEditText);
-        placaEditText = findViewById(R.id.placaEditText);
+        nRegistroEditText = findViewById(R.id.nRegistroEditText);
+        validadeEditText = findViewById(R.id.validadeEditText);
+        primeiraHabilitacaoEditText = findViewById(R.id.primeiraHabilitacaoEditText);
+        localEditText = findViewById(R.id.localEditText);
+        dataEmissaoEditText = findViewById(R.id.dataEmissaoEdiText);
 
         addMasks();
-    }
-
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
-        setInformations();
-    }
-
-    private void setInformations() {
-        if (funcionario.isProfileImage())
-            Storage.downloadProfile(getContext(), perfilImageView, funcionario.getLogin().getUser());
-        nomeTextView.setText(funcionario.getNome());
-        cargoTextView.setText(funcionario.getCargo());
-        rgEditText.setText(funcionario.getRg());
-        cpfEditText.setText(funcionario.getCpf());
-        dataNascimentoEditText.setText(funcionario.getDataNascimento());
-        enderecoEditText.setText(funcionario.getEndereco());
-        celularEditText.setText(funcionario.getCelular());
-        telefoneEditText.setText(funcionario.getTelefone());
-        emailEditText.setText(funcionario.getEmail());
-        ultimoLoginTextView.setText(funcionario.getLogin().getLastLogin());
-
-        if (funcionario.getCargo().equals(Funcionario.MOTORISTA)) {
-//            cnhEditText.setText(funcionario.getCnh());
-//            categoriaEditText.setText(funcionario.getVeiculo().getCategoria());
-            veiculoEditText.setText(funcionario.getVeiculo().getModelo());
-            placaEditText.setText(funcionario.getVeiculo().getPlaca());
-            anoEditText.setText(funcionario.getVeiculo().getAno());
-
-            LinearLayout motoristaTextViews = findViewById(R.id.motoristaLinearLayout);
-            motoristaTextViews.setVisibility(View.VISIBLE);
-        }
 
         ImageButton phoneCallImageButton = findViewById(R.id.dialCelularImageButton);
         phoneCallImageButton.setOnClickListener(new View.OnClickListener() {
@@ -196,13 +164,45 @@ public class FuncionarioDialog extends Dialog {
             @Override
             public void onClick(View v) {
                 updateEmployee();
-                Toasty.success(getContext(), "Funcionário atualizado!", Toasty.LENGTH_SHORT, true).show();
+                Toasty.success(getContext(), "Funcionário atualizado", Toasty.LENGTH_SHORT, true).show();
 
                 changeMode(false);
                 updateImageButton.setVisibility(View.GONE);
                 modeEditImageButton.setVisibility(View.VISIBLE);
             }
         });
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+        setInformations();
+    }
+
+    private void setInformations() {
+        if (funcionario.isProfileImage())
+            Storage.downloadProfile(getContext(), perfilImageView, funcionario.getLogin().getUser());
+        nomeTextView.setText(funcionario.getNome());
+        cargoTextView.setText(funcionario.getCargo());
+        rgEditText.setText(funcionario.getRg());
+        cpfEditText.setText(funcionario.getCpf());
+        dataNascimentoEditText.setText(funcionario.getDataNascimento());
+        enderecoEditText.setText(funcionario.getEndereco());
+        celularEditText.setText(funcionario.getCelular());
+        telefoneEditText.setText(funcionario.getTelefone());
+        emailEditText.setText(funcionario.getEmail());
+        ultimoLoginTextView.setText(funcionario.getLogin().getLastLogin());
+
+        if (funcionario.getCargo().equals(Funcionario.MOTORISTA)) {
+            categoriaEditText.setText(funcionario.getCnh().getCategoria());
+            nRegistroEditText.setText(funcionario.getCnh().getNumeroRegistro());
+            validadeEditText.setText(funcionario.getCnh().getValidade());
+            primeiraHabilitacaoEditText.setText(funcionario.getCnh().getPrimeiraHabilitacao());
+            localEditText.setText(funcionario.getCnh().getLocal());
+            dataEmissaoEditText.setText(funcionario.getCnh().getDataEmissao());
+
+            LinearLayout motoristaTextViews = findViewById(R.id.motoristaLinearLayout);
+            motoristaTextViews.setVisibility(View.VISIBLE);
+        }
 
         changeMode(false);
     }
@@ -228,8 +228,14 @@ public class FuncionarioDialog extends Dialog {
         funcionario.setTelefone(telefoneEditText.getText().toString());
         funcionario.setEmail(emailEditText.getText().toString());
         funcionario.setDataNascimento(dataNascimentoEditText.getText().toString());
-//        funcionario.setCnh(cnhEditText.getText().toString());
-//        funcionario.setVeiculo(new Veiculo(veiculoEditText.getText().toString(), categoriaEditText.getText().toString(), anoEditText.getText().toString(), placaEditText.getText().toString()));
+        CNH cnh = new CNH();
+        cnh.setCategoria(categoriaEditText.getText().toString());
+        cnh.setNumeroRegistro(nRegistroEditText.getText().toString());
+        cnh.setValidade(validadeEditText.getText().toString());
+        cnh.setPrimeiraHabilitacao(primeiraHabilitacaoEditText.getText().toString());
+        cnh.setLocal(localEditText.getText().toString());
+        cnh.setDataEmissao(dataEmissaoEditText.getText().toString());
+        funcionario.setCnh(cnh);
         funcionario.salvar();
     }
 
@@ -240,10 +246,11 @@ public class FuncionarioDialog extends Dialog {
         telefoneEditText.addTextChangedListener(new MaskTextWatcher(telefoneEditText, new SimpleMaskFormatter("(NN) NNNN-NNNN")));
         dataNascimentoEditText.addTextChangedListener(new MaskTextWatcher(dataNascimentoEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
 
-        anoEditText.addTextChangedListener(new MaskTextWatcher(anoEditText, new SimpleMaskFormatter("NNNN")));
-        cnhEditText.addTextChangedListener(new MaskTextWatcher(cnhEditText, new SimpleMaskFormatter("NNNNNNNN")));
         categoriaEditText.addTextChangedListener(new MaskTextWatcher(categoriaEditText, new SimpleMaskFormatter("UU")));
-        placaEditText.addTextChangedListener(new MaskTextWatcher(placaEditText, new SimpleMaskFormatter("LLL-NNNN")));
+        nRegistroEditText.addTextChangedListener(new MaskTextWatcher(nRegistroEditText, new SimpleMaskFormatter("NNNNNNNNNNN")));
+        validadeEditText.addTextChangedListener(new MaskTextWatcher(validadeEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
+        primeiraHabilitacaoEditText.addTextChangedListener(new MaskTextWatcher(primeiraHabilitacaoEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
+        dataEmissaoEditText.addTextChangedListener(new MaskTextWatcher(dataEmissaoEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
     }
 
     private void changeMode(boolean mode) {
@@ -254,11 +261,13 @@ public class FuncionarioDialog extends Dialog {
         celularEditText.setEnabled(mode);
         telefoneEditText.setEnabled(mode);
         emailEditText.setEnabled(mode);
-        veiculoEditText.setEnabled(mode);
-        cnhEditText.setEnabled(mode);
+
         categoriaEditText.setEnabled(mode);
-        anoEditText.setEnabled(mode);
-        placaEditText.setEnabled(mode);
+        nRegistroEditText.setEnabled(mode);
+        validadeEditText.setEnabled(mode);
+        primeiraHabilitacaoEditText.setEnabled(mode);
+        localEditText.setEnabled(mode);
+        dataEmissaoEditText.setEnabled(mode);
     }
 
 }

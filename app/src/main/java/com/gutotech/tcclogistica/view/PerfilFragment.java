@@ -42,7 +42,7 @@ public class PerfilFragment extends Fragment {
     private TextView nomeTextView, cargoTextView, rgTextView, cpfTextView, dataNascimentoTextView,
             enderecoTextView, telefoneTextView, celularTextView, emailTextView, ultimoLoginTextView;
 
-    private TextView cnhTextView, categoriaTextView, nRegistroTextView, dataValidadeTextView, dataEmissaoTextView;
+    private TextView categoriaTextView, nRegistroTextView, validadeTextView, primeiraHabilitacaoTextView, localTextView, dataEmissaoTextView;
 
     private ImageView profileImageView;
 
@@ -63,11 +63,12 @@ public class PerfilFragment extends Fragment {
         emailTextView = root.findViewById(R.id.emailTextView);
         ultimoLoginTextView = root.findViewById(R.id.ultimoLoginTextView);
 
-        nRegistroTextView = root.findViewById(R.id.veiculoTextView);
-        cnhTextView = root.findViewById(R.id.cnhTextView);
         categoriaTextView = root.findViewById(R.id.categoriaTextView);
-        dataValidadeTextView = root.findViewById(R.id.anoTextView);
-        dataEmissaoTextView = root.findViewById(R.id.placaTextView);
+        nRegistroTextView = root.findViewById(R.id.nRegistroTextView);
+        validadeTextView = root.findViewById(R.id.validadeTextView);
+        primeiraHabilitacaoTextView = root.findViewById(R.id.primeiraHabilitacaoTextView);
+        localTextView = root.findViewById(R.id.localTextView);
+        dataEmissaoTextView = root.findViewById(R.id.dataEmissaoTextView);
 
         setInformacaoes();
 
@@ -146,10 +147,11 @@ public class PerfilFragment extends Fragment {
         emailTextView.setText(FuncionarioOn.funcionario.getEmail());
         ultimoLoginTextView.setText(FuncionarioOn.funcionario.getLogin().getLastLogin());
 
-        cnhTextView.setText(FuncionarioOn.funcionario.getCnh().getCnh());
         categoriaTextView.setText(FuncionarioOn.funcionario.getCnh().getCategoria());
         nRegistroTextView.setText(FuncionarioOn.funcionario.getCnh().getNumeroRegistro());
-        dataValidadeTextView.setText(FuncionarioOn.funcionario.getCnh().getDataValidade());
+        validadeTextView.setText(FuncionarioOn.funcionario.getCnh().getValidade());
+        primeiraHabilitacaoTextView.setText(FuncionarioOn.funcionario.getCnh().getPrimeiraHabilitacao());
+        localTextView.setText(FuncionarioOn.funcionario.getCnh().getLocal());
         dataEmissaoTextView.setText(FuncionarioOn.funcionario.getCnh().getDataEmissao());
     }
 

@@ -23,6 +23,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.config.ConfigFirebase;
+import com.gutotech.tcclogistica.helper.RecyclerItemClickListener;
 import com.gutotech.tcclogistica.model.Coleta;
 import com.gutotech.tcclogistica.model.Nota;
 import com.gutotech.tcclogistica.view.adapter.ColetasAdapter;
@@ -34,8 +35,9 @@ import java.util.List;
 import java.util.Locale;
 
 public class RoteiristaColetasListaFragment extends Fragment {
-    private List<Coleta> coletasList = new ArrayList<>();
+    private RecyclerView coletasRecyclerView;
     private ColetasAdapter coletasAdapter;
+    private List<Coleta> coletasList = new ArrayList<>();
 
     private Query coletasQuery;
     private ValueEventListener coletasListener;
@@ -57,12 +59,13 @@ public class RoteiristaColetasListaFragment extends Fragment {
         totalEncontradoTextView = root.findViewById(R.id.totalEncontradoTextView);
         statusPesquisaTextView = root.findViewById(R.id.statusPesquisaTextView);
 
-        RecyclerView coletasRecyclerView = root.findViewById(R.id.coletasRecyclerView);
+        coletasRecyclerView = root.findViewById(R.id.coletasRecyclerView);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         coletasRecyclerView.setLayoutManager(layoutManager);
         coletasRecyclerView.setHasFixedSize(true);
         coletasAdapter = new ColetasAdapter(getActivity(), coletasList);
         coletasRecyclerView.setAdapter(coletasAdapter);
+        coletasRecyclerView.addOnItemTouchListener(coletaItemTouchListener);
 
         SearchView searchView = root.findViewById(R.id.searchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -97,6 +100,24 @@ public class RoteiristaColetasListaFragment extends Fragment {
 
         return root;
     }
+
+    private final RecyclerView.OnItemTouchListener coletaItemTouchListener = new RecyclerItemClickListener(getActivity(), coletasRecyclerView, new RecyclerItemClickListener.OnItemClickListener() {
+        @Override
+        public void onItemClick(View view, int position) {
+            Coleta coleta = coletasList.get(position);
+
+            ColetaDialog coletaDialog = new ColetaDialog(getActivity(), coleta);
+            coletaDialog.show();
+        }
+
+        @Override
+        public void onLongItemClick(View view, int position) {
+        }
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        }
+    });
 
     private void buscarColetas(String query) {
         DatabaseReference coletasReference = ConfigFirebase.getDatabase().child("coleta");

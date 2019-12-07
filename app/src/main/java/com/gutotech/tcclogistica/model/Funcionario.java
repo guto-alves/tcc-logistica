@@ -31,7 +31,7 @@ public class Funcionario {
     public void salvar() {
         DatabaseReference funcionarioReference = ConfigFirebase.getDatabase()
                 .child("funcionario")
-                .child(login.getUser());
+                .child(getLogin().getUser());
 
         funcionarioReference.setValue(this);
     }
@@ -42,11 +42,6 @@ public class Funcionario {
                 .child(getLogin().getUser());
 
         funcionarioReference.removeValue();
-    }
-
-    public void deslogar() {
-        online = false;
-        salvar();
     }
 
     public String getNome() {
@@ -159,5 +154,6 @@ public class Funcionario {
 
     public void setOnline(boolean online) {
         this.online = online;
+        salvar();
     }
 }

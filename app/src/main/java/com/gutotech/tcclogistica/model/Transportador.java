@@ -12,13 +12,6 @@ public class Transportador {
     private String uf;
     private String inscricaoEstadual;
 
-    private String quantidade;
-    private String especie;
-    private String marca;
-    private String numero;
-    private String pesoBruto;
-    private String pesoLiquido;
-
     public Transportador() {
     }
 
@@ -32,12 +25,6 @@ public class Transportador {
         this.municipio = municipio;
         this.uf = uf;
         this.inscricaoEstadual = inscricaoEstadual;
-        this.quantidade = quantidade;
-        this.especie = especie;
-        this.marca = marca;
-        this.numero = numero;
-        this.pesoBruto = pesoBruto;
-        this.pesoLiquido = pesoLiquido;
     }
 
     public String getNome() {
@@ -110,53 +97,5 @@ public class Transportador {
 
     public void setInscricaoEstadual(String inscricaoEstadual) {
         this.inscricaoEstadual = inscricaoEstadual;
-    }
-
-    public String getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(String quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public String getEspecie() {
-        return especie;
-    }
-
-    public void setEspecie(String especie) {
-        this.especie = especie;
-    }
-
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public String getPesoBruto() {
-        return pesoBruto;
-    }
-
-    public void setPesoBruto(String pesoBruto) {
-        this.pesoBruto = pesoBruto;
-    }
-
-    public String getPesoLiquido() {
-        return pesoLiquido;
-    }
-
-    public void setPesoLiquido(String pesoLiquido) {
-        this.pesoLiquido = pesoLiquido;
     }
 }

@@ -36,7 +36,7 @@ public class FuncionarioNovoFragment extends Fragment {
             enderecoEditText, telefoneEditText, celularEditText, emailEditText;
 
     private LinearLayout motoristaLinearLayout;
-    private EditText cnhEditText, categoriaEditText, nRegistroEditText, dataValidadeEditText, dataEmissaoEditText;
+    private EditText categoriaEditText, nRegistroEditText, validadeEditText, primeiraHabilitacaoEditText, localEditText, dataEmissaoEditText;
 
     private Funcionario funcionario = new Funcionario();
 
@@ -61,10 +61,11 @@ public class FuncionarioNovoFragment extends Fragment {
         final Spinner cargoSpinner = root.findViewById(R.id.cargoSpinner);
 
         motoristaLinearLayout = root.findViewById(R.id.motoristaLinearLayout);
-        cnhEditText = root.findViewById(R.id.cnhEditText);
         categoriaEditText = root.findViewById(R.id.categoriaEditText);
         nRegistroEditText = root.findViewById(R.id.nRegistroEditText);
-        dataValidadeEditText = root.findViewById(R.id.dataValidadeEditText);
+        validadeEditText = root.findViewById(R.id.validadeEditText);
+        primeiraHabilitacaoEditText = root.findViewById(R.id.primeiraHabilitacaoEditText);
+        localEditText = root.findViewById(R.id.localEditText);
         dataEmissaoEditText = root.findViewById(R.id.dataEmissaoEdiText);
 
         adicionarMascaras();
@@ -111,6 +112,7 @@ public class FuncionarioNovoFragment extends Fragment {
         public void onClick(View v) {
             if (nomeEditText.getText().toString().isEmpty()) {
                 nomeEditText.setError("Campo obrigatório");
+                nomeEditText.requestFocus();
                 return;
             }
 
@@ -126,11 +128,12 @@ public class FuncionarioNovoFragment extends Fragment {
             funcionario.setDataNascimento(dataNascimentoEditText.getText().toString());
 
             CNH cnh = new CNH();
-            cnh.setCnh(cnhEditText.getText().toString());
             cnh.setCategoria(categoriaEditText.getText().toString());
             cnh.setNumeroRegistro(nRegistroEditText.getText().toString());
+            cnh.setValidade(validadeEditText.getText().toString());
+            cnh.setPrimeiraHabilitacao(primeiraHabilitacaoEditText.getText().toString());
+            cnh.setLocal(localEditText.getText().toString());
             cnh.setDataEmissao(dataEmissaoEditText.getText().toString());
-            cnh.setCategoria(categoriaEditText.getText().toString());
             funcionario.setCnh(cnh);
 
             funcionario.setVeiculo(new Veiculo());
@@ -149,10 +152,11 @@ public class FuncionarioNovoFragment extends Fragment {
         telefoneEditText.setText("");
         emailEditText.setText("");
 
-        cnhEditText.setText("");
         categoriaEditText.setText("");
         nRegistroEditText.setText("");
-        dataValidadeEditText.setText("");
+        validadeEditText.setText("");
+        primeiraHabilitacaoEditText.setText("");
+        localEditText.setText("");
         dataEmissaoEditText.setText("");
     }
 
@@ -163,9 +167,10 @@ public class FuncionarioNovoFragment extends Fragment {
         telefoneEditText.addTextChangedListener(new MaskTextWatcher(telefoneEditText, new SimpleMaskFormatter("(NN) NNNN-NNNN")));
         dataNascimentoEditText.addTextChangedListener(new MaskTextWatcher(dataNascimentoEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
 
-        cnhEditText.addTextChangedListener(new MaskTextWatcher(cnhEditText, new SimpleMaskFormatter("NNNNNNNN")));
         categoriaEditText.addTextChangedListener(new MaskTextWatcher(categoriaEditText, new SimpleMaskFormatter("UU")));
-        dataValidadeEditText.addTextChangedListener(new MaskTextWatcher(dataValidadeEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
+        nRegistroEditText.addTextChangedListener(new MaskTextWatcher(nRegistroEditText, new SimpleMaskFormatter("NNNNNNNNNNN")));
+        validadeEditText.addTextChangedListener(new MaskTextWatcher(validadeEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
+        primeiraHabilitacaoEditText.addTextChangedListener(new MaskTextWatcher(primeiraHabilitacaoEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
         dataEmissaoEditText.addTextChangedListener(new MaskTextWatcher(dataEmissaoEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
     }
 

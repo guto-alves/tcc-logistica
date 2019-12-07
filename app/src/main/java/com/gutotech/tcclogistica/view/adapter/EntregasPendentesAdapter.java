@@ -15,6 +15,8 @@ import com.gutotech.tcclogistica.model.Entrega;
 
 import java.util.List;
 
+import es.dmoral.toasty.Toasty;
+
 public class EntregasPendentesAdapter extends RecyclerView.Adapter<EntregasPendentesAdapter.MyViewHolder> {
     private Context context;
     private List<Entrega> entregasList;

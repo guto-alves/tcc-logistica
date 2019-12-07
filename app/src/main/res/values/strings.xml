@@ -162,4 +162,8 @@
     <string name="modelo">Modelo</string>
     <string name="cor">Cor</string>
     <string name="data_de_validade">Data de validade</string>
+    <string name="validade">Validade</string>
+    <string name="local">Local</string>
+    <string name="primeira_habilitacao">1° Habilitação</string>
+    <string name="n_registro">N° Registro</string>
 </resources>

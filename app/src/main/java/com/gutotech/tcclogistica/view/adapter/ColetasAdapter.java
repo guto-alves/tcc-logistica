@@ -1,6 +1,7 @@
 package com.gutotech.tcclogistica.view.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,11 @@ public class ColetasAdapter extends RecyclerView.Adapter<ColetasAdapter.MyViewHo
         holder.enderecoDestinatario.setText(coleta.getEnderecoDestinatario());
         holder.motorista.setText(coleta.getMotorista().getNome());
         holder.status.setText(coleta.getStatus().toString());
+
+        if (coleta.getStatus() == Coleta.Status.REALIZADA)
+            holder.status.setTextColor(Color.GREEN);
+        else
+            holder.status.setTextColor(Color.RED);
     }
 
     @Override

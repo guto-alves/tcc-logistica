@@ -39,7 +39,6 @@ import android.widget.TextView;
 import java.util.Locale;
 
 public class MotoristaMainActivity extends AppCompatActivity {
-
     private AppBarConfiguration mAppBarConfiguration;
 
     private ImageView profileImageView;
@@ -128,10 +127,21 @@ public class MotoristaMainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        FuncionarioOn.funcionario.setOnline(true);
+    }
+
+    @Override
     protected void onStop() {
         super.onStop();
-
         funcionarioReference.removeEventListener(funcionarioListener);
-        FuncionarioOn.funcionario.deslogar();
+        FuncionarioOn.funcionario.setOnline(false);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        FuncionarioOn.funcionario.setOnline(false);
     }
 }

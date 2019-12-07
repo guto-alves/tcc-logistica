@@ -1,6 +1,7 @@
 package com.gutotech.tcclogistica.view.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,7 @@ public class EntregasAdapter extends RecyclerView.Adapter<EntregasAdapter.MyView
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Entrega entrega = entregasList.get(position);
 
+
         holder.numeroNotaTextView.setText(String.valueOf(entrega.getNota().getNumero()));
         holder.nomeMotorista.setText(entrega.getMotorista().getNome());
         holder.destinatarioTextView.setText(entrega.getNota().getDestinatario().getNome());
@@ -41,6 +43,11 @@ public class EntregasAdapter extends RecyclerView.Adapter<EntregasAdapter.MyView
         holder.dataTextView.setText(entrega.getData());
         holder.horarioEntregarTextView.setText(entrega.getHora());
         holder.statusTextView.setText(entrega.getStatus().toString());
+
+        if (entrega.getStatus() == Entrega.Status.REALIZADA)
+            holder.statusTextView.setTextColor(Color.GREEN);
+        else
+            holder.statusTextView.setTextColor(Color.RED);
     }
 
     @Override

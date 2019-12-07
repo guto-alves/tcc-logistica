@@ -76,6 +76,14 @@ public class Coleta {
         coletaReference.setValue(this);
     }
 
+    public void excluir() {
+        DatabaseReference coletaReference = ConfigFirebase.getDatabase()
+                .child("coleta")
+                .child(id);
+
+        coletaReference.removeValue();
+    }
+
     public String getId() {
         return id;
     }

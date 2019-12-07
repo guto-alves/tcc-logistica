@@ -238,21 +238,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="CNH: "
-                android:textColor="@android:color/darker_gray" />
-
-            <TextView
-                android:id="@+id/cnhTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="@string/traco"
-                android:textColor="@android:color/black" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:text="Categoria: "
                 android:textColor="@android:color/darker_gray" />
 
@@ -268,11 +253,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Veículo: "
+                android:text="N° Registro: "
                 android:textColor="@android:color/darker_gray" />
 
             <TextView
-                android:id="@+id/veiculoTextView"
+                android:id="@+id/nRegistroTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/traco"
+                android:textColor="@android:color/black" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Validade: "
+                android:textColor="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/validadeTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -282,11 +283,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Placa: "
+                android:text="1° Habilitação: "
                 android:textColor="@android:color/darker_gray" />
 
             <TextView
-                android:id="@+id/placaTextView"
+                android:id="@+id/primeiraHabilitacaoTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/traco"
@@ -295,11 +296,24 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ano: "
+                android:text="Local: "
                 android:textColor="@android:color/darker_gray" />
 
             <TextView
-                android:id="@+id/anoTextView"
+                android:id="@+id/localTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/traco"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Data Emissão: "
+                android:textColor="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/dataEmissaoTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/traco"

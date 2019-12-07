@@ -7,8 +7,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -24,7 +22,6 @@ import com.gutotech.tcclogistica.config.ConfigFirebase;
 import com.gutotech.tcclogistica.config.Storage;
 import com.gutotech.tcclogistica.model.Funcionario;
 import com.gutotech.tcclogistica.model.FuncionarioOn;
-import com.gutotech.tcclogistica.view.PerfilFragment;
 import com.gutotech.tcclogistica.view.LoginActivity;
 
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -37,7 +34,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class RoteiristaMainActivity extends AppCompatActivity {
-
     private AppBarConfiguration mAppBarConfiguration;
 
     private ImageView profileImageView;
@@ -127,10 +123,21 @@ public class RoteiristaMainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        FuncionarioOn.funcionario.setOnline(true);
+    }
+
+    @Override
     protected void onStop() {
         super.onStop();
-
         funcionarioReference.removeEventListener(funcionarioListener);
-        FuncionarioOn.funcionario.deslogar();
+        FuncionarioOn.funcionario.setOnline(false);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        FuncionarioOn.funcionario.setOnline(false);
     }
 }

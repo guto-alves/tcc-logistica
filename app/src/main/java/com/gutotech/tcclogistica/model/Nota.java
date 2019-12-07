@@ -3,9 +3,6 @@ package com.gutotech.tcclogistica.model;
 import com.google.firebase.database.DatabaseReference;
 import com.gutotech.tcclogistica.config.ConfigFirebase;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Nota {
     private String id;
     private String numero;
@@ -21,16 +18,12 @@ public class Nota {
 
     private Transportador transportador;
 
-    private List<Produto> produtos = new ArrayList<>();
-
-    private String dadosAdicionais;
-
     private boolean estoque;
 
     public Nota() {
     }
 
-    public Nota(String id, String numero, String dataEmissao, String dataRecebimento, String naturezaDaOperacao, String inscricaoEstadual, String cnpj, Destinatario destinatario, CalculoImposto calculoImposto, Transportador transportador, List<Produto> produtos, String dadosAdicionais, boolean estoque) {
+    public Nota(String id, String numero, String dataEmissao, String dataRecebimento, String naturezaDaOperacao, String inscricaoEstadual, String cnpj, Destinatario destinatario, CalculoImposto calculoImposto, Transportador transportador, boolean estoque) {
         this.id = id;
         this.numero = numero;
         this.dataEmissao = dataEmissao;
@@ -41,8 +34,6 @@ public class Nota {
         this.destinatario = destinatario;
         this.calculoImposto = calculoImposto;
         this.transportador = transportador;
-        this.produtos = produtos;
-        this.dadosAdicionais = dadosAdicionais;
         this.estoque = estoque;
     }
 
@@ -52,6 +43,14 @@ public class Nota {
                 .child(id);
 
         notaReference.setValue(this);
+    }
+
+    public void excluir() {
+        DatabaseReference notaReference = ConfigFirebase.getDatabase()
+                .child("nota")
+                .child(id);
+
+        notaReference.removeValue();
     }
 
     public String getId() {
@@ -132,22 +131,6 @@ public class Nota {
 
     public void setTransportador(Transportador transportador) {
         this.transportador = transportador;
-    }
-
-    public List<Produto> getProdutos() {
-        return produtos;
-    }
-
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
-    }
-
-    public String getDadosAdicionais() {
-        return dadosAdicionais;
-    }
-
-    public void setDadosAdicionais(String dadosAdicionais) {
-        this.dadosAdicionais = dadosAdicionais;
     }
 
     public boolean isEstoque() {

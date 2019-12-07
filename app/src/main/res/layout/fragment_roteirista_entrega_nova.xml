@@ -88,7 +88,6 @@
         </androidx.cardview.widget.CardView>
     </ScrollView>
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -97,7 +96,6 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:background="@android:color/white"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="5dp">
@@ -105,16 +103,18 @@
         <Button
             android:id="@+id/limparButton"
             style="@style/ButtonTheme"
-            android:layout_width="145dp"
-            android:layout_height="35dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginRight="24dp"
+            android:layout_weight="1"
             android:text="@string/limpar" />
 
         <Button
             android:id="@+id/salvarButton"
             style="@style/ButtonTheme"
-            android:layout_width="145dp"
-            android:layout_height="35dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/salvar" />
     </LinearLayout>
 </RelativeLayout>

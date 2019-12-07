@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="8dp">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,7 +18,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardElevation="20dp">
+            app:cardCornerRadius="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -91,10 +93,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-
-
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textCapWords|textCapSentences" />
 
                 <TextView
                     android:id="@+id/textViewIe"
@@ -156,7 +156,7 @@
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textCapWords|textCapSentences" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -190,7 +190,7 @@
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textCapWords|textCapSentences" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -207,7 +207,7 @@
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textCapWords|textCapSentences" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -241,110 +241,7 @@
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
                     android:ems="10"
-                    android:inputType="textPersonName" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="FONE / FAX"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/foneFaxDestinatarioEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="text" />
-
-                <TextView
-                    android:id="@+id/ufDestinatarioTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="UF"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/ufDestinatarioEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="textCapCharacters" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/inscricao_estadual"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/ieDestinatarioEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="numberSigned" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/data_de_emissao"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/dataEmissaoDestinatarioEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="datetime" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="Data de Entrada/Saída"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/dataEntradaSaidaDestinatarioEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="date" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="Hora de Entrada/Saída"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/horaEntradaSaidaDestinatarioEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="time" />
+                    android:inputType="textCapWords|textCapSentences" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -433,7 +330,7 @@
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textCapWords|textCapSentences" />
 
                 <TextView
                     android:id="@+id/textViewFrete"
@@ -451,7 +348,7 @@
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textCapWords|textCapSentences" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -519,7 +416,7 @@
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
                     android:ems="10"
-                    android:inputType="text" />
+                    android:inputType="textCapWords|textCapSentences" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -536,7 +433,7 @@
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
                     android:ems="10"
-                    android:inputType="text" />
+                    android:inputType="textCapWords|textCapSentences" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -571,226 +468,8 @@
                     android:layout_marginTop="5dp"
                     android:ems="10"
                     android:inputType="numberSigned" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/quantidade"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/quantidadeTransportadorEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="numberSigned" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/especie"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/especieTransportadorEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="text" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/marca"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/marcaTransportadorEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="textPersonName" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/numero"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/numeroTransportadorEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="numberSigned" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/peso_bruto"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/pesoBrutoEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:ems="10"
-                    android:inputType="number" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/peso_liquido"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/pesoLiquidoEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="number" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
-                    android:background="@drawable/background_title"
-                    android:padding="5dp"
-                    android:text="DADOS DOS PRODUTOS / SERVIÇOS"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/codigo_produto"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/codProdutoEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="numberSigned" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="DESCRIÇÃO DO PRODUTO/SERVIÇOS"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/descricaoProdutoServicoEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:gravity="start"
-                    android:inputType="textMultiLine" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/quantidade"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/quantidadeProdutoEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="numberSigned" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/p_unitario"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/precoUnitarioEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="numberDecimal" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/v_total"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/valorTotalEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="numberDecimal" />
-
-                <TextView
-                    android:id="@+id/textViewDadosAdicionais"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/dados_adicionais"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/dadosAdicionaisEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:gravity="start"
-                    android:inputType="textMultiLine" />
             </LinearLayout>
-
         </androidx.cardview.widget.CardView>
-
     </ScrollView>
 
     <LinearLayout
@@ -811,7 +490,7 @@
             android:id="@+id/limparButton"
             style="@style/ButtonTheme"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
             android:layout_marginRight="16dp"
             android:text="@string/limpar" />
 
@@ -819,9 +498,8 @@
             android:id="@+id/salvarButton"
             style="@style/ButtonTheme"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
             android:text="@string/salvar" />
-
     </LinearLayout>
 
 </LinearLayout>

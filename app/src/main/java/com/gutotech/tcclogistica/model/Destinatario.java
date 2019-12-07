@@ -6,24 +6,13 @@ public class Destinatario {
 
     private Endereco endereco;
 
-    private String foneFax;
-
-    private String inscricaoEstadual;
-
-    private String dataEmissao, dataEntradaSaida, horaEntradaSaida;
-
     public Destinatario() {
     }
 
-    public Destinatario(String nome, String cnpj, Endereco endereco, String foneFax, String inscricaoEstadual, String dataEmissao, String dataEntradaSaida, String horaEntradaSaida) {
+    public Destinatario(String nome, String cnpj, Endereco endereco) {
         this.nome = nome;
         this.cnpj = cnpj;
         this.endereco = endereco;
-        this.foneFax = foneFax;
-        this.inscricaoEstadual = inscricaoEstadual;
-        this.dataEmissao = dataEmissao;
-        this.dataEntradaSaida = dataEntradaSaida;
-        this.horaEntradaSaida = horaEntradaSaida;
     }
 
     public String getNome() {
@@ -48,46 +37,5 @@ public class Destinatario {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
-    }
-
-    public String getFoneFax() {
-        return foneFax;
-    }
-
-    public void setFoneFax(String foneFax) {
-        this.foneFax = foneFax;
-    }
-
-    public String getInscricaoEstadual() {
-        return inscricaoEstadual;
-    }
-
-    public void setInscricaoEstadual(String inscricaoEstadual) {
-        this.inscricaoEstadual = inscricaoEstadual;
-    }
-
-
-    public String getDataEmissao() {
-        return dataEmissao;
-    }
-
-    public void setDataEmissao(String dataEmissao) {
-        this.dataEmissao = dataEmissao;
-    }
-
-    public String getDataEntradaSaida() {
-        return dataEntradaSaida;
-    }
-
-    public void setDataEntradaSaida(String dataEntradaSaida) {
-        this.dataEntradaSaida = dataEntradaSaida;
-    }
-
-    public String getHoraEntradaSaida() {
-        return horaEntradaSaida;
-    }
-
-    public void setHoraEntradaSaida(String horaEntradaSaida) {
-        this.horaEntradaSaida = horaEntradaSaida;
     }
 }

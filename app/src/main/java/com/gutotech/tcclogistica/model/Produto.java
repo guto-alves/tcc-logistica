@@ -2,7 +2,6 @@ package com.gutotech.tcclogistica.model;
 
 public class Produto {
     private long codigo;
-    private String nome;
     private String descricao;
     private String und;
     private int quantidade;
@@ -14,7 +13,6 @@ public class Produto {
 
     public Produto(long codigo, String nome, String descricao, String und, int quantidade, double precoUnitario, double valorTotal) {
         this.codigo = codigo;
-        this.nome = nome;
         this.descricao = descricao;
         this.und = und;
         this.quantidade = quantidade;
@@ -28,14 +26,6 @@ public class Produto {
 
     public void setCodigo(long codigo) {
         this.codigo = codigo;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public String getDescricao() {

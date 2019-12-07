@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.config.ConfigFirebase;
+import com.gutotech.tcclogistica.helper.RecyclerItemClickListener;
 import com.gutotech.tcclogistica.model.Nota;
 import com.gutotech.tcclogistica.view.adapter.NotasAdapter;
 
@@ -27,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RoteiristaNotasCadastradasFragment extends Fragment {
+    private RecyclerView notasRecyclerView;
     private NotasAdapter notasAdapter;
     private List<Nota> notasList = new ArrayList<>();
 
@@ -44,12 +47,13 @@ public class RoteiristaNotasCadastradasFragment extends Fragment {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_roteirista_notas_cadastradas, container, false);
 
-        RecyclerView notasRecyclerView = root.findViewById(R.id.notasRecyclerView);
+        notasRecyclerView = root.findViewById(R.id.notasRecyclerView);
         statusNotasTextView = root.findViewById(R.id.statusNotasTextView);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         notasRecyclerView.setLayoutManager(layoutManager);
         notasRecyclerView.setHasFixedSize(true);
+        notasRecyclerView.addOnItemTouchListener(notaItemTouchListener);
 
         notasAdapter = new NotasAdapter(getActivity(), notasList);
         notasRecyclerView.setAdapter(notasAdapter);
@@ -97,6 +101,25 @@ public class RoteiristaNotasCadastradasFragment extends Fragment {
             }
         });
     }
+
+    private final RecyclerView.OnItemTouchListener notaItemTouchListener = new RecyclerItemClickListener(getActivity(), notasRecyclerView, new RecyclerItemClickListener.OnItemClickListener() {
+        @Override
+        public void onItemClick(View view, int position) {
+            Nota nota = notasList.get(position);
+
+            NotaDialog notaDialog = new NotaDialog(getActivity(), nota);
+            notaDialog.show();
+        }
+
+        @Override
+        public void onLongItemClick(View view, int position) {
+        }
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        }
+    });
+
 
     @Override
     public void onStart() {
