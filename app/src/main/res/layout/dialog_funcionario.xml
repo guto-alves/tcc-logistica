@@ -431,7 +431,7 @@
             android:padding="8dp"
             android:text="@string/fechar"
             android:textColor="@android:color/white"
-            app:srcCompat="@drawable/ic_clear_white_24dp" />
+            app:srcCompat="@drawable/ic_close_24dp" />
     </LinearLayout>
 
 </LinearLayout>

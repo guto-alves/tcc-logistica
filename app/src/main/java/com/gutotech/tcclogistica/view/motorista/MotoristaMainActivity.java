@@ -114,10 +114,10 @@ public class MotoristaMainActivity extends AppCompatActivity {
     }
 
     private void atualizarFoto() {
-        if (FuncionarioOn.funcionario.isProfileImage())
-            Storage.downloadProfile(getApplicationContext(), profileImageView, FuncionarioOn.funcionario.getLogin().getUser());
-        else
+        if (FuncionarioOn.funcionario.getImage().isEmpty())
             profileImageView.setImageResource(R.drawable.perfil_sem_foto);
+        else
+            Storage.downloadProfile(getApplicationContext(), profileImageView, FuncionarioOn.funcionario.getImage());
     }
 
     @Override
@@ -130,6 +130,7 @@ public class MotoristaMainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         FuncionarioOn.funcionario.setOnline(true);
+        FuncionarioOn.funcionario.salvar();
     }
 
     @Override
@@ -137,11 +138,13 @@ public class MotoristaMainActivity extends AppCompatActivity {
         super.onStop();
         funcionarioReference.removeEventListener(funcionarioListener);
         FuncionarioOn.funcionario.setOnline(false);
+        FuncionarioOn.funcionario.salvar();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         FuncionarioOn.funcionario.setOnline(false);
+        FuncionarioOn.funcionario.salvar();
     }
 }

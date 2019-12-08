@@ -2,7 +2,6 @@ package com.gutotech.tcclogistica.view;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -22,17 +21,15 @@ import com.github.clans.fab.FloatingActionButton;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.gutotech.tcclogistica.R;
-import com.gutotech.tcclogistica.config.ConfigFirebase;
 import com.gutotech.tcclogistica.config.Storage;
 import com.gutotech.tcclogistica.helper.Actions;
 import com.gutotech.tcclogistica.model.Funcionario;
 import com.gutotech.tcclogistica.model.FuncionarioOn;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.UUID;
 
 import es.dmoral.toasty.Toasty;
 
@@ -97,27 +94,8 @@ public class PerfilFragment extends Fragment {
         deleteImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StorageReference profileReference = ConfigFirebase.getStorage()
-                        .child("images")
-                        .child("funcionarios")
-                        .child(FuncionarioOn.funcionario.getLogin().getUser() + ".jpg");
-
-                profileReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        profileImageView.setImageResource(R.drawable.perfil_sem_foto);
-
-                        NavigationView navigationView = getActivity().findViewById(R.id.nav_view);
-                        View headerView = navigationView.getHeaderView(0);
-                        ImageView profileImageView = headerView.findViewById(R.id.profileImageView);
-                        profileImageView.setImageResource(R.drawable.perfil_sem_foto);
-
-                        FuncionarioOn.funcionario.setProfileImage(false);
-                        FuncionarioOn.funcionario.salvar();
-
-                        Toasty.success(getActivity(), "Sucesso ao remover foto de perfil", Toasty.LENGTH_SHORT, true).show();
-                    }
-                });
+                if (!FuncionarioOn.funcionario.getImage().isEmpty())
+                    Storage.deleteProfile(deleteSuccessListener);
             }
         });
 
@@ -133,8 +111,8 @@ public class PerfilFragment extends Fragment {
     }
 
     private void setInformacaoes() {
-        if (FuncionarioOn.funcionario.isProfileImage())
-            Storage.downloadProfile(getActivity(), profileImageView, FuncionarioOn.funcionario.getLogin().getUser());
+        if (!FuncionarioOn.funcionario.getImage().isEmpty())
+            Storage.downloadProfile(getActivity(), profileImageView, FuncionarioOn.funcionario.getImage());
 
         nomeTextView.setText(FuncionarioOn.funcionario.getNome());
         cargoTextView.setText(FuncionarioOn.funcionario.getCargo());
@@ -174,45 +152,53 @@ public class PerfilFragment extends Fragment {
             }
 
             if (bitmap != null) {
+                if (!FuncionarioOn.funcionario.getImage().isEmpty())
+                    Storage.deleteProfile(null);
+
+                FuncionarioOn.funcionario.setImage(FuncionarioOn.funcionario.getLogin().getUser() + UUID.randomUUID().toString() + ".jpg");
                 profileImageView.setImageBitmap(bitmap);
-                uploadImage();
+                Storage.uploadProfile(profileImageView, uploadFailureListener, uploadSuccessListener);
             }
         }
     }
 
-    private void uploadImage() {
-        profileImageView.setDrawingCacheEnabled(true);
-        profileImageView.buildDrawingCache();
-        Bitmap bitmap = ((BitmapDrawable) profileImageView.getDrawable()).getBitmap();
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] dataByte = baos.toByteArray();
+    private final OnFailureListener uploadFailureListener = new OnFailureListener() {
+        @Override
+        public void onFailure(@NonNull Exception e) {
+            Toast.makeText(getActivity(), "Erro ao fazer upload da imagem", Toast.LENGTH_SHORT).show();
+        }
+    };
 
-        StorageReference imagemRef = ConfigFirebase.getStorage()
-                .child("images")
-                .child("funcionarios")
-                .child(FuncionarioOn.funcionario.getLogin().getUser() + ".jpg");
+    private final OnSuccessListener<UploadTask.TaskSnapshot> uploadSuccessListener = new OnSuccessListener<UploadTask.TaskSnapshot>() {
+        @Override
+        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+            FuncionarioOn.funcionario.salvar();
 
-        UploadTask uploadTask = imagemRef.putBytes(dataByte);
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                Toast.makeText(getActivity(), "Erro ao fazer upload da imagem", Toast.LENGTH_SHORT).show();
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                NavigationView navigationView = getActivity().findViewById(R.id.nav_view);
-                View headerView = navigationView.getHeaderView(0);
-                ImageView profileImageView = headerView.findViewById(R.id.profileImageView);
-                Storage.downloadProfile(getActivity(), profileImageView, FuncionarioOn.funcionario.getLogin().getUser());
+            NavigationView navigationView = getActivity().findViewById(R.id.nav_view);
+            View headerView = navigationView.getHeaderView(0);
 
-                FuncionarioOn.funcionario.setProfileImage(true);
-                FuncionarioOn.funcionario.salvar();
+            ImageView profileImageView = headerView.findViewById(R.id.profileImageView);
+            Storage.downloadProfile(getActivity(), profileImageView, FuncionarioOn.funcionario.getImage());
 
-                Toasty.success(getActivity(), "Sucesso ao fazer upload da imagem", Toasty.LENGTH_SHORT, true).show();
-            }
-        });
-    }
+            Toasty.success(getActivity(), "Sucesso ao fazer upload da imagem", Toasty.LENGTH_SHORT, true).show();
+        }
+    };
+
+    private final OnSuccessListener<Void> deleteSuccessListener = new OnSuccessListener<Void>() {
+        @Override
+        public void onSuccess(Void aVoid) {
+            profileImageView.setImageResource(R.drawable.perfil_sem_foto);
+
+            NavigationView navigationView = getActivity().findViewById(R.id.nav_view);
+            View headerView = navigationView.getHeaderView(0);
+            ImageView profileImageView2 = headerView.findViewById(R.id.profileImageView);
+            profileImageView2.setImageResource(R.drawable.perfil_sem_foto);
+
+            FuncionarioOn.funcionario.setImage("");
+            FuncionarioOn.funcionario.salvar();
+
+            Toasty.success(getActivity(), "Sucesso ao remover foto de perfil", Toasty.LENGTH_SHORT, true).show();
+        }
+    };
 
 }

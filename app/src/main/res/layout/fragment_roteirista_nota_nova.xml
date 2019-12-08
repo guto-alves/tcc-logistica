@@ -371,7 +371,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:inputType="textCapCharacters"
                     android:text="@string/placa_do_veiculo"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
@@ -382,7 +381,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:ems="10" />
+                    android:ems="10"
+                    android:inputType="textCapCharacters" />
 
                 <TextView
                     android:layout_width="wrap_content"

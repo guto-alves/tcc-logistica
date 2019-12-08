@@ -118,6 +118,7 @@ public class FuncionarioNovoFragment extends Fragment {
 
             processingDialog.show();
 
+            funcionario.setImage("");
             funcionario.setNome(nomeEditText.getText().toString());
             funcionario.setRg(rgEditText.getText().toString());
             funcionario.setCpf(cpfEditText.getText().toString());

@@ -278,7 +278,7 @@
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
                     android:ems="10"
-                    android:inputType="text"
+                    android:inputType="textCapCharacters"
                     android:textSize="14sp" />
 
                 <TextView
@@ -557,7 +557,7 @@
                     android:id="@+id/observacoesEditText"
                     style="@style/EditTextTheme"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="150dp"
                     android:layout_marginTop="5dp"
                     android:ems="10"
                     android:gravity="start"
@@ -576,7 +576,7 @@
                     android:id="@+id/instrucoesEditText"
                     style="@style/EditTextTheme"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="120dp"
                     android:layout_marginTop="5dp"
                     android:ems="10"
                     android:gravity="start"
@@ -628,31 +628,50 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="5dp">
+        android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/textRecognizerImageButton"
+            android:id="@+id/excluirButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="16dp"
-            app:srcCompat="@drawable/recognizer_icon" />
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/background_button_delete"
+            android:padding="8dp"
+            app:srcCompat="@drawable/ic_delete_white_24dp" />
 
-        <Button
-            android:id="@+id/limparButton"
-            style="@style/ButtonTheme"
+        <ImageButton
+            android:id="@+id/updateImageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="16dp"
-            android:text="@string/limpar" />
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/background_button_update"
+            android:padding="8dp"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_done_white_24dp" />
 
-        <Button
-            android:id="@+id/salvarButton"
-            style="@style/ButtonTheme"
+        <ImageButton
+            android:id="@+id/modoEditImageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/salvar" />
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/selector_button"
+            android:padding="8dp"
+            app:srcCompat="@drawable/ic_mode_edit_white_24dp" />
+
+        <ImageButton
+            android:id="@+id/fecharButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_button"
+            android:padding="8dp"
+            android:text="@string/fechar"
+            android:textColor="@android:color/white"
+            app:srcCompat="@drawable/ic_close_24dp" />
     </LinearLayout>
 
 </LinearLayout>

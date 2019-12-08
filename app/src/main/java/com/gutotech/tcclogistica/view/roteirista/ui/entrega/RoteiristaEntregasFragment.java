@@ -24,10 +24,10 @@ public class RoteiristaEntregasFragment extends Fragment {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
-                    case R.id.action_novo:
+                    case R.id.action_nova:
                         changeToFragment(new RoteiristaEntregaNovaFragment());
                         break;
-                    case R.id.action_cadastrados:
+                    case R.id.action_cadastradas:
                         changeToFragment(new RoteiristaEntregasListaFragment());
                         break;
                 }

@@ -67,6 +67,7 @@ public class ColetaDialog extends Dialog {
     public ColetaDialog(@NonNull Context context, Coleta coleta) {
         super(context);
         setContentView(R.layout.dialog_coleta);
+        setCancelable(false);
 
         this.coleta = coleta;
 
@@ -178,6 +179,7 @@ public class ColetaDialog extends Dialog {
         });
 
         setInformations();
+        changeMode(false);
 
         motoristasReference = ConfigFirebase.getDatabase().child("funcionario");
     }
@@ -213,7 +215,7 @@ public class ColetaDialog extends Dialog {
         placaDestinatarioEditText.setText(coleta.getPlacaDestinatario());
         semiReboqueDestinatarioEditText.setText(coleta.getSemiReboqueDestinatario());
 
-        rgMotoristaEditText.setText(coleta.getMotorista().getCpf());
+        rgMotoristaEditText.setText(coleta.getMotorista().getRg());
 
         observacoesEditText.setText(coleta.getObservacoes());
         instrucoesEditText.setText(coleta.getInstrucoes());
@@ -294,7 +296,6 @@ public class ColetaDialog extends Dialog {
         semiReboqueDestinatarioEditText.setEnabled(mode);
 
         motoristaSpinner.setEnabled(mode);
-        rgMotoristaEditText.setEnabled(mode);
 
         observacoesEditText.setEnabled(mode);
         instrucoesEditText.setEnabled(mode);
@@ -302,7 +303,6 @@ public class ColetaDialog extends Dialog {
         dataColetaEfetuadaEditText.setEnabled(mode);
         horaColetaEfetuadaEditText.setEnabled(mode);
     }
-
 
     private boolean isValidFields(String numeroColeta) {
         boolean valid = true;

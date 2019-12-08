@@ -9,8 +9,7 @@ public class Login {
     }
 
     public Login(String user, String password) {
-        this.user = user;
-        this.password = password;
+        this(user, password, "");
     }
 
     public Login(String user, String password, String lastLogin) {

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.model.Entrega;
+import com.gutotech.tcclogistica.view.motorista.ui.FinalizacaoEntregaDialog;
 
 import java.util.List;
 
@@ -45,8 +46,8 @@ public class EntregasPendentesAdapter extends RecyclerView.Adapter<EntregasPende
         holder.finalizarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                entrega.setStatus(Entrega.Status.REALIZADA);
-                entrega.salvar();
+                FinalizacaoEntregaDialog dialog = new FinalizacaoEntregaDialog(context, entrega);
+                dialog.show();
             }
         });
     }

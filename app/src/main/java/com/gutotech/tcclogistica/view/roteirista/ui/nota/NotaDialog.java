@@ -45,6 +45,7 @@ public class NotaDialog extends Dialog {
     public NotaDialog(@NonNull Context context, final Nota nota) {
         super(context);
         setContentView(R.layout.dialog_nota);
+        setCancelable(false);
 
         this.nota = nota;
 
@@ -131,6 +132,7 @@ public class NotaDialog extends Dialog {
         });
 
         setInformations();
+        changeMode(false);
     }
 
     private void setInformations() {
@@ -161,8 +163,6 @@ public class NotaDialog extends Dialog {
         municipioTransportadorEditText.setText(nota.getTransportador().getMunicipio());
         ufTransportadorEditText.setText(nota.getTransportador().getUf());
         ieTransportadorEditText.setText(nota.getTransportador().getInscricaoEstadual());
-
-        changeMode(false);
     }
 
     private void atualizarNota() {

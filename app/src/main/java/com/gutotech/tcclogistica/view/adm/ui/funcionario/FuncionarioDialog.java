@@ -47,9 +47,11 @@ public class FuncionarioDialog extends Dialog {
 
     private boolean passwordConfirmed;
 
-    public FuncionarioDialog(@NonNull Context context) {
+    public FuncionarioDialog(@NonNull Context context, final Funcionario funcionario) {
         super(context);
         setContentView(R.layout.dialog_funcionario);
+
+        this.funcionario = funcionario;
 
         perfilImageView = findViewById(R.id.profileImageView);
         nomeTextView = findViewById(R.id.nomeTextView);
@@ -71,6 +73,7 @@ public class FuncionarioDialog extends Dialog {
         dataEmissaoEditText = findViewById(R.id.dataEmissaoEdiText);
 
         addMasks();
+        setInformations();
 
         ImageButton phoneCallImageButton = findViewById(R.id.dialCelularImageButton);
         phoneCallImageButton.setOnClickListener(new View.OnClickListener() {
@@ -173,14 +176,10 @@ public class FuncionarioDialog extends Dialog {
         });
     }
 
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
-        setInformations();
-    }
-
     private void setInformations() {
-        if (funcionario.isProfileImage())
-            Storage.downloadProfile(getContext(), perfilImageView, funcionario.getLogin().getUser());
+        if (!funcionario.getImage().isEmpty())
+            Storage.downloadProfile(getContext(), perfilImageView, funcionario.getImage());
+
         nomeTextView.setText(funcionario.getNome());
         cargoTextView.setText(funcionario.getCargo());
         rgEditText.setText(funcionario.getRg());
