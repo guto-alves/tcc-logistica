@@ -29,7 +29,7 @@ import com.gutotech.tcclogistica.helper.DateCustom;
 import com.gutotech.tcclogistica.model.Coleta;
 import com.gutotech.tcclogistica.model.FuncionarioOn;
 import com.gutotech.tcclogistica.model.Status;
-import com.gutotech.tcclogistica.view.adapter.ColetasAdapter;
+import com.gutotech.tcclogistica.view.adapter.ColetasPendentesAdapter;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -37,7 +37,7 @@ import java.util.Locale;
 
 public class MotoristaColetasPendentesFragment extends Fragment {
     private List<Coleta> coletasList = new LinkedList<>();
-    private ColetasAdapter coletasAdapter;
+    private ColetasPendentesAdapter coletasAdapter;
 
     private Query coletasPorDataQuery;
     private ValueEventListener coletasListener;
@@ -102,7 +102,7 @@ public class MotoristaColetasPendentesFragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         entregasRecyclerView.setLayoutManager(layoutManager);
         entregasRecyclerView.setHasFixedSize(true);
-        coletasAdapter = new ColetasAdapter(getActivity(), coletasList);
+        coletasAdapter = new ColetasPendentesAdapter(getActivity(), coletasList);
         entregasRecyclerView.setAdapter(coletasAdapter);
 
         return root;

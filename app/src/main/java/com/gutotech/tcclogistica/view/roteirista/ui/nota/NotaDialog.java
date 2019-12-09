@@ -18,7 +18,6 @@ import com.gutotech.tcclogistica.model.CalculoImposto;
 import com.gutotech.tcclogistica.model.Destinatario;
 import com.gutotech.tcclogistica.model.Endereco;
 import com.gutotech.tcclogistica.model.Nota;
-import com.gutotech.tcclogistica.model.Transportador;
 
 import es.dmoral.toasty.Toasty;
 
@@ -38,10 +37,6 @@ public class NotaDialog extends Dialog {
 
     // CÁLCULO DO IMPOSTO
     private EditText valorFreteEditText, valorTotalProdutosEditText, valorTotalNotaEditText;
-
-    // TRANSPORTADOR/VOLUMES TRANSPORTADOS
-    private EditText nomeTransportadorEditText, fretePorContaEditText, codANTTEditText, placaVeiculoEditText, cnpjTransportadorEditText,
-            enderecoTransportadorEditText, municipioTransportadorEditText, ufTransportadorEditText, ieTransportadorEditText;
 
     public NotaDialog(@NonNull final Context context, final Nota nota) {
         super(context);
@@ -67,16 +62,6 @@ public class NotaDialog extends Dialog {
         valorFreteEditText = findViewById(R.id.valorFreteEditText);
         valorTotalProdutosEditText = findViewById(R.id.valorTotalProdutosEditText);
         valorTotalNotaEditText = findViewById(R.id.valorTotalNotaEditText);
-
-        nomeTransportadorEditText = findViewById(R.id.nomeTransportadorEditText);
-        fretePorContaEditText = findViewById(R.id.fretePorContaEditText);
-        codANTTEditText = findViewById(R.id.codANTTEditText);
-        placaVeiculoEditText = findViewById(R.id.placaVeiculoEditText);
-        cnpjTransportadorEditText = findViewById(R.id.cnpjTransportadorEditText);
-        enderecoTransportadorEditText = findViewById(R.id.enderecoTransportadorEditText);
-        municipioTransportadorEditText = findViewById(R.id.municipioTransportadorEditText);
-        ufTransportadorEditText = findViewById(R.id.ufTransportadorEditText);
-        ieTransportadorEditText = findViewById(R.id.ieTransportadorEditText);
 
         adicionarMascaras();
 
@@ -162,16 +147,6 @@ public class NotaDialog extends Dialog {
         valorFreteEditText.setText(nota.getCalculoImposto().getValorFrete());
         valorTotalProdutosEditText.setText(nota.getCalculoImposto().getValorTotalProdutos());
         valorTotalNotaEditText.setText(nota.getCalculoImposto().getValorTotalNota());
-
-        nomeTransportadorEditText.setText(nota.getTransportador().getNome());
-        fretePorContaEditText.setText(nota.getTransportador().getFretePorConta());
-        codANTTEditText.setText(nota.getTransportador().getCodANTT());
-        placaVeiculoEditText.setText(nota.getTransportador().getPlacaDoVeiculo());
-        cnpjTransportadorEditText.setText(nota.getTransportador().getCnpj());
-        enderecoTransportadorEditText.setText(nota.getTransportador().getEndereco());
-        municipioTransportadorEditText.setText(nota.getTransportador().getMunicipio());
-        ufTransportadorEditText.setText(nota.getTransportador().getUf());
-        ieTransportadorEditText.setText(nota.getTransportador().getInscricaoEstadual());
     }
 
     private void atualizarNota() {
@@ -197,20 +172,6 @@ public class NotaDialog extends Dialog {
                     valorTotalNotaEditText.getText().toString());
             nota.setCalculoImposto(calculoImposto);
 
-            Transportador transportador = new Transportador();
-            transportador.setNome(nomeTransportadorEditText.getText().toString());
-            transportador.setFretePorConta(fretePorContaEditText.getText().toString());
-            transportador.setCodANTT(codANTTEditText.getText().toString());
-            transportador.setPlacaDoVeiculo(placaVeiculoEditText.getText().toString());
-            transportador.setCnpj(cnpjTransportadorEditText.getText().toString());
-            transportador.setInscricaoEstadual(ieTransportadorEditText.getText().toString());
-
-            // endereço transportador
-            transportador.setEndereco(enderecoTransportadorEditText.getText().toString());
-            transportador.setMunicipio(municipioTransportadorEditText.getText().toString());
-            transportador.setUf(ufTransportadorEditText.getText().toString());
-            nota.setTransportador(transportador);
-
             nota.setEstoque(true);
             nota.salvar();
         }
@@ -235,11 +196,6 @@ public class NotaDialog extends Dialog {
 
         cnpjDestinatarioEditText.addTextChangedListener(new MaskTextWatcher(cnpjDestinatarioEditText, new SimpleMaskFormatter("NN.NNN.NNN/NNNN-NN")));
         cepDestinatarioEditText.addTextChangedListener(new MaskTextWatcher(cepDestinatarioEditText, new SimpleMaskFormatter("NN.NNN-NNN")));
-
-        placaVeiculoEditText.addTextChangedListener(new MaskTextWatcher(placaVeiculoEditText, new SimpleMaskFormatter("LLL-NNNN")));
-        cnpjTransportadorEditText.addTextChangedListener(new MaskTextWatcher(cnpjTransportadorEditText, new SimpleMaskFormatter("NN.NNN.NNN/NNNN-NN")));
-        ufTransportadorEditText.addTextChangedListener(new MaskTextWatcher(ufTransportadorEditText, new SimpleMaskFormatter("UU")));
-        ieTransportadorEditText.addTextChangedListener(new MaskTextWatcher(ieTransportadorEditText, new SimpleMaskFormatter("NNN.NNN.NNN.NNN")));
     }
 
     private void changeMode(boolean mode) {
@@ -260,15 +216,5 @@ public class NotaDialog extends Dialog {
         valorFreteEditText.setEnabled(mode);
         valorTotalProdutosEditText.setEnabled(mode);
         valorTotalNotaEditText.setEnabled(mode);
-
-        nomeTransportadorEditText.setEnabled(mode);
-        fretePorContaEditText.setEnabled(mode);
-        codANTTEditText.setEnabled(mode);
-        placaVeiculoEditText.setEnabled(mode);
-        cnpjTransportadorEditText.setEnabled(mode);
-        enderecoTransportadorEditText.setEnabled(mode);
-        municipioTransportadorEditText.setEnabled(mode);
-        ufTransportadorEditText.setEnabled(mode);
-        ieTransportadorEditText.setEnabled(mode);
     }
 }

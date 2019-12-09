@@ -15,6 +15,7 @@ import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.helper.DateCustom;
+import com.gutotech.tcclogistica.model.Coleta;
 import com.gutotech.tcclogistica.model.Entrega;
 import com.gutotech.tcclogistica.model.ResultadoViagem;
 import com.gutotech.tcclogistica.model.Status;
@@ -22,7 +23,7 @@ import com.gutotech.tcclogistica.view.EscolhaSimOuNaoDialog;
 
 import es.dmoral.toasty.Toasty;
 
-public class FinalizacaoEntregaDialog extends Dialog {
+public class FinalizacaoColetaDialog extends Dialog {
     private EditText horarioChegadaEditText;
     private EditText horarioSaidaEditText;
 
@@ -33,7 +34,7 @@ public class FinalizacaoEntregaDialog extends Dialog {
 
     private Status status;
 
-    public FinalizacaoEntregaDialog(@NonNull final Context context, final Entrega entrega) {
+    public FinalizacaoColetaDialog(@NonNull final Context context, final Coleta coleta) {
         super(context);
         setContentView(R.layout.dialog_finalizar_entrega);
 
@@ -87,19 +88,19 @@ public class FinalizacaoEntregaDialog extends Dialog {
 
                     switch (motivosRadioGroup.getCheckedRadioButtonId()) {
                         case R.id.radioButton1:
-                            entrega.getResultadoViagem().setAconteceu("Mudança de endereço");
+                            coleta.getResultadoViagem().setAconteceu("Mudança de endereço");
                             break;
                         case R.id.radioButton2:
-                            entrega.getResultadoViagem().setAconteceu("Desacordo com pedido");
+                            coleta.getResultadoViagem().setAconteceu("Desacordo com pedido");
                             break;
                         case R.id.radioButton3:
-                            entrega.getResultadoViagem().setAconteceu("Cliente não se encontra");
+                            coleta.getResultadoViagem().setAconteceu("Cliente não se encontra");
                             break;
                         case R.id.outrosRadioButton:
                             String motivo = outrosMotivosEditText.getText().toString().trim();
 
                             if (!motivo.isEmpty()) {
-                                entrega.getResultadoViagem().setAconteceu(motivo);
+                                coleta.getResultadoViagem().setAconteceu(motivo);
                                 outrosMotivosEditText.setError(null);
                             } else {
                                 outrosMotivosEditText.setError("Por favor, digite o motivo");
@@ -109,11 +110,8 @@ public class FinalizacaoEntregaDialog extends Dialog {
                     }
                 }
 
-                entrega.getNota().setEstoque(true);
-                entrega.getNota().salvar();
-
-                entrega.setStatus(status);
-                entrega.salvar();
+                coleta.setStatus(status);
+                coleta.salvar();
 
                 dismiss();
             }

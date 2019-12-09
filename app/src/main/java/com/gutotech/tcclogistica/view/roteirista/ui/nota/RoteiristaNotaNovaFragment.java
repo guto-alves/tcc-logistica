@@ -24,7 +24,6 @@ import com.gutotech.tcclogistica.model.CalculoImposto;
 import com.gutotech.tcclogistica.model.Destinatario;
 import com.gutotech.tcclogistica.model.Endereco;
 import com.gutotech.tcclogistica.model.Nota;
-import com.gutotech.tcclogistica.model.Transportador;
 import com.gutotech.tcclogistica.view.OpenCameraOrGalleryDialogFragment;
 import com.gutotech.tcclogistica.view.ProcessingDialog;
 
@@ -49,10 +48,6 @@ public class RoteiristaNotaNovaFragment extends Fragment {
 
     // CÁLCULO DO IMPOSTO
     private EditText valorFreteEditText, valorTotalProdutosEditText, valorTotalNotaEditText;
-
-    // TRANSPORTADOR/VOLUMES TRANSPORTADOS
-    private EditText nomeTransportadorEditText, fretePorContaEditText, codANTTEditText, placaVeiculoEditText, cnpjTransportadorEditText,
-            enderecoTransportadorEditText, municipioTransportadorEditText, ufTransportadorEditText, ieTransportadorEditText;
 
     private TextRecognizer textRecognizer;
 
@@ -84,15 +79,6 @@ public class RoteiristaNotaNovaFragment extends Fragment {
         valorTotalProdutosEditText = root.findViewById(R.id.valorTotalProdutosEditText);
         valorTotalNotaEditText = root.findViewById(R.id.valorTotalNotaEditText);
 
-        nomeTransportadorEditText = root.findViewById(R.id.nomeTransportadorEditText);
-        fretePorContaEditText = root.findViewById(R.id.fretePorContaEditText);
-        codANTTEditText = root.findViewById(R.id.codANTTEditText);
-        placaVeiculoEditText = root.findViewById(R.id.placaVeiculoEditText);
-        cnpjTransportadorEditText = root.findViewById(R.id.cnpjTransportadorEditText);
-        enderecoTransportadorEditText = root.findViewById(R.id.enderecoTransportadorEditText);
-        municipioTransportadorEditText = root.findViewById(R.id.municipioTransportadorEditText);
-        ufTransportadorEditText = root.findViewById(R.id.ufTransportadorEditText);
-        ieTransportadorEditText = root.findViewById(R.id.ieTransportadorEditText);
 
         adicionarMascaras();
 
@@ -166,20 +152,6 @@ public class RoteiristaNotaNovaFragment extends Fragment {
                         valorTotalNotaEditText.getText().toString());
                 nota.setCalculoImposto(calculoImposto);
 
-                Transportador transportador = new Transportador();
-                transportador.setNome(nomeTransportadorEditText.getText().toString());
-                transportador.setFretePorConta(fretePorContaEditText.getText().toString());
-                transportador.setCodANTT(codANTTEditText.getText().toString());
-                transportador.setPlacaDoVeiculo(placaVeiculoEditText.getText().toString());
-                transportador.setCnpj(cnpjTransportadorEditText.getText().toString());
-                transportador.setInscricaoEstadual(ieTransportadorEditText.getText().toString());
-
-                // endereço transportador
-                transportador.setEndereco(enderecoTransportadorEditText.getText().toString());
-                transportador.setMunicipio(municipioTransportadorEditText.getText().toString());
-                transportador.setUf(ufTransportadorEditText.getText().toString());
-                nota.setTransportador(transportador);
-
                 nota.setEstoque(true);
                 nota.salvar();
 
@@ -207,16 +179,6 @@ public class RoteiristaNotaNovaFragment extends Fragment {
         valorFreteEditText.setText("");
         valorTotalProdutosEditText.setText("");
         valorTotalNotaEditText.setText("");
-
-        nomeTransportadorEditText.setText("");
-        fretePorContaEditText.setText("");
-        codANTTEditText.setText("");
-        placaVeiculoEditText.setText("");
-        cnpjTransportadorEditText.setText("");
-        enderecoTransportadorEditText.setText("");
-        municipioTransportadorEditText.setText("");
-        ufTransportadorEditText.setText("");
-        ieTransportadorEditText.setText("");
     }
 
     private void adicionarMascaras() {
@@ -227,11 +189,6 @@ public class RoteiristaNotaNovaFragment extends Fragment {
 
         cnpjDestinatarioEditText.addTextChangedListener(new MaskTextWatcher(cnpjDestinatarioEditText, new SimpleMaskFormatter("NN.NNN.NNN/NNNN-NN")));
         cepDestinatarioEditText.addTextChangedListener(new MaskTextWatcher(cepDestinatarioEditText, new SimpleMaskFormatter("NN.NNN-NNN")));
-
-        placaVeiculoEditText.addTextChangedListener(new MaskTextWatcher(placaVeiculoEditText, new SimpleMaskFormatter("LLL-NNNN")));
-        cnpjTransportadorEditText.addTextChangedListener(new MaskTextWatcher(cnpjTransportadorEditText, new SimpleMaskFormatter("NN.NNN.NNN/NNNN-NN")));
-        ufTransportadorEditText.addTextChangedListener(new MaskTextWatcher(ufTransportadorEditText, new SimpleMaskFormatter("UU")));
-        ieTransportadorEditText.addTextChangedListener(new MaskTextWatcher(ieTransportadorEditText, new SimpleMaskFormatter("NNN.NNN.NNN.NNN")));
     }
 
     private boolean isValidFields(String numeroNota) {

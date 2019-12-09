@@ -16,14 +16,12 @@ public class Nota {
 
     private CalculoImposto calculoImposto;
 
-    private Transportador transportador;
-
     private boolean estoque;
 
     public Nota() {
     }
 
-    public Nota(String id, String numero, String dataEmissao, String dataRecebimento, String naturezaDaOperacao, String inscricaoEstadual, String cnpj, Destinatario destinatario, CalculoImposto calculoImposto, Transportador transportador, boolean estoque) {
+    public Nota(String id, String numero, String dataEmissao, String dataRecebimento, String naturezaDaOperacao, String inscricaoEstadual, String cnpj, Destinatario destinatario, CalculoImposto calculoImposto, boolean estoque) {
         this.id = id;
         this.numero = numero;
         this.dataEmissao = dataEmissao;
@@ -33,7 +31,6 @@ public class Nota {
         this.cnpj = cnpj;
         this.destinatario = destinatario;
         this.calculoImposto = calculoImposto;
-        this.transportador = transportador;
         this.estoque = estoque;
     }
 
@@ -123,14 +120,6 @@ public class Nota {
 
     public void setCalculoImposto(CalculoImposto calculoImposto) {
         this.calculoImposto = calculoImposto;
-    }
-
-    public Transportador getTransportador() {
-        return transportador;
-    }
-
-    public void setTransportador(Transportador transportador) {
-        this.transportador = transportador;
     }
 
     public boolean isEstoque() {
