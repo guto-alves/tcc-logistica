@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
+    android:layout_marginBottom="5dp"
     android:background="@android:color/white"
     android:orientation="horizontal"
     android:padding="16dp">
@@ -19,16 +19,18 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:text="@string/numero"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/dataEmissaoTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/data_de_emissao"
             android:layout_marginBottom="5dp"
+            android:text="@string/data_de_emissao"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/destinatarioTextView"
@@ -37,7 +39,7 @@
             android:layout_marginBottom="5dp"
             android:text="@string/destinatario"
             android:textColor="@android:color/black"
-            android:textSize="18sp"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
         <TextView
@@ -45,19 +47,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/endereco"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textColor="@color/tab_text_selector"
+            android:textSize="14sp" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/statusTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="@string/status"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="16sp"
-        android:textStyle="bold" />
 
 </LinearLayout>

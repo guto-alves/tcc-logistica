@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -27,9 +28,12 @@ import com.gutotech.tcclogistica.helper.DateCustom;
 import com.gutotech.tcclogistica.model.Entrega;
 import com.gutotech.tcclogistica.model.Funcionario;
 import com.gutotech.tcclogistica.model.Nota;
+import com.gutotech.tcclogistica.model.ResultadoViagem;
+import com.gutotech.tcclogistica.model.Status;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 import es.dmoral.toasty.Toasty;
@@ -39,13 +43,13 @@ public class RoteiristaEntregaNovaFragment extends Fragment {
 
     private EditText dataEditText, horaEditText;
 
-    private ArrayAdapter motoristasArrayAdapter, notasArrayAdapter;
+    private ArrayAdapter notasArrayAdapter;
+    private List<Nota> notaList = new LinkedList<>();
+    private List<String> numerosNotasList = new LinkedList<>();
 
-    private List<Funcionario> motoristasList = new ArrayList<>();
-    private List<String> nomesMotoristasList = new ArrayList<>();
-
-    private List<Nota> notaList = new ArrayList<>();
-    private List<String> numerosNotasList = new ArrayList<>();
+    private ArrayAdapter motoristasArrayAdapter;
+    private List<Funcionario> motoristasList = new LinkedList<>();
+    private List<String> nomesMotoristasList = new LinkedList<>();
 
     private DatabaseReference notasReference;
     private ValueEventListener notasListener;
@@ -66,7 +70,7 @@ public class RoteiristaEntregaNovaFragment extends Fragment {
         Spinner notaSpinner = root.findViewById(R.id.notaSpinner);
         Spinner motoristaSpinner = root.findViewById(R.id.motoristaSpinner);
         dataEditText = root.findViewById(R.id.dataEditText);
-        dataEditText.setText(DateCustom.getData());
+        final CalendarView calendarView = root.findViewById(R.id.calendarView);
         horaEditText = root.findViewById(R.id.horaEditText);
         horaEditText.setText(DateCustom.getHorario());
 
@@ -74,6 +78,20 @@ public class RoteiristaEntregaNovaFragment extends Fragment {
 
         notasReference = ConfigFirebase.getDatabase().child("nota");
         motoristasReference = ConfigFirebase.getDatabase().child("funcionario");
+
+        notasArrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, numerosNotasList);
+        notasArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        notaSpinner.setAdapter(notasArrayAdapter);
+        notaSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                entrega.setNota(notaList.get(position));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
 
         motoristasArrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, nomesMotoristasList);
         motoristasArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -91,17 +109,25 @@ public class RoteiristaEntregaNovaFragment extends Fragment {
             }
         });
 
-        notasArrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, numerosNotasList);
-        notasArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        notaSpinner.setAdapter(notasArrayAdapter);
-        notaSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        dataEditText.setText(DateCustom.getData());
+        dataEditText.addTextChangedListener(new MaskTextWatcher(dataEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
+        dataEditText.setFocusable(false);
+        dataEditText.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                entrega.setNota(notaList.get(position));
+            public void onClick(View v) {
+                calendarView.setVisibility(View.VISIBLE);
             }
+        });
 
+        calendarView.setVisibility(View.GONE);
+        calendarView.setDate(System.currentTimeMillis());
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                String data = String.format(Locale.getDefault(), "%02d/%02d/%04d", dayOfMonth, month + 1, year);
+                dataEditText.setText(data);
+                dataEditText.setError(null);
+                calendarView.setVisibility(View.GONE);
             }
         });
 
@@ -127,15 +153,22 @@ public class RoteiristaEntregaNovaFragment extends Fragment {
 
             if (entrega.getNota() != null) {
                 if (isValidFields(data, hora)) {
+                    entrega.setId(UUID.randomUUID().toString());
                     entrega.setData(data);
                     entrega.setHora(hora);
-                    entrega.setId(UUID.randomUUID().toString());
-                    entrega.setStatus(Entrega.Status.PENDENTE);
-                    entrega.salvar();
+                    entrega.setStatus(Status.PENDENTE);
+                    entrega.setResultadoViagem(new ResultadoViagem());
+
                     entrega.getNota().setEstoque(false);
                     entrega.getNota().salvar();
 
+                    entrega.salvar();
+                    entrega = new Entrega();
+                    entrega.setMotorista(motoristasList.get(0));
+                    entrega.setNomeMotorista(entrega.getNomeMotorista());
+
                     limparCampos();
+
                     Toasty.success(getActivity(), "Entrega cadastrada com sucesso!", Toasty.LENGTH_SHORT, true).show();
                 }
             } else
@@ -150,7 +183,7 @@ public class RoteiristaEntregaNovaFragment extends Fragment {
 
     private void adicionarMascaras() {
         dataEditText.addTextChangedListener(new MaskTextWatcher(dataEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
-        horaEditText.addTextChangedListener(new MaskTextWatcher(horaEditText, new SimpleMaskFormatter("NN:NN:NN")));
+        horaEditText.addTextChangedListener(new MaskTextWatcher(horaEditText, new SimpleMaskFormatter("NN:NN")));
     }
 
     private boolean isValidFields(String data, String hora) {
@@ -183,6 +216,12 @@ public class RoteiristaEntregaNovaFragment extends Fragment {
                     notaList.add(nota);
                     numerosNotasList.add(nota.getNumero());
                 }
+
+                if (notaList.size() != 0) {
+                    Nota nota = notaList.get(0);
+                    entrega.setNota(nota);
+                } else
+                    entrega.setNota(null);
 
                 notasArrayAdapter.notifyDataSetChanged();
             }

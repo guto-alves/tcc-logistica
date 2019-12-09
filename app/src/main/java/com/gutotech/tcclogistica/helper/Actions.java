@@ -27,7 +27,14 @@ public class Actions {
         context.startActivityForResult(new Intent(MediaStore.ACTION_IMAGE_CAPTURE), code);
     }
 
-    public static void dial(Context context, String phone){
+    public static void dial(Context context, String phone) {
         context.startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phone)));
+    }
+
+    public static void openMap(Context context, String address) {
+        Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + address);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        context.startActivity(mapIntent);
     }
 }

@@ -2,8 +2,6 @@ package com.gutotech.tcclogistica.model;
 
 public class Endereco {
     private String endereco;
-    private int numero;
-    private String complemento;
     private String cep;
     private String bairro;
     private String cidade;
@@ -29,10 +27,8 @@ public class Endereco {
         this.uf = uf;
     }
 
-    public Endereco(String endereco, int numero, String complemento, String cep, String bairro, String cidade, String municipio, String uf, String estado) {
+    public Endereco(String endereco, String cep, String bairro, String cidade, String municipio, String uf, String estado) {
         this.endereco = endereco;
-        this.numero = numero;
-        this.complemento = complemento;
         this.cep = cep;
         this.bairro = bairro;
         this.cidade = cidade;
@@ -47,22 +43,6 @@ public class Endereco {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
-    }
-
-    public int getNumero() {
-        return numero;
-    }
-
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
-
-    public String getComplemento() {
-        return complemento;
-    }
-
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
     }
 
     public String getCep() {

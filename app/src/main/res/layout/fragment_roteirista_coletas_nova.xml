@@ -18,7 +18,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardElevation="20dp">
+            app:cardCornerRadius="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -41,7 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="Número Coleta - c"
+                    android:text="Número"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
@@ -59,37 +59,50 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="Coletar em"
+                    android:text="Data"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
-                <EditText
-                    android:id="@+id/coletarEmEditText"
-                    style="@style/EditTextTheme"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="date|time"
-                    android:textSize="14sp" />
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/dataEditText"
+                        style="@style/EditTextTheme"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:inputType="date"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <CalendarView
+                        android:id="@+id/calendarView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/dataEditText" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="@string/emissao"
+                    android:text="Hora"
                     android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/dataEmissaoEditText"
+                    android:id="@+id/horaEditText"
                     style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
                     android:ems="10"
-                    android:inputType="date|time"
-                    android:textSize="14sp" />
+                    android:inputType="time" />
 
                 <TextView
                     android:id="@+id/textView2"
@@ -130,24 +143,6 @@
 
                 <EditText
                     android:id="@+id/enderecoRemetenteEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="textCapWords|textCapSentences"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/referencia"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/referenciaRemetenteEditText"
                     style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
@@ -250,24 +245,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="@string/especie"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/especieRemetenteEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="textCapWords|textCapSentences"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
                     android:text="@string/n_pedido"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
@@ -280,106 +257,6 @@
                     android:layout_marginTop="5dp"
                     android:ems="10"
                     android:inputType="textCapCharacters"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/textView25"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/veiculo"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/veiculoRemetenteEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="textCapWords|textCapSentences"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
-                    android:background="@drawable/background_title"
-                    android:text="@string/produto"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/nome"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/nomeProdutoEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="textCapWords|textCapSentences"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/peso"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/pesoEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="numberDecimal"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/dimensoes"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/dimensoesEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/n_onu"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/nONUEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="numberSigned"
                     android:textSize="14sp" />
 
                 <TextView
@@ -429,16 +306,15 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/textView33"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="@string/destino"
+                    android:text="@string/bairro"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/destinoDestinatarioEditText"
+                    android:id="@+id/bairroDestinatarioEditText"
                     style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
@@ -451,12 +327,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="@string/site"
+                    android:text="@string/cidade"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/siteDestinatarioEditText"
+                    android:id="@+id/cidadeDestinatarioEditText"
                     style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
@@ -469,12 +345,30 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
-                    android:text="@string/placa"
+                    android:text="@string/cep"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/placaDestinatarioEditText"
+                    android:id="@+id/cepDestinatarioEditText"
+                    style="@style/EditTextTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
+                    android:ems="10"
+                    android:inputType="numberSigned"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="@string/contato"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/contatoDestinatarioEditText"
                     style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
@@ -484,22 +378,21 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/textView35"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="@string/semi_reboque"
+                    android:text="@string/telefone"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/semiReboqueDestinatarioEditText"
+                    android:id="@+id/telefoneDestinatarioEditText"
                     style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="phone"
                     android:textSize="14sp" />
 
                 <TextView
@@ -564,64 +457,6 @@
                     android:gravity="start"
                     android:inputType="textMultiLine"
                     android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/instrucoes"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/instrucoesEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:gravity="start"
-                    android:inputType="textMultiLine"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/textView38"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
-                    android:text="Coleta efetuada em:"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/dataColetaEfetuadaEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="date"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/textView39"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/hora"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/horaColetaEfetuadaEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="time"
-                    android:textSize="14sp" />
-
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </ScrollView>
@@ -637,6 +472,7 @@
             android:id="@+id/textRecognizerImageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             app:srcCompat="@drawable/recognizer_icon_34" />
 
@@ -645,6 +481,7 @@
             style="@style/ButtonTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:text="@string/limpar" />
 

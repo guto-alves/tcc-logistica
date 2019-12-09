@@ -24,11 +24,11 @@ public class MotoristaEntregasFragment extends Fragment {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
-                    case R.id.action_novo:
+                    case R.id.action_pendentes:
                         changeToFragment(new MotoristaEntregasPendentesFragment());
                         break;
-                    case R.id.action_cadastrados:
-                        changeToFragment(new MotoristaEntregasRealizadasFragment());
+                    case R.id.action_realizadas:
+                        changeToFragment(new MotoristaEntregasFinalizadasFragment());
                         break;
                 }
 

@@ -124,10 +124,7 @@
                         android:ems="10"
                         android:inputType="numberSigned" />
                 </LinearLayout>
-
-
             </LinearLayout>
-
         </androidx.cardview.widget.CardView>
     </ScrollView>
 

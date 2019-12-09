@@ -32,6 +32,14 @@ public class Veiculo {
         veiculoReference.setValue(this);
     }
 
+    public void excluir() {
+        DatabaseReference veiculoReference = ConfigFirebase.getDatabase()
+                .child("veiculo")
+                .child(id);
+
+        veiculoReference.removeValue();
+    }
+
     public String getId() {
         return id;
     }

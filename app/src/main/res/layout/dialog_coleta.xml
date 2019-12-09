@@ -38,7 +38,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="Número Coleta -c"
+                    android:text="Número"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
@@ -84,8 +84,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-
-
                     android:ems="10"
                     android:inputType="date|time"
                     android:textSize="14sp" />
@@ -133,24 +131,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="textCapWords|textCapSentences"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/referencia"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/referenciaRemetenteEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/background_edit_text"
                     android:ems="10"
                     android:inputType="textCapWords|textCapSentences"
                     android:textSize="14sp" />
@@ -249,24 +229,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="@string/especie"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/especieRemetenteEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="textCapWords|textCapSentences"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
                     android:text="@string/n_pedido"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
@@ -279,106 +241,6 @@
                     android:layout_marginTop="5dp"
                     android:ems="10"
                     android:inputType="textCapCharacters"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/textView25"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/veiculo"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/veiculoRemetenteEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="textCapWords|textCapSentences"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
-                    android:background="@drawable/background_title"
-                    android:text="@string/produto"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/nome"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/nomeProdutoEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="textCapWords|textCapSentences"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/peso"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/pesoEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/dimensoes"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/dimensoesEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/n_onu"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/nONUEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="textPersonName"
                     android:textSize="14sp" />
 
                 <TextView
@@ -428,16 +290,15 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/textView33"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="@string/destino"
+                    android:text="@string/bairro"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/destinoDestinatarioEditText"
+                    android:id="@+id/bairroDestinatarioEditText"
                     style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
@@ -450,12 +311,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="@string/site"
+                    android:text="@string/cidade"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/siteDestinatarioEditText"
+                    android:id="@+id/cidadeDestinatarioEditText"
                     style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
@@ -468,37 +329,54 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
-                    android:text="@string/placa"
+                    android:text="@string/cep"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/placaDestinatarioEditText"
+                    android:id="@+id/cepDestinatarioEditText"
                     style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="numberSigned"
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/textView35"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/semi_reboque"
+                    android:layout_marginTop="32dp"
+                    android:text="@string/contato"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/semiReboqueDestinatarioEditText"
+                    android:id="@+id/contatoDestinatarioEditText"
                     style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="textCapCharacters"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/telefone"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/telefoneDestinatarioEditText"
+                    style="@style/EditTextTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
+                    android:ems="10"
+                    android:inputType="phone"
                     android:textSize="14sp" />
 
                 <TextView
@@ -567,26 +445,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/instrucoes"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/instrucoesEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:gravity="start"
-                    android:inputType="textMultiLine"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/textView38"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
                     android:text="Coleta efetuada em:"
                     android:textColor="@android:color/black"
@@ -603,7 +461,6 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/textView39"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
@@ -620,7 +477,6 @@
                     android:ems="10"
                     android:inputType="time"
                     android:textSize="14sp" />
-
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </ScrollView>

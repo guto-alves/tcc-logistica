@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.model.Coleta;
+import com.gutotech.tcclogistica.model.Status;
 
 import java.util.List;
 
@@ -35,17 +36,20 @@ public class ColetasAdapter extends RecyclerView.Adapter<ColetasAdapter.MyViewHo
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Coleta coleta = coletasList.get(position);
 
+        holder.motorista.setText(coleta.getMotorista().getNome());
         holder.numero.setText(coleta.getNumero());
-        holder.emissao.setText(coleta.getDataEmissao());
-        holder.coletar.setText(coleta.getColetarEm());
         holder.remetente.setText(coleta.getNomeRemetente());
         holder.enderecoRemetente.setText(coleta.getEnderecoRemetente());
         holder.destinatario.setText(coleta.getNomeDestinatario());
         holder.enderecoDestinatario.setText(coleta.getEnderecoDestinatario());
-        holder.motorista.setText(coleta.getMotorista().getNome());
-        holder.status.setText(coleta.getStatus().toString());
+        holder.data.setText(coleta.getData());
+        holder.hora.setText(coleta.getHora());
 
-        if (coleta.getStatus() == Coleta.Status.REALIZADA)
+        holder.status.setText(coleta.getStatus() == Status.NAO_REALIZADA ? "NÃO REALIZADA" : coleta.getStatus().toString());
+
+        if (coleta.getStatus() == Status.PENDENTE)
+            holder.status.setTextColor(Color.YELLOW);
+        else if (coleta.getStatus() == Status.REALIZADA)
             holder.status.setTextColor(Color.GREEN);
         else
             holder.status.setTextColor(Color.RED);
@@ -58,8 +62,8 @@ public class ColetasAdapter extends RecyclerView.Adapter<ColetasAdapter.MyViewHo
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView numero;
-        private TextView emissao;
-        private TextView coletar;
+        private TextView data;
+        private TextView hora;
         private TextView remetente;
         private TextView enderecoRemetente;
         private TextView destinatario;
@@ -71,8 +75,8 @@ public class ColetasAdapter extends RecyclerView.Adapter<ColetasAdapter.MyViewHo
             super(itemView);
 
             numero = itemView.findViewById(R.id.numeroTextView);
-            emissao = itemView.findViewById(R.id.emissaoTextView);
-            coletar = itemView.findViewById(R.id.coletarAteTextView);
+            data = itemView.findViewById(R.id.dataTextView);
+            hora = itemView.findViewById(R.id.horaTextView);
             remetente = itemView.findViewById(R.id.remetenteTextView);
             enderecoRemetente = itemView.findViewById(R.id.enderecoRemetenteTextView);
             destinatario = itemView.findViewById(R.id.destinatarioTextView);

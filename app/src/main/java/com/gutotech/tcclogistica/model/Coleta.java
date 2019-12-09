@@ -6,66 +6,51 @@ import com.gutotech.tcclogistica.config.ConfigFirebase;
 public class Coleta {
     private String id;
     private String numero;
-    private String coletarEm;
-    private String dataEmissao;
+    private String data;
+    private String hora;
 
     // remetente
-    private String nomeRemetente, enderecoRemetente, referenciaRemetente,
-            bairroRemetente, cidadeRemetente, cepRemetente,
-            contatoRemetente, telefoneRemetente, especieRemetente, nPedido, veiculoRemetente;
+    private String nomeRemetente, enderecoRemetente, bairroRemetente, cidadeRemetente, cepRemetente,
+            contatoRemetente, telefoneRemetente, numeroPedido;
 
-    // produto
-    private String nomeProduto, peso, dimensoes, nONU;
-
-    // destinatario
-    private String nomeDestinatario, enderecoDestinatario, destinoDestinatario,
-            site, placaDestinatario, semiReboqueDestinatario;
+    // destinatário
+    private String nomeDestinatario, enderecoDestinatario, bairroDestinatario, cidadeDestinatario, cepDestinatario,
+            contatoDestinatario, telefoneDestinatario;
 
     private Funcionario motorista;
 
-    private String observacoes, instrucoes;
+    private String observacoes;
 
-    private String dataColetaEfetuada, horaColetaEfetuada;
-
-    public enum Status {REALIZADA, PENDENTE}
-
-    public Status status;
+    private Status status;
+    private ResultadoViagem resultadoViagem;
 
     public Coleta() {
     }
 
-    public Coleta(String id, String numero, String coletarEm, String dataEmissao, String nomeRemetente, String enderecoRemetente, String referenciaRemetente, String bairroRemetente, String cidadeRemetente, String cepRemetente, String contatoRemetente, String telefoneRemetente, String especieRemetente, String nPedido, String veiculoRemetente, String nomeProduto, String peso, String dimensoes, String nONU, String nomeDestinatario, String enderecoDestinatario, String destinoDestinatario, String site, String placaDestinatario, String semiReboqueDestinatario, Funcionario motorista, String observacoes, String instrucoes, String dataColetaEfetuada, String horaColetaEfetuada, Status status) {
+    public Coleta(String id, String numero, String data, String hora, String nomeRemetente, String enderecoRemetente, String bairroRemetente, String cidadeRemetente, String cepRemetente, String contatoRemetente, String telefoneRemetente, String numeroPedido, String nomeDestinatario, String enderecoDestinatario, String bairroDestinatario, String cidadeDestinatario, String cepDestinatario, String contatoDestinatario, String telefoneDestinatario, Funcionario motorista, String observacoes, Status status, ResultadoViagem resultadoViagem) {
         this.id = id;
         this.numero = numero;
-        this.coletarEm = coletarEm;
-        this.dataEmissao = dataEmissao;
+        this.data = data;
+        this.hora = hora;
         this.nomeRemetente = nomeRemetente;
         this.enderecoRemetente = enderecoRemetente;
-        this.referenciaRemetente = referenciaRemetente;
         this.bairroRemetente = bairroRemetente;
         this.cidadeRemetente = cidadeRemetente;
         this.cepRemetente = cepRemetente;
         this.contatoRemetente = contatoRemetente;
         this.telefoneRemetente = telefoneRemetente;
-        this.especieRemetente = especieRemetente;
-        this.nPedido = nPedido;
-        this.veiculoRemetente = veiculoRemetente;
-        this.nomeProduto = nomeProduto;
-        this.peso = peso;
-        this.dimensoes = dimensoes;
-        this.nONU = nONU;
+        this.numeroPedido = numeroPedido;
         this.nomeDestinatario = nomeDestinatario;
         this.enderecoDestinatario = enderecoDestinatario;
-        this.destinoDestinatario = destinoDestinatario;
-        this.site = site;
-        this.placaDestinatario = placaDestinatario;
-        this.semiReboqueDestinatario = semiReboqueDestinatario;
+        this.bairroDestinatario = bairroDestinatario;
+        this.cidadeDestinatario = cidadeDestinatario;
+        this.cepDestinatario = cepDestinatario;
+        this.contatoDestinatario = contatoDestinatario;
+        this.telefoneDestinatario = telefoneDestinatario;
         this.motorista = motorista;
         this.observacoes = observacoes;
-        this.instrucoes = instrucoes;
-        this.dataColetaEfetuada = dataColetaEfetuada;
-        this.horaColetaEfetuada = horaColetaEfetuada;
         this.status = status;
+        this.resultadoViagem = resultadoViagem;
     }
 
     public void salvar() {
@@ -100,20 +85,20 @@ public class Coleta {
         this.numero = numero;
     }
 
-    public String getColetarEm() {
-        return coletarEm;
+    public String getData() {
+        return data;
     }
 
-    public void setColetarEm(String coletarEm) {
-        this.coletarEm = coletarEm;
+    public void setData(String data) {
+        this.data = data;
     }
 
-    public String getDataEmissao() {
-        return dataEmissao;
+    public String getHora() {
+        return hora;
     }
 
-    public void setDataEmissao(String dataEmissao) {
-        this.dataEmissao = dataEmissao;
+    public void setHora(String hora) {
+        this.hora = hora;
     }
 
     public String getNomeRemetente() {
@@ -130,14 +115,6 @@ public class Coleta {
 
     public void setEnderecoRemetente(String enderecoRemetente) {
         this.enderecoRemetente = enderecoRemetente;
-    }
-
-    public String getReferenciaRemetente() {
-        return referenciaRemetente;
-    }
-
-    public void setReferenciaRemetente(String referenciaRemetente) {
-        this.referenciaRemetente = referenciaRemetente;
     }
 
     public String getBairroRemetente() {
@@ -180,60 +157,12 @@ public class Coleta {
         this.telefoneRemetente = telefoneRemetente;
     }
 
-    public String getEspecieRemetente() {
-        return especieRemetente;
+    public String getNumeroPedido() {
+        return numeroPedido;
     }
 
-    public void setEspecieRemetente(String especieRemetente) {
-        this.especieRemetente = especieRemetente;
-    }
-
-    public String getnPedido() {
-        return nPedido;
-    }
-
-    public void setnPedido(String nPedido) {
-        this.nPedido = nPedido;
-    }
-
-    public String getVeiculoRemetente() {
-        return veiculoRemetente;
-    }
-
-    public void setVeiculoRemetente(String veiculoRemetente) {
-        this.veiculoRemetente = veiculoRemetente;
-    }
-
-    public String getNomeProduto() {
-        return nomeProduto;
-    }
-
-    public void setNomeProduto(String nomeProduto) {
-        this.nomeProduto = nomeProduto;
-    }
-
-    public String getPeso() {
-        return peso;
-    }
-
-    public void setPeso(String peso) {
-        this.peso = peso;
-    }
-
-    public String getDimensoes() {
-        return dimensoes;
-    }
-
-    public void setDimensoes(String dimensoes) {
-        this.dimensoes = dimensoes;
-    }
-
-    public String getnONU() {
-        return nONU;
-    }
-
-    public void setnONU(String nONU) {
-        this.nONU = nONU;
+    public void setNumeroPedido(String numeroPedido) {
+        this.numeroPedido = numeroPedido;
     }
 
     public String getNomeDestinatario() {
@@ -252,36 +181,44 @@ public class Coleta {
         this.enderecoDestinatario = enderecoDestinatario;
     }
 
-    public String getDestinoDestinatario() {
-        return destinoDestinatario;
+    public String getBairroDestinatario() {
+        return bairroDestinatario;
     }
 
-    public void setDestinoDestinatario(String destinoDestinatario) {
-        this.destinoDestinatario = destinoDestinatario;
+    public void setBairroDestinatario(String bairroDestinatario) {
+        this.bairroDestinatario = bairroDestinatario;
     }
 
-    public String getSite() {
-        return site;
+    public String getCidadeDestinatario() {
+        return cidadeDestinatario;
     }
 
-    public void setSite(String site) {
-        this.site = site;
+    public void setCidadeDestinatario(String cidadeDestinatario) {
+        this.cidadeDestinatario = cidadeDestinatario;
     }
 
-    public String getPlacaDestinatario() {
-        return placaDestinatario;
+    public String getCepDestinatario() {
+        return cepDestinatario;
     }
 
-    public void setPlacaDestinatario(String placaDestinatario) {
-        this.placaDestinatario = placaDestinatario;
+    public void setCepDestinatario(String cepDestinatario) {
+        this.cepDestinatario = cepDestinatario;
     }
 
-    public String getSemiReboqueDestinatario() {
-        return semiReboqueDestinatario;
+    public String getContatoDestinatario() {
+        return contatoDestinatario;
     }
 
-    public void setSemiReboqueDestinatario(String semiReboqueDestinatario) {
-        this.semiReboqueDestinatario = semiReboqueDestinatario;
+    public void setContatoDestinatario(String contatoDestinatario) {
+        this.contatoDestinatario = contatoDestinatario;
+    }
+
+    public String getTelefoneDestinatario() {
+        return telefoneDestinatario;
+    }
+
+    public void setTelefoneDestinatario(String telefoneDestinatario) {
+        this.telefoneDestinatario = telefoneDestinatario;
     }
 
     public Funcionario getMotorista() {
@@ -300,35 +237,19 @@ public class Coleta {
         this.observacoes = observacoes;
     }
 
-    public String getInstrucoes() {
-        return instrucoes;
-    }
-
-    public void setInstrucoes(String instrucoes) {
-        this.instrucoes = instrucoes;
-    }
-
-    public String getDataColetaEfetuada() {
-        return dataColetaEfetuada;
-    }
-
-    public void setDataColetaEfetuada(String dataColetaEfetuada) {
-        this.dataColetaEfetuada = dataColetaEfetuada;
-    }
-
-    public String getHoraColetaEfetuada() {
-        return horaColetaEfetuada;
-    }
-
-    public void setHoraColetaEfetuada(String horaColetaEfetuada) {
-        this.horaColetaEfetuada = horaColetaEfetuada;
-    }
-
     public Status getStatus() {
         return status;
     }
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public ResultadoViagem getResultadoViagem() {
+        return resultadoViagem;
+    }
+
+    public void setResultadoViagem(ResultadoViagem resultadoViagem) {
+        this.resultadoViagem = resultadoViagem;
     }
 }

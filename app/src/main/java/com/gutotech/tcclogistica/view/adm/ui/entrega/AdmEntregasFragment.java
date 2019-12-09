@@ -23,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.config.ConfigFirebase;
 import com.gutotech.tcclogistica.model.Entrega;
+import com.gutotech.tcclogistica.model.Status;
 import com.gutotech.tcclogistica.view.adapter.EntregasAdapter;
 
 import java.util.ArrayList;
@@ -79,6 +80,10 @@ public class AdmEntregasFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 statusPesquisado = statusSpinner.getSelectedItem().toString();
+
+                if (statusPesquisado.equals("NÃO REALIZADA"))
+                    statusPesquisado = Status.NAO_REALIZADA.toString();
+
                 buscarEntregas(motoristaPesquisado);
             }
 

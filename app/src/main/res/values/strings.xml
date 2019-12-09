@@ -98,6 +98,13 @@
         <item>Todas</item>
         <item>PENDENTE</item>
         <item>REALIZADA</item>
+        <item>NÃO REALIZADA</item>
+    </string-array>
+
+    <string-array name="status_array2">
+        <item>Todas</item>
+        <item>REALIZADA</item>
+        <item>NÃO REALIZADA</item>
     </string-array>
 
     <string name="welcome_user">Olá</string>
@@ -166,4 +173,5 @@
     <string name="local">Local</string>
     <string name="primeira_habilitacao">1° Habilitação</string>
     <string name="n_registro">N° Registro</string>
+    <string name="finalizadas">Finalizadas</string>
 </resources>

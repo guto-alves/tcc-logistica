@@ -11,14 +11,13 @@ public class Entrega {
     private String data;
     private String hora;
 
-    public enum Status {REALIZADA, PENDENTE}
-
     private Status status;
+    private ResultadoViagem resultadoViagem;
 
     public Entrega() {
     }
 
-    public Entrega(String id, Nota nota, Funcionario motorista, String nomeMotorista, String data, String hora, Status status) {
+    public Entrega(String id, Nota nota, Funcionario motorista, String nomeMotorista, String data, String hora, Status status, ResultadoViagem resultadoViagem) {
         this.id = id;
         this.nota = nota;
         this.motorista = motorista;
@@ -26,6 +25,7 @@ public class Entrega {
         this.data = data;
         this.hora = hora;
         this.status = status;
+        this.resultadoViagem = resultadoViagem;
     }
 
     public void salvar() {
@@ -34,6 +34,14 @@ public class Entrega {
                 .child(id);
 
         entregaReference.setValue(this);
+    }
+
+    public void excluir() {
+        DatabaseReference entregaReference = ConfigFirebase.getDatabase()
+                .child("entrega")
+                .child(id);
+
+        entregaReference.removeValue();
     }
 
     public String getId() {
@@ -90,5 +98,13 @@ public class Entrega {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public ResultadoViagem getResultadoViagem() {
+        return resultadoViagem;
+    }
+
+    public void setResultadoViagem(ResultadoViagem resultadoViagem) {
+        this.resultadoViagem = resultadoViagem;
     }
 }

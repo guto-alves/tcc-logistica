@@ -79,8 +79,12 @@ public class AdmNotasFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 notasList.clear();
 
-                for (DataSnapshot data : dataSnapshot.getChildren())
-                    notasList.add(data.getValue(Nota.class));
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                    Nota nota = data.getValue(Nota.class);
+
+                    if (nota.isEstoque())
+                        notasList.add(nota);
+                }
 
                 int totalNotas = notasList.size();
                 totalTextView.setText(String.format(Locale.getDefault(), "Total: %d", totalNotas));

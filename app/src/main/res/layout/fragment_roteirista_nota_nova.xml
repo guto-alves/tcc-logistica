@@ -29,7 +29,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="N°"
+                    android:layout_gravity="center"
+                    android:background="@drawable/background_title"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="NF-e"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="Número"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 

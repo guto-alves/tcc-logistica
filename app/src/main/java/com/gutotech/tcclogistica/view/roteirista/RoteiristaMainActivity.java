@@ -30,13 +30,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RoteiristaMainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
 
-    private ImageView profileImageView;
+    private CircleImageView profileImageView;
 
     private DatabaseReference funcionarioReference;
     private ValueEventListener funcionarioListener;

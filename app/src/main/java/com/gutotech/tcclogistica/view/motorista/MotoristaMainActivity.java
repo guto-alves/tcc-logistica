@@ -7,8 +7,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -33,15 +31,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.Locale;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MotoristaMainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
 
-    private ImageView profileImageView;
+    private CircleImageView profileImageView;
 
     private DatabaseReference funcionarioReference;
     private ValueEventListener funcionarioListener;

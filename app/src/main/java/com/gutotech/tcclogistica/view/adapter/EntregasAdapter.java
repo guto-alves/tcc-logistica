@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.model.Entrega;
+import com.gutotech.tcclogistica.model.Status;
 
 import java.util.List;
 
@@ -35,16 +36,17 @@ public class EntregasAdapter extends RecyclerView.Adapter<EntregasAdapter.MyView
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Entrega entrega = entregasList.get(position);
 
-
         holder.numeroNotaTextView.setText(String.valueOf(entrega.getNota().getNumero()));
         holder.nomeMotorista.setText(entrega.getMotorista().getNome());
         holder.destinatarioTextView.setText(entrega.getNota().getDestinatario().getNome());
         holder.enderecoTextView.setText(entrega.getNota().getDestinatario().getEndereco().getEndereco());
         holder.dataTextView.setText(entrega.getData());
         holder.horarioEntregarTextView.setText(entrega.getHora());
-        holder.statusTextView.setText(entrega.getStatus().toString());
+        holder.statusTextView.setText(entrega.getStatus() == Status.NAO_REALIZADA ? "NÃO REALIZADA" : entrega.getStatus().toString());
 
-        if (entrega.getStatus() == Entrega.Status.REALIZADA)
+        if (entrega.getStatus() == Status.PENDENTE)
+            holder.statusTextView.setTextColor(Color.YELLOW);
+        else if (entrega.getStatus() == Status.REALIZADA)
             holder.statusTextView.setTextColor(Color.GREEN);
         else
             holder.statusTextView.setTextColor(Color.RED);

@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_novo"
+        android:id="@+id/action_pendentes"
         android:enabled="true"
-        android:icon="@drawable/ic_near_me_24dp"
+        android:icon="@drawable/ic_warning_24dp"
         android:title="@string/pedentes"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/action_cadastrados"
-        android:icon="@drawable/ic_mail_24dp"
-        android:title="@string/realizadas"
+        android:id="@+id/action_realizadas"
+        android:icon="@drawable/ic_done_all_24dp"
+        android:title="@string/finalizadas"
         app:showAsAction="ifRoom" />
 </menu>

@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -25,15 +26,19 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.gutotech.tcclogistica.R;
+import com.gutotech.tcclogistica.helper.DateCustom;
 import com.gutotech.tcclogistica.helper.TextRecognizer;
 import com.gutotech.tcclogistica.config.ConfigFirebase;
 import com.gutotech.tcclogistica.model.Coleta;
 import com.gutotech.tcclogistica.model.Funcionario;
+import com.gutotech.tcclogistica.model.ResultadoViagem;
+import com.gutotech.tcclogistica.model.Status;
 import com.gutotech.tcclogistica.view.OpenCameraOrGalleryDialogFragment;
 import com.gutotech.tcclogistica.view.ProcessingDialog;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 import es.dmoral.toasty.Toasty;
@@ -42,30 +47,26 @@ public class RoteiristaColetaNovaFragment extends Fragment {
     private Coleta coleta = new Coleta();
 
     private EditText numeroColetaEditText;
-    private EditText coletarEmEditText;
-    private EditText dataEmissaoEditText;
+    private EditText dataEditText;
+    private EditText horaEditText;
 
     //  remetente
-    private EditText nomeRemetenteEditText, enderecoRemetenteEditText, referenciaRemetenteEditText,
+    private EditText nomeRemetenteEditText, enderecoRemetenteEditText,
             bairroRemetenteEditText, cidadeRemetenteEditText, cepRemetenteEditText,
-            contatoRemetenteEditText, telefoneRemetenteEditText, especieRemetenteEditText, nPedidoEditText, veiculoRemetenteEditText;
-
-    //  produto
-    private EditText nomeProdutoEditText, pesoEditText, dimensoesEditText, nONUEditText;
+            contatoRemetenteEditText, telefoneRemetenteEditText, numeroPedidoEditText;
 
     //  destinatario
-    private EditText nomeDestinatarioEditText, enderecoDestinatarioEditText, destinoDestinatarioEditText,
-            siteEditText, placaDestinatarioEditText, semiReboqueDestinatarioEditText;
+    private EditText nomeDestinatarioEditText, enderecoDestinatarioEditText,
+            bairroDestinatarioEditText, cidadeDestinatarioEditText, cepDestinatarioEditText,
+            contatoDestinatarioEditText, telefoneDestinatarioEditText;
 
     private EditText rgMotoristaEditText;
 
-    private EditText observacoesEditText, instrucoesEditText;
+    private EditText observacoesEditText;
 
-    private EditText dataColetaEfetuadaEditText, horaColetaEfetuadaEditText;
-
-    private List<Funcionario> motoristasList = new ArrayList<>();
+    private List<Funcionario> motoristasList = new LinkedList<>();
     private ArrayAdapter motoristasArrayAdapter;
-    private List<String> nomesMotoristasList = new ArrayList<>();
+    private List<String> nomesMotoristasList = new LinkedList<>();
 
     private DatabaseReference motoristasReference;
     private Query motoristasQuery;
@@ -84,44 +85,54 @@ public class RoteiristaColetaNovaFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_roteirista_coletas_nova, container, false);
 
         numeroColetaEditText = root.findViewById(R.id.numeroColetaEditText);
-        coletarEmEditText = root.findViewById(R.id.coletarEmEditText);
-        dataEmissaoEditText = root.findViewById(R.id.dataEmissaoEditText);
+        dataEditText = root.findViewById(R.id.dataEditText);
+        final CalendarView calendarView = root.findViewById(R.id.calendarView);
+        horaEditText = root.findViewById(R.id.horaEditText);
 
         nomeRemetenteEditText = root.findViewById(R.id.nomeRemetenteEditText);
         enderecoRemetenteEditText = root.findViewById(R.id.enderecoRemetenteEditText);
-        referenciaRemetenteEditText = root.findViewById(R.id.referenciaRemetenteEditText);
         bairroRemetenteEditText = root.findViewById(R.id.bairroRemetenteEditText);
         cidadeRemetenteEditText = root.findViewById(R.id.cidadeRemetenteEditText);
         cepRemetenteEditText = root.findViewById(R.id.cepRemetenteEditText);
-
         contatoRemetenteEditText = root.findViewById(R.id.contatoRemetenteEditText);
         telefoneRemetenteEditText = root.findViewById(R.id.telefoneRemetenteEditText);
-        especieRemetenteEditText = root.findViewById(R.id.especieRemetenteEditText);
-        nPedidoEditText = root.findViewById(R.id.numeroPedidoEditText);
-        veiculoRemetenteEditText = root.findViewById(R.id.veiculoRemetenteEditText);
-
-        nomeProdutoEditText = root.findViewById(R.id.nomeProdutoEditText);
-        pesoEditText = root.findViewById(R.id.pesoEditText);
-        dimensoesEditText = root.findViewById(R.id.dimensoesEditText);
-        nONUEditText = root.findViewById(R.id.nONUEditText);
+        numeroPedidoEditText = root.findViewById(R.id.numeroPedidoEditText);
 
         nomeDestinatarioEditText = root.findViewById(R.id.nomeDestinatarioEditText);
         enderecoDestinatarioEditText = root.findViewById(R.id.enderecoDestinatarioEditText);
-        destinoDestinatarioEditText = root.findViewById(R.id.destinoDestinatarioEditText);
-        siteEditText = root.findViewById(R.id.siteDestinatarioEditText);
-        placaDestinatarioEditText = root.findViewById(R.id.placaDestinatarioEditText);
-        semiReboqueDestinatarioEditText = root.findViewById(R.id.semiReboqueDestinatarioEditText);
+        bairroDestinatarioEditText = root.findViewById(R.id.bairroDestinatarioEditText);
+        cidadeDestinatarioEditText = root.findViewById(R.id.cidadeDestinatarioEditText);
+        cepDestinatarioEditText = root.findViewById(R.id.cepDestinatarioEditText);
+        contatoDestinatarioEditText = root.findViewById(R.id.contatoDestinatarioEditText);
+        telefoneDestinatarioEditText = root.findViewById(R.id.telefoneDestinatarioEditText);
 
         Spinner motoristaSpinner = root.findViewById(R.id.motoristaSpinner);
         rgMotoristaEditText = root.findViewById(R.id.rgMotoristaEditText);
-
         observacoesEditText = root.findViewById(R.id.observacoesEditText);
-        instrucoesEditText = root.findViewById(R.id.instrucoesEditText);
-
-        dataColetaEfetuadaEditText = root.findViewById(R.id.dataColetaEfetuadaEditText);
-        horaColetaEfetuadaEditText = root.findViewById(R.id.horaColetaEfetuadaEditText);
 
         adicionarMascaras();
+
+        dataEditText.setText(DateCustom.getData());
+        dataEditText.addTextChangedListener(new MaskTextWatcher(dataEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
+        dataEditText.setFocusable(false);
+        dataEditText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calendarView.setVisibility(View.VISIBLE);
+            }
+        });
+
+        calendarView.setVisibility(View.GONE);
+        calendarView.setDate(System.currentTimeMillis());
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                String data = String.format(Locale.getDefault(), "%02d/%02d/%04d", dayOfMonth, month + 1, year);
+                dataEditText.setText(data);
+                dataEditText.setError(null);
+                calendarView.setVisibility(View.GONE);
+            }
+        });
 
         motoristasArrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, nomesMotoristasList);
         motoristasArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -186,8 +197,8 @@ public class RoteiristaColetaNovaFragment extends Fragment {
                 Log.i("teste", String.format("%dº = %s", i, tokens[i]));
 
             numeroColetaEditText.setText(tokens[5]);
-            coletarEmEditText.setText(String.format("%s até %s", tokens[7].replace("Coletar:", ""), tokens[9]));
-            dataEmissaoEditText.setText(tokens[13] + " " + tokens[14] + " hr");
+            dataEditText.setText(String.format("%s até %s", tokens[7].replace("Coletar:", ""), tokens[9]));
+            horaEditText.setText(tokens[13] + " " + tokens[14] + " hr");
 
             nomeRemetenteEditText.setText(text.substring(text.indexOf("Remetente"), text.indexOf("Endereço")));
             enderecoRemetenteEditText.setText(text.substring(text.indexOf("Endereço"), text.indexOf("Referência")));
@@ -206,38 +217,31 @@ public class RoteiristaColetaNovaFragment extends Fragment {
                 coleta.setId(UUID.randomUUID().toString());
 
                 coleta.setNumero(numeroColetaEditText.getText().toString());
-                coleta.setColetarEm(coletarEmEditText.getText().toString());
-                coleta.setDataEmissao(dataEmissaoEditText.getText().toString());
+                coleta.setData(dataEditText.getText().toString());
+                coleta.setHora(horaEditText.getText().toString());
 
                 coleta.setNomeRemetente(nomeRemetenteEditText.getText().toString());
                 coleta.setEnderecoRemetente(enderecoRemetenteEditText.getText().toString());
-                coleta.setReferenciaRemetente(referenciaRemetenteEditText.getText().toString());
                 coleta.setBairroRemetente(bairroRemetenteEditText.getText().toString());
                 coleta.setCidadeRemetente(cidadeRemetenteEditText.getText().toString());
                 coleta.setCepRemetente(cepRemetenteEditText.getText().toString());
                 coleta.setContatoRemetente(contatoRemetenteEditText.getText().toString());
                 coleta.setTelefoneRemetente(telefoneRemetenteEditText.getText().toString());
-                coleta.setEspecieRemetente(especieRemetenteEditText.getText().toString());
-                coleta.setnPedido(especieRemetenteEditText.getText().toString());
-                coleta.setVeiculoRemetente(veiculoRemetenteEditText.getText().toString());
-
-                coleta.setNomeProduto(nomeProdutoEditText.getText().toString());
-                coleta.setPeso(pesoEditText.getText().toString());
-                coleta.setDimensoes(dimensoesEditText.getText().toString());
-                coleta.setnONU(nONUEditText.getText().toString());
+                coleta.setNumeroPedido(numeroPedidoEditText.getText().toString());
 
                 coleta.setNomeDestinatario(nomeDestinatarioEditText.getText().toString());
                 coleta.setEnderecoDestinatario(enderecoDestinatarioEditText.getText().toString());
-                coleta.setDestinoDestinatario(destinoDestinatarioEditText.getText().toString());
-                coleta.setSite(siteEditText.getText().toString());
-                coleta.setPlacaDestinatario(placaDestinatarioEditText.getText().toString());
+                coleta.setBairroDestinatario(bairroDestinatarioEditText.getText().toString());
+                coleta.setCidadeDestinatario(cidadeDestinatarioEditText.getText().toString());
+                coleta.setCepDestinatario(cepDestinatarioEditText.getText().toString());
+                coleta.setContatoRemetente(contatoDestinatarioEditText.getText().toString());
+                coleta.setTelefoneRemetente(telefoneDestinatarioEditText.getText().toString());
 
                 coleta.setObservacoes(observacoesEditText.getText().toString());
-                coleta.setInstrucoes(instrucoesEditText.getText().toString());
 
-                coleta.setDataColetaEfetuada(dataColetaEfetuadaEditText.getText().toString());
-                coleta.setHoraColetaEfetuada(horaColetaEfetuadaEditText.getText().toString());
-                coleta.setStatus(Coleta.Status.PENDENTE);
+                coleta.setResultadoViagem(new ResultadoViagem());
+
+                coleta.setStatus(Status.PENDENTE);
                 coleta.salvar();
 
                 limparCampos();
@@ -247,18 +251,16 @@ public class RoteiristaColetaNovaFragment extends Fragment {
     };
 
     private void adicionarMascaras() {
-        coletarEmEditText.addTextChangedListener(new MaskTextWatcher(coletarEmEditText, new SimpleMaskFormatter("NN/NN/NNNN até NN:NN hr")));
-        dataEmissaoEditText.addTextChangedListener(new MaskTextWatcher(dataEmissaoEditText, new SimpleMaskFormatter("NN/NN/NNNN NN:NN")));
+        dataEditText.addTextChangedListener(new MaskTextWatcher(dataEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
+        horaEditText.addTextChangedListener(new MaskTextWatcher(horaEditText, new SimpleMaskFormatter("NN:NN")));
 
         cepRemetenteEditText.addTextChangedListener(new MaskTextWatcher(cepRemetenteEditText, new SimpleMaskFormatter("NN.NNN-NNN")));
         telefoneRemetenteEditText.addTextChangedListener(new MaskTextWatcher(telefoneRemetenteEditText, new SimpleMaskFormatter("(NN) NNNN-NNNN")));
 
-        placaDestinatarioEditText.addTextChangedListener(new MaskTextWatcher(placaDestinatarioEditText, new SimpleMaskFormatter("UUU-NNNN")));
+        cepDestinatarioEditText.addTextChangedListener(new MaskTextWatcher(cepDestinatarioEditText, new SimpleMaskFormatter("NN.NNN-NNN")));
+        telefoneDestinatarioEditText.addTextChangedListener(new MaskTextWatcher(telefoneDestinatarioEditText, new SimpleMaskFormatter("(NN) NNNN-NNNN")));
 
         rgMotoristaEditText.addTextChangedListener(new MaskTextWatcher(rgMotoristaEditText, new SimpleMaskFormatter("NN.NNN.NNN-N")));
-
-        dataColetaEfetuadaEditText.addTextChangedListener(new MaskTextWatcher(dataColetaEfetuadaEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
-        horaColetaEfetuadaEditText.addTextChangedListener(new MaskTextWatcher(horaColetaEfetuadaEditText, new SimpleMaskFormatter("NN:NN:NN")));
     }
 
     private boolean isValidFields(String numeroColeta) {
@@ -274,39 +276,27 @@ public class RoteiristaColetaNovaFragment extends Fragment {
 
     private void limparCampos() {
         numeroColetaEditText.setText("");
-        coletarEmEditText.setText("");
-        dataEmissaoEditText.setText("");
+        dataEditText.setText("");
+        horaEditText.setText("");
 
         nomeRemetenteEditText.setText("");
         enderecoRemetenteEditText.setText("");
-        referenciaRemetenteEditText.setText("");
         bairroRemetenteEditText.setText("");
         cidadeRemetenteEditText.setText("");
         cepRemetenteEditText.setText("");
-
         contatoRemetenteEditText.setText("");
         telefoneRemetenteEditText.setText("");
-        especieRemetenteEditText.setText("");
-        nPedidoEditText.setText("");
-        veiculoRemetenteEditText.setText("");
-
-        nomeProdutoEditText.setText("");
-        pesoEditText.setText("");
-        dimensoesEditText.setText("");
-        nONUEditText.setText("");
+        numeroPedidoEditText.setText("");
 
         nomeDestinatarioEditText.setText("");
         enderecoDestinatarioEditText.setText("");
-        destinoDestinatarioEditText.setText("");
-        siteEditText.setText("");
-        placaDestinatarioEditText.setText("");
-        semiReboqueDestinatarioEditText.setText("");
+        bairroDestinatarioEditText.setText("");
+        cidadeDestinatarioEditText.setText("");
+        cepDestinatarioEditText.setText("");
+        contatoDestinatarioEditText.setText("");
+        telefoneDestinatarioEditText.setText("");
 
         observacoesEditText.setText("");
-        instrucoesEditText.setText("");
-
-        dataColetaEfetuadaEditText.setText("");
-        horaColetaEfetuadaEditText.setText("");
     }
 
     private void getMotoristas() {

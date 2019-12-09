@@ -23,7 +23,9 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.config.ConfigFirebase;
+import com.gutotech.tcclogistica.helper.RecyclerItemClickListener;
 import com.gutotech.tcclogistica.model.Entrega;
+import com.gutotech.tcclogistica.model.Status;
 import com.gutotech.tcclogistica.view.adapter.EntregasAdapter;
 
 import java.util.ArrayList;
@@ -31,6 +33,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class RoteiristaEntregasListaFragment extends Fragment {
+    private RecyclerView entregasRecyclerView;
     private List<Entrega> entregasList = new ArrayList<>();
     private EntregasAdapter entregasAdapter;
 
@@ -54,12 +57,13 @@ public class RoteiristaEntregasListaFragment extends Fragment {
         totalTextView = root.findViewById(R.id.totalTextView);
         statusTextView = root.findViewById(R.id.statusPesquisaTextView);
 
-        RecyclerView entregasRecyclerView = root.findViewById(R.id.entregasRecyclerView);
+        entregasRecyclerView = root.findViewById(R.id.entregasRecyclerView);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         entregasRecyclerView.setLayoutManager(layoutManager);
         entregasRecyclerView.setHasFixedSize(true);
         entregasAdapter = new EntregasAdapter(getActivity(), entregasList);
         entregasRecyclerView.setAdapter(entregasAdapter);
+        entregasRecyclerView.addOnItemTouchListener(entregaItemTouchListener);
 
         SearchView searchView = root.findViewById(R.id.searchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -84,6 +88,10 @@ public class RoteiristaEntregasListaFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 statusPesquisado = statusSpinner.getSelectedItem().toString();
+
+                if (statusPesquisado.equals("NÃO REALIZADA"))
+                    statusPesquisado = Status.NAO_REALIZADA.toString();
+
                 buscarEntregas(motoristaPesquisado);
             }
 
@@ -94,6 +102,24 @@ public class RoteiristaEntregasListaFragment extends Fragment {
 
         return root;
     }
+
+    private final RecyclerView.OnItemTouchListener entregaItemTouchListener = new RecyclerItemClickListener(getActivity(), entregasRecyclerView, new RecyclerItemClickListener.OnItemClickListener() {
+        @Override
+        public void onItemClick(View view, int position) {
+            Entrega entrega = entregasList.get(position);
+
+            EntregaDialog entregaDialog = new EntregaDialog(getActivity(), entrega);
+            entregaDialog.show();
+        }
+
+        @Override
+        public void onLongItemClick(View view, int position) {
+        }
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        }
+    });
 
     private void buscarEntregas(String query) {
         DatabaseReference entregasReference = ConfigFirebase.getDatabase().child("entrega");

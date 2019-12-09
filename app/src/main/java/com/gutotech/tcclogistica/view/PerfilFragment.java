@@ -31,6 +31,7 @@ import com.gutotech.tcclogistica.model.FuncionarioOn;
 import java.io.IOException;
 import java.util.UUID;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import es.dmoral.toasty.Toasty;
 
 import static android.app.Activity.RESULT_OK;
@@ -41,7 +42,7 @@ public class PerfilFragment extends Fragment {
 
     private TextView categoriaTextView, nRegistroTextView, validadeTextView, primeiraHabilitacaoTextView, localTextView, dataEmissaoTextView;
 
-    private ImageView profileImageView;
+    private CircleImageView profileImageView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

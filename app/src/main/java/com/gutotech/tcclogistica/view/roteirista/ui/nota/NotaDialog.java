@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.gutotech.tcclogistica.R;
+import com.gutotech.tcclogistica.helper.Actions;
 import com.gutotech.tcclogistica.model.CalculoImposto;
 import com.gutotech.tcclogistica.model.Destinatario;
 import com.gutotech.tcclogistica.model.Endereco;
@@ -42,7 +43,7 @@ public class NotaDialog extends Dialog {
     private EditText nomeTransportadorEditText, fretePorContaEditText, codANTTEditText, placaVeiculoEditText, cnpjTransportadorEditText,
             enderecoTransportadorEditText, municipioTransportadorEditText, ufTransportadorEditText, ieTransportadorEditText;
 
-    public NotaDialog(@NonNull Context context, final Nota nota) {
+    public NotaDialog(@NonNull final Context context, final Nota nota) {
         super(context);
         setContentView(R.layout.dialog_nota);
         setCancelable(false);
@@ -78,6 +79,14 @@ public class NotaDialog extends Dialog {
         ieTransportadorEditText = findViewById(R.id.ieTransportadorEditText);
 
         adicionarMascaras();
+
+        ImageButton openMapImageButton = findViewById(R.id.openMapImageButton);
+        openMapImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Actions.openMap(context, NotaDialog.this.nota.getDestinatario().getEndereco().getEndereco());
+            }
+        });
 
         ImageButton fecharButton = findViewById(R.id.fecharButton);
         final ImageButton updateImageButton = findViewById(R.id.updateImageButton);

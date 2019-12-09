@@ -11,8 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
@@ -27,26 +28,23 @@ import com.gutotech.tcclogistica.config.ConfigFirebase;
 import com.gutotech.tcclogistica.helper.DateCustom;
 import com.gutotech.tcclogistica.model.Coleta;
 import com.gutotech.tcclogistica.model.FuncionarioOn;
+import com.gutotech.tcclogistica.model.Status;
 import com.gutotech.tcclogistica.view.adapter.ColetasAdapter;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
 public class MotoristaColetasPendentesFragment extends Fragment {
-    private List<Coleta> coletasList = new ArrayList<>();
-    private List<Coleta> coletasDataList = new ArrayList<>();
-    private List<Coleta> coletasNumeroList = new ArrayList<>();
-
+    private List<Coleta> coletasList = new LinkedList<>();
     private ColetasAdapter coletasAdapter;
 
-    private Query coletasNumeroQuery;
-    private Query coletasDataQuery;
-    private ValueEventListener coletasNumeroListener;
-    private ValueEventListener coletasDataListener;
+    private Query coletasPorDataQuery;
+    private ValueEventListener coletasListener;
 
+    private EditText dataEditText;
     private TextView totalTextView;
-    private TextView statusColetasTextView;
+    private TextView statusTextView;
 
     public MotoristaColetasPendentesFragment() {
     }
@@ -54,41 +52,23 @@ public class MotoristaColetasPendentesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_motorista_coletas_pendentes, container, false);
+        View root = inflater.inflate(R.layout.fragment_motorista_entregas_pendentes, container, false);
 
+        dataEditText = root.findViewById(R.id.dataEditText);
         final CalendarView calendarView = root.findViewById(R.id.calendarView);
-        final EditText dataEditText = root.findViewById(R.id.dataEditText);
+        final CheckBox todasCheckBox = root.findViewById(R.id.todasCheckBox);
+        statusTextView = root.findViewById(R.id.statusTextView);
         totalTextView = root.findViewById(R.id.totalTextView);
-        statusColetasTextView = root.findViewById(R.id.statusTextView);
-        RecyclerView coletasRecyclerView = root.findViewById(R.id.coletasRecyclerView);
-
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        coletasRecyclerView.setLayoutManager(layoutManager);
-        coletasRecyclerView.setHasFixedSize(true);
-        coletasAdapter = new ColetasAdapter(getActivity(), coletasList);
-        coletasRecyclerView.setAdapter(coletasAdapter);
-
-        SearchView searchView = root.findViewById(R.id.searchView);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                buscarColetasPorNumero(newText);
-                return true;
-            }
-        });
 
         dataEditText.setText(DateCustom.getData());
         dataEditText.addTextChangedListener(new MaskTextWatcher(dataEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
         dataEditText.setFocusable(false);
+        dataEditText.setText(DateCustom.getData());
         dataEditText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 calendarView.setVisibility(View.VISIBLE);
+                todasCheckBox.setEnabled(false);
             }
         });
 
@@ -97,98 +77,86 @@ public class MotoristaColetasPendentesFragment extends Fragment {
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                String data = String.format(Locale.getDefault(), "%02d/%02d/%04d", dayOfMonth, month, year);
+                String data = String.format(Locale.getDefault(), "%02d/%02d/%04d", dayOfMonth, month + 1, year);
                 dataEditText.setText(data);
                 calendarView.setVisibility(View.GONE);
                 buscarColetasPorData(data);
+                todasCheckBox.setEnabled(true);
             }
         });
+
+        todasCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    dataEditText.setEnabled(false);
+                    buscarColetasPorData("");
+                } else {
+                    dataEditText.setEnabled(true);
+                    buscarColetasPorData(dataEditText.getText().toString());
+                }
+            }
+        });
+
+        RecyclerView entregasRecyclerView = root.findViewById(R.id.entregasPendentesRecyclerView);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        entregasRecyclerView.setLayoutManager(layoutManager);
+        entregasRecyclerView.setHasFixedSize(true);
+        coletasAdapter = new ColetasAdapter(getActivity(), coletasList);
+        entregasRecyclerView.setAdapter(coletasAdapter);
 
         return root;
     }
 
-    private void buscarColetasPorNumero(String query) {
-        DatabaseReference coletasReference = ConfigFirebase.getDatabase().child("coleta");
-        coletasNumeroQuery = coletasReference.orderByChild("numero").startAt(query).endAt(query + "\uf8ff");
+    private void buscarColetasPorData(String data) {
+        DatabaseReference entregasReference = ConfigFirebase.getDatabase().child("coleta");
 
-        coletasNumeroListener = coletasNumeroQuery.addValueEventListener(new ValueEventListener() {
+        coletasPorDataQuery = entregasReference.orderByChild("data").startAt(data).endAt(data + "\uf8ff");
+
+        coletasListener = coletasPorDataQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                coletasNumeroList.clear();
+                coletasList.clear();
+
+                statusTextView.setText("Buscando coletas ..");
+                statusTextView.setVisibility(View.VISIBLE);
 
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     Coleta coleta = data.getValue(Coleta.class);
-                    if (coleta.getStatus() == Coleta.Status.PENDENTE && coleta.getMotorista().getLogin().getUser().equals(FuncionarioOn.funcionario.getLogin().getUser()))
-                        coletasNumeroList.add(coleta);
+
+                    if (coleta.getMotorista().getLogin().getUser().equals(FuncionarioOn.funcionario.getLogin().getUser())) {
+                        if (coleta.getStatus() == Status.PENDENTE)
+                            coletasList.add(coleta);
+                    }
                 }
 
-                matchQueries();
+                int totalColetas = coletasList.size();
+                totalTextView.setText(String.format(Locale.getDefault(), "Total: %d", totalColetas));
+
+                if (totalColetas == 0)
+                    statusTextView.setText("Nenhuma coleta encontrada.");
+                else
+                    statusTextView.setVisibility(View.GONE);
+
+                coletasAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-    }
-
-    private void buscarColetasPorData(String query) {
-        DatabaseReference coletasReference = ConfigFirebase.getDatabase().child("coleta");
-        coletasDataQuery = coletasReference.orderByChild("coletarEm").startAt(query).endAt(query + "\uf8ff");
-
-        coletasDataListener = coletasDataQuery.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                coletasDataList.clear();
-
-                for (DataSnapshot data : dataSnapshot.getChildren()) {
-                    Coleta coleta = data.getValue(Coleta.class);
-                    if (coleta.getStatus() == Coleta.Status.PENDENTE && coleta.getMotorista().getLogin().getUser().equals(FuncionarioOn.funcionario.getLogin().getUser()))
-                        coletasDataList.add(coleta);
-                }
-
-                matchQueries();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
-    }
-
-    private void matchQueries() {
-        coletasList.clear();
-
-        for (Coleta coletaNumero : coletasNumeroList) {
-            for (Coleta coletaData : coletasDataList) {
-                if (coletaNumero.getNumero().equals(coletaData.getNumero()))
-                    coletasList.add(coletaData);
-            }
-        }
-
-        int totalColetas = coletasList.size();
-        totalTextView.setText(String.format(Locale.getDefault(), "Total: %d", totalColetas));
-
-        if (totalColetas == 0) {
-            statusColetasTextView.setText("Nenhuma coleta encontrada.");
-            statusColetasTextView.setVisibility(View.VISIBLE);
-        } else
-            statusColetasTextView.setVisibility(View.GONE);
-
-        coletasAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        buscarColetasPorNumero("");
         buscarColetasPorData(DateCustom.getData());
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        coletasNumeroQuery.removeEventListener(coletasNumeroListener);
-        coletasDataQuery.removeEventListener(coletasDataListener);
+        coletasPorDataQuery.removeEventListener(coletasListener);
     }
 
 }
