@@ -60,8 +60,13 @@ public class VeiculoNovoFragment extends Fragment {
     private final View.OnClickListener salvarButtonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (placaEditText.getText().toString().isEmpty()) {
+            if (placaEditText.getText().toString().trim().isEmpty()) {
                 placaEditText.setError("Este campo é obrigatório");
+                return;
+            }
+
+            if (modeloEditText.getText().toString().trim().isEmpty()) {
+                modeloEditText.setError("Este campo é obrigatório");
                 return;
             }
 
@@ -84,6 +89,7 @@ public class VeiculoNovoFragment extends Fragment {
         veiculo.setModelo(modeloEditText.getText().toString());
         veiculo.setCor(corEditText.getText().toString());
         veiculo.setAno(anoEditText.getText().toString());
+        veiculo.setAlocado(false);
         veiculo.salvar();
     }
 

@@ -61,7 +61,7 @@ public class RoteiristaMainActivity extends AppCompatActivity {
         atualizarFoto();
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_notas, R.id.nav_entregas, R.id.nav_coletas, R.id.nav_meus_dados, R.id.nav_suporte)
+                R.id.nav_notas, R.id.nav_entregas, R.id.nav_coletas, R.id.nav_veiculos, R.id.nav_meus_dados, R.id.nav_suporte)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

@@ -94,10 +94,10 @@ public class VeiculoDialog extends Dialog {
 
     private void setInformations() {
         placaEditText.setText(veiculo.getPlaca());
-        marcaEditText.setText(veiculo.getPlaca());
-        modeloEditText.setText(veiculo.getPlaca());
-        anoEditText.setText(veiculo.getPlaca());
-        corEditText.setText(veiculo.getPlaca());
+        marcaEditText.setText(veiculo.getModelo());
+        modeloEditText.setText(veiculo.getModelo());
+        anoEditText.setText(veiculo.getAno());
+        corEditText.setText(veiculo.getCor());
     }
 
     private void updateEmployee() {

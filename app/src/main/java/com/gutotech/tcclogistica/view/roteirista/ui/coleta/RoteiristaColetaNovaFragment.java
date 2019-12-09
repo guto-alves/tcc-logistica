@@ -82,7 +82,7 @@ public class RoteiristaColetaNovaFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_roteirista_coletas_nova, container, false);
+        View root = inflater.inflate(R.layout.fragment_roteirista_coleta_nova, container, false);
 
         numeroColetaEditText = root.findViewById(R.id.numeroColetaEditText);
         dataEditText = root.findViewById(R.id.dataEditText);

@@ -107,6 +107,12 @@
         <item>NÃO REALIZADA</item>
     </string-array>
 
+    <string-array name="status_veiculos_array">
+        <item>Todos</item>
+        <item>Alocados</item>
+        <item>Não Alocados</item>
+    </string-array>
+
     <string name="welcome_user">Olá</string>
     <string name="nota">Nota</string>
     <string name="hora_entrega">Hora Entrega</string>
@@ -174,4 +180,5 @@
     <string name="primeira_habilitacao">1° Habilitação</string>
     <string name="n_registro">N° Registro</string>
     <string name="finalizadas">Finalizadas</string>
+    <string name="alocar">Alocar</string>
 </resources>

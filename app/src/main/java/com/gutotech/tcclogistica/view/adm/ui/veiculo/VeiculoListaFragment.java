@@ -14,7 +14,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.SearchView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -41,6 +43,8 @@ public class VeiculoListaFragment extends Fragment {
     private ValueEventListener valueEventListener;
 
     private String placaPesquisada = "";
+
+    private String statusSelecionado = "Todos";
 
     private TextView totalTextView;
     private TextView statusPesquisaTextView;
@@ -75,8 +79,24 @@ public class VeiculoListaFragment extends Fragment {
             @Override
             public boolean onQueryTextChange(String newText) {
                 placaPesquisada = newText;
-                buscarVeiculo(placaPesquisada);
+                buscarVeiculos(placaPesquisada);
                 return true;
+            }
+        });
+
+        final Spinner statusSpinner = root.findViewById(R.id.statusSpinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.status_veiculos_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        statusSpinner.setAdapter(adapter);
+        statusSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                statusSelecionado = statusSpinner.getSelectedItem().toString();
+                buscarVeiculos(placaPesquisada);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
@@ -133,7 +153,6 @@ public class VeiculoListaFragment extends Fragment {
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
-
     }
 
     private final RecyclerView.OnItemTouchListener veiculoItemTouchListener = new RecyclerItemClickListener(getActivity(), veiculosRecyclerView, new RecyclerItemClickListener.OnItemClickListener() {
@@ -154,7 +173,7 @@ public class VeiculoListaFragment extends Fragment {
         }
     });
 
-    private void buscarVeiculo(String query) {
+    private void buscarVeiculos(String query) {
         DatabaseReference veiculoReference = ConfigFirebase.getDatabase().child("veiculo");
 
         veiculosQuery = veiculoReference.orderByChild("placa").startAt(query).endAt(query + "\uf8ff");
@@ -166,7 +185,13 @@ public class VeiculoListaFragment extends Fragment {
 
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     Veiculo veiculo = data.getValue(Veiculo.class);
-                    veiculos.add(veiculo);
+
+                    if (statusSelecionado.equals("Todos"))
+                        veiculos.add(veiculo);
+                    else if (statusSelecionado.equals("Alocados") && veiculo.isAlocado())
+                        veiculos.add(veiculo);
+                    else if (statusSelecionado.equals("Não Alocados") == !veiculo.isAlocado())
+                        veiculos.add(veiculo);
                 }
 
                 int totalColetas = veiculos.size();
@@ -190,7 +215,7 @@ public class VeiculoListaFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        buscarVeiculo(placaPesquisada);
+        buscarVeiculos(placaPesquisada);
     }
 
     @Override

@@ -11,17 +11,20 @@ public class Veiculo {
     private String cor;
     private String ano;
 
+    private boolean alocado;
+
     public Veiculo() {
-        this("", "", "", "", "", "");
+        this("", "", "", "", "", "", false);
     }
 
-    public Veiculo(String id, String placa, String marca, String modelo, String cor, String ano) {
+    public Veiculo(String id, String placa, String marca, String modelo, String cor, String ano, boolean alocado) {
         this.id = id;
         this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;
         this.cor = cor;
         this.ano = ano;
+        this.alocado = alocado;
     }
 
     public void salvar() {
@@ -86,5 +89,13 @@ public class Veiculo {
 
     public void setAno(String ano) {
         this.ano = ano;
+    }
+
+    public boolean isAlocado() {
+        return alocado;
+    }
+
+    public void setAlocado(boolean alocado) {
+        this.alocado = alocado;
     }
 }
