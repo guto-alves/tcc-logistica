@@ -108,12 +108,12 @@ public class RoteiristaColetaNovaFragment extends Fragment {
 
         Spinner motoristaSpinner = root.findViewById(R.id.motoristaSpinner);
         rgMotoristaEditText = root.findViewById(R.id.rgMotoristaEditText);
+
         observacoesEditText = root.findViewById(R.id.observacoesEditText);
 
         adicionarMascaras();
 
         dataEditText.setText(DateCustom.getData());
-        dataEditText.addTextChangedListener(new MaskTextWatcher(dataEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
         dataEditText.setFocusable(false);
         dataEditText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -234,8 +234,8 @@ public class RoteiristaColetaNovaFragment extends Fragment {
                 coleta.setBairroDestinatario(bairroDestinatarioEditText.getText().toString());
                 coleta.setCidadeDestinatario(cidadeDestinatarioEditText.getText().toString());
                 coleta.setCepDestinatario(cepDestinatarioEditText.getText().toString());
-                coleta.setContatoRemetente(contatoDestinatarioEditText.getText().toString());
-                coleta.setTelefoneRemetente(telefoneDestinatarioEditText.getText().toString());
+                coleta.setContatoDestinatario(contatoDestinatarioEditText.getText().toString());
+                coleta.setTelefoneDestinatario(telefoneDestinatarioEditText.getText().toString());
 
                 coleta.setObservacoes(observacoesEditText.getText().toString());
 
@@ -245,7 +245,7 @@ public class RoteiristaColetaNovaFragment extends Fragment {
                 coleta.salvar();
 
                 limparCampos();
-                Toasty.success(getActivity(), "Coleta salva com sucesso!", Toasty.LENGTH_SHORT, true).show();
+                Toasty.success(getActivity(), "Coleta salva com sucesso", Toasty.LENGTH_SHORT, true).show();
             }
         }
     };
@@ -276,7 +276,6 @@ public class RoteiristaColetaNovaFragment extends Fragment {
 
     private void limparCampos() {
         numeroColetaEditText.setText("");
-        dataEditText.setText("");
         horaEditText.setText("");
 
         nomeRemetenteEditText.setText("");

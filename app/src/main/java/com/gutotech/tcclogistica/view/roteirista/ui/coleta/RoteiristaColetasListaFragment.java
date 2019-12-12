@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -46,6 +47,7 @@ public class RoteiristaColetasListaFragment extends Fragment {
     private String statusColetaPesquisada = "Todas";
 
     private TextView totalEncontradoTextView;
+    private ProgressBar progressBar;
     private TextView statusPesquisaTextView;
 
     public RoteiristaColetasListaFragment() {
@@ -57,6 +59,7 @@ public class RoteiristaColetasListaFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_roteirista_coletas_lista, container, false);
 
         totalEncontradoTextView = root.findViewById(R.id.totalEncontradoTextView);
+        progressBar = root.findViewById(R.id.progressBar);
         statusPesquisaTextView = root.findViewById(R.id.statusPesquisaTextView);
 
         coletasRecyclerView = root.findViewById(R.id.coletasRecyclerView);
@@ -127,6 +130,8 @@ public class RoteiristaColetasListaFragment extends Fragment {
         coletasListener = coletasQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                progressBar.setVisibility(View.VISIBLE);
+
                 coletasList.clear();
 
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
@@ -147,6 +152,7 @@ public class RoteiristaColetasListaFragment extends Fragment {
                 } else
                     statusPesquisaTextView.setVisibility(View.GONE);
 
+                progressBar.setVisibility(View.GONE);
                 coletasAdapter.notifyDataSetChanged();
             }
 

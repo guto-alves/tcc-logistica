@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -40,6 +41,7 @@ public class RoteiristaNotasCadastradasFragment extends Fragment {
 
     private TextView statusNotasTextView;
     private TextView totalTextView;
+    private ProgressBar progressBar;
 
     public RoteiristaNotasCadastradasFragment() {
     }
@@ -52,6 +54,7 @@ public class RoteiristaNotasCadastradasFragment extends Fragment {
         notasRecyclerView = root.findViewById(R.id.notasRecyclerView);
         totalTextView = root.findViewById(R.id.totalTextView);
         statusNotasTextView = root.findViewById(R.id.statusNotasTextView);
+        progressBar = root.findViewById(R.id.progressBar);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         notasRecyclerView.setLayoutManager(layoutManager);
@@ -86,6 +89,7 @@ public class RoteiristaNotasCadastradasFragment extends Fragment {
         notasListener = notaQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                progressBar.setVisibility(View.VISIBLE);
                 notasList.clear();
 
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
@@ -103,6 +107,7 @@ public class RoteiristaNotasCadastradasFragment extends Fragment {
                 else
                     statusNotasTextView.setVisibility(View.GONE);
 
+                progressBar.setVisibility(View.GONE);
                 notasAdapter.notifyDataSetChanged();
             }
 

@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -22,12 +23,14 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.config.ConfigFirebase;
+import com.gutotech.tcclogistica.helper.DateCustom;
 import com.gutotech.tcclogistica.model.Coleta;
 import com.gutotech.tcclogistica.model.Funcionario;
 import com.gutotech.tcclogistica.model.Status;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 
 import es.dmoral.toasty.Toasty;
 
@@ -35,8 +38,8 @@ public class ColetaDialog extends Dialog {
     private Coleta coleta;
 
     private EditText numeroColetaEditText;
-    private EditText coletarEmEditText;
-    private EditText dataEmissaoEditText;
+    private EditText dataEditText;
+    private EditText horaEditText;
 
     //  remetente
     private EditText nomeRemetenteEditText, enderecoRemetenteEditText,
@@ -52,8 +55,6 @@ public class ColetaDialog extends Dialog {
     private EditText rgMotoristaEditText;
 
     private EditText observacoesEditText;
-
-    private EditText dataColetaEfetuadaEditText, horaColetaEfetuadaEditText;
 
     private List<Funcionario> motoristasList = new LinkedList<>();
     private ArrayAdapter motoristasArrayAdapter;
@@ -71,8 +72,9 @@ public class ColetaDialog extends Dialog {
         this.coleta = coleta;
 
         numeroColetaEditText = findViewById(R.id.numeroColetaEditText);
-        coletarEmEditText = findViewById(R.id.coletarEmEditText);
-        dataEmissaoEditText = findViewById(R.id.dataEmissaoEditText);
+        dataEditText = findViewById(R.id.dataEditText);
+        final CalendarView calendarView = findViewById(R.id.calendarView);
+        horaEditText = findViewById(R.id.horaEditText);
 
         nomeRemetenteEditText = findViewById(R.id.nomeRemetenteEditText);
         enderecoRemetenteEditText = findViewById(R.id.enderecoRemetenteEditText);
@@ -91,16 +93,34 @@ public class ColetaDialog extends Dialog {
         contatoDestinatarioEditText = findViewById(R.id.contatoDestinatarioEditText);
         telefoneDestinatarioEditText = findViewById(R.id.telefoneDestinatarioEditText);
 
-        dataColetaEfetuadaEditText = findViewById(R.id.dataColetaEfetuadaEditText);
-        horaColetaEfetuadaEditText = findViewById(R.id.horaColetaEfetuadaEditText);
-
         motoristaSpinner = findViewById(R.id.motoristaSpinner);
         rgMotoristaEditText = findViewById(R.id.rgMotoristaEditText);
 
         observacoesEditText = findViewById(R.id.observacoesEditText);
 
-        dataColetaEfetuadaEditText = findViewById(R.id.dataColetaEfetuadaEditText);
-        horaColetaEfetuadaEditText = findViewById(R.id.horaColetaEfetuadaEditText);
+        adicionarMascaras();
+
+        dataEditText.setText(DateCustom.getData());
+        dataEditText.addTextChangedListener(new MaskTextWatcher(dataEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
+        dataEditText.setFocusable(false);
+        dataEditText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calendarView.setVisibility(View.VISIBLE);
+            }
+        });
+
+        calendarView.setVisibility(View.GONE);
+        calendarView.setDate(System.currentTimeMillis());
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                String data = String.format(Locale.getDefault(), "%02d/%02d/%04d", dayOfMonth, month + 1, year);
+                dataEditText.setText(data);
+                dataEditText.setError(null);
+                calendarView.setVisibility(View.GONE);
+            }
+        });
 
         motoristasArrayAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, nomesMotoristasList);
         motoristasArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -116,8 +136,6 @@ public class ColetaDialog extends Dialog {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-
-        adicionarMascaras();
 
         ImageButton fecharButton = findViewById(R.id.fecharButton);
         final ImageButton updateImageButton = findViewById(R.id.updateImageButton);
@@ -179,8 +197,8 @@ public class ColetaDialog extends Dialog {
 
     private void setInformations() {
         numeroColetaEditText.setText(coleta.getNumero());
-        coletarEmEditText.setText(coleta.getData());
-        dataEmissaoEditText.setText(coleta.getHora());
+        dataEditText.setText(coleta.getData());
+        horaEditText.setText(coleta.getHora());
 
         nomeRemetenteEditText.setText(coleta.getNomeRemetente());
         enderecoRemetenteEditText.setText(coleta.getEnderecoRemetente());
@@ -207,8 +225,8 @@ public class ColetaDialog extends Dialog {
     private void atualizarColeta() {
         if (isValidFields(numeroColetaEditText.getText().toString())) {
             coleta.setNumero(numeroColetaEditText.getText().toString());
-            coleta.setData(coletarEmEditText.getText().toString());
-            coleta.setHora(dataEmissaoEditText.getText().toString());
+            coleta.setData(dataEditText.getText().toString());
+            coleta.setHora(horaEditText.getText().toString());
 
             coleta.setNomeRemetente(nomeRemetenteEditText.getText().toString());
             coleta.setEnderecoRemetente(enderecoRemetenteEditText.getText().toString());
@@ -217,9 +235,15 @@ public class ColetaDialog extends Dialog {
             coleta.setCepRemetente(cepRemetenteEditText.getText().toString());
             coleta.setContatoRemetente(contatoRemetenteEditText.getText().toString());
             coleta.setTelefoneRemetente(telefoneRemetenteEditText.getText().toString());
+            coleta.setNumeroPedido(numeroPedidoEditText.getText().toString());
 
             coleta.setNomeDestinatario(nomeDestinatarioEditText.getText().toString());
             coleta.setEnderecoDestinatario(enderecoDestinatarioEditText.getText().toString());
+            coleta.setBairroDestinatario(bairroDestinatarioEditText.getText().toString());
+            coleta.setCidadeDestinatario(cidadeDestinatarioEditText.getText().toString());
+            coleta.setCepDestinatario(cepDestinatarioEditText.getText().toString());
+            coleta.setContatoDestinatario(contatoDestinatarioEditText.getText().toString());
+            coleta.setTelefoneDestinatario(telefoneDestinatarioEditText.getText().toString());
 
             coleta.setObservacoes(observacoesEditText.getText().toString());
 
@@ -232,8 +256,8 @@ public class ColetaDialog extends Dialog {
 
     private void changeMode(boolean mode) {
         numeroColetaEditText.setEnabled(mode);
-        coletarEmEditText.setEnabled(mode);
-        dataEmissaoEditText.setEnabled(mode);
+        dataEditText.setEnabled(mode);
+        horaEditText.setEnabled(mode);
 
         nomeRemetenteEditText.setEnabled(mode);
         enderecoRemetenteEditText.setEnabled(mode);
@@ -255,9 +279,6 @@ public class ColetaDialog extends Dialog {
         motoristaSpinner.setEnabled(mode);
 
         observacoesEditText.setEnabled(mode);
-
-        dataColetaEfetuadaEditText.setEnabled(mode);
-        horaColetaEfetuadaEditText.setEnabled(mode);
     }
 
     private boolean isValidFields(String numeroColeta) {
@@ -270,8 +291,8 @@ public class ColetaDialog extends Dialog {
     }
 
     private void adicionarMascaras() {
-        coletarEmEditText.addTextChangedListener(new MaskTextWatcher(coletarEmEditText, new SimpleMaskFormatter("NN/NN/NNNN até NN:NN hr")));
-        dataEmissaoEditText.addTextChangedListener(new MaskTextWatcher(dataEmissaoEditText, new SimpleMaskFormatter("NN/NN/NNNN NN:NN")));
+        dataEditText.addTextChangedListener(new MaskTextWatcher(dataEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
+        horaEditText.addTextChangedListener(new MaskTextWatcher(horaEditText, new SimpleMaskFormatter("NN:NN")));
 
         cepRemetenteEditText.addTextChangedListener(new MaskTextWatcher(cepRemetenteEditText, new SimpleMaskFormatter("NN.NNN-NNN")));
         telefoneRemetenteEditText.addTextChangedListener(new MaskTextWatcher(telefoneRemetenteEditText, new SimpleMaskFormatter("(NN) NNNN-NNNN")));
@@ -280,9 +301,6 @@ public class ColetaDialog extends Dialog {
         telefoneDestinatarioEditText.addTextChangedListener(new MaskTextWatcher(telefoneDestinatarioEditText, new SimpleMaskFormatter("(NN) NNNN-NNNN")));
 
         rgMotoristaEditText.addTextChangedListener(new MaskTextWatcher(rgMotoristaEditText, new SimpleMaskFormatter("NN.NNN.NNN-N")));
-
-        dataColetaEfetuadaEditText.addTextChangedListener(new MaskTextWatcher(dataColetaEfetuadaEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
-        horaColetaEfetuadaEditText.addTextChangedListener(new MaskTextWatcher(horaColetaEfetuadaEditText, new SimpleMaskFormatter("NN:NN:NN")));
     }
 
     private void getMotoristas() {

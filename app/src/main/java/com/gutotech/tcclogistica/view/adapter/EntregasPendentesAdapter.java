@@ -42,6 +42,7 @@ public class EntregasPendentesAdapter extends RecyclerView.Adapter<EntregasPende
         holder.enderecoTextView.setText(entrega.getNota().getDestinatario().getEndereco().getEndereco());
         holder.numeroNotaTextView.setText(String.valueOf(entrega.getNota().getNumero()));
         holder.dataTextView.setText(entrega.getData());
+        holder.horaTextView.setText(entrega.getHora());
 
         holder.finalizarButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +63,7 @@ public class EntregasPendentesAdapter extends RecyclerView.Adapter<EntregasPende
         private TextView destinatarioTextView;
         private TextView enderecoTextView;
         private TextView dataTextView;
+        private TextView horaTextView;
         private Button finalizarButton;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -71,6 +73,7 @@ public class EntregasPendentesAdapter extends RecyclerView.Adapter<EntregasPende
             destinatarioTextView = itemView.findViewById(R.id.destinatarioTextView);
             enderecoTextView = itemView.findViewById(R.id.enderecoTextView);
             dataTextView = itemView.findViewById(R.id.dataEntregaTextView);
+            horaTextView = itemView.findViewById(R.id.horaTextView);
             finalizarButton = itemView.findViewById(R.id.finalizarButton);
         }
     }

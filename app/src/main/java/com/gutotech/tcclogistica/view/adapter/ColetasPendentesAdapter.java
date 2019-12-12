@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.model.Coleta;
+import com.gutotech.tcclogistica.view.motorista.ui.FinalizacaoColetaDialog;
 
 import java.util.List;
 
@@ -33,9 +34,8 @@ public class ColetasPendentesAdapter extends RecyclerView.Adapter<ColetasPendent
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Coleta coleta = coletasList.get(position);
+        final Coleta coleta = coletasList.get(position);
 
-        holder.motorista.setText(coleta.getMotorista().getNome());
         holder.numero.setText(coleta.getNumero());
         holder.remetente.setText(coleta.getNomeRemetente());
         holder.enderecoRemetente.setText(coleta.getEnderecoRemetente());
@@ -47,7 +47,8 @@ public class ColetasPendentesAdapter extends RecyclerView.Adapter<ColetasPendent
         holder.finalizarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                FinalizacaoColetaDialog finalizacaoColetaDialog = new FinalizacaoColetaDialog(context, coleta);
+                finalizacaoColetaDialog.show();
             }
         });
     }
@@ -65,7 +66,6 @@ public class ColetasPendentesAdapter extends RecyclerView.Adapter<ColetasPendent
         private TextView enderecoRemetente;
         private TextView destinatario;
         private TextView enderecoDestinatario;
-        private TextView motorista;
         private Button finalizarButton;
 
 
@@ -79,7 +79,6 @@ public class ColetasPendentesAdapter extends RecyclerView.Adapter<ColetasPendent
             enderecoRemetente = itemView.findViewById(R.id.enderecoRemetenteTextView);
             destinatario = itemView.findViewById(R.id.destinatarioTextView);
             enderecoDestinatario = itemView.findViewById(R.id.enderecoDestinatarioTextView);
-            motorista = itemView.findViewById(R.id.motoristaTextView);
             finalizarButton = itemView.findViewById(R.id.finalizarButton);
         }
     }

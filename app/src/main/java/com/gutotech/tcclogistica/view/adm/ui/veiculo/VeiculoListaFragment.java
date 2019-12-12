@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -48,6 +49,7 @@ public class VeiculoListaFragment extends Fragment {
 
     private TextView totalTextView;
     private TextView statusPesquisaTextView;
+    private ProgressBar progressBar;
 
     public VeiculoListaFragment() {
     }
@@ -59,6 +61,7 @@ public class VeiculoListaFragment extends Fragment {
 
         totalTextView = root.findViewById(R.id.totalEncontradoTextView);
         statusPesquisaTextView = root.findViewById(R.id.statusPesquisaTextView);
+        progressBar = root.findViewById(R.id.progressBar);
 
         veiculosRecyclerView = root.findViewById(R.id.veiculosRecyclerView);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -127,18 +130,17 @@ public class VeiculoListaFragment extends Fragment {
     }
 
     private void excluirVeiculo(final RecyclerView.ViewHolder viewHolder) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        int position = viewHolder.getAdapterPosition();
+        final Veiculo veiculo = veiculos.get(position);
 
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Excluir Veículo");
-        builder.setMessage("Você tem certeza que deseja excluir o veículo? ");
+        builder.setMessage("Tem certeza que deseja excluir o veículo " + veiculo.getModelo() + "?");
         builder.setCancelable(false);
 
-        builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                int position = viewHolder.getAdapterPosition();
-                Veiculo veiculo = veiculos.get(position);
-
                 veiculo.excluir();
                 veiculosAdapter.notifyDataSetChanged();
             }
@@ -181,6 +183,7 @@ public class VeiculoListaFragment extends Fragment {
         valueEventListener = veiculosQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                progressBar.setVisibility(View.VISIBLE);
                 veiculos.clear();
 
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
@@ -202,6 +205,8 @@ public class VeiculoListaFragment extends Fragment {
                     statusPesquisaTextView.setVisibility(View.VISIBLE);
                 } else
                     statusPesquisaTextView.setVisibility(View.GONE);
+
+                progressBar.setVisibility(View.GONE);
 
                 veiculosAdapter.notifyDataSetChanged();
             }

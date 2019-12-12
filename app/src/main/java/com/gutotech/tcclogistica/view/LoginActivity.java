@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                 builder.setTitle("Esqueci a senha");
-                builder.setMessage("Entre em contato mais rápido possível com o seu supervisor e solicite uma nova senha.");
+                builder.setMessage("Entre em contato com o seu supervisor para recuperar sua senha.");
                 builder.setCancelable(false);
                 builder.setPositiveButton("OK", null);
                 builder.create();

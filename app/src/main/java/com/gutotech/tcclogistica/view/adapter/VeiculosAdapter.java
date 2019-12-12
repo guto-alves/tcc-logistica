@@ -34,9 +34,8 @@ public class VeiculosAdapter extends RecyclerView.Adapter<VeiculosAdapter.MyView
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Veiculo veiculo = veiculos.get(position);
 
+        holder.modeloEMarcaTextView.setText(String.format("%s - %s", veiculo.getModelo(), veiculo.getMarca()));
         holder.placaTextView.setText(veiculo.getPlaca());
-        holder.marcaTextView.setText(veiculo.getMarca());
-        holder.modeloTextView.setText(veiculo.getModelo());
         holder.corTextView.setText(veiculo.getCor());
         holder.anoTextView.setText(veiculo.getAno());
     }
@@ -47,18 +46,16 @@ public class VeiculosAdapter extends RecyclerView.Adapter<VeiculosAdapter.MyView
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+        private TextView modeloEMarcaTextView;
         private TextView placaTextView;
-        private TextView marcaTextView;
-        private TextView modeloTextView;
         private TextView corTextView;
         private TextView anoTextView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            modeloEMarcaTextView = itemView.findViewById(R.id.modeloEMarcaTextView);
             placaTextView = itemView.findViewById(R.id.placaTextView);
-            marcaTextView = itemView.findViewById(R.id.marcaTextView);
-            modeloTextView = itemView.findViewById(R.id.modeloTextView);
             corTextView = itemView.findViewById(R.id.corTextView);
             anoTextView = itemView.findViewById(R.id.anoTextView);
         }

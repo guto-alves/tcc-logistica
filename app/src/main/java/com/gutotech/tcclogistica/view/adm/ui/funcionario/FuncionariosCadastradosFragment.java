@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -44,6 +45,7 @@ public class FuncionariosCadastradosFragment extends Fragment {
 
     private TextView statusFuncionariosTextView;
     private TextView totalTextView;
+    private ProgressBar progressBar;
 
     public FuncionariosCadastradosFragment() {
     }
@@ -55,6 +57,7 @@ public class FuncionariosCadastradosFragment extends Fragment {
 
         statusFuncionariosTextView = root.findViewById(R.id.statusFuncionariosTextView);
         totalTextView = root.findViewById(R.id.totalTextView);
+        progressBar = root.findViewById(R.id.progressBar);
 
         funcionariosRecyclerView = root.findViewById(R.id.funcionariosRecyclerView);
 
@@ -107,6 +110,7 @@ public class FuncionariosCadastradosFragment extends Fragment {
         funcionariosListener = funcionarioQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                progressBar.setVisibility(View.VISIBLE);
                 funcionariosList.clear();
 
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
@@ -126,6 +130,7 @@ public class FuncionariosCadastradosFragment extends Fragment {
                 } else
                     statusFuncionariosTextView.setVisibility(View.GONE);
 
+                progressBar.setVisibility(View.GONE);
                 funcionariosAdapter.notifyDataSetChanged();
             }
 

@@ -1,5 +1,6 @@
 package com.gutotech.tcclogistica.view.motorista.ui;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.gutotech.tcclogistica.model.Entrega;
 import com.gutotech.tcclogistica.model.ResultadoViagem;
 import com.gutotech.tcclogistica.model.Status;
 import com.gutotech.tcclogistica.view.EscolhaSimOuNaoDialog;
+import com.tapadoo.alerter.Alerter;
 
 import es.dmoral.toasty.Toasty;
 
@@ -35,7 +37,7 @@ public class FinalizacaoEntregaDialog extends Dialog {
 
     public FinalizacaoEntregaDialog(@NonNull final Context context, final Entrega entrega) {
         super(context);
-        setContentView(R.layout.dialog_finalizar_entrega);
+        setContentView(R.layout.dialog_finalizacao_entrega);
 
         status = Status.PENDENTE;
 
@@ -80,26 +82,27 @@ public class FinalizacaoEntregaDialog extends Dialog {
                     return;
                 }
 
-                if (status == Status.NAO_REALIZADA) {
-                    ResultadoViagem resultadoViagem = new ResultadoViagem();
-                    resultadoViagem.setData(DateCustom.getData());
-                    resultadoViagem.setHorarioChegada(horarioChegadaEditText.getText().toString());
+                ResultadoViagem resultadoViagem = new ResultadoViagem();
+                resultadoViagem.setData(DateCustom.getData());
+                resultadoViagem.setHorarioChegada(horarioChegadaEditText.getText().toString());
+                resultadoViagem.setHorarioSaida(horarioSaidaEditText.getText().toString());
 
+                if (status == Status.NAO_REALIZADA) {
                     switch (motivosRadioGroup.getCheckedRadioButtonId()) {
                         case R.id.radioButton1:
-                            entrega.getResultadoViagem().setAconteceu("Mudança de endereço");
+                            resultadoViagem.setAconteceu("Mudança de endereço");
                             break;
                         case R.id.radioButton2:
-                            entrega.getResultadoViagem().setAconteceu("Desacordo com pedido");
+                            resultadoViagem.setAconteceu("Desacordo com pedido");
                             break;
                         case R.id.radioButton3:
-                            entrega.getResultadoViagem().setAconteceu("Cliente não se encontra");
+                            resultadoViagem.setAconteceu("Cliente não se encontra");
                             break;
                         case R.id.outrosRadioButton:
                             String motivo = outrosMotivosEditText.getText().toString().trim();
 
                             if (!motivo.isEmpty()) {
-                                entrega.getResultadoViagem().setAconteceu(motivo);
+                                resultadoViagem.setAconteceu(motivo);
                                 outrosMotivosEditText.setError(null);
                             } else {
                                 outrosMotivosEditText.setError("Por favor, digite o motivo");
@@ -107,14 +110,21 @@ public class FinalizacaoEntregaDialog extends Dialog {
                             }
                             break;
                     }
+
+                    entrega.getNota().setEstoque(true);
                 }
 
-                entrega.getNota().setEstoque(true);
+                entrega.setResultadoViagem(resultadoViagem);
                 entrega.getNota().salvar();
 
                 entrega.setStatus(status);
                 entrega.salvar();
 
+                Alerter.create((Activity) context)
+                        .setTitle("Entrega finalizada com sucesso")
+                        .setBackgroundColor(R.color.colorGreen)
+                        .setIcon(R.drawable.ic_done_24dp)
+                        .show();
                 dismiss();
             }
         };

@@ -75,6 +75,14 @@ public class PerfilFragment extends Fragment {
             motorista.setVisibility(View.VISIBLE);
         }
 
+        profileImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (FuncionarioOn.funcionario.temFoto())
+                    Actions.startImageViewer(getContext(), FuncionarioOn.funcionario.getImage());
+            }
+        });
+
         FloatingActionButton cameraImageButton = root.findViewById(R.id.cameraButton);
         cameraImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,7 +120,7 @@ public class PerfilFragment extends Fragment {
     }
 
     private void setInformacaoes() {
-        if (!FuncionarioOn.funcionario.getImage().isEmpty())
+        if (FuncionarioOn.funcionario.temFoto())
             Storage.downloadProfile(getActivity(), profileImageView, FuncionarioOn.funcionario.getImage());
 
         nomeTextView.setText(FuncionarioOn.funcionario.getNome());
@@ -153,7 +161,7 @@ public class PerfilFragment extends Fragment {
             }
 
             if (bitmap != null) {
-                if (!FuncionarioOn.funcionario.getImage().isEmpty())
+                if (FuncionarioOn.funcionario.temFoto())
                     Storage.deleteProfile(null);
 
                 FuncionarioOn.funcionario.setImage(FuncionarioOn.funcionario.getLogin().getUser() + UUID.randomUUID().toString() + ".jpg");

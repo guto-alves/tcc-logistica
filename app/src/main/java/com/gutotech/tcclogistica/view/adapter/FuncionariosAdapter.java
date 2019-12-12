@@ -37,7 +37,6 @@ public class FuncionariosAdapter extends RecyclerView.Adapter<FuncionariosAdapte
 
         holder.nomeTextView.setText(funcionario.getNome());
         holder.cargoTextView.setText(funcionario.getCargo());
-        holder.idTextView.setText(String.valueOf(position + 1));
 
         if (funcionario.isOnline())
             holder.onlineImageView.setImageResource(R.drawable.funcionario_on);
@@ -61,7 +60,6 @@ public class FuncionariosAdapter extends RecyclerView.Adapter<FuncionariosAdapte
 
             nomeTextView = itemView.findViewById(R.id.nomeTextView);
             cargoTextView = itemView.findViewById(R.id.cpfTextView);
-            idTextView = itemView.findViewById(R.id.idTextView);
             onlineImageView = itemView.findViewById(R.id.onlineImageView);
         }
     }

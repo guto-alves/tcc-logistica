@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.model.Coleta;
+import com.gutotech.tcclogistica.model.FuncionarioOn;
 import com.gutotech.tcclogistica.model.Status;
 
 import java.util.List;
@@ -36,6 +38,11 @@ public class ColetasAdapter extends RecyclerView.Adapter<ColetasAdapter.MyViewHo
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Coleta coleta = coletasList.get(position);
 
+        if (coleta.getMotorista().getNome().equals(FuncionarioOn.funcionario.getNome()))
+            holder.motorista.setVisibility(View.GONE);
+        else
+            holder.motorista.setVisibility(View.VISIBLE);
+
         holder.motorista.setText(coleta.getMotorista().getNome());
         holder.numero.setText(coleta.getNumero());
         holder.remetente.setText(coleta.getNomeRemetente());
@@ -53,6 +60,23 @@ public class ColetasAdapter extends RecyclerView.Adapter<ColetasAdapter.MyViewHo
             holder.status.setTextColor(Color.GREEN);
         else
             holder.status.setTextColor(Color.RED);
+
+        if (coleta.getStatus() == Status.PENDENTE)
+            holder.resultadoViagemLinear.setVisibility(View.GONE);
+        else {
+            holder.dataEntregueTextView.setText("Data: " + coleta.getResultadoViagem().getData());
+            holder.chegadaTextView.setText("Chegada: " + coleta.getResultadoViagem().getHorarioChegada());
+            holder.saidaTextView.setText("Saída: " + coleta.getResultadoViagem().getHorarioSaida());
+
+            if (coleta.getStatus() == Status.REALIZADA)
+                holder.motivoTextView.setVisibility(View.GONE);
+            else {
+                holder.motivoTextView.setText("Motivo: " + coleta.getResultadoViagem().getAconteceu());
+                holder.motivoTextView.setVisibility(View.VISIBLE);
+            }
+
+            holder.resultadoViagemLinear.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -71,6 +95,13 @@ public class ColetasAdapter extends RecyclerView.Adapter<ColetasAdapter.MyViewHo
         private TextView motorista;
         private TextView status;
 
+        private LinearLayout resultadoViagemLinear;
+        private TextView dataEntregueTextView;
+        private TextView chegadaTextView;
+        private TextView saidaTextView;
+        private TextView motivoTextView;
+
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -83,6 +114,12 @@ public class ColetasAdapter extends RecyclerView.Adapter<ColetasAdapter.MyViewHo
             enderecoDestinatario = itemView.findViewById(R.id.enderecoDestinatarioTextView);
             motorista = itemView.findViewById(R.id.motoristaTextView);
             status = itemView.findViewById(R.id.statusTextView);
+
+            resultadoViagemLinear = itemView.findViewById(R.id.resultadoViagemLinear);
+            dataEntregueTextView = itemView.findViewById(R.id.dataEntregueTextView);
+            chegadaTextView = itemView.findViewById(R.id.chegadaTextView);
+            saidaTextView = itemView.findViewById(R.id.saidaTextView);
+            motivoTextView = itemView.findViewById(R.id.motivoTextView);
         }
     }
 }

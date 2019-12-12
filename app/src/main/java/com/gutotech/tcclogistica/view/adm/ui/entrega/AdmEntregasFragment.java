@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -42,12 +43,14 @@ public class AdmEntregasFragment extends Fragment {
 
     private TextView totalTextView;
     private TextView statusTextView;
+    private ProgressBar progressBar;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_adm_entregas, container, false);
 
         totalTextView = root.findViewById(R.id.totalTextView);
+        progressBar = root.findViewById(R.id.progressBar);
         statusTextView = root.findViewById(R.id.statusPesquisaTextView);
 
         RecyclerView entregasRecyclerView = root.findViewById(R.id.entregasRecyclerView);
@@ -103,6 +106,8 @@ public class AdmEntregasFragment extends Fragment {
         listener = entregasQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                progressBar.setVisibility(View.VISIBLE);
+
                 entregasList.clear();
 
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
@@ -123,6 +128,7 @@ public class AdmEntregasFragment extends Fragment {
                 } else
                     statusTextView.setVisibility(View.GONE);
 
+                progressBar.setVisibility(View.GONE);
                 entregasAdapter.notifyDataSetChanged();
             }
 

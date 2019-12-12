@@ -1,5 +1,6 @@
 package com.gutotech.tcclogistica.view.motorista.ui;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.view.View;
@@ -16,10 +17,10 @@ import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.helper.DateCustom;
 import com.gutotech.tcclogistica.model.Coleta;
-import com.gutotech.tcclogistica.model.Entrega;
 import com.gutotech.tcclogistica.model.ResultadoViagem;
 import com.gutotech.tcclogistica.model.Status;
 import com.gutotech.tcclogistica.view.EscolhaSimOuNaoDialog;
+import com.tapadoo.alerter.Alerter;
 
 import es.dmoral.toasty.Toasty;
 
@@ -36,7 +37,7 @@ public class FinalizacaoColetaDialog extends Dialog {
 
     public FinalizacaoColetaDialog(@NonNull final Context context, final Coleta coleta) {
         super(context);
-        setContentView(R.layout.dialog_finalizar_entrega);
+        setContentView(R.layout.dialog_finalizacao_coleta);
 
         status = Status.PENDENTE;
 
@@ -77,30 +78,31 @@ public class FinalizacaoColetaDialog extends Dialog {
                     return;
 
                 if (status == Status.PENDENTE) {
-                    Toasty.warning(getContext(), "Responda se a entrega foi realizada ou não", Toasty.LENGTH_SHORT, true).show();
+                    Toasty.warning(getContext(), "Responda se a coleta foi realizada ou não", Toasty.LENGTH_SHORT, true).show();
                     return;
                 }
 
-                if (status == Status.NAO_REALIZADA) {
-                    ResultadoViagem resultadoViagem = new ResultadoViagem();
-                    resultadoViagem.setData(DateCustom.getData());
-                    resultadoViagem.setHorarioChegada(horarioChegadaEditText.getText().toString());
+                ResultadoViagem resultadoViagem = new ResultadoViagem();
+                resultadoViagem.setData(DateCustom.getData());
+                resultadoViagem.setHorarioChegada(horarioChegadaEditText.getText().toString());
+                resultadoViagem.setHorarioSaida(horarioSaidaEditText.getText().toString());
 
+                if (status == Status.NAO_REALIZADA) {
                     switch (motivosRadioGroup.getCheckedRadioButtonId()) {
                         case R.id.radioButton1:
-                            coleta.getResultadoViagem().setAconteceu("Mudança de endereço");
+                            resultadoViagem.setAconteceu("Mudança de endereço");
                             break;
                         case R.id.radioButton2:
-                            coleta.getResultadoViagem().setAconteceu("Desacordo com pedido");
+                            resultadoViagem.setAconteceu("Desacordo com pedido");
                             break;
                         case R.id.radioButton3:
-                            coleta.getResultadoViagem().setAconteceu("Cliente não se encontra");
+                            resultadoViagem.setAconteceu("Cliente não se encontra");
                             break;
                         case R.id.outrosRadioButton:
                             String motivo = outrosMotivosEditText.getText().toString().trim();
 
                             if (!motivo.isEmpty()) {
-                                coleta.getResultadoViagem().setAconteceu(motivo);
+                                resultadoViagem.setAconteceu(motivo);
                                 outrosMotivosEditText.setError(null);
                             } else {
                                 outrosMotivosEditText.setError("Por favor, digite o motivo");
@@ -110,9 +112,16 @@ public class FinalizacaoColetaDialog extends Dialog {
                     }
                 }
 
+                coleta.setResultadoViagem(resultadoViagem);
+
                 coleta.setStatus(status);
                 coleta.salvar();
 
+                Alerter.create((Activity) context)
+                        .setTitle("Coleta finalizada com sucesso")
+                        .setBackgroundColor(R.color.colorGreen)
+                        .setIcon(R.drawable.ic_done_24dp)
+                        .show();
                 dismiss();
             }
         };

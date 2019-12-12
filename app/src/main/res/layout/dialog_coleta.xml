@@ -56,37 +56,50 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="Coletar em"
+                    android:text="Data"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
-                <EditText
-                    android:id="@+id/coletarEmEditText"
-                    style="@style/EditTextTheme"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="date|time"
-                    android:textSize="14sp" />
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/dataEditText"
+                        style="@style/EditTextTheme"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:inputType="date"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <CalendarView
+                        android:id="@+id/calendarView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/dataEditText" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="@string/emissao"
+                    android:text="Hora"
                     android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/dataEmissaoEditText"
+                    android:id="@+id/horaEditText"
                     style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
                     android:ems="10"
-                    android:inputType="date|time"
-                    android:textSize="14sp" />
+                    android:inputType="time" />
 
                 <TextView
                     android:id="@+id/textView2"
@@ -440,42 +453,6 @@
                     android:ems="10"
                     android:gravity="start"
                     android:inputType="textMultiLine"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
-                    android:text="Coleta efetuada em:"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/dataColetaEfetuadaEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="date"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/hora"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/horaColetaEfetuadaEditText"
-                    style="@style/EditTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:inputType="time"
                     android:textSize="14sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>

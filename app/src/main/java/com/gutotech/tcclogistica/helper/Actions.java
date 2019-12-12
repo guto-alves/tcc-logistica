@@ -7,6 +7,8 @@ import android.provider.MediaStore;
 
 import androidx.fragment.app.Fragment;
 
+import com.gutotech.tcclogistica.view.ImageViewerActivity;
+
 public class Actions {
 
     public static void sendEmail(Context context, String email) {
@@ -37,4 +39,11 @@ public class Actions {
         mapIntent.setPackage("com.google.android.apps.maps");
         context.startActivity(mapIntent);
     }
+
+    public static void startImageViewer(Context context, String image) {
+        Intent intent = new Intent(context, ImageViewerActivity.class);
+        intent.putExtra("image", image);
+        context.startActivity(intent);
+    }
+
 }

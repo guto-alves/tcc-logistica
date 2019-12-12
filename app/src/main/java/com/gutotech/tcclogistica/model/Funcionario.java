@@ -69,6 +69,11 @@ public class Funcionario {
         this.image = image;
     }
 
+    public boolean temFoto() {
+        return !getImage().isEmpty();
+    }
+
+
     public String getNome() {
         return nome;
     }

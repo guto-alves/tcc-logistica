@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -42,6 +43,7 @@ public class AdmColetasFragment extends Fragment {
     private TextView totalTextView;
     private String statusColeta = "Todas";
     private TextView statusColetasTextView;
+    private ProgressBar progressBar;
 
     public AdmColetasFragment() {
     }
@@ -53,6 +55,7 @@ public class AdmColetasFragment extends Fragment {
 
         totalTextView = root.findViewById(R.id.totalTextView);
         statusColetasTextView = root.findViewById(R.id.statusPesquisaTextView);
+        progressBar = root.findViewById(R.id.progressBar);
 
         RecyclerView coletasRecyclerView = root.findViewById(R.id.coletasRecyclerView);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -103,6 +106,8 @@ public class AdmColetasFragment extends Fragment {
         coletasListener = coletasQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                progressBar.setVisibility(View.VISIBLE);
+
                 coletasList.clear();
 
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
@@ -122,6 +127,8 @@ public class AdmColetasFragment extends Fragment {
                     statusColetasTextView.setVisibility(View.VISIBLE);
                 } else
                     statusColetasTextView.setVisibility(View.GONE);
+
+                progressBar.setVisibility(View.GONE);
 
                 coletasAdapter.notifyDataSetChanged();
             }

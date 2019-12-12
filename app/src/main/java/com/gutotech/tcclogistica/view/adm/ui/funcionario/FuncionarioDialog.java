@@ -4,11 +4,11 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -22,15 +22,17 @@ import com.gutotech.tcclogistica.helper.Actions;
 import com.gutotech.tcclogistica.model.CNH;
 import com.gutotech.tcclogistica.model.Funcionario;
 import com.gutotech.tcclogistica.model.FuncionarioOn;
+import com.gutotech.tcclogistica.view.ImageViewerActivity;
 import com.gutotech.tcclogistica.view.PasswordConfirmationDialog;
 import com.gutotech.tcclogistica.view.adapter.LoginFuncionarioExpandableAdapter;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import es.dmoral.toasty.Toasty;
 
 public class FuncionarioDialog extends Dialog {
     private Funcionario funcionario;
 
-    private ImageView perfilImageView;
+    private CircleImageView perfilImageView;
     private TextView nomeTextView;
     private TextView cargoTextView;
     private EditText rgEditText;
@@ -47,7 +49,7 @@ public class FuncionarioDialog extends Dialog {
 
     private boolean passwordConfirmed;
 
-    public FuncionarioDialog(@NonNull Context context, final Funcionario funcionario) {
+    public FuncionarioDialog(@NonNull final Context context, final Funcionario funcionario) {
         super(context);
         setContentView(R.layout.dialog_funcionario);
 
@@ -74,6 +76,14 @@ public class FuncionarioDialog extends Dialog {
 
         addMasks();
         setInformations();
+
+        perfilImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (funcionario.temFoto())
+                    Actions.startImageViewer(context, funcionario.getImage());
+            }
+        });
 
         ImageButton phoneCallImageButton = findViewById(R.id.dialCelularImageButton);
         phoneCallImageButton.setOnClickListener(new View.OnClickListener() {
@@ -176,8 +186,21 @@ public class FuncionarioDialog extends Dialog {
         });
     }
 
+    private final PasswordConfirmationDialog.Listener passwordConfirmationlistener = new PasswordConfirmationDialog.Listener() {
+        @Override
+        public void onPasswordConfirmed(String password) {
+            if (password.equals(FuncionarioOn.funcionario.getLogin().getPassword())) {
+                passwordConfirmed = true;
+                loginExpandableListView.expandGroup(0);
+            } else {
+                passwordConfirmed = false;
+                Toasty.error(getContext(), "Acesso negado, senha inválida!", Toasty.LENGTH_SHORT, true).show();
+            }
+        }
+    };
+
     private void setInformations() {
-        if (!funcionario.getImage().isEmpty())
+        if (funcionario.temFoto())
             Storage.downloadProfile(getContext(), perfilImageView, funcionario.getImage());
 
         nomeTextView.setText(funcionario.getNome());
@@ -205,19 +228,6 @@ public class FuncionarioDialog extends Dialog {
 
         changeMode(false);
     }
-
-    private final PasswordConfirmationDialog.Listener passwordConfirmationlistener = new PasswordConfirmationDialog.Listener() {
-        @Override
-        public void onPasswordConfirmed(String password) {
-            if (password.equals(FuncionarioOn.funcionario.getLogin().getPassword())) {
-                passwordConfirmed = true;
-                loginExpandableListView.expandGroup(0);
-            } else {
-                passwordConfirmed = false;
-                Toasty.error(getContext(), "Acesso negado, senha inválida!", Toasty.LENGTH_SHORT, true).show();
-            }
-        }
-    };
 
     private void updateEmployee() {
         funcionario.setRg(rgEditText.getText().toString());

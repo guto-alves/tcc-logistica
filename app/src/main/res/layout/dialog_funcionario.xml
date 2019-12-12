@@ -24,11 +24,11 @@
                 android:gravity="center"
                 android:padding="5dp">
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profileImageView"
                     android:layout_width="221dp"
                     android:layout_height="200dp"
-                    app:srcCompat="@drawable/perfil_sem_foto" />
+                    android:src="@drawable/perfil_sem_foto" />
             </LinearLayout>
 
             <TextView

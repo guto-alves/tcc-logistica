@@ -20,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.gutotech.tcclogistica.R;
 import com.gutotech.tcclogistica.config.ConfigFirebase;
 import com.gutotech.tcclogistica.config.Storage;
+import com.gutotech.tcclogistica.helper.Actions;
 import com.gutotech.tcclogistica.model.Funcionario;
 import com.gutotech.tcclogistica.model.FuncionarioOn;
 import com.gutotech.tcclogistica.view.LoginActivity;
@@ -55,7 +56,14 @@ public class AdmMainActivity extends AppCompatActivity {
         View headerView = navigationView.getHeaderView(0);
 
         profileImageView = headerView.findViewById(R.id.profileImageView);
-        atualizarFoto();
+        carregarFoto();
+        profileImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (FuncionarioOn.funcionario.temFoto())
+                    Actions.startImageViewer(AdmMainActivity.this, FuncionarioOn.funcionario.getImage());
+            }
+        });
 
         TextView userTextView = headerView.findViewById(R.id.userTextView);
         userTextView.setText(FuncionarioOn.funcionario.getNome().split(" ")[0]);
@@ -110,11 +118,11 @@ public class AdmMainActivity extends AppCompatActivity {
         });
     }
 
-    private void atualizarFoto() {
-        if (FuncionarioOn.funcionario.getImage().isEmpty())
-            profileImageView.setImageResource(R.drawable.perfil_sem_foto);
-        else
+    private void carregarFoto() {
+        if (FuncionarioOn.funcionario.temFoto())
             Storage.downloadProfile(getApplicationContext(), profileImageView, FuncionarioOn.funcionario.getImage());
+        else
+            profileImageView.setImageResource(R.drawable.perfil_sem_foto);
     }
 
     @Override
@@ -134,8 +142,10 @@ public class AdmMainActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         funcionarioReference.removeEventListener(funcionarioListener);
-        FuncionarioOn.funcionario.setOnline(false);
-        FuncionarioOn.funcionario.salvar();
+        if (FuncionarioOn.funcionario != null) {
+            FuncionarioOn.funcionario.setOnline(false);
+            FuncionarioOn.funcionario.salvar();
+        }
     }
 
     @Override

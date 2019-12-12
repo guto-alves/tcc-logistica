@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -44,6 +45,7 @@ public class RoteiristaEntregasListaFragment extends Fragment {
     private String statusPesquisado = "Todas";
 
     private TextView totalTextView;
+    private ProgressBar progressBar;
     private TextView statusTextView;
 
     public RoteiristaEntregasListaFragment() {
@@ -56,6 +58,7 @@ public class RoteiristaEntregasListaFragment extends Fragment {
 
         totalTextView = root.findViewById(R.id.totalTextView);
         statusTextView = root.findViewById(R.id.statusPesquisaTextView);
+        progressBar = root.findViewById(R.id.progressBar);
 
         entregasRecyclerView = root.findViewById(R.id.entregasRecyclerView);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -129,6 +132,8 @@ public class RoteiristaEntregasListaFragment extends Fragment {
         listener = entregasQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                progressBar.setVisibility(View.VISIBLE);
+
                 entregasList.clear();
 
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
@@ -140,15 +145,16 @@ public class RoteiristaEntregasListaFragment extends Fragment {
                         entregasList.add(entrega);
                 }
 
-                int totalColetas = entregasList.size();
-                totalTextView.setText(String.format(Locale.getDefault(), "Total: %d", totalColetas));
+                int total = entregasList.size();
+                totalTextView.setText(String.format(Locale.getDefault(), "Total: %d", total));
 
-                if (totalColetas == 0) {
+                if (total == 0) {
                     statusTextView.setText("Nenhuma entrega encontrada.");
                     statusTextView.setVisibility(View.VISIBLE);
                 } else
                     statusTextView.setVisibility(View.GONE);
 
+                progressBar.setVisibility(View.GONE);
                 entregasAdapter.notifyDataSetChanged();
             }
 

@@ -29,9 +29,9 @@ public class VeiculoDialog extends Dialog {
 
         this.veiculo = veiculo;
 
-        placaEditText = findViewById(R.id.placaEditText);
-        marcaEditText = findViewById(R.id.marcaEditText);
         modeloEditText = findViewById(R.id.modeloEditText);
+        marcaEditText = findViewById(R.id.marcaEditText);
+        placaEditText = findViewById(R.id.placaEditText);
         anoEditText = findViewById(R.id.anoEditText);
         corEditText = findViewById(R.id.corEditText);
 
@@ -52,8 +52,8 @@ public class VeiculoDialog extends Dialog {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
-                alert.setTitle("EXCLUIR FUNCIONÁRIO");
-                alert.setMessage("Tem certeza que deseja excluir o veículo " + veiculo.getModelo() + " ?");
+                alert.setTitle("Excluir Veículo");
+                alert.setMessage("Tem certeza que deseja excluir o veículo " + veiculo.getModelo() + "?");
                 alert.create();
                 alert.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
@@ -101,9 +101,9 @@ public class VeiculoDialog extends Dialog {
     }
 
     private void updateEmployee() {
-        veiculo.setPlaca(placaEditText.getText().toString());
-        veiculo.setMarca(marcaEditText.getText().toString());
         veiculo.setModelo(modeloEditText.getText().toString());
+        veiculo.setMarca(marcaEditText.getText().toString());
+        veiculo.setPlaca(placaEditText.getText().toString());
         veiculo.setAno(anoEditText.getText().toString());
         veiculo.setCor(corEditText.getText().toString());
 

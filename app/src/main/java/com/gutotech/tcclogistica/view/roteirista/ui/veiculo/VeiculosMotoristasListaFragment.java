@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -41,6 +42,7 @@ public class VeiculosMotoristasListaFragment extends Fragment {
     private ValueEventListener motoristasListener;
 
     private TextView statusTextView;
+    private ProgressBar progressBar;
 
     public VeiculosMotoristasListaFragment() {
     }
@@ -51,6 +53,7 @@ public class VeiculosMotoristasListaFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_veiculos_motoristas_lista, container, false);
 
         statusTextView = root.findViewById(R.id.statusTextView);
+        progressBar = root.findViewById(R.id.progressBar);
 
         RecyclerView motoristasVeiculosRecyclerView = root.findViewById(R.id.motoristasVeiculosRecyclerView);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -71,6 +74,7 @@ public class VeiculosMotoristasListaFragment extends Fragment {
         motoristasListener = motoristasQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                progressBar.setVisibility(View.VISIBLE);
                 statusTextView.setText("Buscando alocações...");
                 statusTextView.setVisibility(View.VISIBLE);
 
@@ -88,6 +92,7 @@ public class VeiculosMotoristasListaFragment extends Fragment {
                 } else
                     statusTextView.setVisibility(View.GONE);
 
+                progressBar.setVisibility(View.GONE);
                 adapter.notifyDataSetChanged();
             }
 

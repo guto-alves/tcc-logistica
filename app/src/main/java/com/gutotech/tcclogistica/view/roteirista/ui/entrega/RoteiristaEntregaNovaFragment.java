@@ -72,9 +72,10 @@ public class RoteiristaEntregaNovaFragment extends Fragment {
         dataEditText = root.findViewById(R.id.dataEditText);
         final CalendarView calendarView = root.findViewById(R.id.calendarView);
         horaEditText = root.findViewById(R.id.horaEditText);
-        horaEditText.setText(DateCustom.getHorario());
 
         adicionarMascaras();
+
+        horaEditText.setText(DateCustom.getHorario());
 
         notasReference = ConfigFirebase.getDatabase().child("nota");
         motoristasReference = ConfigFirebase.getDatabase().child("funcionario");
@@ -165,7 +166,7 @@ public class RoteiristaEntregaNovaFragment extends Fragment {
                     entrega.salvar();
                     entrega = new Entrega();
                     entrega.setMotorista(motoristasList.get(0));
-                    entrega.setNomeMotorista(entrega.getNomeMotorista());
+                    entrega.setNomeMotorista(entrega.getMotorista().getNome());
 
                     limparCampos();
 

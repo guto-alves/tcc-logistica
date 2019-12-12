@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -36,6 +37,7 @@ public class AdmNotasFragment extends Fragment {
 
     private TextView statusNotasTextView;
     private TextView totalTextView;
+    private ProgressBar progressBar;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class AdmNotasFragment extends Fragment {
         RecyclerView notasRecyclerView = root.findViewById(R.id.notasRecyclerView);
         statusNotasTextView = root.findViewById(R.id.statusNotasTextView);
         totalTextView = root.findViewById(R.id.totalTextView);
+        progressBar = root.findViewById(R.id.progressBar);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         notasRecyclerView.setLayoutManager(layoutManager);
@@ -77,6 +80,7 @@ public class AdmNotasFragment extends Fragment {
         notasListener = notaQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                progressBar.setVisibility(View.VISIBLE);
                 notasList.clear();
 
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
@@ -94,6 +98,8 @@ public class AdmNotasFragment extends Fragment {
                     statusNotasTextView.setVisibility(View.VISIBLE);
                 } else
                     statusNotasTextView.setVisibility(View.GONE);
+
+                progressBar.setVisibility(View.GONE);
 
                 notasAdapter.notifyDataSetChanged();
             }

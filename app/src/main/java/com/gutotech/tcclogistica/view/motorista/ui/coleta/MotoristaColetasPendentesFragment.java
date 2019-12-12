@@ -14,6 +14,7 @@ import android.widget.CalendarView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
@@ -45,6 +46,7 @@ public class MotoristaColetasPendentesFragment extends Fragment {
     private EditText dataEditText;
     private TextView totalTextView;
     private TextView statusTextView;
+    private ProgressBar progressBar;
 
     public MotoristaColetasPendentesFragment() {
     }
@@ -59,6 +61,7 @@ public class MotoristaColetasPendentesFragment extends Fragment {
         final CheckBox todasCheckBox = root.findViewById(R.id.todasCheckBox);
         statusTextView = root.findViewById(R.id.statusTextView);
         totalTextView = root.findViewById(R.id.totalTextView);
+        progressBar = root.findViewById(R.id.progressBar);
 
         dataEditText.setText(DateCustom.getData());
         dataEditText.addTextChangedListener(new MaskTextWatcher(dataEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
@@ -116,6 +119,7 @@ public class MotoristaColetasPendentesFragment extends Fragment {
         coletasListener = coletasPorDataQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                progressBar.setVisibility(View.VISIBLE);
                 coletasList.clear();
 
                 statusTextView.setText("Buscando coletas ..");
@@ -138,6 +142,7 @@ public class MotoristaColetasPendentesFragment extends Fragment {
                 else
                     statusTextView.setVisibility(View.GONE);
 
+                progressBar.setVisibility(View.GONE);
                 coletasAdapter.notifyDataSetChanged();
             }
 

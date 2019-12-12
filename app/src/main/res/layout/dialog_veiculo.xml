@@ -11,6 +11,7 @@
         android:layout_weight="2">
 
         <androidx.cardview.widget.CardView
+            android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="20dp">
@@ -27,14 +28,16 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/modeloTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/placa"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/modelo"
                         android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
-                        android:id="@+id/placaEditText"
+                        android:id="@+id/modeloEditText"
                         style="@style/EditTextTheme"
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
@@ -42,7 +45,7 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
-                        android:inputType="textCapCharacters" />
+                        android:inputType="textCapWords|textCapSentences" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -64,16 +67,15 @@
                         android:inputType="textCapWords|textCapSentences" />
 
                     <TextView
-                        android:id="@+id/modeloTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
-                        android:text="@string/modelo"
+                        android:text="@string/placa"
                         android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
                     <EditText
-                        android:id="@+id/modeloEditText"
+                        android:id="@+id/placaEditText"
                         style="@style/EditTextTheme"
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
@@ -81,7 +83,7 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
-                        android:inputType="textCapWords|textCapSentences" />
+                        android:inputType="textCapCharacters" />
 
                     <TextView
                         android:layout_width="wrap_content"

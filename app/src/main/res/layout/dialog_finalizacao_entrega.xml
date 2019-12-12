@@ -76,7 +76,7 @@
                 android:id="@+id/openChoiceDialogImageButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
+                android:background="#F5EDED"
                 app:srcCompat="@drawable/ic_thumbs_up_down_24dp" />
 
             <LinearLayout
@@ -129,9 +129,9 @@
 
                 <EditText
                     android:id="@+id/outrosMotivosEditText"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:background="@android:color/white"
+                    android:layout_height="120dp"
                     android:ems="10"
                     android:gravity="start|top"
                     android:hint="Escreva o motivo"
