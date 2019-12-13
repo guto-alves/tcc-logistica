@@ -45,7 +45,7 @@ public class FuncionarioDialog extends Dialog {
     private TextView ultimoLoginTextView;
     private ExpandableListView loginExpandableListView;
 
-    private EditText categoriaEditText, nRegistroEditText, validadeEditText, primeiraHabilitacaoEditText, localEditText, dataEmissaoEditText;
+    private EditText categoriaEditText, nRegistroEditText, validadeEditText;
 
     private boolean passwordConfirmed;
 
@@ -70,9 +70,6 @@ public class FuncionarioDialog extends Dialog {
         categoriaEditText = findViewById(R.id.categoriaEditText);
         nRegistroEditText = findViewById(R.id.nRegistroEditText);
         validadeEditText = findViewById(R.id.validadeEditText);
-        primeiraHabilitacaoEditText = findViewById(R.id.primeiraHabilitacaoEditText);
-        localEditText = findViewById(R.id.localEditText);
-        dataEmissaoEditText = findViewById(R.id.dataEmissaoEdiText);
 
         addMasks();
         setInformations();
@@ -218,9 +215,6 @@ public class FuncionarioDialog extends Dialog {
             categoriaEditText.setText(funcionario.getCnh().getCategoria());
             nRegistroEditText.setText(funcionario.getCnh().getNumeroRegistro());
             validadeEditText.setText(funcionario.getCnh().getValidade());
-            primeiraHabilitacaoEditText.setText(funcionario.getCnh().getPrimeiraHabilitacao());
-            localEditText.setText(funcionario.getCnh().getLocal());
-            dataEmissaoEditText.setText(funcionario.getCnh().getDataEmissao());
 
             LinearLayout motoristaTextViews = findViewById(R.id.motoristaLinearLayout);
             motoristaTextViews.setVisibility(View.VISIBLE);
@@ -241,9 +235,6 @@ public class FuncionarioDialog extends Dialog {
         cnh.setCategoria(categoriaEditText.getText().toString());
         cnh.setNumeroRegistro(nRegistroEditText.getText().toString());
         cnh.setValidade(validadeEditText.getText().toString());
-        cnh.setPrimeiraHabilitacao(primeiraHabilitacaoEditText.getText().toString());
-        cnh.setLocal(localEditText.getText().toString());
-        cnh.setDataEmissao(dataEmissaoEditText.getText().toString());
         funcionario.setCnh(cnh);
         funcionario.salvar();
     }
@@ -258,8 +249,6 @@ public class FuncionarioDialog extends Dialog {
         categoriaEditText.addTextChangedListener(new MaskTextWatcher(categoriaEditText, new SimpleMaskFormatter("UU")));
         nRegistroEditText.addTextChangedListener(new MaskTextWatcher(nRegistroEditText, new SimpleMaskFormatter("NNNNNNNNNNN")));
         validadeEditText.addTextChangedListener(new MaskTextWatcher(validadeEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
-        primeiraHabilitacaoEditText.addTextChangedListener(new MaskTextWatcher(primeiraHabilitacaoEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
-        dataEmissaoEditText.addTextChangedListener(new MaskTextWatcher(dataEmissaoEditText, new SimpleMaskFormatter("NN/NN/NNNN")));
     }
 
     private void changeMode(boolean mode) {
@@ -274,9 +263,6 @@ public class FuncionarioDialog extends Dialog {
         categoriaEditText.setEnabled(mode);
         nRegistroEditText.setEnabled(mode);
         validadeEditText.setEnabled(mode);
-        primeiraHabilitacaoEditText.setEnabled(mode);
-        localEditText.setEnabled(mode);
-        dataEmissaoEditText.setEnabled(mode);
     }
 
 }

@@ -40,7 +40,7 @@ public class PerfilFragment extends Fragment {
     private TextView nomeTextView, cargoTextView, rgTextView, cpfTextView, dataNascimentoTextView,
             enderecoTextView, telefoneTextView, celularTextView, emailTextView, ultimoLoginTextView;
 
-    private TextView categoriaTextView, nRegistroTextView, validadeTextView, primeiraHabilitacaoTextView, localTextView, dataEmissaoTextView;
+    private TextView categoriaTextView, nRegistroTextView, validadeTextView;
 
     private CircleImageView profileImageView;
 
@@ -64,9 +64,6 @@ public class PerfilFragment extends Fragment {
         categoriaTextView = root.findViewById(R.id.categoriaTextView);
         nRegistroTextView = root.findViewById(R.id.nRegistroTextView);
         validadeTextView = root.findViewById(R.id.validadeTextView);
-        primeiraHabilitacaoTextView = root.findViewById(R.id.primeiraHabilitacaoTextView);
-        localTextView = root.findViewById(R.id.localTextView);
-        dataEmissaoTextView = root.findViewById(R.id.dataEmissaoTextView);
 
         setInformacaoes();
 
@@ -137,9 +134,6 @@ public class PerfilFragment extends Fragment {
         categoriaTextView.setText(FuncionarioOn.funcionario.getCnh().getCategoria());
         nRegistroTextView.setText(FuncionarioOn.funcionario.getCnh().getNumeroRegistro());
         validadeTextView.setText(FuncionarioOn.funcionario.getCnh().getValidade());
-        primeiraHabilitacaoTextView.setText(FuncionarioOn.funcionario.getCnh().getPrimeiraHabilitacao());
-        localTextView.setText(FuncionarioOn.funcionario.getCnh().getLocal());
-        dataEmissaoTextView.setText(FuncionarioOn.funcionario.getCnh().getDataEmissao());
     }
 
     @Override
